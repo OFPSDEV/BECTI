@@ -1,0 +1,117 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, update_view_distance.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"Cycle"};
+item2[] = {"Update_View_Dist",2,4346,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Update" \n "View Distance"};
+item3[] = {"End_FSM",1,250,50.000000,-325.000000,150.000000,-275.000000,0.000000,"End FSM"};
+item4[] = {"Terminate",4,218,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Terminate"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,1};
+link3[] = {2,4};
+link4[] = {4,3};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-355.061859,258.323914,201.693604,-569.487793,517,650,1};
+window[] = {0,-1,-1,-1,-1,803,22,1277,22,1,534};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "update_view_distance.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_ncycle1 = 0;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_View_Dist";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle1"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_View_Dist">*/
+    class Update_View_Dist
+    {
+      name = "Update_View_Dist";
+      init = /*%FSM<STATEINIT""">*/"_ncycle1 = time + 1.5;" \n
+       "" \n
+       "if(profileNamespace getVariable ""CTI_PERSISTENT_AUTODISTANCE"") then {" \n
+       "" \n
+       "	_distance = 0;" \n
+       "	_distance = if((vehicle player) isKindOf ""Man"") then {" \n
+       "		profileNamespace getVariable ""CTI_PERSISTENT_VIEW_DISTANCE"";" \n
+       "	} else {" \n
+       "		if((vehicle player) isKindOf ""LandVehicle"") then {" \n
+       "			profileNamespace getVariable ""CTI_PERSISTENT_GROUND_VIEW_DISTANCE"";	" \n
+       "		} else {" \n
+       "			if((vehicle player) isKindOf ""Air"") then {" \n
+       "				profileNamespace getVariable ""CTI_PERSISTENT_AIR_VIEW_DISTANCE"";" \n
+       "			} else {" \n
+       "				if((vehicle player) isKindOf ""Ship"") then {" \n
+       "					profileNamespace getVariable ""CTI_PERSISTENT_GROUND_VIEW_DISTANCE"";" \n
+       "				};" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "" \n
+       "	if(_distance != viewDistance) then {" \n
+       "		setObjectViewDistance (_distance * ((profileNamespace getVariable ""CTI_PERSISTENT_OBJECT_DISTANCE"")/100));" \n
+       "		setViewDistance _distance;" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_View_Dist";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle1"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Terminate">*/
+        class Terminate
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM",
+  };
+};
+/*%FSM</COMPILE>*/
