@@ -75,9 +75,10 @@ if (CTI_SPECIAL_MEDICALVEHICLE in _special) then { //--- Medical vehicle.
 //removed old hooker thing, SS83 if (typeOf _vehicle in (CTI_VEHICLES_HOOKERS+CTI_VEHICLES_HOOKERS_EX)) then {_vehicle addAction ["<t color='#86F078'>Hook (Main)</t>", "Client\Actions\Action_HookMenu.sqf", "", 99, false, true, "", "alive _target && local _target && _this == driver _target"]};
 
 for '_i' from 0 to (count CTI_VEHICLES_HOOKERS) do { //--- Revamped A2  Airlift
-    if (typeOf _vehicle in (CTI_VEHICLES_HOOKERS select _i) && _actioncheck) then {
+	// Radioman TODO - _actioncheck is undefined. Commented out to stop script from crashing at this point.
+    if (typeOf _vehicle in (CTI_VEHICLES_HOOKERS select _i) /*&& _actioncheck*/) then {
         [_vehicle] ExecVM 'Client\Module\ZetaCargo\Zeta_AddAction.sqf';
-        _actioncheck = false; //--- Prevent adding multiple actions if chopper is in multiple hooker arrays
+        /*_actioncheck = false; //--- Prevent adding multiple actions if chopper is in multiple hooker arrays*/
     };
 };  
 

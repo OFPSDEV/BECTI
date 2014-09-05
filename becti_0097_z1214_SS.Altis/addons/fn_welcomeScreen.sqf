@@ -41,14 +41,14 @@ if (!isDedicated) then
         _blackScreen = [_this,0,true] call BIS_fnc_param;
 
         if (_blackScreen) then {cutText [" ","BLACK FADED",1]; };
-        
+        /* Radioman TODO - EUTW_ABOUT_MISSION_MSG is undefined
         if (EUTW_ABOUT_MISSION_MSG == "") then 
         {
             EUTW_ABOUT_HEADER = ""; EUTW_ABOUT_MSG = "";
         } else {
             EUTW_ABOUT_HEADER = "About this mission:"; EUTW_ABOUT_MSG = EUTW_ABOUT_MISSION_MSG;
         };
-        
+        */
   
         waitUntil { getClientState == "BRIEFING READ" || player == player };    
         

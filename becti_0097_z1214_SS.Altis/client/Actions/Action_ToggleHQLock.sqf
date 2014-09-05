@@ -8,7 +8,8 @@ _lock = if (locked _hq == 0) then {2} else {0};
 if (local _hq) then {
 	_hq lock _lock;
 } else {
-	["SERVER", "Request_VehicleLocality", [_hq, player]] call CTI_CO_FNC_NetSend;
+	// Radioman TODO - Request_VehicleLocality is not a valid NetSend function.
+	//["SERVER", "Request_VehicleLocality", [_hq, player]] call CTI_CO_FNC_NetSend;
 	waitUntil {local _hq};
 	_hq lock _lock;
 };
