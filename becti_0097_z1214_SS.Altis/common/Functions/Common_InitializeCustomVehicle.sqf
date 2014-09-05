@@ -42,4 +42,5 @@ switch (_script) do {
 	case "service-repairtruck": {_vehicle setVariable ["cti_spec", [CTI_SPECIAL_REPAIRTRUCK], true]; if (CTI_IsServer) then {[_vehicle, _side] execFSM "Server\FSM\update_repairtruck.fsm"} else {["SERVER", "Request_HandleAction", ["repair", [_vehicle, _side]]] call CTI_CO_FNC_NetSend}};
 	case "service-ammotruck": {_vehicle setVariable ["cti_spec", [CTI_SPECIAL_AMMOTRUCK], true]};
 	case "service-medic": {if ((missionNamespace getVariable "CTI_RESPAWN_MOBILE") > 0) then {_vehicle setVariable ["cti_spec", [CTI_SPECIAL_MEDICALVEHICLE], true]}};
+	case "LoadUGV": {[_vehicle] execVM "Addons\loadUGV\loadUGV.sqf"}; // Radioman - Correct initialization of the script, for UGVs only.
 };

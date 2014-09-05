@@ -272,7 +272,7 @@ _o = _o + [800];
 _t = _t + [20];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_LIGHT];
-_s = _s + [""];
+_s = _s + ["LoadUGV"]; // Radioman - Init LoadUGV script
 
 _c = _c + ['B_UGV_01_rcws_F'];
 _p = _p + [''];

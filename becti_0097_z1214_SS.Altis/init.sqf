@@ -181,7 +181,7 @@ _igiload = execVM "IgiLoad\IgiLoadInit.sqf";
 [] execVM "Addons\Fast_rope\zlt_fastrope.sqf";
 
 //---LoadUGV script ss83
-[] execVM "Addons\loadUGV\loadUGV.sqf";
+//[] execVM "Addons\loadUGV\loadUGV.sqf"; // Radioman - Improper use of the LoadUGV script. It is to be executed upon vehicle creation. 
 
 //---Welcome Screen ss83
 if (!isDedicated) then {
