@@ -6,6 +6,7 @@ CTI_FACTORY_AIR = 3;
 CTI_FACTORY_REPAIR = 4;
 CTI_FACTORY_AMMO = 5;
 CTI_FACTORY_NAVAL = 6;
+CTI_MILITARYINSTALLATION = "MilitaryInstallation";
 CTI_BARRACKS = "Barracks";
 CTI_LIGHT = "Light";
 CTI_CONTROLCENTER = "ControlCenter";
@@ -100,8 +101,8 @@ CTI_AI_TEAMS_OBSERVATION_MARKER_LIFESPAN = 120; //--- Time a reporting marker ma
 CTI_AI_TEAMS_UNITS_MIN = 4; //--- Amount of units an AI leader need to have to be able to perform it's duty (It will resupply @base if it's lower)
 
 //--- AI Teams: Parameters
-with missionNamespace do {
-	//CTI_AI_TEAMS_GROUPSIZE = 12; //--- AI Teams may get up to x units
+with missionNamespace do {	
+	if (isNil 'CTI_AI_PLAYER_TEAMS_GROUPSIZE') then {CTI_AI_PLAYER_TEAMS_GROUPSIZE = 12}; //--- Player Teams may get up to x units
 	if (isNil 'CTI_AI_TEAMS_ENABLED') then {CTI_AI_TEAMS_ENABLED = 0}; //--- Determine whether AI Teams are enabled or not
 	if (isNil 'CTI_AI_TEAMS_GROUPSIZE') then {CTI_AI_TEAMS_GROUPSIZE = 8}; //--- AI Teams may get up to x units
 	if (isNil 'CTI_AI_TEAMS_JIP_PRESERVE') then {CTI_AI_TEAMS_JIP_PRESERVE = 0}; //--- Keep the AI Teams units on JIP
@@ -373,7 +374,7 @@ with missionNamespace do {
  */
 
 //--- Base: Area
-CTI_BASE_AREA_MAX = 3;
+CTI_BASE_AREA_MAX = 2;
 CTI_BASE_AREA_RANGE = 500;
 
 //--- Base: Construction
@@ -506,7 +507,7 @@ CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 10; //--- Keep values of 10
 
 CTI_MARKERS_OPACITY = 0.5;
-CTI_MARKERS_TOWN_AREA_RANGE = if !(MADE_FOR_STRATIS) then {250} else {150};
+CTI_MARKERS_TOWN_AREA_RANGE = 250;
 CTI_MARKERS_UNITS_DEAD_DELAY = 50;
 CTI_MARKERS_VEHICLES_DEAD_DELAY = 125;
 
@@ -566,6 +567,8 @@ with missionNamespace do {
 	CTI_ECONOMY_POOL_AWARD_PERCENTAGE_EAST = 0.3;
 	CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_WEST = 0.1;
 	CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_EAST = 0.1;
+	
+	if (isNil 'CTI_MILITARY_INSTALLATION_PRICE') then {CTI_MILITARY_INSTALLATION_PRICE = 50000};
 
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_EAST') then {CTI_ECONOMY_STARTUP_FUNDS_EAST = 900};
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER') then {CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER = 90000};
@@ -581,13 +584,13 @@ with missionNamespace do {
 	
 	CTI_GAMEPLAY_VOTE_TIME = if (CTI_Debug) then {8} else {60};
 
-	if (isNil 'CTI_GRAPHICS_VD_MAX') then {CTI_GRAPHICS_VD_MAX = 2500};
+	if (isNil 'CTI_GRAPHICS_VD_MAX') then {CTI_GRAPHICS_VD_MAX = 3000};
 	if (isNil 'CTI_GRAPHICS_TG_MAX') then {CTI_GRAPHICS_TG_MAX = 50};
 
 	//CTI_PLAYERS_GROUPSIZE = 12;
 	
-	if (isNil 'CTI_RESPAWN_AI') then {CTI_RESPAWN_AI = 0};
-	if (isNil 'CTI_RESPAWN_FOB_RANGE') then {CTI_RESPAWN_FOB_RANGE = 1750}; //--- Range at which a unit can spawn at a FOB
+	if (isNil 'CTI_RESPAWN_AI') then {CTI_RESPAWN_AI = 1};
+	if (isNil 'CTI_RESPAWN_FOB_RANGE') then {CTI_RESPAWN_FOB_RANGE = 1500}; //--- Range at which a unit can spawn at a FOB
 	if (isNil 'CTI_RESPAWN_MOBILE') then {CTI_RESPAWN_MOBILE = 1};
 	if (isNil 'CTI_RESPAWN_TIMER') then {CTI_RESPAWN_TIMER = 30};
 
@@ -596,7 +599,7 @@ with missionNamespace do {
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 1};
 
 	if (isNil 'CTI_WEATHER_FAST') then {CTI_WEATHER_FAST = 0};
-	CTI_WEATHER_FAST_VALUES = [0, 4.8, 5.052631579, 5.333333333, 5.647058824, 6, 6.4, 6.857142857, 7.384615385, 8, 8.727272727, 9.6, 10.66666667, 12]; //--- Fast time values, this shall match the amount of values in rsc\parameters.hpp
+	CTI_WEATHER_FAST_VALUES = [0, 2.4, 3, 4, 6, 12, 24 ]; //--- Fast time values, this shall match the amount of values in rsc\parameters.hpp
 
 	if (CTI_WEATHER_FAST > 0) then {CTI_WEATHER_FAST = CTI_WEATHER_FAST_VALUES select CTI_WEATHER_FAST};
 

@@ -19,6 +19,7 @@ missionNamespace setVariable [format["CTI_%1_Base_Template", _side], [
 
 //--- Commander course of action ["Action", Parameter(s), Condition]
 missionNamespace setVariable [format["CTI_%1_Commander_Path", _side], [
+	["build-structures", CTI_MILITARYINSTALLATION, {true}],
 	["build-structures", CTI_BARRACKS, {true}],
 	["build-structures", CTI_LIGHT, {true}],
 	["build-structures", CTI_CONTROLCENTER, {true}],
@@ -58,6 +59,13 @@ _specials = [];
 		- DMG_Reduce: Reduce the incoming damage on a building making it stronger if above 1.
 */
 
+_headers = _headers 		+ [[CTI_MILITARYINSTALLATION, "Military Installation", "Military Installation"]];
+_classes =  _classes 		+ [["Land_Cargo_Tower_V3_F", "Land_Cargo_Tower_V3_ruins_F"]];
+_prices =  _prices 			+ [CTI_MILITARY_INSTALLATION_PRICE];
+_times =  _times 			+ [1];
+_placements =_placements 	+ [[180, 15]];
+_specials = _specials		+ [[["DMG_Reduce", 1]]];
+
 _headers = _headers 		+ [[CTI_BARRACKS, "Barracks", "Barracks"]];
 _classes = _classes 		+ [["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"]];
 _prices = _prices 			+ [3000];
@@ -91,7 +99,7 @@ _classes = _classes 		+ [["Land_Radar_Small_F", "Land_Radar_Small_ruins_F"]];
 _prices = _prices 			+ [8000];
 _times = _times 			+ [140];
 _placements = _placements 	+ [[270, 30]];
-_specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 12]]];
+_specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 100]]];
 
 _headers = _headers 		+ [[CTI_AMMO, "Ammo Depot", "Ammo"]];
 _classes = _classes 		+ [["Land_Cargo_HQ_V2_F", "Land_Cargo_HQ_V2_ruins_F"]];
