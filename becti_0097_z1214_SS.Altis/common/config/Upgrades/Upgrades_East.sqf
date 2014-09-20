@@ -94,7 +94,7 @@ _lev=_lev+	[1];
 _lin=_lin+	[[[CTI_UPGRADE_GEAR,3]]];
 _t=_t+			[[120*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Other: Towns Occupation", "Allows the spawning of occupation forces which will defend friendly towns against any attackers.<br />It will also improve the income generation in non-occupied towns"]];
+_l=_l+			[["Other: Towns Occupation", "Allows the spawning of occupation forces which will defend friendly towns against any attackers."]];
 _a=_a	+			[(missionNamespace getVariable "CTI_TOWNS_OCCUPATION") > 0];
 _c=_c +			[[10000, 20000, 30000]];
 _lev=_lev+	[3];

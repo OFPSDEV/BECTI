@@ -99,7 +99,7 @@ _classes = _classes 		+ [["Land_Radar_Small_F", "Land_Radar_Small_ruins_F"]];
 _prices = _prices 			+ [8000];
 _times = _times 			+ [140];
 _placements = _placements 	+ [[270, 30]];
-_specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 100]]];
+_specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 2]]];
 
 _headers = _headers 		+ [[CTI_AMMO, "Ammo Depot", "Ammo"]];
 _classes = _classes 		+ [["Land_Cargo_HQ_V2_F", "Land_Cargo_HQ_V2_ruins_F"]];
