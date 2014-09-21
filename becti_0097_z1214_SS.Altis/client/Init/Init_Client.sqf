@@ -70,6 +70,8 @@ CTI_P_DefensesAutoManning = true;
 CTI_P_RapidDefence_Actions=[];
 CTI_P_RapidDefence=-1;
 CTI_P_Coloration_Money = "#BAFF81";
+CTI_P_Voted = false;
+CTI_P_VotePopUp = true;
 
 
 
