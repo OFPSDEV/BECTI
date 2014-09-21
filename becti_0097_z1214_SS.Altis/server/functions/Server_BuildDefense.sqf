@@ -128,6 +128,13 @@ if (_defense isKindOf "Box_NATO_Wps_F") then { //ss83 clears out the supply crat
 	clearWeaponCargoGlobal _defense;
 };
 
+if (_defense isKindOf "Box_East_Wps_F") then { //ss83 clears out the supply crate
+	clearBackpackCargoGlobal _defense;
+	clearItemCargoGlobal _defense;
+	clearMagazineCargoGlobal _defense;
+	clearWeaponCargoGlobal _defense;
+};
+
 if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	_defense addEventHandler["Fired","_this call TR_HANDLER;"];
 };

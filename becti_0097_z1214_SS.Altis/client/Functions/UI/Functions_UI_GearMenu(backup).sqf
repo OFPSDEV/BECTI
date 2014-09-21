@@ -400,6 +400,9 @@ CTI_UI_Gear_AddItem = {
 							default {-1};
 						};
 
+						if ((getNumber(configFile >> 'CfgWeapons' >> _item >> 'ItemInfo' >> 'type')) ==CTI_SUBTYPE_UAVTERMINAL )  then {
+							_slot = 1;
+						};
 						if (_slot != -1) then { //--- Special item
 							_current = ((_gear select 3) select 1) select _slot;
 
@@ -650,21 +653,27 @@ CTI_UI_Gear_GetUnitEquipment = {
 		_items = [["", ""], ["", "", "", "", ""]];
 
 		{
-			_slot = switch (getText(configFile >> 'CfgWeapons' >> _x >> 'simulation')) do {
-				case "NVGoggles": {[0,0]};
-				case "Binocular": {[0,1]};
-				case "ItemMap": {[1,0]};
-				case "ItemGPS": {[1,1]};
-				case "ItemRadio": {[1,2]};
-				case "ItemCompass": {[1,3]};
-				case "ItemWatch": {[1,4]};
-				case "Laserdesignator": {[0,1]}; //--- ss83 fix by sari
-				default {[-1]};
-			};
-			if (_slot select 0 == -1) then { //--- The simulation couldn't be determined, try to get the subtype maybe?
+			_slot=[-1];
+			if ((getNumber(configFile >> 'CfgWeapons' >> _x >> 'ItemInfo' >> 'type')) ==CTI_SUBTYPE_UAVTERMINAL )  then {
+					_slot = [1,1];
+			} else {
+				_slot = switch (getText(configFile >> 'CfgWeapons' >> _x >> 'simulation')) do {
+					case "NVGoggles": {[0,0]};
+					case "Binocular": {[0,1]};
+					case "ItemMap": {[1,0]};
+					case "ItemGPS": {[1,1]};
+					case "ItemRadio": {[1,2]};
+					case "ItemCompass": {[1,3]};
+					case "ItemWatch": {[1,4]};
+					case "weapon": {[0,1]};
+					case "Laserdesignator": {[0,1]};
+					default {[-1]};
+				};
+			/*if (_slot select 0 == -1) then { //--- The simulation couldn't be determined, try to get the subtype maybe?
 				switch (getNumber(configFile >> 'CfgWeapons' >> _x >> 'ItemInfo' >> 'type')) do {
 					case CTI_SUBTYPE_UAVTERMINAL: {_slot = [1,1]};
 				};
+			};*/
 			};
 			if (_slot select 0 != -1) then { (_items select (_slot select 0)) set [_slot select 1, _x] };
 		} forEach _allitems;
@@ -1247,14 +1256,12 @@ CTI_UI_Gear_LoadAvailableUnits = {
 	_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 	_list = [];
 	_fobs = CTI_P_SideLogic getVariable ["cti_fobs", []];
-	_vh=[];   //he's saying move this
+	_vh=[];
 	{
 		_v=_x;
 		if ( ({_x== (vehicle _v)} count _vh) <1  && ! ((vehicle _v) == _v)) then {_vh =_vh+[vehicle _v];};
 	} forEach ((group player) call CTI_CO_FNC_GetLiveUnits);
-	_u=((group player) call CTI_CO_FNC_GetLiveUnits)+_vh;   //to here
-	 {if (_x isKindOf   'ReammoBox_F' ) then {_u set [count _u, _x];};true} count vehicles; //this code allows ammo boxes to be visible in gear menu ss83
-
+	_u=((group player) call CTI_CO_FNC_GetLiveUnits)+_vh;
 	{
 		_nearest = [CTI_BARRACKS, _x, _structures, CTI_BASE_GEAR_RANGE] call CTI_CO_FNC_GetClosestStructure;
 		_ammo_trucks = [_x, CTI_SPECIAL_AMMOTRUCK, CTI_BASE_GEAR_RANGE/4] call CTI_CO_FNC_GetNearestSpecialVehicles;
