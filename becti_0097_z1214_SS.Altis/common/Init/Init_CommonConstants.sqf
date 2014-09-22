@@ -326,19 +326,19 @@ CTI_TOWNS_PATROL_HOPS = 10; //--- Towns patrol hops (non-waypoint)
 CTI_TOWNS_PATROL_RANGE = 200; //--- Patrol range in a town
 
 //--- Towns: Occupation
-CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 400; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
 CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
-CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 800; //--- Determine how far a threat may be detected from the town center
-CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 200; //--- Determine how high a threat is considered aerial
-CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 60; //--- Determine how long a town may remain active when triggered
+CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 1000; //--- Determine how far a threat may be detected from the town center  //ss83 increase from 800 to 1000
+CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 100; //--- Determine how high a threat is considered aerial
+CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 1200; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_OCCUPATION_MIN_ACTIVE = 3; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 
 //--- Towns: Resistance
 CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 200; //--- Determine how far the units may spawn from the town center
-//CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
-//CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
-CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 200; //--- Determine how high a threat is considered aerial
-//CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered
+//CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value), this value is given a value in parameters ss83
+//CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center, this value is given a value in parameters ss83
+CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 100; //--- Determine how high a threat is considered aerial
+//CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered, this value is given a value in parameters ss83
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 3; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 
 //--- Towns: Parameters
@@ -375,7 +375,7 @@ with missionNamespace do {
 
 //--- Base: Area
 CTI_BASE_AREA_MAX = 2;
-CTI_BASE_AREA_RANGE = 500;
+CTI_BASE_AREA_RANGE = 400;  //ss83 reduced from 500
 
 //--- Base: Construction
 CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 1200; //--- Decay starts after x seconds unattended.
@@ -388,7 +388,7 @@ CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.95; //--- The completion ratio is multi
 //--- Base: Defenses
 // CTI_BASE_DEFENSES_AUTO_DELAY = 120; //--- Delay after which a new unit will replace a dead one for a defense
 CTI_BASE_DEFENSES_AUTO_DELAY = 120; //--- Delay after which a new unit will replace a dead one for a defense
-CTI_BASE_DEFENSES_AUTO_LIMIT = 25; //--- Amount of independent units which may man nearby defenses
+CTI_BASE_DEFENSES_AUTO_LIMIT = 30; //--- Amount of independent units which may man nearby defenses
 CTI_BASE_DEFENSES_AUTO_RANGE = 600; //--- Range from the nearest barrack at which AI may auto man a defense
 CTI_BASE_DEFENSES_AUTO_REARM_RANGE = 600; //--- Range needed for a defense to be able to rearm at a service point
 CTI_BASE_DEFENSES_EMPTY_TIMEOUT = 3600; //--- Delay after which an empty defense is considered empty
@@ -417,7 +417,7 @@ CTI_BASE_WORKERS_REPAIR = 0.01; //--- Worker repair iteration per action over a 
 CTI_BASE_WORKERS_REPAIR_RANGE = 25; //--- Worker repair range.
 CTI_BASE_WORKERS_REPAIR_ENTITY = 0.02; //--- Worker repair iteration per action over a vehicle.
 CTI_BASE_WORKERS_WANDER_RANGE = 60; //--- Worker may wander of x meters at a time.
-CTI_BASE_WORKERS_WANDER_RANGE_MAX = 500; //--- Worker may wander no further than x meters from their center
+CTI_BASE_WORKERS_WANDER_RANGE_MAX = 400; //--- Worker may wander no further than x meters from their center
 
 //--- Base: Parameters
 with missionNamespace do {

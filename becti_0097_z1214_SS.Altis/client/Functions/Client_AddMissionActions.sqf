@@ -58,7 +58,7 @@ player addAction ["<t color='#a5c4ff'>MENU: Factory</t>", "Client\Actions\Action
 player addAction ["<t color='#a5c4ff'>MENU: Equipment</t>", "Client\Actions\Action_GearMenu.sqf", "", 93, false, true, "", "(CTI_Base_GearInRange || CTI_Base_GearInRange_Mobile || CTI_Base_GearInRange_FOB) && !CTI_P_PreBuilding&& _this == player "];
 player addAction ["<t color='#a5c4ff'>MENU: Options</t>", "Client\Actions\Action_OptionsMenu.sqf", "", 95, false, true, "", "!CTI_P_PreBuilding && _this == player "];
 
-player addAction ["<t color='#ff9900'>HALO jump (500$)</t>", "Addons\ATM_airdrop\atm_airdrop.sqf","",100, false, true, "", "vehicle player == player && !CTI_P_PreBuilding && CTI_Base_HaloInRange && [CTI_P_SideJoined, CTI_UPGRADE_HALO, 1] call CTI_CO_FNC_HasUpgrade && ( (missionNamespace getVariable 'CTI_SM_HALO')==1) && _this == player "];
+player addAction ["<t color='#ff9900'>HALO jump (1000$)</t>", "Addons\ATM_airdrop\atm_airdrop.sqf","",100, false, true, "", "vehicle player == player && !CTI_P_PreBuilding && CTI_Base_HaloInRange && [CTI_P_SideJoined, CTI_UPGRADE_HALO, 1] call CTI_CO_FNC_HasUpgrade && ( (missionNamespace getVariable 'CTI_SM_HALO')==1) && _this == player "];  //ss83 halo jump action message
 player addAction ["<t color='#bb3333'>(Admin) Connect to Zeus</t>", "['SERVER', 'Server_Assign_Zeus', player] call CTI_CO_FNC_NetSend;", [], -100000, false, true, "", "!((getAssignedCuratorUnit ADMIN_ZEUS) == _this) && (serverCommandAvailable '#shutdown' || !isMultiplayer)&& _this == player "]; //!((getAssignedCuratorUnit ADMIN_ZEUS) == _this) && (serverCommandAvailable '#shutdown' || !isMultiplayer)
 
 if ! (missionNamespace getVariable "CTI_EW_ANET" == 1) exitWith {false}; //no Adv network

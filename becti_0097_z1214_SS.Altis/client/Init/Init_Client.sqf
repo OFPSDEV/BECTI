@@ -204,8 +204,8 @@ if ((CTI_P_SideLogic getVariable "cti_votetime") > 0) then {createDialog "CTI_Rs
 			if (isMultiplayer) then {["SERVER", "Request_HQLocality", [CTI_P_SideJoined, player]] call CTI_CO_FNC_NetSend};
 			waitUntil {local _hq};
 			_hq lock 2;
-			_hq addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 2'];
-			_hq addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 0'];
+			_hq addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 98, false, true, '', 'alive _target && locked _target == 2'];  //ss83 lock priority reduced
+			_hq addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 98, false, true, '', 'alive _target && locked _target == 0']; //ss83 lock priority reduced
 		};
  		{_x addAction ["<t color='#1111cc'>Delete defense</t>", "deleteVehicle (_this select 0)", "", -1, false, true, "", "vehicle player == player && !CTI_P_PreBuilding "]; } forEach (CTI_P_SideLogic getVariable ["cti_defences", []]);
 

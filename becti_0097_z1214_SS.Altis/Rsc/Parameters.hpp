@@ -291,9 +291,9 @@ class Params {
 	};
 	class CTI_TOWNS_RESISTANCE_DETECTION_RANGE {
 		title = "Zerty: TOWNS: Detection Range";
-		values[] = {800};
-		texts[] = {"800m"};
-		default = 800;
+		values[] = {1000};
+		texts[] = {"1000m"};
+		default = 1000;
 	};
 	class CTI_TOWNS_RESISTANCE_GROUPS_RATIO {
 		title = "Zerty: TOWNS : Resistance Amount Multiplier";
@@ -303,9 +303,9 @@ class Params {
 	};
 	class CTI_TOWNS_RESISTANCE_INACTIVE_MAX {
 		title = "Zerty: TOWNS : Resistance despawn Timer";
-		values[] = {120};
-		texts[] = {"120sec"};
-		default = 120;
+		values[] = {1200};
+		texts[] = {"1200sec"};
+		default = 1200;
 	};
 	/*
 		class CTI_UNITS_CLEANUP { // Deprecated
