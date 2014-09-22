@@ -17,6 +17,14 @@ with missionNamespace do {
 		_pv_who publicVariableClient "CTI_NetCom";
 	};
 
+	CTI_PVF_Request_VehicleLocality = { 
+		private ["_side", "_target", "_vehicle"];
+		_vehicle = _this select 0;
+		_target = _this select 1;
+		
+		_vehicle setOwner (owner _target);
+	};
+	
 	CTI_PVF_Request_HQLocality = {
 		private ["_hq", "_side", "_target"];
 		_side = _this select 0;

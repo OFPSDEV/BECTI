@@ -12,6 +12,25 @@
 #define CT_XSLIDER				43
 #define CT_MAP					101
 #define CT_LISTNBOX				102
+#define Color_White					{1, 1, 1, 1}
+#define Color_Black					{0, 0, 0, 1}
+#define Color_Gray					{0.3, 0.3, 0.3, 1}
+#define Color_GrayLight 				{0.6, 0.6, 0.6, 1}
+#define Color_GrayDark 					{0.2, 0.2, 0.2, 1}
+#define Color_Orange					{1, 0.5, 0, 1}
+#define Color_LightGreen				{.1, 0.5, 0, .7}
+#define Color_Main_Foreground1 	Color_White
+#define Color_Text_Default 			Color_Main_Foreground1
+#define ReadAndWrite						0         
+#define FontMAIN	"TahomaB"
+
+#define FontTahomaB "TahomaB"						0
+#define true										1
+#define false										0
+#define Size_Main_Normal 				0.03
+#define Size_Text_Default 			Size_Main_Normal
+#define Size_Text_Small 			0.025
+
 
 #include "Styles.hpp"
 
@@ -148,15 +167,15 @@ class RscButton {
 	font = "PuristaMedium";
 	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	colorText[] = {1,1,1,1.0};
-	colorDisabled[] = {0.4,0.4,0.4,1};
-	colorBackground[] = {0.258823529, 0.713725490, 1, 0.7};
-	colorBackgroundActive[] = {0.258823529, 0.713725490, 1, 1};
-	colorBackgroundDisabled[] = {0.95,0.95,0.95,1};
+		colorDisabled[] = Color_Gray;
+	colorBackground[] = Color_GrayDark;
+		colorBackgroundDisabled[] = Color_GrayDark;
+		colorBackgroundActive[] = Color_GrayLight;
 	offsetX = 0.003;
 	offsetY = 0.003;
 	offsetPressedX = 0.002;
 	offsetPressedY = 0.002;
-	colorFocused[] = {0.258823529, 0.713725490, 1, 1};
+	colorFocused[] = Color_Black; // color of the rectangle around background when focused
 	colorShadow[] = {0,0,0,1};
 	colorBorder[] = {0,0,0,1};
 	borderSize = 0.0;
@@ -167,17 +186,17 @@ class RscButton {
 };
 
 class RscButton_Lesser : RscButton {
-	colorBackground[] = {0.768627451, 1, 0.137254902, 0.7};
-	colorBackgroundActive[] = {0.768627451, 1, 0.137254902, 1};
-	colorFocused[] = {0.768627451, 1, 0.137254902, 1};
+	colorBackground[] = Color_GrayDark;
+	colorBackgroundActive[] = Color_GrayLight;
+	colorFocused[] = Color_Black;
 };
 
 class RscButton_Opac : RscButton {
 	colorShadow[] = {0, 0, 0, 0.3};
 	colorDisabled[] = {0.4,0.4,0.4,0.5};//todo tweak
 	colorBackground[] = {0.2, 0.2, 0.2, 0.5};
-	colorBackgroundActive[] = {0.35, 0.35, 0.35, 0.7};
-	colorFocused[] = {0.35, 0.35, 0.35, 0.7};
+	colorBackgroundActive[] = Color_GrayLight;
+	colorFocused[] = Color_Black;
 	// colorText[] = {0, 0, 0, 1};
 };
 

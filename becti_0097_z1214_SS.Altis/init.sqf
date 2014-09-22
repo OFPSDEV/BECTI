@@ -195,11 +195,9 @@ _logistic = execVM "=BTC=_logistic\=BTC=_logistic_Init.sqf";
 
 //-- Weather Script
 
-//Live
 //-- Explosives on Vehicles Script
 waitUntil {time > 0};
 execVM "Addons\EtV.sqf";
 waitUntil {!isNil "EtVInitialized"};
 [player] call EtV_Actions;
-//End Live
 

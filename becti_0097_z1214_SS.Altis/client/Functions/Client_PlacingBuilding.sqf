@@ -120,21 +120,75 @@ if (!(_in_area) && ! CTI_VAR_StructureCanceled) then {
 	//--- If we have none, then have we reached our limit?
 	if (count (CTI_P_SideLogic getVariable "cti_structures_areas") < CTI_BASE_AREA_MAX) then {
 		//--- We create a new area if we still have room for areas and of course, we allow the construction
-		CTI_P_SideLogic setVariable ["cti_structures_areas", (CTI_P_SideLogic getVariable "cti_structures_areas") + [[_pos select 0, _pos select 1]], true];
+		CTI_P_SideLogic setVariable ["cti_structure_building_canceled", 0];
+// csm
+		if(((_var select 0) select 0) isEqualTo "MilitaryInstallation") then {
+			CTI_P_SideLogic setVariable ["cti_structures_areas", (CTI_P_SideLogic getVariable "cti_structures_areas") + [[_pos select 0, _pos select 1]], true];
+		} else {
+			CTI_VAR_StructureCanceled = true;
+			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You Must Build Inside of an Established Military Installation.";
+		}; 
+		
 	} else {
 		CTI_VAR_StructureCanceled = true;
 		hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The base area limit has been reached.";
 	};
+} else {
+	// if in range but construction is another base, cancel the construction and prompt.
+	if(((_var select 0) select 0) isEqualTo "MilitaryInstallation" && ! CTI_VAR_StructureCanceled) then {
+		CTI_VAR_StructureCanceled = true;
+		hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Military Installation Already Present.";
+	};
 };
+// end csm
 
-//todo: structure 'build' mode expires > check areas for other structures + buildings (if 0 then remove)
 
 //--- If there's no problems then we place it.
+
 if (!CTI_VAR_StructureCanceled && (call CTI_CL_FNC_IsPlayerCommander)) then {
 	if ((call CTI_CL_FNC_GetPlayerFunds) >= (_var select 2)) then {
+	
+		
+			_tracking_point = [_pos select 0, _pos select 1];
+			_markerLocal = createMarkerLocal [Format ["cti_structure_%1", CTI_P_MarkerIterator], [_pos select 0, _pos select 1]];
+			CTI_P_MarkerIterator = CTI_P_MarkerIterator + 1;
+			_markerLocal setMarkerTypeLocal format["%1installation", CTI_P_MarkerPrefix];
+			_markerLocal setMarkerColorLocal "ColorBlack";
+			_markerLocal setMarkerSizeLocal [0.75, 0.75];
+			_markerLocal setMarkerTextLocal ((_var select 0) select 0);
+			// end csm
+	
+		// Place it
 		-(_var select 2) call CTI_CL_FNC_ChangePlayerFunds;
 		["SERVER", "Request_Building", [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player]] call CTI_CO_FNC_NetSend;
+	
+		sleep 5;
+		
+		
+		// waitUntil[]
+		
+		_logic_placed_building = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic;
+		_ruins_placed_building = _logic_placed_building getVariable "cti_structures_wip";
+		_keep_tracking = false;
+		if (!(isNil '_ruins_placed_building')) then {
+			// csm
+			
+			_keep_tracking = true;
+			while{ _keep_tracking } do {
+				sleep 5;
+				_keep_tracking = false;
+				_temp_logic_placingBuilding = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic;
+				_temp_ruins_placingBuilding = _temp_logic_placingBuilding getVariable "cti_structures_wip";
+				{
+					_distance_markerbuilding = (getPos _x) distance _tracking_point;
+					if(_distance_markerbuilding <= 5)then { _keep_tracking = true };
+				}forEach (_temp_ruins_placingBuilding);
+			};
+		};
+		deleteMarkerLocal _markerLocal;
+		// end csm
 	} else {
 		hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to place that structure.";
 	};
 };
+

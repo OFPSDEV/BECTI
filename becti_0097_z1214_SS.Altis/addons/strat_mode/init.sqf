@@ -149,7 +149,27 @@ if (CTI_IsServer) then {
 };
 
 if (CTI_IsClient) then {
-	//PFV
+
+	CTI_ANET_Con=False;
+	CTI_ANET_Obj=False;
+	CTI_P_Active_Towns = [];
+	CTI_P_Availlable_Towns = [];
+	SM_Ask_Town=objNull;
+		// prepare Markers for Base areas
+	for "_i" from 1 to CTI_BASE_AREA_MAX do {
+			_pos = [0,0,0];
+			_marker = createMarkerLocal [(format ["cti_base_%1",_i]), _pos];
+			_marker setMarkerShapeLocal "ELLIPSE";
+			_marker setMarkerBrushLocal "SolidBorder";
+			_marker setMarkerSizeLocal [CTI_BASE_AREA_RANGE,CTI_BASE_AREA_RANGE];
+			_marker setMarkerColorLocal  "ColorBrown";
+			_marker setMarkerAlphaLocal 0;
+	};
+
+
+
+
+
 	with missionNamespace do {
 		//print a message
 		CTI_PVF_SM_message={ CTI_P_ChatID commandChat format ["Strat Mode : %1 ",_this] };
@@ -175,10 +195,10 @@ if (CTI_IsClient) then {
 			_pos=_this select 2;
 			_marker = createMarkerLocal [(format ["cti_base_%1_%2",_side,_num]), _pos];
 			_marker setMarkerShapeLocal "ELLIPSE";
-			_marker setMarkerBrushLocal "DiagGrid";
+			_marker setMarkerBrushLocal "SolidBorder";
 			_marker setMarkerSizeLocal [CTI_BASE_AREA_RANGE,CTI_BASE_AREA_RANGE];
 			_marker setMarkerColorLocal  ((_side) call CTI_CO_FNC_GetSideColoration);
-			_marker setMarkerAlphaLocal 0.5;
+			_marker setMarkerAlphaLocal 0.7;
 		};
 	};
 

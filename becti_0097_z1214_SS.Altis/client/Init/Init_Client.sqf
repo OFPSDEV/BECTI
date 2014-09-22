@@ -346,3 +346,4 @@ if (CTI_DEBUG) then {
 };
 0 execVM "Addons\MapMarkersTitling.sqf";
 CTI_Init_Client = true;
+
