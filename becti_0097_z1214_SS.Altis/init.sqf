@@ -199,5 +199,4 @@ _logistic = execVM "=BTC=_logistic\=BTC=_logistic_Init.sqf";
 waitUntil {time > 0};
 execVM "Addons\EtV.sqf";
 waitUntil {!isNil "EtVInitialized"};
-[player] call EtV_Actions;
-
+//[player] call EtV_Actions; -- Radioman - Not initialised correctly. Will not persist after respawn. Moved to CTI_CL_FNC_AddMissionActions

@@ -70,4 +70,5 @@ player addAction ["<t color='#3333bb'>Network : Vehicle Reconnect </t>", "(vehic
 player addAction ["<t color='#006400'>Intrusion :: Force public key</t>", "[(vehicle player),player] call AN_E_Intrusion_Start", [], 10000, false, true, "", "((vehicle player) getVariable ['CTI_Net',-10]) >= 0 && !((vehicle player) getVariable ['CTI_Net',-11] == CTI_P_SideID) && (speed (vehicle player)) <1 && (speed (vehicle player)) >-1 && !((vehicle player) == player )&& alive player && ((CTI_P_SideLogic getVariable 'cti_upgrades') select CTI_UPGRADE_EXPI) > 0 && ! AN_E_INTRU&& _this == player "];
 player addAction ["<t color='#006400'>Intrusion :: Start Intrusion</t>", "(vehicle player) setVariable ['AN_Hack_started',true,true]", [], 10000, false, true, "", "((vehicle player) getVariable ['CTI_Net',-10]) >= 0 && !((vehicle player) getVariable ['CTI_Net',-11] == CTI_P_SideID) &&  !((vehicle player) == player )&& alive player && ((CTI_P_SideLogic getVariable 'cti_upgrades') select CTI_UPGRADE_EXPI) > 0 && _this == player && ((vehicle player) getVariable ['CTI_Net',-10]) == ((vehicle player) getVariable ['AN_inet',-11])&& ((vehicle player )getVariable ['AN_Hacked',0])>0 && !((vehicle player) getVariable ['AN_Hack_started',false])"];
 //
-
+// Radioman - init EtV_Actions on respawn.
+[player] call EtV_Actions;
