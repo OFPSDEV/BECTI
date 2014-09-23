@@ -50,7 +50,7 @@ EtV_TimedCharge =
 {
 	_explosive = _this select 0;
 	_unit = _this select 1;
-	_illogic = group server createUnit ["logic", Position _explosive, [], 0, "FORM"];
+	_illogic = /*group server*/ createUnit ["logic", Position _explosive, [], 0, "FORM"];
 	_illogic attachTo [_explosive];
 	while {alive _explosive} do
 	{
@@ -93,7 +93,7 @@ EtV_AttachCharge =
 	_random1 = random 180;
 	[_explosive,_random0,_random1] call BIS_fnc_SetPitchBank;
 	[_explosive,_nearVehicle,_unit,_random0,_random1] spawn
-	{		
+	{
 		_explosive = _this select 0;
 		_nearVehicle = _this select 1;
 		_unit = _this select 2;
