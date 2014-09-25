@@ -4,6 +4,7 @@ tf_no_auto_long_range_radio = true;
 tf_give_personal_radio_to_regular_soldier = true;
 tf_defaultWestPersonalRadio = "tf_rf7800str";
 tf_defaultEastPersonalRadio = "tf_pnr1000a";
+player setVariable ["tf_force_radio_active", true, true];
 
 //#include "\task_force_radio\functions\common.sqf";
 
