@@ -66,6 +66,8 @@ EtV_TimedCharge =
 		_oldTime = _illogic getVariable "timer";
 		_illogic setVariable ["timer",_oldTime - 1];
 	};
+	// Radioman - Clean-up the logic
+	deleteVehicle _illogic;
 };
 
 EtV_AttachCharge =
