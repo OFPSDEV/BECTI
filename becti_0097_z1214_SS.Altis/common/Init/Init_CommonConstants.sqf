@@ -555,8 +555,8 @@ CTI_HALO_ALTITUDE = 2000;
 CTI_HALO_RATIO = 2;
 CTI_UPGRADE_RATIO=6;
 
-CTI_WEST_AMMOS = ["Box_NATO_Wps_F","Box_NATO_WpsSpecial_F","Box_NATO_Ammo_F","Box_NATO_Ammo_F","Box_NATO_AmmoOrd_F","Box_NATO_Grenades_F","Box_NATO_Support_F","Box_NATO_Support_F","Box_NATO_Support_F","Box_NATO_WpsLaunch_F"];
-CTI_EAST_AMMOS = ["Box_East_Wps_F","Box_East_WpsSpecial_F","Box_East_Ammo_F","Box_East_Ammo_F","Box_East_AmmoOrd_F","Box_East_Grenades_F","Box_East_Support_F","Box_East_Support_F","Box_East_Support_F","Box_East_WpsLaunch_F"];
+CTI_WEST_AMMOS = ["B_supplyCrate_F","Box_NATO_WpsSpecial_F","Box_NATO_Ammo_F","Box_NATO_Ammo_F","Box_NATO_AmmoOrd_F","Box_NATO_Grenades_F","Box_NATO_Support_F","Box_NATO_Support_F","Box_NATO_Support_F","Box_NATO_WpsLaunch_F"];
+CTI_EAST_AMMOS = ["O_supplyCrate_F","Box_East_WpsSpecial_F","Box_East_Ammo_F","Box_East_Ammo_F","Box_East_AmmoOrd_F","Box_East_Grenades_F","Box_East_Support_F","Box_East_Support_F","Box_East_Support_F","Box_East_WpsLaunch_F"];
 
 with missionNamespace do {
 	if (isNil 'CTI_ARTILLERY_SETUP') then {CTI_ARTILLERY_SETUP = -1}; //--- Artillery status (-2: Disabled, -1: Artillery Computer, 0: Short, 1: Medium, 2: Long, 3: Far)

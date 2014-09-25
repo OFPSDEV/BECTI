@@ -29,8 +29,8 @@ Launcher_Pos = [0.3,0.14,-0.65];
 Launcher_y_Offset = -0.34;
 Launcher_maxBoxes = 2;
 
-Special_Boxes = ["Box_NATO_WpsSpecial_F", "Box_East_WpsSpecial_F", "Box_IND_WpsSpecial_F"];
-Special_Pos = [0.3,0,-0.65];
+Special_Boxes = ["Box_NATO_WpsSpecial_F", "Box_East_WpsSpecial_F", "Box_IND_WpsSpecial_F", "B_supplyCrate_F", "O_supplyCrate_F"];
+Special_Pos = [.45,-.5,-0.03];  //ss83 original #'s [0.3, 0, -0.65] the new #'s are for the supply box
 Special_Offset = 0;
 Special_maxBoxes = 1;
 

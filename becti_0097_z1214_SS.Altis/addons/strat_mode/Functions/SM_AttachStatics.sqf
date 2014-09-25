@@ -1,7 +1,7 @@
 STATICS_MG = ["I_HMG_01_high_F","I_GMG_01_high_F","O_HMG_01_high_F","O_GMG_01_high_F","B_HMG_01_high_F","B_GMG_01_high_F"];
 STATICS_LMG = ["I_HMG_01_F","I_GMG_01_F","O_HMG_01_F","O_GMG_01_F","B_HMG_01_F","B_GMG_01_F"];
 STATICS_L = ["I_static_AA_F","I_static_AT_F","O_static_AA_F","O_static_AT_F","B_static_AA_F","B_static_AT_F"];
-STATICS_M = ["ReammoBox_F"];
+STATICS_M = [""]; //replaced ReammoBox_F with blank
 STATICS_ALL=STATICS_MG + STATICS_LMG  + STATICS_L+STATICS_M;
 
 STATIC_TRY=false;
@@ -40,7 +40,7 @@ Dettach_Static={
 
 Action_Statics={
 _veh= _this select 0;
-_veh  addAction ["<t color='#006400'>Load / Unload Static / Crate</t>", "CTI_P_ChatID commandChat  'ST LOAD :: Trying to load a static, please wait' ;STATIC_TRY=true;['SERVER','Request_load',_this]call CTI_CO_FNC_NetSend;", [], 1000, false, true, "", "driver (vehicle (player) ) == player && speed _target <1 && speed _target >-1 && (vehicle _this) == _target && alive _target &&  ! STATIC_TRY"];
+_veh  addAction ["<t color='#006400'>Load/Unload Static Weapon </t>", "CTI_P_ChatID commandChat  'ST LOAD :: Trying to load a static, please wait' ;STATIC_TRY=true;['SERVER','Request_load',_this]call CTI_CO_FNC_NetSend;", [], 1000, false, true, "", "driver (vehicle (player) ) == player && speed _target <1 && speed _target >-1 && (vehicle _this) == _target && alive _target &&  ! STATIC_TRY"]; //s83 removed crate dialog
 
 };
 
@@ -54,7 +54,7 @@ with missionNamespace do {
   };
   CTI_PVF_Reply_load={
     if (_this select 2) then {
-      CTI_P_ChatID commandChat format ["ST LOAD :: Static Loaded : %1 in %2 ",typeof (_this select 1),_this select 0];
+      CTI_P_ChatID commandChat format ["ST LOAD :: Static Weapon Loaded : %1 in %2 ",typeof (_this select 1),_this select 0];
       (_this select 1) setdir (_this select 3);
       (_this select 1)  addEventHandler ["GetOut", {(_this select 2) attachto [(_this select 0),[-3,-1,-0.65]]; detach (_this select 2);}];
       (_this select 0) lock false;
@@ -63,14 +63,14 @@ with missionNamespace do {
       (_this select 0) lockCargo [0,false];
       STATIC_TRY=false;
     } else {
-      CTI_P_ChatID commandChat format ["ST LOAD :: Static Unloaded : %1 off %2 ",typeof(_this select 1),_this select 0];
+      CTI_P_ChatID commandChat format ["ST LOAD :: Static Weapon Unloaded : %1 off %2 ",typeof(_this select 1),_this select 0];
       (_this select 0) lockCargo false;
       STATIC_TRY=false;
     };
 
   };
   CTI_PVF_Fail_load={
-    CTI_P_ChatID commandChat  "ST LOAD :: No Static/Crate found, it must be behind your offroad";
+    CTI_P_ChatID commandChat  "ST LOAD :: No Static Weapon found, it must be behind your offroad"; //s83 removed crate dialog
     STATIC_TRY=false;
   };
 };

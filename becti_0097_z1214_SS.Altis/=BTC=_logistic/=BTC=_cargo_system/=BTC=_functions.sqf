@@ -141,7 +141,7 @@ BTC_l_drag =
 	_drag attachto [player,[0,2,0.2]];
 	sleep 0.1;
 	if ((position _drag select 2) < - 0.5) then {_drag attachto [player,[0,1,1.2]];};
-	_release = player addaction [("<t color=""#00FF00"">") + ("Release") + "</t>",BTC_dir_action,[[],BTC_l_release],7,true,false,"","true"];
+	_release = player addaction [("<t color=""#00FF00"">") + ("Release Object") + "</t>",BTC_dir_action,[[],BTC_l_release],99,true,false,"","true"];  //ss83 increased priority
 	WaitUntil {!Alive player || ((animationstate player == "acinpknlmstpsraswrfldnon") || (animationstate player == "acinpknlmwlksraswrfldb"))};
 	_act  = 0;
 	While {BTC_l_dragging && vehicle player == player && Alive player && ((animationstate player == "acinpknlmstpsraswrfldnon") || (animationstate player == "acinpknlmwlksraswrfldb"))} do
