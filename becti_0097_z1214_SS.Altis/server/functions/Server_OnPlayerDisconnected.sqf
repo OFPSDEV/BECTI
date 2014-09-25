@@ -125,3 +125,6 @@ if (_is_commander && !isNull _team) then {
 		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Removed some null groups from the Global Teams for side [%1]", _this]] call CTI_CO_FNC_Log};
 	};
 };
+
+// Radioman - Save the UID's metadata to it's own variable. Fixes people's money not persisting.
+missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], [_uid, _funds, _side, side _leader, true]];
