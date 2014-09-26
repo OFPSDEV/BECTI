@@ -2,13 +2,22 @@
 	Stealthstick's "Explosive-To-Vehicle" Script
 	-Allows players to attach their explosive charges to any vehicle.
 */
+// Radioman - Migrate commonly used parameters into variables for ease of use.
+EtV_ChargeableVehicles = ["Air","Ship","LandVehicle","Car","Motorcycle","Tank","Truck","Wheeled_APC","Tracked_APC","StaticWeapon","Autonomous","Support","Armored"];
+EtV_InteractRange = 5;
+
+/* Radioman -
+I'll likely have to implement something I did in my Life mission where interaction is driven via a raycast,
+which is more reliable and faster than a 'nearestobjects' call which is very expensive.
+Can also use the intersect position to more accurately mount the explosives vs having them floating in the air around the vehicle.
+*/
 
 EtV_ChargeCheck =
 {
 	_charge = _this select 0;
 	_unit = _this select 1;
 	_hasIt = _charge in (magazines _unit);
-	_nearVehs = nearestObjects [_unit,["Air","Ship","LandVehicle","Car","Motorcycle","Tank","Truck","Wheeled_APC","Tracked_APC","StaticWeapon","Autonomous","Support","Armored"],5];
+	_nearVehs = nearestObjects [_unit,EtV_ChargeableVehicles,EtV_InteractRange];
 	
 	_return = (_hasIt && count _nearVehs > 0 && alive _unit);
 	_return
@@ -88,7 +97,7 @@ EtV_AttachCharge =
 		};
 	};
 	
-	_nearVehicle = (nearestObjects [_unit,["Air","Ship","LandVehicle","Car","Motorcycle","Tank","Truck","Wheeled_APC","Tracked_APC","StaticWeapon","Autonomous","Support","Armored"],5]) select 0;
+	_nearVehicle = (nearestObjects [_unit,EtV_ChargeableVehicles,EtV_InteractRange]) select 0;
 	_explosive = _class createVehicle [0,0,0];
 	_explosive attachTo [_unit,[0,0,0],"leftHand"];
 	_random0 = random 180;
