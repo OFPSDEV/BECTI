@@ -1,5 +1,5 @@
-#define Radar_Range 25000 //ss83 increased radar range from 5000 to 25000
-#define Min_Alt 50  //ss83 increased to 50
+#define Radar_Range 5000
+#define Min_Alt 40
 
 private ["_vehicle","_seed","_know_radars","_s","_logic","_structures","_radars"];
 _vehicle = _this;

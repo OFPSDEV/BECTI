@@ -72,8 +72,8 @@ SM_Force_entry={
 		} forEach crew _target;
 		_target setVariable ["forced",false];
 		if ( !(_target getVariable "forced") ) then {
-			_target addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 98, false, true, '', 'alive _target && locked _target == 2'];  //ss83 priorities reduced to reduce conflict with airlifting
-			_target addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 98, false, true, '', 'alive _target && locked _target == 0'];  //ss83 priorities reduced to reduce conflict with airlifting
+			_target addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 2'];
+			_target addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 0'];
 		};
 		0 call HUD_PBar_stop;
 		CTI_P_Repairing = false ;

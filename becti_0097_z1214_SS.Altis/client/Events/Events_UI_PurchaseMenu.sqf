@@ -106,42 +106,81 @@ switch (_action) do {
 	};
 	case "onPurchase": {
 		_selected = _this select 1;
-		
 		if (_selected == -1) exitWith {}; //nothing selected.
+				
+		_classname = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbData [_selected, 0];
+		_fetched = uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory";
+		_closest = _fetched call CTI_CO_FNC_GetClosestTown;
+		_var = _fetched getVariable "cti_structure_type";
+		if (isNil '_var') exitWith {};
+		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _var];
+		_type = (_var select 0) select 0;
+		_max_group_size = ((CTI_P_SideJoined) Call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_BARRACKS;
+		switch (_max_group_size) do {
+			case 0: {_max_group_size = round(CTI_AI_PLAYER_TEAMS_GROUPSIZE / 4)};
+			case 1: {_max_group_size = round(CTI_AI_PLAYER_TEAMS_GROUPSIZE / 4)*2};
+			case 2: {_max_group_size = round(CTI_AI_PLAYER_TEAMS_GROUPSIZE / 4)*3};
+			case 3: {_max_group_size = CTI_AI_PLAYER_TEAMS_GROUPSIZE};
+			default {_max_group_size = CTI_AI_PLAYER_TEAMS_GROUPSIZE};
+		};
 		
-		_funds = call CTI_CL_FNC_GetPlayerFunds;
-		if (_funds > (uiNamespace getVariable "cti_dialog_ui_purchasemenu_unitcost")) then {
-			_classname = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbData [_selected, 0];
-			_selected_group = (uiNamespace getVariable "cti_dialog_ui_purchasemenu_teams") select (lbCurSel ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110008)); //todo Change that by combo value
+		//--- Make sure that we own all camps before being able to purchase infantry.
+		_allCampsHeld = true;
+		if (_classname isKindOf "Man" && _type == "Depot") then {
+			_totalCamps = _closest Call CTI_CO_FNC_GetTotalCamps;
+			_campsSide = [_closest,CTI_P_SideJoined] Call CTI_CO_FNC_GetTotalCampsOnSide;
+			_allCampsHeld = if (_totalCamps == _campsSide) then {true} else {false};
+		};
+
+		if (_allCampsHeld) then {
+			_funds = call CTI_CL_FNC_GetPlayerFunds;
+			if (_funds > (uiNamespace getVariable "cti_dialog_ui_purchasemenu_unitcost")) then {
+				_selected_group = (uiNamespace getVariable "cti_dialog_ui_purchasemenu_teams") select (lbCurSel ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110008)); //todo Change that by combo value
+				_isEmpty = false;
+				_unit_count = 1;
+				_veh_info = if (_classname isKindOf "Man") then { [] } else { call CTI_UI_Purchase_GetVehicleInfo };
+				if (count _veh_info > 0) then {
+					if ((_veh_info select 0) || (_veh_info select 1) || (_veh_info select 2) || (_veh_info select 3)) then {
+						_unit_count = 0;
+						if (_veh_info select 0) then {_unit_count = _unit_count + 1};
+						if (_veh_info select 1) then {_unit_count = _unit_count + 1};
+						if (_veh_info select 2) then {_unit_count = _unit_count + 1};
+						if (_veh_info select 3) then {_unit_count = _unit_count + 1}; //((_currentUnit select QUERYUNITCREW) select 3)
+					} else {
+						_isEmpty = true;
+					};
+				};
 			
-			_isEmpty = false;
-			_veh_info = if (_classname isKindOf "Man") then { [] } else { call CTI_UI_Purchase_GetVehicleInfo };
-			if (count _veh_info > 0) then {
-				if !((_veh_info select 0) || (_veh_info select 1) || (_veh_info select 2) || (_veh_info select 3)) then { _isEmpty = true };
-			};
-			
-			if (alive(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory")) then {
-				_ai_enabled = missionNamespace getVariable "CTI_AI_TEAMS_ENABLED";
-				if (_ai_enabled == 1 || (isPlayer leader _selected_group && _ai_enabled == 0)) then {
-					if ((count units _selected_group)+1 <= CTI_PLAYERS_GROUPSIZE || _isEmpty) then { //todo ai != player limit
-						_proc_purchase = true;
-						if (_isEmpty && _selected_group != group player) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Empty vehicles may not be purchased for other groups."; };
-						
-						if (_proc_purchase) then {
-							_get = missionNamespace getVariable _classname;
-							_picture = if ((_get select CTI_UNIT_PICTURE) != "") then {format["<img image='%1' size='2.5'/><br /><br />", _get select CTI_UNIT_PICTURE]} else {""};
-							hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />%2<t>A <t color='#ccffaf'>%1</t> is being built</t>", _get select CTI_UNIT_LABEL, _picture];
-							[_classname, uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", _selected_group, _veh_info] call CTI_CL_FNC_PurchaseUnit;
+				if (alive(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory")) then {	
+					_ai_enabled = missionNamespace getVariable "CTI_AI_TEAMS_ENABLED";
+					if (_ai_enabled == 1 || (isPlayer leader _selected_group && _ai_enabled == 0)) then {
+						if ((count units _selected_group) + CTI_P_PurchaseQueue + _unit_count <= _max_group_size || _isEmpty) then { //todo ai != player limit
+							if ((missionNamespace getVariable Format["CTI_QUEUE_%1",_type]) < (missionNamespace getVariable Format["CTI_QUEUE_%1_LIMIT",_type])) then {
+								missionNamespace setVariable [Format["CTI_QUEUE_%1",_type],(missionNamespace getVariable Format["CTI_QUEUE_%1",_type])+1];
+								_proc_purchase = true;
+								if (_isEmpty && _selected_group != group player) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Empty vehicles may not be purchased for other groups."; };
+								CTI_P_PurchaseQueue = CTI_P_PurchaseQueue + _unit_count;
+								if (_proc_purchase) then {
+									_get = missionNamespace getVariable _classname;
+									_picture = if ((_get select CTI_UNIT_PICTURE) != "") then {format["<img image='%1' size='2.5'/><br /><br />", _get select CTI_UNIT_PICTURE]} else {""};
+									hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />%2<t>A <t color='#ccffaf'>%1</t> is being built</t>", _get select CTI_UNIT_LABEL, _picture];
+									[_classname, uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", _selected_group, _veh_info, _unit_count] call CTI_CL_FNC_PurchaseUnit;
+								};
+							} else { 
+							hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Your factory queue limit has been reached. (%1)", missionNamespace getVariable Format["CTI_QUEUE_%1_LIMIT",_type]];
+							};
+						} else {
+							hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Your unit limit has been reached. (%1)", _max_group_size];
 						};
 					} else {
-						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Your unit limit has been reached.";
+						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Units may not be purchased to AI groups while the AI Teams are disabled in the parameters.";
 					};
-				} else {
-					hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Units may not be purchased to AI groups while the AI Teams are disabled in the parameters.";
 				};
+			} else {
+				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to perform this operations.";
 			};
 		} else {
-			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to perform this operations.";
+			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Infantry may not be purchased while camps in the city are held by the enemy.";
 		};
 	};
 	case "onIndependentSalvagerPressed": {
@@ -176,6 +215,18 @@ switch (_action) do {
 			_classname = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110013) lbData _selected;
 			_rounded_seed = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110013) lbValue _selected;
 			
+			_unit_count = 1;
+			_veh_info = if (_classname isKindOf "Man") then { [] } else { call CTI_UI_Purchase_GetVehicleInfo };
+			if (count _veh_info > 0) then {
+				if ((_veh_info select 0) || (_veh_info select 1) || (_veh_info select 2) || (_veh_info select 3)) then {
+					_unit_count = 0;
+					if (_veh_info select 0) then {_unit_count = _unit_count + 1};
+					if (_veh_info select 1) then {_unit_count = _unit_count + 1};
+					if (_veh_info select 2) then {_unit_count = _unit_count + 1};
+					if (_veh_info select 3) then {_unit_count = _unit_count + 1}; //((_currentUnit select QUERYUNITCREW) select 3)
+				};
+			};
+			
 			// player sidechat format ["trying to remove %1 %2", _classname, _rounded_seed];
 			_is_present = false;
 			_req_can_alter = true;
@@ -199,9 +250,14 @@ switch (_action) do {
 				if (_req_can_alter) then {
 					CTI_P_PurchaseRequests set [_index, "!nil!"];
 					CTI_P_PurchaseRequests = CTI_P_PurchaseRequests - ["!nil!"];
+							
+					//--- Release from factory and unit queues
+					_var = _req_factory getVariable "cti_structure_type";
+					missionNamespace setVariable [Format["CTI_QUEUE_%1",_var],(missionNamespace getVariable Format["CTI_QUEUE_%1",_var])-1];
+					CTI_P_PurchaseQueue = CTI_P_PurchaseQueue - _unit_count;
 					
 					//--- Notify the server thread that our request has been canceled.
-					["SERVER", "Request_PurchaseCancel", [_seed, _classname, _req_factory, _req_team, group player]] call CTI_CO_FNC_NetSend;
+					["SERVER", "Request_PurchaseCancel", [_seed, _classname, _req_factory, _req_team, group player, _unit_count]] call CTI_CO_FNC_NetSend;
 				} else {
 					hint "commander assigned units may not be removed";
 				};

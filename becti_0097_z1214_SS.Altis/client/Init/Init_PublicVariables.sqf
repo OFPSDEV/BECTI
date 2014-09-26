@@ -3,6 +3,7 @@ with missionNamespace do {
 	CTI_PVF_Client_CommanderVote = { _this spawn CTI_CL_FNC_Commander_VoteEnd };
 	CTI_PVF_Client_CommanderVoteStart = { _this spawn CTI_CL_FNC_Commander_VoteStart };
 	CTI_PVF_Client_OnStructureConstructed = { _this spawn CTI_CL_FNC_OnStructureConstructed };
+	CTI_PVF_Client_OnCampCaptured = { _this spawn CTI_CL_FNC_OnCampCaptured };
 	CTI_PVF_Client_OnTownCaptured = { _this spawn CTI_CL_FNC_OnTownCaptured };
 	CTI_PVF_Client_OnPurchaseOrderReceived = { _this spawn CTI_CL_FNC_OnPurchaseOrderReceived };
 	CTI_PVF_Client_OnPurchaseDelegationReceived = { _this spawn CTI_CL_FNC_OnPurchaseDelegationReceived };
@@ -96,8 +97,8 @@ with missionNamespace do {
 	CTI_PVF_Client_AddHQActions = {
 		waitUntil {local _this};
 		_this lock 2;
-		_this addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 98, false, true, '', 'alive _target && locked _target == 2'];  //ss83 lock priority reduced
-		_this addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 98, false, true, '', 'alive _target && locked _target == 0']; //ss83 lock priority reduced
+		_this addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 2'];
+		_this addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 0'];
 	};
 
 	CTI_PVF_Client_OnRequestAnswered = { _this spawn CTI_UI_Request_OnRequestAnswered }; //--- The commander answer a request

@@ -88,6 +88,9 @@ if (isNil '_get') then { //--- The player has joined for the first time.
 	_funds = _get select 1;
 	_side_first = _get select 2;
 	
+	//--- Make sure that the player didn't teamswap.
+	if (_side_first != _side || isNil '_funds') then { _funds = missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", _side] };
+	
 	_team setVariable ["cti_funds", _funds, true];
 	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] information were updated. Joined side is [%3], Teamswap? [%4]", _name, _uid, _side, if (_side_first != _side) then {true} else {false}]] call CTI_CO_FNC_Log};
 };

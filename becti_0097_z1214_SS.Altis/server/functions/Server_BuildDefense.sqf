@@ -121,14 +121,14 @@ if (_defense emptyPositions "gunner" > 0) then { //--- Hard defense
 
 	// _defense addEVentHandler ["hit", {player sidechat format["%1",getDammage (_this select 0)];}];
 // _defense setDammage 1;
-if (_defense isKindOf "B_supplyCrate_F") then { //ss83 clears out the supply crate
+if (_defense isKindOf "Box_NATO_Wps_F") then { //ss83 clears out the supply crate
 	clearBackpackCargoGlobal _defense;
 	clearItemCargoGlobal _defense;
 	clearMagazineCargoGlobal _defense;
 	clearWeaponCargoGlobal _defense;
 };
 
-if (_defense isKindOf "O_supplyCrate_F") then { //ss83 clears out the supply crate
+if (_defense isKindOf "Box_East_Wps_F") then { //ss83 clears out the supply crate
 	clearBackpackCargoGlobal _defense;
 	clearItemCargoGlobal _defense;
 	clearMagazineCargoGlobal _defense;

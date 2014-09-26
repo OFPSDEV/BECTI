@@ -1,4 +1,4 @@
-#define Radar_Range 25000 //ss83 increased radar range from 5000 to 25000
+#define Radar_Range 5000
 
 private ["_radar","_proj","_side","_init_pos","_seed"];
 _radar=_this select 0;

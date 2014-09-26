@@ -98,6 +98,48 @@ class Params {
 		texts[] = {"Enabled"};
 		default = 1;
 	};
+	class CTI_RESPAWN_CAMPS_MODE {
+		title = "RESPAWN: Camps";
+		values[] = {0,1,2,3};
+		texts[] = {"Disabled","Classic","Nearby Camps","Occupation Only"};
+		default = 2;
+	};
+	class CTI_RESPAWN_CAMPS_RULE_MODE {
+		title = "RESPAWN: Enemy near";
+		values[] = {0,1,2};
+		texts[] = {"Disabled","West | East","West | East | Resistance"};
+		default = 2;
+	};
+	class CTI_RESPAWN_CAMPS_RANGE {
+		title = "RESPAWN: Towns Range";
+		values[] = {50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000,1500,2000,2500,3000,3500,4000};
+		texts[] = {"50m","100m","150m","200m","250m","300m","350m","400m","450m","500m","550m","600m","650m","700m","750m","800m","850m","900m","950m","1000m","1500m","2000m","2500m","3000m","3500m","4000m"};
+		default = 400;
+	};
+	class CTI_TOWNS_AMOUNT {
+		title = "TOWNS: Amount";
+		values[] = {0,1,2,3,4};
+		texts[] = {"Extra Small","Small","Medium","Large","Full"};
+		default = 4;
+	};
+	class CTI_TOWNS_CAMPS_CREATE {
+		title = "TOWNS: Camps";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 1;
+	};
+	class CTI_TOWNS_GEAR {
+		title = "TOWNS: Equipment Purchase";
+		values[] = {0,1,2,3};
+		texts[] = {"Disabled","Camps","Depot","Camps and Depot"};
+		default = 3;
+	};
+	class CTI_UNITS_TOWN_PURCHASE {
+		title = "TOWNS: Purchase Infantry";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 1;
+	};
 	class CTI_RESPAWN_TIMER {
 		title = "RESPAWN: Delay";
 		values[] = {15,30};
@@ -291,9 +333,9 @@ class Params {
 	};
 	class CTI_TOWNS_RESISTANCE_DETECTION_RANGE {
 		title = "Zerty: TOWNS: Detection Range";
-		values[] = {1000};
-		texts[] = {"1000m"};
-		default = 1000;
+		values[] = {800};
+		texts[] = {"800m"};
+		default = 800;
 	};
 	class CTI_TOWNS_RESISTANCE_GROUPS_RATIO {
 		title = "Zerty: TOWNS : Resistance Amount Multiplier";
@@ -303,9 +345,9 @@ class Params {
 	};
 	class CTI_TOWNS_RESISTANCE_INACTIVE_MAX {
 		title = "Zerty: TOWNS : Resistance despawn Timer";
-		values[] = {1200};
-		texts[] = {"1200sec"};
-		default = 1200;
+		values[] = {120};
+		texts[] = {"120sec"};
+		default = 120;
 	};
 	/*
 		class CTI_UNITS_CLEANUP { // Deprecated

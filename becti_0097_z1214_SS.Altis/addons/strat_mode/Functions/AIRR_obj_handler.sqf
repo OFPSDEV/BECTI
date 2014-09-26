@@ -1,5 +1,5 @@
-#define Radar_Range 25000 //ss83 increased radar range from 5000 to 25000
-#define Min_Alt 50  //ss83 increased to 50
+#define Radar_Range 5000
+#define Min_Alt 40
 
 private ["_radar","_vehicle","_side","_seed","_top_radar","_sl","_adv_net"];
 _radar=_this select 0;

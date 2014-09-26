@@ -1,4 +1,4 @@
-#define Radar_Range 25000 //ss83 increased radar range from 5000 to 25000
+#define Radar_Range 5000
 private ["_structures","_radars"];
 ARTR_MARKERS=[];
 

@@ -373,6 +373,13 @@ class CTI_RscPurchaseMenu {
 			text = "Rsc\Pictures\icon_wf_building_naval.paa";
 			action = "['onIconSet', 6, CTI_NAVAL] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
 		};
+		class CTI_Icon_Depot : CTI_Icon_Barracks {
+			idc = 110011;
+			x = "SafeZoneX + (SafeZoneW * 0.470)";
+			
+			text = "Rsc\Pictures\icon_wf_building_depot.paa";
+			action = "['onIconSet', 7, CTI_DEPOT] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
 		
 		class CTI_Icon_Driver : CTI_Icon_Barracks {
 			idc = 110100;

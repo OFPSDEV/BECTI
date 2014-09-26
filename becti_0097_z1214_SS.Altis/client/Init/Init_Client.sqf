@@ -1,7 +1,4 @@
-
-
 CTI_P_SideJoined = side player;
-
 CTI_P_SideID = CTI_P_SideJoined call CTI_CO_FNC_GetSideID;
 CTI_P_SideLogic = CTI_P_SideJoined call CTI_CO_FNC_GetSideLogic;
 
@@ -14,6 +11,8 @@ CTI_CL_FNC_Commander_VoteEnd = compileFinal preprocessFile "Client\Functions\Cli
 CTI_CL_FNC_DisplayMessage = compileFinal preprocessFile "Client\Functions\Client_DisplayMessage.sqf";
 CTI_CL_FNC_GetAIDigit = compileFinal preprocessFile "Client\Functions\Client_GetAIDigit.sqf";
 CTI_CL_FNC_GetAIOrderLabel = compileFinal preprocessFile "Client\Functions\Client_GetAIOrderLabel.sqf";
+CTI_CL_FNC_GetClosestCamp = compileFinal preprocessFile "Client\Functions\Client_GetClosestCamp.sqf";
+CTI_CL_FNC_GetClosestDepot = compileFinal preprocessFile "Client\Functions\Client_GetClosestDepot.sqf";
 CTI_CL_FNC_GetIncomes = compileFinal preprocessFile "Client\Functions\Client_GetIncomes.sqf";
 CTI_CL_FNC_GetOrderLabel = compileFinal preprocessFile "Client\Functions\Client_GetOrderLabel.sqf";
 CTI_CL_FNC_GetPlayerFunds = compileFinal preprocessFile "Client\Functions\Client_GetPlayerFunds.sqf";
@@ -26,6 +25,7 @@ CTI_CL_FNC_InitializeStructure = compileFinal preprocessFile "Client\Functions\C
 CTI_CL_FNC_JoinRequestAnswer = compileFinal preprocessFile "Client\Functions\Client_JoinRequestAnswer.sqf";
 CTI_CL_FNC_PlacingBuilding = compileFinal preprocessFile "Client\Functions\Client_PlacingBuilding.sqf";
 CTI_CL_FNC_PlacingDefense = compileFinal preprocessFile "Client\Functions\Client_PlacingDefense.sqf";
+CTI_CL_FNC_OnCampCaptured = compileFinal preprocessFile "Client\Functions\Client_OnCampCaptured.sqf";
 CTI_CL_FNC_OnExplosivePlaced = compileFinal preprocessFile "Client\Functions\Client_OnExplosivePlaced.sqf";
 CTI_CL_FNC_OnHQDestroyed = compileFinal preprocessFile "Client\Functions\Client_OnHQDestroyed.sqf";
 CTI_CL_FNC_OnFriendlyStructureDestroyed = compileFinal preprocessFile "Client\Functions\Client_OnFriendlyStructureDestroyed.sqf";
@@ -154,6 +154,7 @@ if ((CTI_P_SideLogic getVariable "cti_votetime") > 0) then {createDialog "CTI_Rs
 	waitUntil {!isNil 'CTI_InitTowns'};
 	if (missionNamespace getVariable "CTI_SM_STRATEGIC" == 0 && !(side group player == resistance)) then {
 		execFSM "Client\FSM\town_markers.fsm";
+		execFSM "Client\FSM\title_capture.fsm";
 	};
 };
 
@@ -204,8 +205,8 @@ if ((CTI_P_SideLogic getVariable "cti_votetime") > 0) then {createDialog "CTI_Rs
 			if (isMultiplayer) then {["SERVER", "Request_HQLocality", [CTI_P_SideJoined, player]] call CTI_CO_FNC_NetSend};
 			waitUntil {local _hq};
 			_hq lock 2;
-			_hq addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 98, false, true, '', 'alive _target && locked _target == 2'];  //ss83 lock priority reduced
-			_hq addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 98, false, true, '', 'alive _target && locked _target == 0']; //ss83 lock priority reduced
+			_hq addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 2'];
+			_hq addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 0'];
 		};
  		{_x addAction ["<t color='#1111cc'>Delete defense</t>", "deleteVehicle (_this select 0)", "", -1, false, true, "", "vehicle player == player && !CTI_P_PreBuilding "]; } forEach (CTI_P_SideLogic getVariable ["cti_defences", []]);
 
@@ -346,4 +347,3 @@ if (CTI_DEBUG) then {
 };
 0 execVM "Addons\MapMarkersTitling.sqf";
 CTI_Init_Client = true;
-

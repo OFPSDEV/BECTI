@@ -1,5 +1,5 @@
-#define Radar_Range 25000 //ss83 increased radar range from 5000 to 25000
-#define Min_Alt 50  //ss83 increased to 50
+#define Radar_Range 5000
+#define Min_Alt 40
 
 	SM_Radar_Detected =false;
 	SM_Radar_Detected_last=-100000;
