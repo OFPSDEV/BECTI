@@ -1,6 +1,6 @@
 STATICS_MG = ["I_HMG_01_high_F","I_GMG_01_high_F","O_HMG_01_high_F","O_GMG_01_high_F","B_HMG_01_high_F","B_GMG_01_high_F"];
 STATICS_LMG = ["I_HMG_01_F","I_GMG_01_F","O_HMG_01_F","O_GMG_01_F","B_HMG_01_F","B_GMG_01_F"];
-STATICS_L = ["I_static_AA_F","I_static_AT_F","O_static_AA_F","O_static_AT_F","B_static_AA_F","B_static_AT_F"];
+STATICS_L = ["B_Mortar_01_F", "O_Mortar_01_F", "I_static_AA_F","I_static_AT_F","O_static_AA_F","O_static_AT_F","B_static_AA_F","B_static_AT_F"]; //ss83 added mortars
 STATICS_M = [""]; //replaced ReammoBox_F with blank
 STATICS_ALL=STATICS_MG + STATICS_LMG  + STATICS_L+STATICS_M;
 
