@@ -2,7 +2,7 @@ CTI_UI_Purchase_SetIcons = {
 	private ["_IDCs", "_index", "_selected"];
 	_index = _this;
 
-	_IDCs = [110001, 110002, 110003, 110004, 110005, 110006, 110007, 110011];
+	_IDCs = [110001, 110002, 110003, 110004, 110005, 110006, 110007];
 	_selected = _IDCs select _index;
 	_IDCS = _IDCS - [_selected];
 
@@ -23,8 +23,6 @@ CTI_UI_Purchase_GetFirstAvailableFactories = {
 	_factories = [CTI_BARRACKS, CTI_LIGHT, CTI_HEAVY, CTI_AIR, CTI_REPAIR, CTI_AMMO, CTI_NAVAL];
 	_availables = [];
 	{_availables = _availables + ([_x, _structures, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType)} forEach _factories;
-	_depot = [player, CTI_TOWNS_CAPTURE_RANGE] call CTI_CL_FNC_GetClosestDepot;
-	[_availables, _depot] call CTI_CO_FNC_ArrayPush;
 
 	if (count _availables > 0) then {
 		_fetched = [player, _availables] call CTI_CO_FNC_GetClosestEntity;
@@ -46,7 +44,6 @@ CTI_UI_Purchase_GetFirstAvailableFactories = {
 			case CTI_REPAIR: {CTI_FACTORY_REPAIR};
 			case CTI_AMMO: {CTI_FACTORY_AMMO};
 			case CTI_NAVAL: {CTI_FACTORY_NAVAL};
-			case CTI_DEPOT: {CTI_TOWN_DEPOT};
 			default {-1};
 		};
 	};
@@ -102,26 +99,18 @@ CTI_UI_Purchase_CenterMap = {
 CTI_UI_Purchase_UpdateVehicleIcons = {
 	private ["_classname", "_IDCs", "_showArray", "_turrets", "_var"];
 	_classname = _this;
+
 	_IDCs = [110100, 110101, 110102, 110103];
-	
-	_fetched = uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory";
-	_var = _fetched getVariable "cti_structure_type";
-	if (isNil '_var') exitWith {};
-	_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _var];
-	_type = (_var select 0) select 0;
-	
-	if (_classname isKindOf "Man" || _type == "Depot") then {
+
+	if (_classname isKindOf "Man") then {
 		// {
-			// ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _x) ctrlShow false; 
+			// ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _x) ctrlShow false;
 		// } forEach (_IDCs + [110104]);
 		call CTI_UI_Purchase_HideVehicleIcons;
-		if (_type == "depot" && !(_classname isKindOf "Man")) then {
-			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110104) ctrlShow true; 
-		};
 	} else {
 		_var = missionNamespace getVariable _classname;
 		_turrets = _var select CTI_UNIT_TURRETS;
-		
+
 		_showArray = [true, false, false, false];
 		{
 			if (count _x == 1) then {_showArray set [3, true]};
@@ -129,14 +118,14 @@ CTI_UI_Purchase_UpdateVehicleIcons = {
 				switch (_x select 1) do { case "Gunner": {_showArray set [1, true]}; case "Commander": {_showArray set [2, true]}; };
 			};
 		} forEach _turrets;
-		
+
 		for '_i' from 0 to (count _IDCs)-1 do {
 			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl (_IDCs select _i)) ctrlShow (_showArray select _i);  //--- Lock
 		};
-		
+
 		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110104) ctrlShow true;  //--- Lock
 	};
-	
+
 	(_classname) call CTI_UI_Purchase_UpdateCost;
 };
 
@@ -198,28 +187,24 @@ CTI_UI_Purchase_OnUnitListLoad = {
 CTI_UI_Purchase_LoadFactories = {
 	private ["_closest", "_fetched", "_structures", "_structure_text", "_type", "_var"];
 	_type = _this;
+
 	_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 	_fetched = [_type, _structures, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType;
-	if (_type == "Depot") then {
-		_depot = [player, CTI_TOWNS_CAPTURE_RANGE] call CTI_CL_FNC_GetClosestDepot;
-		[_fetched, _depot] call CTI_CO_FNC_ArrayPush;
-	};
-		
+
 	_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _type];
 	_structure_text = (_var select 0) select 1;
-	
+
 	lbClear ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110009);
-	
+
 	{
 		_closest = _x call CTI_CO_FNC_GetClosestTown;
 		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110009) lbAdd format ["%1 - %2 (%3m)", _structure_text, _closest getVariable "cti_town_name", round(_closest distance _x)];
 	} forEach _fetched;
 
-	
 	uiNamespace setVariable ["cti_dialog_ui_purchasemenu_factory", _fetched select 0];
 	uiNamespace setVariable ["cti_dialog_ui_purchasemenu_factory_type", _type];
 	uiNamespace setVariable ["cti_dialog_ui_purchasemenu_factories", _fetched];
-	
+
 	if (count _fetched > 0) then {
 		[_fetched select 0, 2, .175] call CTI_UI_Purchase_CenterMap;
 		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110009) lbSetCurSel 0;

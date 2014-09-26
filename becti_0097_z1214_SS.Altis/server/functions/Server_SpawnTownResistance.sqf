@@ -154,32 +154,20 @@ for '_i' from 1 to _totalGroups do {
 diag_log format ["POOL Composer for %1 (value %2)", _town getVariable "cti_town_name", _value];
 
 // _vehicles = [];
-_camps = +(_town getVariable "camps");
 _groups = [];
 _positions = [];
-
 {
-	diag_log _x;
-	
-	//Create teams around the camps first. If there are no more camps then pick a random positon.
-	if (count _camps > 0 && random 100 > 50) then {
-		_camp = _camps select floor (random count _camps);
-		_camps = _camps - [_camp];
-		_position = [getPos _camp, 10, 50] call CTI_CO_FNC_GetRandomPosition;
-		//_position = [_position, 50] call WFBE_CO_FNC_GetEmptyPosition;
-		[_positions, _position] call CTI_CO_FNC_ArrayPush;
-	} else {
-		_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
-		_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
-		[_positions, _position] call CTI_CO_FNC_ArrayPush;
-	};	
-	
-	//_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition; // for some reason putting these here instead of inside the argument causes massive error spam and no ai
-	//[_positions, _position] call CTI_CO_FNC_ArrayPush; // yet this is how its layed out in wfbe and it works just fine there.
+	//diag_log _x;
+
+	_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
+	_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
+	_road_pos=(_position nearRoads 100);
+	if (count _road_pos > 0) then {_position = _road_pos select floor random (count _road_pos);};
+	[_positions, _position] call CTI_CO_FNC_ArrayPush;
 
 	_group = createGroup resistance;
 	[_groups, _group] call CTI_CO_FNC_ArrayPush;
-	
+
 	/*
 	{
 		if (_x isKindOf "Man") then {
@@ -196,7 +184,7 @@ _positions = [];
 			[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
 		};
 	} forEach _x;
-	
+
 	[_town, _group, CTI_RESISTANCE_ID] execFSM "Server\FSM\town_patrol.fsm";*/
 } forEach _teams;
 

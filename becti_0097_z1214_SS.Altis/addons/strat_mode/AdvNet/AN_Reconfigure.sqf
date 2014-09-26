@@ -49,7 +49,7 @@ if (_side in [east,west] ) then {
 	_up_r=0;
 };
 if (_vehicle isKindOf "Man") then {_max_distance=AN_Range_I+200*_up_r;} else {_max_distance=AN_Range_V+1000*_up_r;};
-if (_vehicle isKindOf "LocationArea_F") then {_max_distance=5000};
+if (_vehicle isKindOf "FlagPole_F") then {_max_distance=5000};
 
 // Try to connect to closest CC
 if (_side in [east,west]) then {
@@ -58,7 +58,7 @@ if (_side in [east,west]) then {
 	{ if (_vehicle distance _x <= _max_distance) then {_candidates set [count _candidates,_x];}; true}count _ccs;
 };
 // Try to connect to closest town
-if (count _candidates == 0 || _vehicle isKindOf "LocationArea_F"&& (_side in [east,west])) then {
+if (count _candidates == 0 || _vehicle isKindOf "FlagPole_F"&& (_side in [east,west])) then {
 	{
 		_town=_x;
 		if (!(isNull _town) && !(_town == _vehicle) && _vehicle distance _town <=  _max_distance && (_town getVariable "AN_iNet" == _side_id )&& ! (_x getVariable "AN_Conn" == _vehicle) && {_x == _vehicle} count (_x getVariable ["AN_Parrents",[]]) == 0 ) then
@@ -76,7 +76,7 @@ if ((count _candidates == 0) && _side in [east,west]) then {
 };
 
 // try to connect to another connected vehicle
-if (!(_vehicle isKindOf "LocationArea_F"))  then {
+if (!(_vehicle isKindOf "FlagPole_F"))  then {
 	{
 		if (!(_x == _vehicle) && !(_x ==(_side) call CTI_CO_FNC_GetSideHQ) && alive _x && (_x getVariable "AN_iNet" == _side_id ) && ! (_x getVariable "AN_Conn" == _vehicle) && {_x == _vehicle} count (_x getVariable ["AN_Parrents",[]]) == 0 ) then {_candidates set [count _candidates,_x]};
 	} count vehicles;

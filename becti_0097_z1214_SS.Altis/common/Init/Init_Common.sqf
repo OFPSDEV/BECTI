@@ -27,13 +27,11 @@ CTI_CO_FNC_GetClosestTown = compileFinal preprocessFileLineNumbers "Common\Funct
 CTI_CO_FNC_GetDirTo = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetDirTo.sqf";
 CTI_CO_FNC_GetEmptyPosition = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetEmptyPosition.sqf";
 CTI_CO_FNC_GetEnemyTowns = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetEnemyTowns.sqf";
-CTI_CO_FNC_GetFriendlyCamps = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetFriendlyCamps.sqf";
 CTI_CO_FNC_GetFriendlyTowns = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetFriendlyTowns.sqf";
 CTI_CO_FNC_GetFunds = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetFunds.sqf";
 CTI_CO_FNC_GetFundsCommander = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetFundsCommander.sqf";
 CTI_CO_FNC_GetFundsTeam = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetFundsTeam.sqf";
 CTI_CO_FNC_GetGearItemCost = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetGearItemCost.sqf";
-CTI_CO_FNC_GetHostilesInArea = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetHostilesInArea.sqf";
 CTI_CO_FNC_GetItemBaseConfig = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetItemBaseConfig.sqf";
 CTI_CO_FNC_GetLiveUnits = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetLiveUnits.sqf";
 CTI_CO_FNC_GetNearestSpecialVehicles = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetNearestSpecialVehicles.sqf";
@@ -53,12 +51,8 @@ CTI_CO_FNC_GetSideTownCount = compileFinal preprocessFileLineNumbers "Common\Fun
 CTI_CO_FNC_GetSideTowns = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetSideTowns.sqf";
 CTI_CO_FNC_GetSideUpgrades = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetSideUpgrades.sqf";
 CTI_CO_FNC_GetTeamVehicles = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTeamVehicles.sqf";
-CTI_CO_FNC_GetTotalCamps = Compile preprocessFileLineNumbers "Common\Functions\Common_GetTotalCamps.sqf";
-CTI_CO_FNC_GetTotalCampsOnSide = Compile preprocessFileLineNumbers "Common\Functions\Common_GetTotalCampsOnSide.sqf";
-CTI_CO_FNC_GetRespawnCamps = Compile preprocessFileLineNumbers "Common\Functions\Common_GetRespawnCamps.sqf";
 CTI_CO_FNC_GetTownsResources = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTownsResources.sqf";
 CTI_CO_FNC_GetUnitsScore = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetUnitsScore.sqf";
-CTI_CO_FNC_GetUnitsPerSide = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetUnitsPerSide.sqf";
 CTI_CO_FNC_GetVehicleTurrets = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetVehicleTurrets.sqf";
 CTI_CO_FNC_HasOrderedChanged = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasOrderedChanged.sqf";
 CTI_CO_FNC_HasStructure = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasStructure.sqf";
@@ -78,7 +72,6 @@ CTI_CO_FNC_PlaceNear = compileFinal preprocessFileLineNumbers "Common\Functions\
 CTI_CO_FNC_PlaceSafe = compileFinal preprocessFileLineNumbers "Common\Functions\Common_PlaceSafe.sqf";
 CTI_CO_FNC_RearmVehicle = compileFinal preprocessFileLineNumbers "Common\Functions\Common_RearmVehicle.sqf";
 CTI_CO_FNC_RemoveWaypoints = compileFinal preprocessFileLineNumbers "Common\Functions\Common_RemoveWaypoints.sqf";
-CTI_CO_FNC_RevealArea = compileFinal preprocessFileLineNumbers "Common\Functions\Common_RevealArea.sqf";
 CTI_CO_FNC_SortByDistance = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SortByDistance.sqf";
 CTI_CO_FNC_SanitizeAircraft = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraft.sqf";
 CTI_CO_FNC_SanitizeAircraftAA = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraftAA.sqf";
@@ -98,10 +91,6 @@ call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_Resistance.sqf
 call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_West.sqf";
 call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_East.sqf";
 
-call compile preprocessFileLineNumbers "Common\Config\Defenses\Defenses_Resistance.sqf";
-call compile preprocessFileLineNumbers "Common\Config\Defenses\Defenses_West.sqf";
-call compile preprocessFileLineNumbers "Common\Config\Defenses\Defenses_East.sqf";
-
 //--- Upgrade goes before the base definition so that we may construct the commander's logical path
 (west) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades_East.sqf";
@@ -113,7 +102,6 @@ call compile preprocessFileLineNumbers "Common\Config\Defenses\Defenses_East.sqf
 (west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_East.sqf";
 
-(resistance) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_Resistance.sqf";
 (west) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_East.sqf";
 
@@ -137,13 +125,9 @@ createMarkerLocal ["respawn_west",getMarkerPos "CTI_WestRespawn"];
 "respawn_west" setMarkerSizeLocal [10,10];
 "respawn_west" setMarkerAlphaLocal 0;
 
-//--- Town Camps and Depots
-Call Compile preprocessFileLineNumbers 'Common\Config\Core_Models\Vanilla.sqf';
-CTI_Logic_Camp = "LocationCamp_F";
-CTI_Logic_Depot = "LocationArea_F";
+//--- AI/Players Loadouts, to prevent any bisteries, DO NOT give them a pistol.  ss83 edited smoke
+missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [[["arifle_Mk20_ACO_pointer_F",["","acc_pointer_ir","optic_aco"],[]],["",["","",""],[]],["hgun_p07_f",["","",""],[]]],[["u_b_combatuniform_mcam",["firstaidkit","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],["v_platecarrier2_rgr",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","16rnd_9x21_mag","16rnd_9x21_mag","smokeshell","smokeshellblue","chemlight_blue","chemlight_blue"]],["b_assaultpack_rgr_lat",["","",""]]],["h_helmetb_sand",""],[["","Rangefinder"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
+missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [[["arifle_TRG21_ACO_pointer_F",["","","optic_aco_grn"],["30Rnd_556x45_Stanag"]],["",["","",""],[""]],["hgun_rook40_f",["","",""],[]]],[["u_o_combatuniform_ocamo",["firstaidkit","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],["v_tacvest_khk",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","16rnd_9x21_mag","16rnd_9x21_mag","smokeshell","smokeshellred","chemlight_red","chemlight_red"]],["b_fieldpack_cbr_lat",[]]],["h_helmeto_ocamo",""],[["","Rangefinder"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
 
-//--- AI/Players Loadouts, to prevent any bisteries, DO NOT give them a pistol.
-missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [[["arifle_Mk20_ACO_pointer_F",["","acc_pointer_ir","optic_aco"],[]],["",["","",""],[]],["hgun_p07_f",["","",""],[]]],[["u_b_combatuniform_mcam",["firstaidkit","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],["v_platecarrier2_rgr",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","16rnd_9x21_mag","16rnd_9x21_mag","smokeshell","smokeshellgreen","chemlight_green","chemlight_green"]],["b_assaultpack_rgr_lat",["","",""]]],["h_helmetb_sand",""],[["","binocular"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
-missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [[["arifle_TRG21_ACO_pointer_F",["","","optic_aco_grn"],["30Rnd_556x45_Stanag"]],["",["","",""],[""]],["hgun_rook40_f",["","",""],[]]],[["u_o_combatuniform_ocamo",["firstaidkit","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],["v_tacvest_khk",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","16rnd_9x21_mag","16rnd_9x21_mag","smokeshell","smokeshellred","chemlight_red","chemlight_red"]],["b_fieldpack_cbr_lat",[]]],["h_helmeto_ocamo",""],[["","binocular"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
 
 CTI_CO_FNC_HandleIncomingMissile = Compile preprocessFileLineNumbers "Common\Functions\Common_HandleIncomingMissile.sqf";

@@ -6,7 +6,6 @@ CTI_FACTORY_AIR = 3;
 CTI_FACTORY_REPAIR = 4;
 CTI_FACTORY_AMMO = 5;
 CTI_FACTORY_NAVAL = 6;
-CTI_TOWN_DEPOT = 7;
 CTI_MILITARYINSTALLATION = "MilitaryInstallation";
 CTI_BARRACKS = "Barracks";
 CTI_LIGHT = "Light";
@@ -16,15 +15,13 @@ CTI_AIR = "Air";
 CTI_REPAIR = "Repair";
 CTI_AMMO = "Ammo";
 CTI_NAVAL = "Naval";
-CTI_DEPOT = "Depot";
 CTI_RADAR="Radar";
 
-CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL,CTI_DEPOT];
+CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL];
 
 CTI_WEST_COLOR = "ColorBlue";
 CTI_EAST_COLOR = "ColorRed";
 CTI_RESISTANCE_COLOR = "ColorGreen";
-CTI_UNKNOWN_COLOR = "ColorBlack";
 
 CTI_GEAR_TAB_PRIMARY = 0;
 CTI_GEAR_TAB_SECONDARY = 1;
@@ -47,7 +44,6 @@ CTI_UNIT_SCRIPT = 7;
 CTI_WEST_ID = 0;
 CTI_EAST_ID = 1;
 CTI_RESISTANCE_ID = 2;
-CTI_UNKNOWN_ID = 4;
 
 CTI_SPECIAL_REPAIRTRUCK = 0;
 CTI_SPECIAL_AMMOTRUCK = 1;
@@ -317,63 +313,43 @@ CTI_GEAR_RESELL_TAX = 1; //--- Owned items are traded for: <item price> * <tax>
 
 //--- Towns: Capture
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 600; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
-CTI_TOWNS_CAPTURE_RANGE = 50; //--- The range which a unit/vehicle has to be from a town center to capture it
+CTI_TOWNS_CAPTURE_RANGE = 250; //--- The range which a unit/vehicle has to be from a town center to capture it ss83, increased to 250 (experiment)
 CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
-
-//--- Towns: Camps
-CTI_TOWNS_CAMPS_CAPTURE_BOUNTY = 300; //--- Bounty received by player whenever he capture a camp.
-CTI_TOWNS_CAMPS_CAPTURE_RATE = 5;
-//CTI_TOWNS_CAMPS_CAPTURE_RATE_MAX = 5;
-CTI_TOWNS_CAMPS_RANGE = 10;
-CTI_TOWNS_CAMPS_RANGE_PLAYERS = 5;
-CTI_TOWNS_CAMPS_PURCHASE_GEAR_RANGE = 5;
-//CTI_TOWNS_CAMPS_REPAIR_DELAY = 35;
-//CTI_TOWNS_CAMPS_REPAIR_PRICE = 2500;
-//CTI_TOWNS_CAMPS_REPAIR_RANGE = 15;
 
 //--- Towns: Economy
 //CTI_TOWNS_INCOME_RATIO = 1; //--- A value above 1 will increase the resources generation ((Stock value occupied/unoccupied) * ratio)
 CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = [0.25, 0.50, 0.75, 1]; //--- Determine how much value an unoccupied town bring to the side depending on the town occupation upgrade.
-CTI_TOWNS_PURCHASE_GEAR_RANGE = 5;
 
 //--- Towns: Patrol
 CTI_TOWNS_PATROL_HOPS = 10; //--- Towns patrol hops (non-waypoint)
 CTI_TOWNS_PATROL_RANGE = 200; //--- Patrol range in a town
 
 //--- Towns: Occupation
-CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 400; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
 CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
-CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 800; //--- Determine how far a threat may be detected from the town center
-CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 200; //--- Determine how high a threat is considered aerial
-CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 60; //--- Determine how long a town may remain active when triggered
+CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 1000; //--- Determine how far a threat may be detected from the town center  //ss83 increase from 800 to 1000
+CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 100; //--- Determine how high a threat is considered aerial
+CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 1200; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_OCCUPATION_MIN_ACTIVE = 3; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 
 //--- Towns: Resistance
 CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 200; //--- Determine how far the units may spawn from the town center
-//CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
-//CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center
-CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 200; //--- Determine how high a threat is considered aerial
-//CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered
+//CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value), this value is given a value in parameters ss83
+//CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 750; //--- Determine how far a threat may be detected from the town center, this value is given a value in parameters ss83
+CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 100; //--- Determine how high a threat is considered aerial
+//CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered, this value is given a value in parameters ss83
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 3; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 
 //--- Towns: Parameters
 with missionNamespace do {
 	if (isNil 'CTI_TOWNS_OCCUPATION') then {CTI_TOWNS_OCCUPATION = 1}; //--- Determine whether occupation is enabled or not
-	if (isNil "CTI_TOWNS_CAMPS_CREATE") then {CTI_TOWNS_CAMPS_CREATE = 1}; //--- Create the camp models.
-	if (isNil "CTI_TOWNS_GEAR") then {CTI_TOWNS_GEAR = 1}; //--- Buy Gear From (0: None, 1: Camps, 2: Depot, 3: Camps & Depot).
-	if (isNil "CTI_UNITS_TOWN_PURCHASE") then {CTI_UNITS_TOWN_PURCHASE = 0}; //--- Allow AIs to be bought from depots.
 	if (isNil 'CTI_TOWNS_RESISTANCE_DETECTION_RANGE') then {CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 800};//Done
 	if (isNil 'CTI_TOWNS_RESISTANCE_GROUPS_RATIO') then {CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 100};//Done
 	if (isNil 'CTI_TOWNS_RESISTANCE_INACTIVE_MAX') then {CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 30};//Done
 	if (isNil 'CTI_TOWNS_INCOME_RATIO') then {CTI_TOWNS_INCOME_RATIO = 2};
 	if (isNil 'CTI_TOWNS_CAPURE_RATIO') then {CTI_TOWNS_CAPURE_RATIO = 5};
-	if (isNil "CTI_UNITS_TOWN_PURCHASE") then {CTI_UNITS_TOWN_PURCHASE = 0}; //--- Allow AIs to be bought from depots.
-	if (isNil "CTI_TOWNS_RESISTANCE") then {CTI_TOWNS_RESISTANCE = 1}; //--- Determine whether resistance is enabled or not.
 };
-//--- Towns: Misc.
-CTI_TOWNS_OCCUPATION_GROUPS_RATIO = switch (CTI_TOWNS_OCCUPATION) do {case 1: {0.05}; case 2: {0.1}; case 3: {0.15}; case 4: {0.2}; default {1}}; //--- Determine how many groups may spawn (scales with town value)
-CTI_TOWNS_RESISTANCE_GROUPS_RATIO = switch (CTI_TOWNS_RESISTANCE) do {case 1: {0.05}; case 2: {0.1}; case 3: {0.15}; case 4: {0.2}; default {1}}; //--- Determine how many groups may spawn (scales with town value)
 //-----------------------------------------------------------------------------------------------------------------------//
 
 
@@ -399,7 +375,7 @@ CTI_TOWNS_RESISTANCE_GROUPS_RATIO = switch (CTI_TOWNS_RESISTANCE) do {case 1: {0
 
 //--- Base: Area
 CTI_BASE_AREA_MAX = 2;
-CTI_BASE_AREA_RANGE = 500;
+CTI_BASE_AREA_RANGE = 400;  //ss83 reduced from 500
 
 //--- Base: Construction
 CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 1200; //--- Decay starts after x seconds unattended.
@@ -412,7 +388,7 @@ CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.95; //--- The completion ratio is multi
 //--- Base: Defenses
 // CTI_BASE_DEFENSES_AUTO_DELAY = 120; //--- Delay after which a new unit will replace a dead one for a defense
 CTI_BASE_DEFENSES_AUTO_DELAY = 120; //--- Delay after which a new unit will replace a dead one for a defense
-CTI_BASE_DEFENSES_AUTO_LIMIT = 25; //--- Amount of independent units which may man nearby defenses
+CTI_BASE_DEFENSES_AUTO_LIMIT = 30; //--- Amount of independent units which may man nearby defenses
 CTI_BASE_DEFENSES_AUTO_RANGE = 600; //--- Range from the nearest barrack at which AI may auto man a defense
 CTI_BASE_DEFENSES_AUTO_REARM_RANGE = 600; //--- Range needed for a defense to be able to rearm at a service point
 CTI_BASE_DEFENSES_EMPTY_TIMEOUT = 3600; //--- Delay after which an empty defense is considered empty
@@ -441,7 +417,7 @@ CTI_BASE_WORKERS_REPAIR = 0.01; //--- Worker repair iteration per action over a 
 CTI_BASE_WORKERS_REPAIR_RANGE = 25; //--- Worker repair range.
 CTI_BASE_WORKERS_REPAIR_ENTITY = 0.02; //--- Worker repair iteration per action over a vehicle.
 CTI_BASE_WORKERS_WANDER_RANGE = 60; //--- Worker may wander of x meters at a time.
-CTI_BASE_WORKERS_WANDER_RANGE_MAX = 500; //--- Worker may wander no further than x meters from their center
+CTI_BASE_WORKERS_WANDER_RANGE_MAX = 400; //--- Worker may wander no further than x meters from their center
 
 //--- Base: Parameters
 with missionNamespace do {
@@ -579,8 +555,8 @@ CTI_HALO_ALTITUDE = 2000;
 CTI_HALO_RATIO = 2;
 CTI_UPGRADE_RATIO=6;
 
-CTI_WEST_AMMOS = ["Box_NATO_Wps_F","Box_NATO_WpsSpecial_F","Box_NATO_Ammo_F","Box_NATO_Ammo_F","Box_NATO_AmmoOrd_F","Box_NATO_Grenades_F","Box_NATO_Support_F","Box_NATO_Support_F","Box_NATO_Support_F","Box_NATO_WpsLaunch_F"];
-CTI_EAST_AMMOS = ["Box_East_Wps_F","Box_East_WpsSpecial_F","Box_East_Ammo_F","Box_East_Ammo_F","Box_East_AmmoOrd_F","Box_East_Grenades_F","Box_East_Support_F","Box_East_Support_F","Box_East_Support_F","Box_East_WpsLaunch_F"];
+CTI_WEST_AMMOS = ["B_supplyCrate_F","Box_NATO_WpsSpecial_F","Box_NATO_Ammo_F","Box_NATO_Ammo_F","Box_NATO_AmmoOrd_F","Box_NATO_Grenades_F","Box_NATO_Support_F","Box_NATO_Support_F","Box_NATO_Support_F","Box_NATO_WpsLaunch_F"];
+CTI_EAST_AMMOS = ["O_supplyCrate_F","Box_East_WpsSpecial_F","Box_East_Ammo_F","Box_East_Ammo_F","Box_East_AmmoOrd_F","Box_East_Grenades_F","Box_East_Support_F","Box_East_Support_F","Box_East_Support_F","Box_East_WpsLaunch_F"];
 
 with missionNamespace do {
 	if (isNil 'CTI_ARTILLERY_SETUP') then {CTI_ARTILLERY_SETUP = -1}; //--- Artillery status (-2: Disabled, -1: Artillery Computer, 0: Short, 1: Medium, 2: Long, 3: Far)
@@ -614,14 +590,9 @@ with missionNamespace do {
 	//CTI_PLAYERS_GROUPSIZE = 12;
 	
 	if (isNil 'CTI_RESPAWN_AI') then {CTI_RESPAWN_AI = 1};
-	if (isNil "CTI_RESPAWN_CAMPS_MODE") then {CTI_RESPAWN_CAMPS_MODE = 2}; 
-	if (isNil "CTI_RESPAWN_CAMPS_RANGE") then {CTI_RESPAWN_CAMPS_RANGE = 500}; //--- Range at which a unit can spawn at a camp
-	if (isNil "CTI_RESPAWN_CAMPS_RULE_MODE") then {CTI_RESPAWN_CAMPS_RULE_MODE = 2}; //--- Respawn Camps Rule (0: Disabled, 1: West | East, 2: West | East | Resistance).
 	if (isNil 'CTI_RESPAWN_FOB_RANGE') then {CTI_RESPAWN_FOB_RANGE = 1500}; //--- Range at which a unit can spawn at a FOB
 	if (isNil 'CTI_RESPAWN_MOBILE') then {CTI_RESPAWN_MOBILE = 1};
 	if (isNil 'CTI_RESPAWN_TIMER') then {CTI_RESPAWN_TIMER = 30};
-	
-	CTI_RESPAWN_CAMPS_SAFE_RADIUS = 50;
 
 	if (isNil 'CTI_MARKERS_INFANTRY') then {CTI_MARKERS_INFANTRY = 1}; //--- Track infantry on map
 

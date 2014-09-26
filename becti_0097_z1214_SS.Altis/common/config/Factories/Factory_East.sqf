@@ -93,7 +93,7 @@ _u = _u		+ ["O_Truck_03_fuel_F"];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_REPAIR], _u];
 
 _u 			= ["O_Truck_03_Ammo_F"];
-_u = _u		+ ["Box_East_Wps_F"];
+_u = _u		+ ["O_supplyCrate_F"];
 _u = _u		+ ["Box_East_AmmoVeh_F"];
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _u];
@@ -103,10 +103,3 @@ _u = _u		+ ['O_Boat_Armed_01_hmg_F'];
 _u = _u		+ ['O_SDV_01_F'];
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
-
-_u 			= ["O_Offroad_01_F"];
-_u = _u		+ ["O_Quadbike_01_F"];
-if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
- 	_u = _u		+ [missionNamespace getVariable format ["CTI_%1_SOLDIER", _side]];
-};
-missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_DEPOT], _u];

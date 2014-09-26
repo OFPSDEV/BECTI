@@ -17,11 +17,11 @@ CTI_SE_FNC_HandleStaticDefenses = compileFinal preprocessFileLineNumbers "Server
 CTI_SE_FNC_HandleStructureConstruction = compileFinal preprocessFileLineNumbers "Server\Functions\Server_HandleStructureConstruction.sqf";
 CTI_SE_FNC_InitializeGroup = compileFinal preprocessFileLineNumbers "Server\Functions\Server_InitializeGroup.sqf";
 CTI_SE_FNC_InitializeStructure = compileFinal preprocessFileLineNumbers "Server\Functions\Server_InitializeStructure.sqf";
-CTI_SE_FNC_ManageTownDefenses = Compile preprocessFileLineNumbers "Server\Functions\Server_ManageTownDefenses.sqf";
+
 CTI_SE_FNC_NoobLogger = compileFinal preprocessFileLineNumbers "Server\Functions\Server_NoobLogger.sqf";
 CTI_SE_FNC_NoobLoggerEnd = compileFinal preprocessFileLineNumbers "Server\Functions\Server_NoobLoggerEnd.sqf";
 CTI_SE_FNC_ObservateEnvironment = compileFinal preprocessFileLineNumbers "Server\Functions\Server_ObservateEnvironment.sqf";
-CTI_SE_FNC_OperateTownDefensesUnits = Compile preprocessFileLineNumbers "Server\Functions\Server_OperateTownDefensesUnits.sqf";
+
 CTI_SE_FNC_OnBuildingDestroyed = compileFinal preprocessFileLineNumbers "Server\Functions\Server_OnBuildingDestroyed.sqf";
 CTI_SE_FNC_OnBuildingHandleDamage = compileFinal preprocessFileLineNumbers "Server\Functions\Server_OnBuildingHandleDamage.sqf";
 CTI_SE_FNC_OnBuildingHandleVirtualDamage = compileFinal preprocessFileLineNumbers "Server\Functions\Server_OnBuildingHandleVirtualDamage.sqf";
@@ -34,7 +34,6 @@ CTI_SE_FNC_OnHQDestroyed = compileFinal preprocessFileLineNumbers "Server\Functi
 CTI_SE_FNC_OnTownCaptured = compileFinal preprocessFileLineNumbers "Server\Functions\Server_OnTownCaptured.sqf";
 CTI_SE_FNC_RepairHQ = compileFinal preprocessFileLineNumbers "Server\Functions\Server_RepairHQ.sqf";
 CTI_SE_FNC_RequestCommanderVote = compileFinal preprocessFileLineNumbers "Server\Functions\Server_RequestCommanderVote.sqf";
-CTI_SE_FNC_SpawnTownDefense = Compile preprocessFileLineNumbers "Server\Functions\Server_SpawnTownDefense.sqf";
 CTI_SE_FNC_SpawnTownOccupation = compileFinal preprocessFileLineNumbers "Server\Functions\Server_SpawnTownOccupation.sqf";
 CTI_SE_FNC_SpawnTownResistance = compileFinal preprocessFileLineNumbers "Server\Functions\Server_SpawnTownResistance.sqf";
 CTI_SE_FNC_StartFactoryQueue = compileFinal preprocessFileLineNumbers "Server\Functions\Server_StartFactoryQueue.sqf";
@@ -53,7 +52,6 @@ call compile preprocessFileLineNumbers "Server\Init\Init_PublicVariables.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_RepairTruck.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_UpdateAI.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_UpdateCommander.sqf";
-call compile preprocessFileLineNumbers "Server\Functions\Server_TownMortars.sqf";
 
 execVM "Server\Init\Init_Prison.sqf";
 
@@ -224,9 +222,6 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 	};
 } forEach [[west, CTI_WEST, _westLocation], [east, CTI_EAST, _eastLocation]];
 
-//--- Town starting mode.
-if ((missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") != 0 || (missionNamespace getVariable "CTI_TOWNS_PATROLS") > 0) then {[] Call Compile preprocessFile "Server\Init\Init_Locations.sqf"} else {CTI_Init_TownMode = true};
-
 //--- Towns init thread
 0 spawn {
 	waitUntil {!isNil 'CTI_InitTowns'};
@@ -234,12 +229,6 @@ if ((missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") != 0 || (missionNam
 	execFSM "Server\FSM\update_garbage_collector.fsm";
 	execFSM "Server\FSM\update_resources.fsm";
 	execFSM "Server\FSM\update_victory.fsm";
-	
-	//--- Static defenses groups in main towns.
-	{
-		missionNamespace setVariable [Format ["CTI_%1_DefenseTeam", _x], createGroup _x];
-		(missionNamespace getVariable Format ["CTI_%1_DefenseTeam", _x]) setVariable ["cti_gc_noremove", true];
-	} forEach [west,east,resistance];
 };
 
 if (CTI_WEATHER_FAST > 0) then { execFSM "Server\FSM\weather_fast.fsm" };

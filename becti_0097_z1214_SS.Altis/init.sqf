@@ -4,6 +4,7 @@ tf_no_auto_long_range_radio = true;
 tf_give_personal_radio_to_regular_soldier = true;
 tf_defaultWestPersonalRadio = "tf_rf7800str";
 tf_defaultEastPersonalRadio = "tf_pnr1000a";
+player setVariable ["tf_force_radio_active", true, true];
 
 //#include "\task_force_radio\functions\common.sqf";
 
@@ -124,9 +125,6 @@ if (isMultiplayer && CTI_IsServer) then {
 //--- JIP Part is over
 CTI_Init_JIP = true;
 
-//--- Towns init
-execVM "Common\Init\Init_Locations.sqf";
-
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: init.sqf", "Running common initialization"] call CTI_CO_FNC_Log };
 
 //--- Common Part execution
@@ -202,5 +200,4 @@ _logistic = execVM "=BTC=_logistic\=BTC=_logistic_Init.sqf";
 waitUntil {time > 0};
 execVM "Addons\EtV.sqf";
 waitUntil {!isNil "EtVInitialized"};
-[player] call EtV_Actions;
-
+//[player] call EtV_Actions; -- Radioman - Not initialised correctly. Will not persist after respawn. Moved to CTI_CL_FNC_AddMissionActions

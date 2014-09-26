@@ -1,5 +1,5 @@
-_a=0.08;
-_b=7;
+_a=0.2; //ss83 -- Values changed from .08 and _b was 7
+_b=12;
 
 while {! CTI_GameOver} do {
 	_nbp={isPlayer _x} count playableUnits;
@@ -10,3 +10,5 @@ while {! CTI_GameOver} do {
 	};
 	sleep 60;
 };
+
+

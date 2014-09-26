@@ -99,19 +99,11 @@ _u = _u		+ ["B_Truck_01_fuel_F"];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_REPAIR], _u];
 
 _u 			= ["B_Truck_01_ammo_F"];
-_u = _u		+ ["Box_NATO_Wps_F"];
+_u = _u		+ ["B_supplyCrate_F"];
 _u = _u		+ ["Box_Nato_AmmoVeh_F"];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _u];
 
 _u 			= ["B_Boat_Transport_01_F"];
 _u = _u		+ ["B_Boat_Armed_01_minigun_F"];
 _u = _u		+ ["B_SDV_01_F"];
-
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
-
-_u 			= ["B_Offroad_01_F"];
-_u = _u		+ ["B_Quadbike_01_F"];
-if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
- 	_u = _u		+ [missionNamespace getVariable format ["CTI_%1_SOLDIER", _side]];
-};
-missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_DEPOT], _u];
