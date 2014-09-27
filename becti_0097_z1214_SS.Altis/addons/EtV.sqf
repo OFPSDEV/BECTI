@@ -59,7 +59,7 @@ EtV_TimedCharge =
 {
 	_explosive = _this select 0;
 	_unit = _this select 1;
-	_illogic = /*group server*/ createUnit ["logic", Position _explosive, [], 0, "FORM"];
+	_illogic = createVehicle ["logic", Position _explosive, [], 0, "FORM"];
 	_illogic attachTo [_explosive];
 	while {alive _explosive} do
 	{
