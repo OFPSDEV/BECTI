@@ -32,6 +32,7 @@ private ["_killed", "_killer"];
 _killed = _this select 0;
 _killer = _this select 1;
 
+//New gear system thanks to Benny ss83
 OnKilledGear = (player) call CTI_UI_Gear_GetUnitEquipment;
 
 
