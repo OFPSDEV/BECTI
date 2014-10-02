@@ -302,7 +302,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 	***********************ss83 edit w/help of BENNY*/
 	
 	  if !(_respawn_ai) then { //--- Stock respawn
-        if !(isNil {missionNamespace getVariable "cti_gear_lastpurchased_player"}) then {
+         if !(isNil "OnKilledGear") then {
              [player, OnKilledGear] call CTI_CO_FNC_EquipUnit;  //--- Equip the last known equipment
         } else {
             [player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip the default equipment

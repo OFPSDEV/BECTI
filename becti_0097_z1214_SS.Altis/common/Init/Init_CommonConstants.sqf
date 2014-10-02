@@ -599,7 +599,7 @@ with missionNamespace do {
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 1};
 
 	if (isNil 'CTI_WEATHER_FAST') then {CTI_WEATHER_FAST = 0};
-	CTI_WEATHER_FAST_VALUES = [0, 2.4, 3, 4, 6, 12, 24 ]; //--- Fast time values, this shall match the amount of values in rsc\parameters.hpp
+	CTI_WEATHER_FAST_VALUES = [0, 2.4, 3, 4, 6 ]; //--- Fast time values, this shall match the amount of values in rsc\parameters.hpp
 
 	if (CTI_WEATHER_FAST > 0) then {CTI_WEATHER_FAST = CTI_WEATHER_FAST_VALUES select CTI_WEATHER_FAST};
 

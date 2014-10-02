@@ -160,9 +160,8 @@ class Params {
 	};
 	class CTI_WEATHER_FAST {
 		title = "WEATHER: Fast Time";
-		values[] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13};
-		texts[] = {"Disabled","24H = 10H","24H = 9H30","24H = 9H","24H = 8H30","24H = 8H","24H = 7H30","24H = 7H","24H = 6H30", 
-		"24H = 6H","24H = 5H30","24H = 5H","24H = 4H30","24H = 4H"};
+		values[] = {0,2.4,3,4,6};
+		texts[] = {"Disabled","24H = 10H","24H = 8H","24H = 6H","24H = 4H"};
 		default = 0;
 	};
 		//Additionnal Parameter (Zerty)
