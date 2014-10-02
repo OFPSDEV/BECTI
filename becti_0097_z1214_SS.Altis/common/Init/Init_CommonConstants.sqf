@@ -462,7 +462,7 @@ CTI_VEHICLES_HANDLER_EMPTY = 0; //--- Determine how an empty vehicle is handled 
 
 //--- Vehicles which may lift things (not actual hookers btw)
 CTI_VEHICLES_HOOKERS_LIGHT = ["I_Heli_light_03_unarmed_F", "B_Heli_Light_01_F"]; //--- Light Lifters
-CTI_VEHICLES_HOOKERS_MEDIUM = ["B_Heli_Transport_01_F", "O_Heli_Light_02_unarmed_F", "O_Heli_Attack_02_F", "O_Heli_Attack_02_black_F"]; //--- Medium Lifters
+CTI_VEHICLES_HOOKERS_MEDIUM = ["B_Heli_Transport_01_F", "O_Heli_Light_02_unarmed_F"]; //--- Medium Lifters
 CTI_VEHICLES_HOOKERS_HEAVY = ["I_Heli_Transport_02_F"]; //--- Heavy Lifters
 
 //--- Types of liftable Vehicles 
