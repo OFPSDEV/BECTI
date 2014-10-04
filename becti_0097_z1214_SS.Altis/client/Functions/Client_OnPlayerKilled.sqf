@@ -33,7 +33,7 @@ _killed = _this select 0;
 _killer = _this select 1;
 
 //New gear system thanks to Benny ss83
-OnKilledGear = (player) call CTI_UI_Gear_GetUnitEquipment;
+CTI_P_LastPurchase = (_killed) call CTI_UI_Gear_GetUnitEquipment; // Radioman - Changed the reference to the player to be the _killed variable, to ensure it gets the correct unit's gear.
 
 
 CTI_DeathPosition = getPos _killed;
