@@ -935,6 +935,7 @@ class Mission
 					id=42;
 					side="EAST";
 					vehicle="O_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					description="Romeo";
@@ -955,6 +956,7 @@ class Mission
 					id=43;
 					side="EAST";
 					vehicle="O_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					description="Sierra";
@@ -975,6 +977,7 @@ class Mission
 					id=44;
 					side="EAST";
 					vehicle="O_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					description="Tango";
@@ -995,6 +998,7 @@ class Mission
 					id=45;
 					side="EAST";
 					vehicle="O_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					description="Uniform";
@@ -1015,6 +1019,7 @@ class Mission
 					id=46;
 					side="EAST";
 					vehicle="O_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					description="Victor";
@@ -1035,6 +1040,7 @@ class Mission
 					id=47;
 					side="EAST";
 					vehicle="O_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					description="Wiskey";
@@ -1056,6 +1062,7 @@ class Mission
 					id=48;
 					side="WEST";
 					vehicle="B_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					description="Zebra";
@@ -1076,6 +1083,7 @@ class Mission
 					id=49;
 					side="EAST";
 					vehicle="O_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					description="Zebra";
