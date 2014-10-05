@@ -1055,11 +1055,10 @@ class Mission
 					special="NONE";
 					id=48;
 					side="WEST";
-					vehicle="B_officer_F";
-					player="PLAYER COMMANDER";
+					vehicle="B_Soldier_F";
 					leader=1;
 					skill=0.60000002;
-					description="Commander";
+					description="Zebra";
 					syncId=48;
 					synchronizations[]={0};
 				};
@@ -1076,11 +1075,10 @@ class Mission
 					position[]={14512.285,6.5263433,5861.4165};
 					id=49;
 					side="EAST";
-					vehicle="O_officer_F";
-					player="PLAY CDG";
+					vehicle="O_Soldier_F";
 					leader=1;
 					skill=0.60000002;
-					description="Commander";
+					description="Zebra";
 					syncId=49;
 					synchronizations[]={1};
 				};
