@@ -104,6 +104,12 @@ class Params {
 		texts[] = {"15 Seconds","30 Seconds"};
 		default = 30;
 	};
+	class CTI_GEAR_ON_SPECIAL_TRUCK {
+		title = "GEAR MENU: Access On Special Trucks";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};
 	class CTI_TOWNS_OCCUPATION {
 		title = "TOWNS: Occupation";
 		values[] = {1};
