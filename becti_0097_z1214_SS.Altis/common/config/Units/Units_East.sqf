@@ -418,7 +418,7 @@ _p = _p + [''];
 _n = _n + [''];
 _o = _o + [25000];
 _t = _t + [35];
-_u = _u + [1];
+_u = _u + [3];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
@@ -455,8 +455,8 @@ _p = _p + [''];
 _n = _n + [(format ["Air Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE])];
 _o = _o + [8000];
 _t = _t + [20];
-_u = _u + [0];
-_f = _f + [CTI_FACTORY_LIGHT];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
 _s = _s + ["service-medic"];
 
 
@@ -474,7 +474,7 @@ _p = _p + [''];
 _n = _n + [''];
 _o = _o + [50000];
 _t = _t + [50];
-_u = _u + [1];
+_u = _u + [2];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
@@ -483,7 +483,7 @@ _p = _p + [''];
 _n = _n + [''];
 _o = _o + [50000];
 _t = _t + [50];
-_u = _u + [1];
+_u = _u + [2];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
@@ -491,9 +491,9 @@ _s = _s + [""];
 _c = _c + ['I_Plane_Fighter_03_AA_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [50000];
+_o = _o + [40000];
 _t = _t + [50];
-_u = _u + [1];
+_u = _u + [2];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
@@ -502,7 +502,7 @@ _p = _p + [''];
 _n = _n + [''];
 _o = _o + [70000];
 _t = _t + [50];
-_u = _u + [1];
+_u = _u + [3];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 

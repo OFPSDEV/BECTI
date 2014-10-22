@@ -34,10 +34,10 @@ _t=_t+			[[50*CTI_UPGRADE_RATIO,100*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[["Factory: Aircraft Factory", "Unlock better aircraft units"]];
 _a=_a	+			[true];
-_c=_c +			[[25000]];
-_lev=_lev+	[1];
-_lin=_lin+	[[[]]];
-_t=_t+			[[90*CTI_UPGRADE_RATIO]];
+_c=_c +			[[10000,20000,30000]];
+_lev=_lev+	[3];
+_lin=_lin+	[[[],[],[]]];
+_t=_t+			[[50*CTI_UPGRADE_RATIO,100*CTI_UPGRADE_RATIO,150*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[["Factory: AAF technologies", "Unlock AAF units (1::MRAPS, 2::APC , 3::TRACKED, 4::CHOPPERS, 5::PLANES)"]];
 _a=_a	+			[false];   //ss83 set to false
