@@ -4794,5 +4794,13 @@ class CTI_RscVoteMenu {
 			text = "X";
 			action = "closeDialog 0";
 		};
+		class CTI_Control_Back : CTI_Control_Exit {
+			idc = 500104;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.535)";
+			
+			text = "<<";
+			action = "closeDialog 0; createDialog 'CTI_RscCommandMenu';";
+		};
 	};
 };
