@@ -39,6 +39,7 @@ CTI_CL_FNC_OnStructureConstructed = compileFinal preprocessFile "Client\Function
 CTI_CL_FNC_OnTownCaptured = compileFinal preprocessFile "Client\Functions\Client_OnTownCaptured.sqf";
 CTI_CL_FNC_PurchaseUnit = compileFinal preprocessFile "Client\Functions\Client_PurchaseUnit.sqf";
 CTI_CL_FNC_RemoveRuins = compileFinal preprocessFile "Client\Functions\Client_RemoveRuins.sqf";
+JRG_welcomeScreen= compileFinal preprocessFileLineNumbers "Addons\fn_welcomeScreen.sqf";
 
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateClientAI.sqf";
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateOrders.sqf";
@@ -131,7 +132,12 @@ player addEventHandler ["killed", {_this spawn CTI_CL_FNC_OnPlayerKilled}];
 if !(CTI_IsServer) then {[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit}; //--- Equip pure clients
 
 if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileNamespace setVariable ["CTI_PERSISTENT_HINTS", true]; saveProfileNamespace };
-
+//---Welcome Screen ss83
+if (!isDedicated) then {
+    if (isNull findDisplay 72) then {
+        [true] call JRG_welcomeScreen;
+    }; 
+};
 //--- Vote System, define whether a vote is already running or not 
 waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_votetime"}};
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "File: Client\Init\Init_client.sqf", "Vote system is initialized."] call CTI_CO_FNC_Log };

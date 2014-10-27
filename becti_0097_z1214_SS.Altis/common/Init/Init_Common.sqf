@@ -81,7 +81,7 @@ CTI_CO_FNC_SanitizeAircraftFFAR = compileFinal preprocessFileLineNumbers "Common
 CTI_CO_FNC_SanitizeArtillery = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeArtillery.sqf";
 CTI_CO_FNC_GetRandomSkill = compileFinal preprocessFileLineNumbers "Addons\AiRandomSkill\RandomSkill.sqf";
 CTI_CO_FNC_SetCommanderVotes = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SetCommanderVotes.sqf";
-JRG_welcomeScreen= compileFinal preprocessFileLineNumbers "Addons\fn_welcomeScreen.sqf";
+//JRG_welcomeScreen= compileFinal preprocessFileLineNumbers "Addons\fn_welcomeScreen.sqf"; -- Moved to init_client CSM
 CTI_CO_FNC_GetSideFlag = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetSideFlag.sqf";
 
 CTI_CO_CustomIterator = 0;
