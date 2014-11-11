@@ -34,7 +34,7 @@ _t=_t+			[[50*CTI_UPGRADE_RATIO,100*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[["Factory: Aircraft Factory", "Unlock better aircraft units"]];
 _a=_a	+			[true];
-_c=_c +			[[10000,20000,30000]];
+_c=_c +			[[15000,30000,60000]];
 _lev=_lev+	[3];
 _lin=_lin+	[[[],[],[]]];
 _t=_t+			[[50*CTI_UPGRADE_RATIO,100*CTI_UPGRADE_RATIO,150*CTI_UPGRADE_RATIO]];
@@ -48,22 +48,22 @@ _t=_t+			[[20*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,50*CTI_UPGRADE_RATIO,60*CTI
 
 
 
-_l=_l+			[["Air: Aircraft FFAR", "Unlocks the FFAR Rockets for Aircrafts"]];
-_a=_a	+			[true];
+_l=_l+			[["Air: Aircraft FFAR", "Unlocks the FFAR Rockets for Aircraft"]];
+_a=_a	+			[false]; //ss83 set to false
 _c=_c +			[[5000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[CTI_UPGRADE_AIR, 1]]];
 _t=_t+			[[5*CTI_UPGRADE_RATIO]];
 
 
-_l=_l+			[["Air: Aircraft AT", "Unlocks the Anti Tank Missiles for Aircrafts"]];
+_l=_l+			[["Air: Aircraft AT", "Unlocks the Anti Tank Missiles for Aircraft"]];
 _a=_a	+			[(missionNamespace getVariable "CTI_VEHICLES_AIR_AT")==1];
 _c=_c +			[[50000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[CTI_UPGRADE_AIR, 1]]];
 _t=_t+			[[90*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Air: Aircraft AA", "Unlocks the Anti Air Missiles for Aircrafts"]];
+_l=_l+			[["Air: Aircraft AA", "Unlocks the Anti Air Missiles for Aircraft"]];
 _a=_a	+			[(missionNamespace getVariable "CTI_VEHICLES_AIR_AA")==1];
 _c=_c +			[[50000]];
 _lev=_lev+	[1];
@@ -81,12 +81,12 @@ _t=_t+			[[60*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[["Equipment: Gear", "Allows the use of better equipment in the Gear Menu"]];
 _a=_a	+			[true];
-_c=_c +			[[15000, 30000, 60000]];
+_c=_c +			[[20000, 40000, 60000]];
 _lev=_lev+	[3];
 _lin=_lin+	[[[],[],[]]];
 _t=_t+			[[20*CTI_UPGRADE_RATIO, 40*CTI_UPGRADE_RATIO, 60*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Equipment: Tactical Hud", "Enable Tactical HUD for every unit equiped with tactical sunglasses"]];
+_l=_l+			[["Equipment: Tactical Hud", "Enable Tactical HUD for every unit equipped with tactical sunglasses"]];
 _a=_a	+			[True];
 _c=_c +			[[20000]];
 _lev=_lev+	[1];
@@ -116,7 +116,7 @@ _t=_t+			[[20*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[["Radar: Air Radar", "Enable Air Radars"]];
 _a=_a	+			[True];
-_c=_c +			[[10000]];
+_c=_c +			[[30000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[]]];
 _t=_t+			[[30*CTI_UPGRADE_RATIO]];

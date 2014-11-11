@@ -100,7 +100,7 @@ class Mission
 					position[]={14502.976,8.7504902,5865.584};
 					id=2;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_officer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -121,7 +121,7 @@ class Mission
 					position[]={14504.231,8.2400074,5865.5508};
 					id=3;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_medic_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -142,7 +142,7 @@ class Mission
 					position[]={14505.599,7.7316265,5865.4863};
 					id=4;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_engineer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -163,7 +163,7 @@ class Mission
 					position[]={14506.888,7.3427486,5865.4688};
 					id=5;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_sniper_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -205,7 +205,7 @@ class Mission
 					position[]={14509.251,6.6295104,5865.4219};
 					id=7;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_officer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -226,7 +226,7 @@ class Mission
 					position[]={14510.392,6.2861595,5865.4375};
 					id=8;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_medic_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -247,7 +247,7 @@ class Mission
 					position[]={14501.493,9.4227571,5864.2461};
 					id=9;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_engineer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -268,7 +268,7 @@ class Mission
 					position[]={14502.86,8.8704395,5864.2305};
 					id=10;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_sniper_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -310,7 +310,7 @@ class Mission
 					position[]={14505.632,7.8794169,5864.1816};
 					id=12;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_officer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -331,7 +331,7 @@ class Mission
 					position[]={14506.903,7.5214367,5864.1484};
 					id=13;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_medic_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -352,7 +352,7 @@ class Mission
 					position[]={14508.126,7.149044,5864.166};
 					id=14;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_engineer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -373,7 +373,7 @@ class Mission
 					position[]={14509.298,6.8000126,5864.1484};
 					id=15;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_sniper_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -394,7 +394,7 @@ class Mission
 					position[]={14510.456,6.451026,5864.1484};
 					id=16;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_Pilot_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -415,7 +415,7 @@ class Mission
 					position[]={2307.9097,11.550919,9280.3311};
 					id=17;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_officer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -436,7 +436,7 @@ class Mission
 					position[]={2312.2627,12.288327,9280.3652};
 					id=18;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_medic_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -457,7 +457,7 @@ class Mission
 					position[]={2316.7178,13.070632,9280.3975};
 					id=19;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_engineer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -478,7 +478,7 @@ class Mission
 					position[]={2320.9033,13.695734,9280.3975};
 					id=20;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_sniper_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -520,7 +520,7 @@ class Mission
 					position[]={2328.604,15.15639,9280.3975};
 					id=22;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_officer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -541,7 +541,7 @@ class Mission
 					position[]={2332.187,15.43646,9280.4639};
 					id=23;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_medic_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -562,7 +562,7 @@ class Mission
 					position[]={2303.3237,10.485567,9276.8096};
 					id=24;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_engineer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -583,7 +583,7 @@ class Mission
 					position[]={2307.9521,11.398458,9276.8652};
 					id=25;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_sniper_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -625,7 +625,7 @@ class Mission
 					position[]={2316.9595,13.186481,9276.958};
 					id=27;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_officer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -646,7 +646,7 @@ class Mission
 					position[]={2321.0806,13.826313,9276.9326};
 					id=28;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_medic_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -667,7 +667,7 @@ class Mission
 					position[]={2324.9541,14.420264,9276.9326};
 					id=29;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_engineer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -688,7 +688,7 @@ class Mission
 					position[]={2328.6157,14.876999,9277.0176};
 					id=30;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_sniper_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -730,7 +730,7 @@ class Mission
 					position[]={2303.2039,11.474439,9273.499};
 					id=32;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_Pilot_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -751,7 +751,7 @@ class Mission
 					position[]={2307.8323,11.767529,9273.5547};
 					id=33;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_Pilot_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -772,7 +772,8 @@ class Mission
 					position[]={2312.1741,12.259269,9273.5283};
 					id=34;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_officer_F";
+					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					description="Romeo";
@@ -792,7 +793,8 @@ class Mission
 					position[]={2316.8396,12.931205,9273.6475};
 					id=35;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_medic_F";
+					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					description="Sierra";
@@ -812,7 +814,8 @@ class Mission
 					position[]={2320.9607,13.4588,9273.6221};
 					id=36;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_engineer_F";
+					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					description="Tango";
@@ -875,7 +878,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					leader=1;
 					skill=0.60000002;
-					description="Wiskey";
+					description="Whiskey";
 					syncId=39;
 					synchronizations[]={0};
 				};
@@ -892,7 +895,7 @@ class Mission
 					position[]={14501.453,9.6430073,5862.729};
 					id=40;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_Pilot_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -913,7 +916,7 @@ class Mission
 					position[]={14502.941,9.0365276,5862.7549};
 					id=41;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_Pilot_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -934,7 +937,7 @@ class Mission
 					position[]={14504.31,8.4817429,5862.7549};
 					id=42;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_officer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -955,7 +958,7 @@ class Mission
 					position[]={14505.713,8.061511,5862.7061};
 					id=43;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_medic_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -976,7 +979,7 @@ class Mission
 					position[]={14506.984,7.8031397,5862.6729};
 					id=44;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_engineer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -998,7 +1001,6 @@ class Mission
 					id=45;
 					side="EAST";
 					vehicle="O_Soldier_F";
-					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					description="Uniform";
@@ -1019,7 +1021,6 @@ class Mission
 					id=46;
 					side="EAST";
 					vehicle="O_Soldier_F";
-					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
 					description="Victor";
@@ -1040,10 +1041,9 @@ class Mission
 					id=47;
 					side="EAST";
 					vehicle="O_Soldier_F";
-					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Wiskey";
+					description="Whiskey";
 					syncId=47;
 					synchronizations[]={1};
 				};
@@ -1057,15 +1057,14 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={2334.948,15.213618,9270.8848};
+					position[]={2332.5479,15.084316,9270.8496};
 					special="NONE";
 					id=48;
 					side="WEST";
 					vehicle="B_Soldier_F";
-					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Zebra";
+					description="Zulu";
 					syncId=48;
 					synchronizations[]={0};
 				};
@@ -1083,10 +1082,9 @@ class Mission
 					id=49;
 					side="EAST";
 					vehicle="O_Soldier_F";
-					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Zebra";
+					description="Zulu";
 					syncId=49;
 					synchronizations[]={1};
 				};
@@ -1173,7 +1171,7 @@ class Mission
 						};
 						class Item3
 						{
-							value="""A3_Modules_F_Curator_Effects"",""A3_Modules_F_Curator_Misc"",""A3_Modules_F_Curator_Lightning""";
+							value="""A3_Modules_F_Curator_Effects"",""A3_Modules_F_Curator_Misc"",""A3_Modules_F_Curator_Lightning"",""A3_Modules_F_Curator_Environment"",""A3_Modules_F_Curator_Ordnance"",""A3_Modules_F_Curator_Multiplayer"",""A3_Characters_F_INDEP""";  //ss83 zeus addons
 							parentCls="ModuleCuratorAddAddons_F";
 							typeName="Addons";
 						};

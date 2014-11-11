@@ -206,7 +206,7 @@ class CTI_RscPurchaseMenu {
 			w = "SafeZoneW * 0.595";
 			h = "SafeZoneH * 0.037";
 			
-			text = "Factory Menu";
+			text = "Factory Menu (AI deselected by clicking BLUE icons)";  //ss83 added text about ai 
 			colorText[] = {0.258823529, 0.713725490, 1, 1};
 			
 			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";

@@ -592,6 +592,10 @@ _i = _i		+ ["U_O_PilotCoveralls"];
 _u = _u		+ [1];
 _p = _p		+ [100];
 
+_i = _i		+ ["U_O_OfficerUniform_ocamo"];
+_u = _u		+ [1];
+_p = _p		+ [150];
+
 _i = _i		+ ["U_O_Wetsuit"];
 _u = _u		+ [2];
 _p = _p		+ [450];
@@ -813,6 +817,14 @@ _u = _u		+ [0];
 _p = _p		+ [5];
 
 _i = _i		+ ["H_Beret_red"];
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["G_Balaclava_blk"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["G_Balaclava_combat"];  
 _u = _u		+ [0];
 _p = _p		+ [5];
 

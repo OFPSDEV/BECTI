@@ -685,7 +685,15 @@ _i = _i		+ ["B_Bergen_sgg"];
 _u = _u		+ [2];
 _p = _p		+ [600];
 
+_i = _i		+ ["B_FieldPack_oucamo"];
+_u = _u		+ [1];
+_p = _p		+ [500];
+
 _i = _i		+ ["B_Carryall_mcamo"];
+_u = _u		+ [3];
+_p = _p		+ [800];
+
+_i = _i		+ ["B_Carryall_oucamo"];
 _u = _u		+ [3];
 _p = _p		+ [800];
 
@@ -852,6 +860,14 @@ _u = _u		+ [2];
 _p = _p		+ [50];
 
 _i = _i		+ ["H_MilCap_blue"]; 
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["G_Balaclava_blk"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["G_Balaclava_combat"];  
 _u = _u		+ [0];
 _p = _p		+ [5];
 

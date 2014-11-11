@@ -68,6 +68,8 @@ if (CTI_IsClient) then {
 	_marker setMarkerColorLocal _coloration;
 	_marker setMarkerSizeLocal [0.3, 0.3];
 	// _marker setMarkerAlphaLocal CTI_MARKERS_OPACITY;
+	
+	
 	// --- ZertyWasHere basejumps
 
 	_marker = createMarkerLocal [format ["cti_town_HALLOMarker_%1", _town], getPos _town];

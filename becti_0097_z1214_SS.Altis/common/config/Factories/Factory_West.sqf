@@ -84,9 +84,11 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
 _u 			= ["B_Heli_Light_01_F"];
 _u = _u		+ ["B_Heli_Transport_01_F"];
 _u = _u		+ ["I_Heli_light_03_unarmed_F"]; //ss83 added mobile respawn heli
-_u = _u		+ ["I_Heli_Transport_02_F"]; 
+//_u = _u		+ ["I_Heli_Transport_02_F"];  
+_u = _u		+ ["B_Heli_Transport_03_F"];  
 _u = _u		+ ["B_Heli_Light_01_armed_F"];
 _u = _u		+ ["B_Heli_Attack_01_F"];
+_u = _u		+ ["B_UAV_01_F"];
 _u = _u		+ ["B_UAV_02_CAS_F"];
 _u = _u		+ ["B_UAV_02_F"];
 _u = _u		+ ["I_Plane_Fighter_03_AA_F"];

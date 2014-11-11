@@ -280,6 +280,8 @@ CTI_UI_Respawn_OnRespawnReady = {
 	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
 	CTI_P_Respawning = false;
 };*/
+
+	/****************ss83 edit w/help of BENNY 
 	if !(_respawn_ai) then { //--- Stock respawn
 		// --- zerty edit
 		if  (!isNil {CTI_P_LastPurchase } &&  (CTI_PLAYER_REEQUIP == 1 ) ) then {
@@ -297,6 +299,19 @@ CTI_UI_Respawn_OnRespawnReady = {
 		};
 		[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
 	};
+	***********************ss83 edit w/help of BENNY*/
+	
+	  if !(_respawn_ai) then { //--- Stock respawn
+         if !(isNil "OnKilledGear") then {
+             [player, OnKilledGear] call CTI_CO_FNC_EquipUnit;  //--- Equip the last known equipment
+        } else {
+            [player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip the default equipment
+        }
+    } else { //--- Respawn in own AI
+        [player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
+    };
+	
+	
 	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
 	CTI_P_Respawning = false;
 };

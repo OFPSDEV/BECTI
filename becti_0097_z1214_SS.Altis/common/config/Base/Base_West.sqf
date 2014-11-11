@@ -126,7 +126,7 @@ _specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 8]]];
 
 _headers = _headers 		+ [[CTI_RADAR, "Air Radar", "Air Radar"]];
 _classes =  _classes 		+ [["Land_TTowerBig_2_F", "Land_TTowerBig_2_ruins_F"]];
-_prices =  _prices 			+ [8000];
+_prices =  _prices 			+ [20000];
 _times =  _times 			+ [120];
 _placements =_placements 	+ [[180, 30]];
 _specials = _specials		+ [[["DMG_Reduce", 1]]];  //takes 10 AP hits ss83
@@ -147,10 +147,34 @@ _placements = _placements 	+ [[90, 15]];
 _categories = _categories 	+ ["Fortification"];
 
 _headers = _headers 		+ ["Flag"];
-_classes = _classes 		+ ["Flag_Blue_F"];
+_classes = _classes 		+ ["Flag_NATO_F"];
 _prices = _prices 			+ [50];
 _placements = _placements 	+ [[90, 15]];
 _categories = _categories 	+ ["Flag"];
+
+_headers = _headers 		+ [["Razor Wire", [["DMG_Reduce", 1]]]];
+_classes = _classes 		+ ["Land_Razorwire_F"];
+_prices = _prices 			+ [5];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Fortification"];
+
+_headers = _headers 		+ [["Long Sandbag", [["DMG_Reduce", 2]]]];
+_classes = _classes 		+ ["Land_BagFence_Long_F"];
+_prices = _prices 			+ [20];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Fortification"];
+
+_headers = _headers 		+ [["Short Sandbag", [["DMG_Reduce", 2]]]];
+_classes = _classes 		+ ["Land_BagFence_Short_F"];
+_prices = _prices 			+ [10];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Fortification"];
+
+_headers = _headers 		+ [["Round Sandbag", [["DMG_Reduce", 2]]]];
+_classes = _classes 		+ ["Land_BagFence_Round_F"];
+_prices = _prices 			+ [10];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Fortification"];
 
 _headers = _headers 		+ [["Bunker (small)", [["DMG_Reduce", 2]]]];
 _classes = _classes 		+ ["Land_BagBunker_Small_F"];
@@ -314,9 +338,9 @@ _categories = _categories 	+ ["Furniture"];
 
 //---------------end of new stuff----------------
 
-_headers = _headers 		+ [["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"], ["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0)|| ( missionNamespace getVariable 'CTI_BASE_FOB_PERMISSION' ) == 0 )}]]]];
+_headers = _headers 		+ [[(format ["FOB - Max: %1",CTI_BASE_FOB_MAX]),[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"], [(format ["FOB - Max: %1",CTI_BASE_FOB_MAX])],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0) || ( missionNamespace getVariable 'CTI_BASE_FOB_PERMISSION' ) == 0 )}]]]];
 _classes = _classes 		+ ["Land_Medevac_house_V1_F"];
-_prices = _prices 			+ [3000];
+_prices = _prices 			+ [10000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Fortification"];
 

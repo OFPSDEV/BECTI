@@ -76,13 +76,20 @@ _u = _u		+ ["O_APC_Tracked_02_AA_F"];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
 
 _u 			= ['O_Heli_Light_02_unarmed_F'];
-_u = _u		+ ["I_Heli_Transport_02_F"]; 
-_u = _u		+ ["I_Heli_light_03_unarmed_F"]; //ss83 added mobile respawn heli
+//_u = _u		+ ["I_Heli_Transport_02_F"]; 
+//_u = _u		+ ["I_Heli_light_03_unarmed_F"]; //ss83 added mobile respawn heli 
+_u = _u		+ ["O_Heli_Transport_04_F"];
+_u = _u		+ ["O_Heli_Transport_04_ammo_F"];
+_u = _u		+ ["O_Heli_Transport_04_bench_F"];
+_u = _u		+ ["O_Heli_Transport_04_covered_F"];
+_u = _u		+ ["O_Heli_Transport_04_medevac_F"];
+_u = _u		+ ["O_Heli_Transport_04_repair_F"];
 _u = _u		+ ['O_Heli_Light_02_F'];
 _u = _u		+ ['O_Heli_Attack_02_F'];
 _u = _u		+ ['O_Heli_Attack_02_black_F'];
+_u = _u		+ ['O_UAV_01_F']; 
 _u = _u		+ ['O_UAV_02_CAS_F'];
-_u = _u		+ ['O_UAV_02_F'];
+_u = _u		+ ['O_UAV_02_F']; 
 _u = _u		+ ['I_Plane_Fighter_03_AA_F'];
 _u = _u		+ ['O_Plane_CAS_02_F'];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _u];

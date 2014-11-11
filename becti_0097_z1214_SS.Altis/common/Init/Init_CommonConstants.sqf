@@ -313,7 +313,7 @@ CTI_GEAR_RESELL_TAX = 1; //--- Owned items are traded for: <item price> * <tax>
 
 //--- Towns: Capture
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 600; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
-CTI_TOWNS_CAPTURE_RANGE = 250; //--- The range which a unit/vehicle has to be from a town center to capture it ss83, increased to 250 (experiment)
+CTI_TOWNS_CAPTURE_RANGE = 20; //--- The range which a unit/vehicle has to be from a town center to capture it ss83, decreased to 20 (experiment)
 CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
 
@@ -326,7 +326,7 @@ CTI_TOWNS_PATROL_HOPS = 10; //--- Towns patrol hops (non-waypoint)
 CTI_TOWNS_PATROL_RANGE = 200; //--- Patrol range in a town
 
 //--- Towns: Occupation
-CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 300; //--- Determine how far the units may spawn from the town center
+CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 200; //--- Determine how far the units may spawn from the town center
 CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 1000; //--- Determine how far a threat may be detected from the town center  //ss83 increase from 800 to 1000
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 100; //--- Determine how high a threat is considered aerial
@@ -375,7 +375,7 @@ with missionNamespace do {
 
 //--- Base: Area
 CTI_BASE_AREA_MAX = 2;
-CTI_BASE_AREA_RANGE = 400;  //ss83 reduced from 500
+CTI_BASE_AREA_RANGE = 300;  //ss83 reduced from 500
 
 //--- Base: Construction
 CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 1200; //--- Decay starts after x seconds unattended.
@@ -463,7 +463,7 @@ CTI_VEHICLES_HANDLER_EMPTY = 0; //--- Determine how an empty vehicle is handled 
 //--- Vehicles which may lift things (not actual hookers btw)
 CTI_VEHICLES_HOOKERS_LIGHT = ["I_Heli_light_03_unarmed_F", "B_Heli_Light_01_F"]; //--- Light Lifters
 CTI_VEHICLES_HOOKERS_MEDIUM = ["B_Heli_Transport_01_F", "O_Heli_Light_02_unarmed_F"]; //--- Medium Lifters
-CTI_VEHICLES_HOOKERS_HEAVY = ["I_Heli_Transport_02_F"]; //--- Heavy Lifters
+CTI_VEHICLES_HOOKERS_HEAVY = ["I_Heli_Transport_02_F", "B_Heli_Transport_03_F", "O_Heli_Transport_04_F"]; //--- Heavy Lifters
 
 //--- Types of liftable Vehicles 
 CTI_VEHICLES_HOOKABLE_LIGHT = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Motorcycle"]; //--- Vehicles which may be carried by light lifters
@@ -507,7 +507,7 @@ CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 10; //--- Keep values of 10
 
 CTI_MARKERS_OPACITY = 0.5;
-CTI_MARKERS_TOWN_AREA_RANGE = 250;
+CTI_MARKERS_TOWN_AREA_RANGE = 20;
 CTI_MARKERS_UNITS_DEAD_DELAY = 50;
 CTI_MARKERS_VEHICLES_DEAD_DELAY = 125;
 

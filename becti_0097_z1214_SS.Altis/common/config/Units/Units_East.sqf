@@ -408,7 +408,7 @@ _c = _c + ['O_UAV_01_F'];
 _p = _p + [''];
 _n = _n + [''];
 _o = _o + [600];
-_t = _t + [35];
+_t = _t + [5];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
@@ -427,7 +427,7 @@ _p = _p + [''];
 _n = _n + [''];
 _o = _o + [15000];
 _t = _t + [35];
-_u = _u + [1];
+_u = _u + [2];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
@@ -440,17 +440,72 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
-_c = _c + ['I_Heli_Transport_02_F'];
+/*_c = _c + ['I_Heli_Transport_02_F']; 
 _p = _p + [''];
 _n = _n + [''];
 _o = _o + [10000];
 _t = _t + [40];
-_u = _u + [0];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+mohawk no longer needed */
+
+_c = _c + ['O_Heli_Transport_04_F']; 
+_p = _p + [''];
+_n = _n + [(format ["Taru Airlift Variant"])];
+_o = _o + [10000];
+_t = _t + [40];
+_u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
+_c = _c + ['O_Heli_Transport_04_ammo_F']; 
+_p = _p + [''];
+_n = _n + [(format ["Taru Ammo Variant"])];
+_o = _o + [10000];
+_t = _t + [40];
+_u = _u + [3];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + ["service-ammotruck"];
 
-_c = _c + ['I_Heli_light_03_unarmed_F'];  //ss83 added mobile respawn heli
+_c = _c + ['O_Heli_Transport_04_bench_F']; 
+_p = _p + [''];
+_n = _n + [(format ["Taru Transport Variant (bench)"])];
+_o = _o + [6000];
+_t = _t + [40];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+
+_c = _c + ['O_Heli_Transport_04_covered_F']; 
+_p = _p + [''];
+_n = _n + [(format ["Taru Transport Variant (covered)"])];
+_o = _o + [6000];
+_t = _t + [40];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+
+_c = _c + ['O_Heli_Transport_04_medevac_F']; 
+_p = _p + [''];
+_n = _n + [(format ["Taru AirRespawn Variant- Range %1 m",CTI_RESPAWN_MOBILE_RANGE])];
+_o = _o + [9000];
+_t = _t + [40];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + ["service-medic"];
+
+_c = _c + ['O_Heli_Transport_04_repair_F']; 
+_p = _p + [''];
+_n = _n + [(format ["Taru Repair Variant"])];
+_o = _o + [15000];
+_t = _t + [40];
+_u = _u + [3];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + ["service-repairtruck"];
+
+
+/*_c = _c + ['I_Heli_light_03_unarmed_F'];  //ss83 added mobile respawn heli
 _p = _p + [''];
 _n = _n + [(format ["Air Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE])];
 _o = _o + [8000];
@@ -458,6 +513,7 @@ _t = _t + [20];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + ["service-medic"];
+*/
 
 
 _c = _c + ['O_Heli_Light_02_F'];
@@ -465,7 +521,7 @@ _p = _p + [''];
 _n = _n + [''];
 _o = _o + [30000];
 _t = _t + [40];
-_u = _u + [1];
+_u = _u + [2];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
@@ -474,7 +530,7 @@ _p = _p + [''];
 _n = _n + [''];
 _o = _o + [50000];
 _t = _t + [50];
-_u = _u + [2];
+_u = _u + [3];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
@@ -483,7 +539,7 @@ _p = _p + [''];
 _n = _n + [''];
 _o = _o + [50000];
 _t = _t + [50];
-_u = _u + [2];
+_u = _u + [3];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 

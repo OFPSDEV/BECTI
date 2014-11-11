@@ -430,13 +430,21 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_AMMO];
 _s = _s + [""];
 
+_c = _c + ['B_UAV_01_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [600];
+_t = _t + [5];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
 
 _c = _c + ['B_UAV_02_CAS_F'];
 _p = _p + [''];
 _n = _n + [''];
 _o = _o + [15000];
 _t = _t + [35];
-_u = _u + [1];
+_u = _u + [2];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
@@ -475,16 +483,26 @@ _p = _p + [''];
 _n = _n + [''];
 _o = _o + [6000];
 _t = _t + [40];
-_u = _u + [0];
+_u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
-_c = _c + ['I_Heli_Transport_02_F'];
+/*_c = _c + ['I_Heli_Transport_02_F']; B_Heli_Transport_03_F
 _p = _p + [''];
 _n = _n + [''];
 _o = _o + [10000];
 _t = _t + [40];
-_u = _u + [0];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];  
+no more mohawk */
+
+_c = _c + ['B_Heli_Transport_03_F']; 
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [10000];
+_t = _t + [40];
+_u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
@@ -493,7 +511,7 @@ _p = _p + [''];
 _n = _n + [''];
 _o = _o + [8000];
 _t = _t + [50];
-_u = _u + [1];
+_u = _u + [2];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
@@ -502,7 +520,7 @@ _p = _p + [''];
 _n = _n + [''];
 _o = _o + [60000];
 _t = _t + [50];
-_u = _u + [2];
+_u = _u + [3];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
