@@ -294,7 +294,6 @@ _temp_distance_max = nil;
 	profileNamespace setVariable ["CTI_PERSISTENT_OBJECT_PERCENT", _distance];
 	setObjectViewDistance ((_distance / 100) * viewDistance);
 	saveProfileNamespace;
-	player globalChat format["DistancePer: %1, View: %2", _distance, ((_distance / 100) * viewDistance)];
 
 	//--- Shadows Distance.
 	_distance = profileNamespace getVariable "CTI_PERSISTENT_SHADOWS_DISTANCE";
