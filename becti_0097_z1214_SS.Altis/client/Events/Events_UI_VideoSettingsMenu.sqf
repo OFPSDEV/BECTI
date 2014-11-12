@@ -4,16 +4,16 @@ _action = _this select 0;
 switch (_action) do {
 	case "onLoad": {
 		//--- View distance
-		_distance = profileNamespace getVariable "CTI_PERSISTENT_VIEW_DISTANCE";
+		// csm
+		//infantry
+		_distance = profileNamespace getVariable "CTI_PERSISTENT_INF_VIEW_DISTANCE";
 		_distance_max = missionNamespace getVariable "CTI_GRAPHICS_VD_MAX";
-		
 		if (isNil '_distance') then { _distance = viewDistance };
 		
 		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150002) sliderSetRange [1, _distance_max];
 		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150002) sliderSetPosition _distance;
 		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150001) ctrlSetText format ["Infantry View Distance: %1", _distance];
 		
-		// csm
 		//ground
 		_distance = profileNamespace getVariable "CTI_PERSISTENT_GROUND_VIEW_DISTANCE";
 		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150011) sliderSetRange [1, _distance_max];
@@ -33,7 +33,7 @@ switch (_action) do {
 		
 		
 		//--- Object distance
-		_distance = profileNamespace getVariable "CTI_PERSISTENT_OBJECT_DISTANCE";
+		_distance = profileNamespace getVariable "CTI_PERSISTENT_OBJECT_PERCENT";
 		_distance_max = missionNamespace getVariable "CTI_GRAPHICS_VD_MAX";
 		
 		if (isNil '_distance') then { _distance = (viewDistance * 75) };
@@ -73,35 +73,36 @@ switch (_action) do {
 	case "onViewSliderChanged": {
 		_changeto = round(_this select 1);
 		
-		profileNamespace setVariable ["CTI_PERSISTENT_VIEW_DISTANCE", _changeto];
-		
+		profileNamespace setVariable ["CTI_PERSISTENT_INF_VIEW_DISTANCE", _changeto];
+		saveProfileNamespace;
 //csm
 		if(profileNamespace getVariable "CTI_PERSISTENT_AUTODISTANCE") then {
 			if((vehicle player) isKindOf "Man") then {
 				((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150001) ctrlSetText format ["Infantry View Distance: %1", _changeto];
 				
-				_objectView = profileNamespace getVariable "CTI_PERSISTENT_OBJECT_DISTANCE";
+				_objectView = profileNamespace getVariable "CTI_PERSISTENT_OBJECT_PERCENT";
 				setObjectViewDistance (_changeto * (_objectView/100));
 				setViewDistance _changeto;
 			};
 		} else {
 			((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150001) ctrlSetText format ["View Distance: %1", _changeto];
 			
-			_objectView = profileNamespace getVariable "CTI_PERSISTENT_OBJECT_DISTANCE";
+			_objectView = profileNamespace getVariable "CTI_PERSISTENT_OBJECT_PERCENT";
 			setObjectViewDistance (_changeto * (_objectView/100));
 			setViewDistance _changeto;
 		};
+		
 	};
 	case "onGroundViewSliderChanged": {
 		_changeto = round(_this select 1);
 		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150010) ctrlSetText format ["Ground Vehicle & Ship View Distance: %1", _changeto];
 		profileNamespace setVariable ["CTI_PERSISTENT_GROUND_VIEW_DISTANCE", _changeto];
-
+		saveProfileNamespace;
 		//csm
 		if(profileNamespace getVariable "CTI_PERSISTENT_AUTODISTANCE") then {
 			if(((vehicle player) isKindOf "LandVehicle") || ((vehicle player) isKindOf "Ship")) then {
 				
-				_objectView = profileNamespace getVariable "CTI_PERSISTENT_OBJECT_DISTANCE";
+				_objectView = profileNamespace getVariable "CTI_PERSISTENT_OBJECT_PERCENT";
 				setObjectViewDistance (_changeto * (_objectView/100));
 				setViewDistance _changeto;
 			};
@@ -112,17 +113,19 @@ switch (_action) do {
 		_changeto = round(_this select 1);
 		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150012) ctrlSetText format ["Aircraft View Distance: %1", _changeto];
 		profileNamespace setVariable ["CTI_PERSISTENT_AIR_VIEW_DISTANCE", _changeto];
-		
+		saveProfileNamespace;
 		//csm
 		if(((vehicle player) isKindOf "Air") && (profileNamespace getVariable "CTI_PERSISTENT_AUTODISTANCE")) then {
-			_objectView = profileNamespace getVariable "CTI_PERSISTENT_OBJECT_DISTANCE";
+			_objectView = profileNamespace getVariable "CTI_PERSISTENT_OBJECT_PERCENT";
 			setObjectViewDistance (_changeto * (_objectView/100));
 			setViewDistance _changeto;
 		};
 	};
 	case "onObjectSliderChanged": { 
 		_changeto = round(_this select 1);
-		profileNamespace setVariable ["CTI_PERSISTENT_OBJECT_DISTANCE", _changeto];
+		if (_changeto > 100) then {_changeto = 100};
+		profileNamespace setVariable ["CTI_PERSISTENT_OBJECT_PERCENT", _changeto];
+		saveProfileNamespace;
 		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150003) ctrlSetText format ["Object Distance Percentage: %1", _changeto];
 		//csm
 		setObjectViewDistance (viewDistance * (_changeto / 100));
