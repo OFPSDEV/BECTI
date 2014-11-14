@@ -4063,6 +4063,14 @@ class CTI_RscWorkersMenu {
 			text = "Sell Structure";
 			action = "['onStructureSellPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_WorkersMenu.sqf'";
 		};
+		class CTI_Menu_Control_SellCompleteBase : CTI_Menu_Control_Disband {
+			idc = 260005;
+			
+			y = "SafeZoneY + (SafezoneH * 0.5824)";
+			 
+			text = "Remove Military Installation AND Its Buildings";
+			action = "['onSellCompleteBase'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_WorkersMenu.sqf'";
+		};
 		class CTI_Control_Exit : RscButton {
 			idc = 22555;
 			

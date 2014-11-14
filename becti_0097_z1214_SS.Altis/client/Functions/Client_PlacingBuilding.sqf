@@ -115,36 +115,76 @@ if (surfaceIsWater _pos) exitWith {hint parseText "<t size='1.3' color='#2394ef'
 _in_area = false;
 {if ([_pos select 0, _pos select 1] distance [_x select 0, _x select 1] <= CTI_BASE_AREA_RANGE) exitWith {_in_area = true}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
 
+//--- Check for empty base areas
+if (!(_in_area) && !(CTI_VAR_StructureCanceled) && (((_var select 0) select 0) isEqualTo "MilitaryInstallation")) then {
+	
+	_logic = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic;
+	_total_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
+	// Check for empty base areas.
+	_updated_areas = [];
+	_ruins = _logic getVariable "cti_structures_wip";
+	if !(isNil '_ruins') then {_total_structures = _total_structures + _ruins};
+	{
+		_y = _x; // _y is base area
+		_building_count = 0;
+		{
+			if ((_x distance _y) <= CTI_BASE_AREA_RANGE) then {
+				_building_count = _building_count + 1;
+			};
+		} forEach (_total_structures);
+		if (_building_count > 0) then {
+			_updated_areas = _updated_areas + [_x];
+		};
+	} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
+	CTI_P_SideLogic setVariable ["cti_structures_areas", _updated_areas, true];
+};
+
 //--- Maybe we have no area in range?
 if (!(_in_area) && ! CTI_VAR_StructureCanceled) then {
 	//--- If we have none, then have we reached our limit?
+	
 	if (count (CTI_P_SideLogic getVariable "cti_structures_areas") < CTI_BASE_AREA_MAX) then {
+	
 		//--- We create a new area if we still have room for areas and of course, we allow the construction
 		CTI_P_SideLogic setVariable ["cti_structure_building_canceled", 0];
-// csm
 		if(((_var select 0) select 0) isEqualTo "MilitaryInstallation") then {
+			_in_area = true;
 			CTI_P_SideLogic setVariable ["cti_structures_areas", (CTI_P_SideLogic getVariable "cti_structures_areas") + [[_pos select 0, _pos select 1]], true];
 		} else {
 			CTI_VAR_StructureCanceled = true;
 			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You Must Build Inside of an Established Military Installation.";
 		}; 
-		
 	} else {
 		CTI_VAR_StructureCanceled = true;
 		hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The base area limit has been reached.";
 	};
 } else {
-	// if in range but construction is another base, cancel the construction and prompt.
-	if(((_var select 0) select 0) isEqualTo "MilitaryInstallation" && ! CTI_VAR_StructureCanceled) then {
-		CTI_VAR_StructureCanceled = true;
-		hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Military Installation Already Present.";
+
+};
+
+//--- Check to see if building inside of "Established" military installation...
+if (_in_area && !CTI_VAR_StructureCanceled) then {
+	// if in range but construction is another military installation... 
+	if(!(((_var select 0) select 0) isEqualTo "MilitaryInstallation")) then {
+		_check_in_range = false;
+		{
+			if ((_x getVariable "cti_structure_type") == "MilitaryInstallation") then {
+				if ((_x distance _pos) < CTI_BASE_AREA_RANGE) then {
+					_check_in_range = true;
+				};
+			};
+		} forEach ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures);
+		CTI_VAR_StructureCanceled = !_check_in_range;
+		if (!_check_in_range) then {
+			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You Must Build Inside of an Established Military Installation.";
+		};
 	};
 };
+
 // end csm
 
 
 //--- If there's no problems then we place it.
-
 if (!CTI_VAR_StructureCanceled && (call CTI_CL_FNC_IsPlayerCommander)) then {
 	if ((call CTI_CL_FNC_GetPlayerFunds) >= (_var select 2)) then {
 	
