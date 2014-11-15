@@ -338,6 +338,12 @@ class Params {
     texts[] = {"Clear","Overcast","Rain","Fog","Random"};
     default = 4;
   };
+  class CTI_FAST_TIME {
+		title = "TIME: Fast Time";
+		values[] = {1,2,2.4,3,4,6,12,24,48,96};
+		texts[] = {"Normal","12H = 24H","10H = 24H","8H = 24H","6H = 24H","4H = 24H","2H = 24H","1H = 24H","30MIN = 24H","15MIN = 24H"};
+		default = 3;
+	};
 	
 	
 	class SEPARATOR2 {

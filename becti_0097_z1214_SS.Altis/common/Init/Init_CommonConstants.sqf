@@ -626,7 +626,7 @@ with missionNamespace do {
 	if (isNil 'CTI_GAMEPLAY_MISSILES_RANGE') then {CTI_GAMEPLAY_MISSILES_RANGE = 3000}; //Done
 	if (isNil 'CTI_GAMEPLAY_3P') then {CTI_GAMEPLAY_3P = 1}; //Done
 	if (isNil 'CTI_TOWNS_CAPTURE_RATIO') then {CTI_TOWNS_CAPTURE_RATIO = 10}; //DoneCTI_TOWNS_CAPTURE_RATIO
-
+	if (isNil 'CTI_FAST_TIME') then {CTI_FAST_TIME = 1};
 
 
 

@@ -233,6 +233,9 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 
 if (CTI_WEATHER_FAST > 0) then { execFSM "Server\FSM\weather_fast.fsm" };
 	CTI_Init_Server=True;
+	
+//-- Fast Time Script - Live
+settimemultiplier (missionNamespace getVariable "CTI_FAST_TIME");	
 
 
 //0 execVM "Addons\Zeus\Z_init_GUER.sqf";
