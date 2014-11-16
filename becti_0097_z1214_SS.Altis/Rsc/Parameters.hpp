@@ -108,7 +108,7 @@ class Params {
 		title = "GEAR MENU: Access On Special Trucks";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_TOWNS_OCCUPATION {
 		title = "TOWNS: Occupation";
@@ -262,7 +262,7 @@ class Params {
 		title = "Zerty: INCOME: base income for players";
 		values[] = {0,10,25,50,100,150,200,250};
 		texts[] = {"0$","10$","25$","50$","100$","150$","200$","250$"};
-		default = 10;
+		default = 100;
 	};
 	class CTI_VEHICLES_BOUNTY {
 		title = "Zerty: INCOME: On kill";
@@ -342,7 +342,7 @@ class Params {
 		title = "TIME: Fast Time";
 		values[] = {1,2,2.4,3,4,6,12,24,48,96};
 		texts[] = {"Normal","12H = 24H","10H = 24H","8H = 24H","6H = 24H","4H = 24H","2H = 24H","1H = 24H","30MIN = 24H","15MIN = 24H"};
-		default = 3;
+		default = 1;
 	};
 	
 	
@@ -433,7 +433,7 @@ class Params {
 		default = 1;
 	};
 	class CTI_EW_HUD_S {
-		title = "Zerty: Electronic Warfare : Tactical HUD Sensivity";
+		title = "Zerty: Electronic Warfare : Tactical HUD Sensitivity";
 		values[] = {1,2,3,4};
 		texts[] = {"high","medium high", "medium low", "low"};
 		default = 2;

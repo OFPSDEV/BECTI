@@ -326,6 +326,16 @@ _i = _i		+ ["3Rnd_UGL_FlareCIR_F"];
 _u = _u		+ [1];
 _p = _p		+ [80];
 
+_i = _i		+ ["6Rnd_GreenSignal_F"];
+_u = _u		+ [1];
+_p = _p		+ [80];
+
+_i = _i		+ ["6Rnd_RedSignal_F"];
+_u = _u		+ [1];
+_p = _p		+ [80];
+
+
+
 //--- Weapons (Nested array elements are defined but skiped in the gear menu)
 _i = _i		+ ["arifle_TRG21_F"];
 _u = _u		+ [0];
@@ -539,6 +549,10 @@ _i = _i		+ ["srifle_GM6_F"];
 _u = _u		+ [3];
 _p = _p		+ [1250];
 
+_i = _i		+ ["srifle_GM6_camo_F"];
+_u = _u		+ [3];
+_p = _p		+ [1250];
+
 _i = _i		+ [["srifle_GM6_SOS_F"]];
 _u = _u		+ [3];
 _p = _p		+ [1900];
@@ -578,6 +592,15 @@ _p = _p		+ [7];
 _i = _i		+ ["hgun_Pistol_heavy_02_F"];
 _u = _u		+ [1];
 _p = _p		+ [10];
+
+_i = _i		+ ["hgun_Pistol_heavy_02_F"];
+_u = _u		+ [1];
+_p = _p		+ [10];
+
+_i = _i		+ ["hgun_Pistol_Signal_F"];
+_u = _u		+ [0];
+_p = _p		+ [10];
+
 
 //--- Uniforms
 _i = _i		+ ["U_O_CombatUniform_ocamo"];
@@ -659,6 +682,18 @@ _p = _p		+ [500];
 
 _i = _i		+ ["V_RebreatherIR"];
 _u = _u		+ [2];
+_p = _p		+ [200];
+
+_i = _i		+ ["V_Chestrig_blk"];  
+_u = _u		+ [1];
+_p = _p		+ [200];
+
+_i = _i		+ ["V_TacVestIR_blk"];  
+_u = _u		+ [1];
+_p = _p		+ [200];
+
+_i = _i		+ ["V_TacVest_blk"];  
+_u = _u		+ [1];
 _p = _p		+ [200];
 
 //--- Backpacks
@@ -824,10 +859,33 @@ _i = _i		+ ["G_Balaclava_blk"];
 _u = _u		+ [0];
 _p = _p		+ [5];
 
-_i = _i		+ ["G_Balaclava_combat"];  
+_i = _i		+ ["G_Balaclava_oli"];  
 _u = _u		+ [0];
 _p = _p		+ [5];
 
+_i = _i		+ ["H_HelmetSpecO_ocamo"];  
+_u = _u		+ [1];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_Cap_brn_SPECOPS"];  
+_u = _u		+ [2];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetO_oucamo"];  
+_u = _u		+ [2];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_ShemagOpen_tan"];  
+_u = _u		+ [3];
+_p = _p		+ [5];
+
+_i = _i		+ ["G_Bandanna_khk"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["G_Balaclava_combat"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
 
 //--- Accessories
 _i = _i		+ ["muzzle_snds_acp"];
@@ -982,7 +1040,7 @@ _p = _p		+ [250];
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf";
 
-//--- Templates (Those lines can be generated in the RPT on purchase by uncommenting the diag_log in Events_UI_GearMenu.sqf >> "onPurchase").
+//--- Templates (Those lines can be generated in the RPT on purchase by uncommenting the diag_log in Events_UI_GearMenu.sqf >> "onPurchase")
 _t = [];
 /*_t = _t		+ [[[["arifle_trg21_f",["","acc_pointer_ir","optic_aco_grn"],["30rnd_556x45_stanag"]],["",[],[]],["hgun_rook40_f",[],["16rnd_9x21_mag"]]],[["u_o_combatuniform_ocamo",["firstaidkit","firstaidkit"]],["V_PlateCarrier2_rgr",["handgrenade","handgrenade"]],["b_assaultpack_khk",["16rnd_9x21_mag","16rnd_9x21_mag","16rnd_9x21_mag","16rnd_9x21_mag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag"]]],["h_helmeto_ocamo",""],[["nvgoggles","binocular"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];
 _t = _t		+ [[[["arifle_trg21_gl_f",["","acc_pointer_ir","optic_aco_grn"],["30rnd_556x45_stanag"]],["",[],[]],["hgun_rook40_f",[],["16rnd_9x21_mag"]]],[["u_o_combatuniform_ocamo",["firstaidkit","firstaidkit"]],["V_PlateCarrier2_rgr",["handgrenade","handgrenade"]],["b_assaultpack_khk",["16rnd_9x21_mag","16rnd_9x21_mag","16rnd_9x21_mag","16rnd_9x21_mag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","30rnd_556x45_stanag","1rnd_he_grenade_shell","1rnd_he_grenade_shell","1rnd_he_grenade_shell","1rnd_he_grenade_shell","1rnd_he_grenade_shell","1rnd_he_grenade_shell","1rnd_he_grenade_shell","1rnd_smokered_grenade_shell","1rnd_smokered_grenade_shell"]]],["h_helmeto_ocamo",""],[["nvgoggles","binocular"],["itemmap","itemgps","itemradio","itemcompass","itemwatch"]]]];

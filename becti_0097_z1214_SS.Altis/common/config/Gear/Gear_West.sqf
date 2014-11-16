@@ -320,8 +320,20 @@ _i = _i		+ ["3Rnd_UGL_FlareCIR_F"];
 _u = _u		+ [1];
 _p = _p		+ [80];
 
+_i = _i		+ ["6Rnd_GreenSignal_F"];
+_u = _u		+ [1];
+_p = _p		+ [80];
+
+_i = _i		+ ["6Rnd_RedSignal_F"];
+_u = _u		+ [1];
+_p = _p		+ [80];
+
 //--- Weapons
 _i = _i		+ ["arifle_MX_F"];
+_u = _u		+ [1];
+_p = _p		+ [400];
+
+_i = _i		+ ["arifle_MX_Black_F"];
 _u = _u		+ [1];
 _p = _p		+ [400];
 
@@ -357,6 +369,10 @@ _i = _i		+ ["arifle_MX_GL_F"];
 _u = _u		+ [1];
 _p = _p		+ [550];
 
+_i = _i		+ ["arifle_MX_GL_Black_F"];
+_u = _u		+ [1];
+_p = _p		+ [550];
+
 _i = _i		+ [["arifle_MX_GL_ACO_F"]];
 _u = _u		+ [1];
 _p = _p		+ [35];
@@ -377,6 +393,10 @@ _i = _i		+ ["arifle_MX_SW_F"];
 _u = _u		+ [1];
 _p = _p		+ [600];
 
+_i = _i		+ ["arifle_MX_SW_Black_F"];
+_u = _u		+ [1];
+_p = _p		+ [600];
+
 _i = _i		+ [["arifle_MX_SW_pointer_F"]];
 _u = _u		+ [2];
 _p = _p		+ [35];
@@ -386,6 +406,10 @@ _u = _u		+ [1];
 _p = _p		+ [35];
 
 _i = _i		+ ["arifle_MXC_F"];
+_u = _u		+ [1];
+_p = _p		+ [400];
+
+_i = _i		+ ["arifle_MXC_Black_F"];
 _u = _u		+ [1];
 _p = _p		+ [400];
 
@@ -418,6 +442,10 @@ _u = _u		+ [1];
 _p = _p		+ [30];
 
 _i = _i		+ ["arifle_MXM_F"];
+_u = _u		+ [2];
+_p = _p		+ [500];
+
+_i = _i		+ ["arifle_MXM_Black_F"];
 _u = _u		+ [2];
 _p = _p		+ [500];
 
@@ -553,7 +581,11 @@ _i = _i		+ [["srifle_EBR_ARCO_pointer_snds_F"]];
 _u = _u		+ [2];
 _p = _p		+ [100];
 
-_i = _i		+ ["srifle_LRR_F"];
+_i = _i		+ ["srifle_LRR_F"]; 
+_u = _u		+ [3];
+_p = _p		+ [1000];
+
+_i = _i		+ ["srifle_LRR_camo_F"]; 
 _u = _u		+ [3];
 _p = _p		+ [1000];
 
@@ -583,6 +615,10 @@ _p = _p		+ [5];
 
 _i = _i		+ ["hgun_Pistol_heavy_01_F"];
 _u = _u		+ [1];
+_p = _p		+ [10];
+
+_i = _i		+ ["hgun_Pistol_Signal_F"];
+_u = _u		+ [0];
 _p = _p		+ [10];
 
 //--- Uniforms
@@ -655,13 +691,24 @@ _i = _i		+ ["V_PlateCarrierSpec_rgr"];
 _u = _u		+ [0];
 _p = _p		+ [500];
 
-
 _i = _i		+ ["V_TacVest_oli"];
 _u = _u		+ [0];
 _p = _p		+ [550];
 
-_i = _i		+ ["V_RebreatherB"];
+_i = _i		+ ["V_RebreatherB"];  
 _u = _u		+ [2];
+_p = _p		+ [200];
+
+_i = _i		+ ["V_Chestrig_blk"];  
+_u = _u		+ [1];
+_p = _p		+ [200];
+
+_i = _i		+ ["V_TacVestIR_blk"];  
+_u = _u		+ [1];
+_p = _p		+ [200];
+
+_i = _i		+ ["V_TacVest_blk"];  
+_u = _u		+ [1];
 _p = _p		+ [200];
 
 //--- Backpacks
@@ -867,9 +914,50 @@ _i = _i		+ ["G_Balaclava_blk"];
 _u = _u		+ [0];
 _p = _p		+ [5];
 
+_i = _i		+ ["G_Balaclava_oli"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
 _i = _i		+ ["G_Balaclava_combat"];  
 _u = _u		+ [0];
 _p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_grass"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_sand"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_snakeskin"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_light_black"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_light_desert"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_light_grass"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_light_sand"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_light_snakeskin"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["G_Bandanna_khk"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
 
 //--- Accessories
 _i = _i		+ ["muzzle_snds_acp"];
