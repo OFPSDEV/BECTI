@@ -49,7 +49,7 @@ _t=_t+			[[20*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,50*CTI_UPGRADE_RATIO,60*CTI
 
 
 _l=_l+			[["Air: Aircraft FFAR", "Unlocks the FFAR Rockets for Aircraft"]];
-_a=_a	+			[false]; //ss83 set to false
+_a=_a	+			[true]; 
 _c=_c +			[[5000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[CTI_UPGRADE_AIR, 1]]];
