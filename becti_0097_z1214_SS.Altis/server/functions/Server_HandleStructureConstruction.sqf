@@ -53,17 +53,10 @@ _completion_last = _completion;
 
 _lasttouch = time;
 
-//--- Await for the site to be constructed or "abandonned"
-while {_completion > 0 && _completion < 100} do {
-	_completion = _structure getVariable "cti_completion";
-	sleep CTI_BASE_CONSTRUCTION_DECAY_DELAY;
+//--- Removed/added stuff from here for instant buildings - SS83 MA
 
-	if (_completion > _completion_last) then { _lasttouch = time };
+_completion = 100;
 
-	if (time - _lasttouch > CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT) then {_structure setVariable ["cti_completion", _completion - CTI_BASE_CONSTRUCTION_DECAY_FROM]};
-
-	_completion_last = _completion;
-};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") - [_structure, objNull]];
