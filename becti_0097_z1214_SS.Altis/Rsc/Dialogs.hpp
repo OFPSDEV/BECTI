@@ -113,6 +113,7 @@ class CTI_RscBuildMenu {
 			text = "Build Defense";
 			action = "['onBuildDefense', lnbCurSelRow 100007] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
+	/*No more workers ss83
 		class CTI_Menu_Control_AddWorker : CTI_Menu_Control_Undo {
 			idc = 100005;
 			
@@ -121,7 +122,7 @@ class CTI_RscBuildMenu {
 			text = "Add Worker";
 			action = "['onAddWorker'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
-		
+	*/	
 		class CTI_Menu_Control_BuildingList : RscListNBox {
 			idc = 100006;
 			
@@ -4044,6 +4045,7 @@ class CTI_RscWorkersMenu {
 			onLBSelChanged = "['onWorkersListLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_WorkersMenu.sqf'";
 			// onLBDblClick = "['onBuildStructure', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
+	 
 		class CTI_Menu_Control_Disband : RscButton {
 			idc = 260003;
 			
@@ -4052,9 +4054,10 @@ class CTI_RscWorkersMenu {
 			w = "SafeZoneW * 0.24";
 			h = "SafeZoneH * 0.04";
 			
-			text = "Disband Worker";
+			text = "Relax, pesky workers have been removed!";
 			action = "['onWorkerDisbandPressed', lnbCurSelRow 260002] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_WorkersMenu.sqf'";
 		};
+	
 		class CTI_Menu_Control_Sell : CTI_Menu_Control_Disband {
 			idc = 260004;
 			
@@ -4071,6 +4074,7 @@ class CTI_RscWorkersMenu {
 			text = "Remove Military Installation AND Its Buildings";
 			action = "['onSellCompleteBase'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_WorkersMenu.sqf'";
 		};
+	
 		class CTI_Control_Exit : RscButton {
 			idc = 22555;
 			

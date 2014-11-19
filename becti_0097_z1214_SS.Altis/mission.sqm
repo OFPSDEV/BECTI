@@ -100,11 +100,11 @@ class Mission
 					position[]={14502.976,8.7504902,5865.584};
 					id=2;
 					side="EAST";
-					vehicle="O_medic_F";
+					vehicle="O_soldier_exp_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Alpha";
+					description="Alpha - Demo Specialist";
 					syncId=2;
 					synchronizations[]={1};
 				};
@@ -125,7 +125,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Bravo";
+					description="Bravo - Medic";
 					syncId=3;
 					synchronizations[]={1};
 				};
@@ -146,7 +146,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Charlie";
+					description="Charlie - Demo Specialist";
 					syncId=4;
 					synchronizations[]={1};
 				};
@@ -167,7 +167,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Delta";
+					description="Delta - Sniper";
 					syncId=5;
 					synchronizations[]={1};
 				};
@@ -188,7 +188,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Echo";
+					description="Echo - Rifleman";
 					syncId=6;
 					synchronizations[]={1};
 				};
@@ -209,7 +209,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Foxtrot";
+					description="Foxtrot - Medic";
 					syncId=7;
 					synchronizations[]={1};
 				};
@@ -230,7 +230,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Golf";
+					description="Golf - Medic";
 					syncId=8;
 					synchronizations[]={1};
 				};
@@ -251,7 +251,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Hotel";
+					description="Hotel - Demo Specialist";
 					syncId=9;
 					synchronizations[]={1};
 				};
@@ -272,7 +272,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="India";
+					description="India - Sniper";
 					syncId=10;
 					synchronizations[]={1};
 				};
@@ -289,11 +289,11 @@ class Mission
 					position[]={14504.229,8.3156538,5864.2305};
 					id=11;
 					side="EAST";
-					vehicle="O_Soldier_F";
+					vehicle="O_soldier_exp_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Juliet";
+					description="Juliet - Demo Specialist";
 					syncId=11;
 					synchronizations[]={1};
 				};
@@ -314,7 +314,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Kilo";
+					description="Kilo - Medic";
 					syncId=12;
 					synchronizations[]={1};
 				};
@@ -335,7 +335,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Lima";
+					description="Lima - Medic";
 					syncId=13;
 					synchronizations[]={1};
 				};
@@ -356,7 +356,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Mike";
+					description="Mike - Demo Specialist";
 					syncId=14;
 					synchronizations[]={1};
 				};
@@ -377,7 +377,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="November";
+					description="November - Sniper";
 					syncId=15;
 					synchronizations[]={1};
 				};
@@ -398,7 +398,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Oscar";
+					description="Oscar - Pilot";
 					syncId=16;
 					synchronizations[]={1};
 				};
@@ -415,11 +415,11 @@ class Mission
 					position[]={2307.9097,11.550919,9280.3311};
 					id=17;
 					side="WEST";
-					vehicle="B_medic_F";
+					vehicle="B_soldier_exp_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Alpha";
+					description="Alpha - Demo Specialist";
 					syncId=17;
 					synchronizations[]={0};
 				};
@@ -440,7 +440,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Bravo";
+					description="Bravo - Medic";
 					syncId=18;
 					synchronizations[]={0};
 				};
@@ -461,7 +461,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Charlie";
+					description="Charlie - Demo Specialist";
 					syncId=19;
 					synchronizations[]={0};
 				};
@@ -482,7 +482,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Delta";
+					description="Delta - Sniper";
 					syncId=20;
 					synchronizations[]={0};
 				};
@@ -503,7 +503,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Echo";
+					description="Echo - Sniper";
 					syncId=21;
 					synchronizations[]={0};
 				};
@@ -524,7 +524,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Foxtrot";
+					description="Foxtrot - Medic";
 					syncId=22;
 					synchronizations[]={0};
 				};
@@ -545,7 +545,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Golf";
+					description="Golf - Medic";
 					syncId=23;
 					synchronizations[]={0};
 				};
@@ -566,7 +566,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Hotel";
+					description="Hotel - Demo Specialist";
 					syncId=24;
 					synchronizations[]={0};
 				};
@@ -587,7 +587,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="India";
+					description="India - Sniper";
 					syncId=25;
 					synchronizations[]={0};
 				};
@@ -608,7 +608,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Juliet";
+					description="Juliet - Sniper";
 					syncId=26;
 					synchronizations[]={0};
 				};
@@ -629,7 +629,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Kilo";
+					description="Kilo - Medic";
 					syncId=27;
 					synchronizations[]={0};
 				};
@@ -650,7 +650,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Lima";
+					description="Lima - Medic";
 					syncId=28;
 					synchronizations[]={0};
 				};
@@ -671,7 +671,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Mike";
+					description="Mike - Demo Specialist";
 					syncId=29;
 					synchronizations[]={0};
 				};
@@ -692,7 +692,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="November";
+					description="November - Sniper";
 					syncId=30;
 					synchronizations[]={0};
 				};
@@ -713,7 +713,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Oscar";
+					description="Oscar - Rifleman";
 					syncId=31;
 					synchronizations[]={0};
 				};
@@ -734,7 +734,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Papa";
+					description="Papa - Pilot";
 					syncId=32;
 					synchronizations[]={0};
 				};
@@ -755,7 +755,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Quebec";
+					description="Quebec - Pilot";
 					syncId=33;
 					synchronizations[]={0};
 				};
@@ -776,7 +776,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Romeo";
+					description="Romeo - Medic";
 					syncId=34;
 					synchronizations[]={0};
 				};
@@ -797,7 +797,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Sierra";
+					description="Sierra - Medic";
 					syncId=35;
 					synchronizations[]={0};
 				};
@@ -818,7 +818,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Tango";
+					description="Tango - Demo Specialist";
 					syncId=36;
 					synchronizations[]={0};
 				};
@@ -899,7 +899,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Papa";
+					description="Papa - PIlot";
 					syncId=40;
 					synchronizations[]={1};
 				};
@@ -920,7 +920,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Quebec";
+					description="Quebec - Pilot";
 					syncId=41;
 					synchronizations[]={1};
 				};
@@ -941,7 +941,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Romeo";
+					description="Romeo - Pilot";
 					syncId=42;
 					synchronizations[]={1};
 				};
@@ -962,7 +962,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Sierra";
+					description="Sierra - Medic";
 					syncId=43;
 					synchronizations[]={1};
 				};
@@ -983,7 +983,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					description="Tango";
+					description="Tango - Demo Specialist";
 					syncId=44;
 					synchronizations[]={1};
 				};
@@ -1171,7 +1171,7 @@ class Mission
 						};
 						class Item3
 						{
-							value="""A3_Modules_F_Curator_Effects"",""A3_Modules_F_Curator_Misc"",""A3_Modules_F_Curator_Lightning"",""A3_Modules_F_Curator_Environment"",""A3_Modules_F_Curator_Ordnance"",""A3_Modules_F_Curator_Multiplayer"",""A3_Characters_F_INDEP""";  //ss83 zeus addons
+							value="""A3_Modules_F_Curator_Effects"",""A3_Modules_F_Curator_Misc"",""A3_Modules_F_Curator_Lightning"",""A3_Modules_F_Curator_Environment"",""A3_Modules_F_Curator_Ordnance"",""A3_Modules_F_Curator_Multiplayer"",""A3_Characters_F_INDEP""";
 							parentCls="ModuleCuratorAddAddons_F";
 							typeName="Addons";
 						};

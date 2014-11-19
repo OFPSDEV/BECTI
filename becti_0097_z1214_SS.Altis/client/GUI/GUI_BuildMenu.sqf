@@ -17,11 +17,11 @@ while { true } do {
 	if (_last_funds != _funds) then {
 		((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100008) ctrlSetStructuredText (parseText format["Resources: <t color='%2'>$%1</t>", _funds, CTI_P_Coloration_Money]);
 	};
-	
+/*no more workers ss83	
 	if (_last_workercount != _count) then {
 		((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100009) ctrlSetStructuredText (parseText format["Workers: <t color='#66baff'>%1</t>/%2", _count, CTI_BASE_WORKERS_LIMIT]);
 	};
-	
+*/	
 	_last_funds = _funds;
 	_last_workercount = _count;
 	

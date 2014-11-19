@@ -12,7 +12,7 @@ _l=[];
 //barrack
 _l=_l+			[["Factory: Barracks", "Unlock better infantry units"]];
 _a=_a	+			[true];
-_c=_c +			[[2000,4000,8000]];
+_c=_c +			[[5000,10000,15000]];
 _lev=_lev+	[3];
 _lin=_lin+	[[[CTI_UPGRADE_GEAR,1],[CTI_UPGRADE_GEAR,2],[CTI_UPGRADE_GEAR,3]]];
 _t=_t+			[[10*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,30*CTI_UPGRADE_RATIO]];
@@ -20,21 +20,21 @@ _t=_t+			[[10*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,30*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[["Factory: Light Factory", "Unlock better motorized units"]];
 _a=_a	+			[true];
-_c=_c +			[[3000]];
+_c=_c +			[[10000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[]]];
 _t=_t+			[[20*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Factory: Heavy Factory", "Unlock better armored units"]];
+_l=_l+			[["Factory: Heavy Factory", "Unlock better armoured units"]];
 _a=_a	+			[true];
-_c=_c +			[[10000,15000]];
+_c=_c +			[[15000,40000]];
 _lev=_lev+	[2];
 _lin=_lin+	[[[CTI_UPGRADE_LIGHT,1],[]]];
 _t=_t+			[[50*CTI_UPGRADE_RATIO,100*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[["Factory: Aircraft Factory", "Unlock better aircraft units"]];
 _a=_a	+			[true];
-_c=_c +			[[15000,30000,60000]];
+_c=_c +			[[20000,40000,60000]];
 _lev=_lev+	[3];
 _lin=_lin+	[[[],[],[]]];
 _t=_t+			[[50*CTI_UPGRADE_RATIO,100*CTI_UPGRADE_RATIO,150*CTI_UPGRADE_RATIO]];

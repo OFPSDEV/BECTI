@@ -40,7 +40,7 @@ class Params {
 		title = "Base: Military Installation Price";
 		values[] = {10000,20000,30000};
 		texts[] = {"$10000","$20000","$30000"};
-		default = 10000;
+		default = 30000;
 	};
 	
 	class CTI_ECONOMY_INCOME_CYCLE {
@@ -54,7 +54,7 @@ class Params {
 		title = "INCOME: Starting Funds (East Commander)";
 		values[] = {40000,50000,60000,70000,80000,90000,100000,125000,150000,200000};
 		texts[] = {"$40000","$50000","$60000","$70000","$80000","$90000","$100000","$125000","$150000","$200000"};
-		default = 50000;
+		default = 80000;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_EAST {
 		title = "INCOME: Starting Funds (East Players)";
@@ -66,7 +66,7 @@ class Params {
 		title = "INCOME: Starting Funds (West Commander)";
 		values[] = {40000,50000,60000,70000,80000,90000,100000,125000,150000,200000};
 		texts[] = {"$40000","$50000","$60000","$70000","$80000","$90000","$100000","$125000","$150000","$200000"};
-		default = 50000;
+		default = 80000;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_WEST {
 		title = "INCOME: Starting Funds (West Players)";
@@ -207,9 +207,9 @@ class Params {
 
 	class CTI_MAX_MISSION_TIME {
 		title = "Zerty: MISSION : Time Limit";
-		values[] = {8, 10};
-		texts[] = {"8h", "10h"};
-		default = 10;
+		values[] = {8, 10, 15, 20};
+		texts[] = {"8h", "10h", "15h", "20h"};
+		default = 15;
 	};
 	
 	class CTI_VICTORY_HQ {
