@@ -916,6 +916,10 @@ _i = _i		+ ["optic_arco"];
 _u = _u		+ [1];
 _p = _p		+ [500];
 
+_i = _i		+ ["optic_Hamr"];
+_u = _u		+ [1];
+_p = _p		+ [500];
+
 _i = _i		+ ["optic_Holosight"];
 _u = _u		+ [0];
 _p = _p		+ [200];
