@@ -39,6 +39,7 @@
 private ["_completion", "_completion_ratio", "_completion_last", "_direction", "_isDestroyed", "_lasttouch", "_position", "_side", "_structure", "_variable"];
 
 _side = _this select 0;
+_side_id= (_side) call CTI_CO_FNC_GetSideID;
 _structure = _this select 1;
 _variable = _this select 2;
 _position = _this select 3;
