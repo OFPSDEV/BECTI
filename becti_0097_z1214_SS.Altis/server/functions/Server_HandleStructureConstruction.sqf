@@ -71,7 +71,9 @@ if (_isDestroyed) then {
     };
 } else {
     //--- Normal construction cycle
-    sleep 180;  //this timer determines how long it takes for the structure to pop up, ss83
+    if(!CTI_DEBUG) then {
+        sleep CTI_BASE_CONSTRUCTION_TIME; //this timer determines how long it takes for the structure to pop up, ss83
+    };	
     _completion = 100;
 }; 
 
