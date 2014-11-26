@@ -632,15 +632,15 @@ CTI_UI_Gear_GetUnitEquipment = {
 		_handgun_accessories = (handgunItems _target) call CTI_CO_FNC_ArrayToLower;
 
 		//--- Currently loaded magazines
-		/*
+
 		_primary_current_magazine = (primaryWeaponMagazine _target) call CTI_CO_FNC_ArrayToLower;
 		_secondary_current_magazine = (secondaryWeaponMagazine _target) call CTI_CO_FNC_ArrayToLower;
 		_handgun_current_magazine = (handgunMagazine _target) call CTI_CO_FNC_ArrayToLower;
-		*/
-		_primary_current_magazine = [];
+
+		/*_primary_current_magazine = [];
 		_secondary_current_magazine = [];
 		_handgun_current_magazine = [];
-
+		*/
 		//--- Accessories
 		_headgear = toLower(headgear _target);
 		_goggles = toLower(goggles _target);
@@ -650,21 +650,27 @@ CTI_UI_Gear_GetUnitEquipment = {
 		_items = [["", ""], ["", "", "", "", ""]];
 
 		{
-			_slot = switch (getText(configFile >> 'CfgWeapons' >> _x >> 'simulation')) do {
-				case "NVGoggles": {[0,0]};
-				case "Binocular": {[0,1]};
-				case "ItemMap": {[1,0]};
-				case "ItemGPS": {[1,1]};
-				case "ItemRadio": {[1,2]};
-				case "ItemCompass": {[1,3]};
-				case "ItemWatch": {[1,4]};
-				case "Laserdesignator": {[0,1]}; //--- ss83 fix by sari
-				default {[-1]};
-			};
-			if (_slot select 0 == -1) then { //--- The simulation couldn't be determined, try to get the subtype maybe?
+			_slot=[-1];
+			if ((getNumber(configFile >> 'CfgWeapons' >> _x >> 'ItemInfo' >> 'type')) ==CTI_SUBTYPE_UAVTERMINAL )  then {
+					_slot = [1,1];
+			} else {
+				_slot = switch (getText(configFile >> 'CfgWeapons' >> _x >> 'simulation')) do {
+					case "NVGoggles": {[0,0]};
+					case "Binocular": {[0,1]};
+					case "ItemMap": {[1,0]};
+					case "ItemGPS": {[1,1]};
+					case "ItemRadio": {[1,2]};
+					case "ItemCompass": {[1,3]};
+					case "ItemWatch": {[1,4]};
+					case "weapon": {[0,1]};
+					case "Laserdesignator": {[0,1]};
+					default {[-1]};
+				};
+			/*if (_slot select 0 == -1) then { //--- The simulation couldn't be determined, try to get the subtype maybe?
 				switch (getNumber(configFile >> 'CfgWeapons' >> _x >> 'ItemInfo' >> 'type')) do {
 					case CTI_SUBTYPE_UAVTERMINAL: {_slot = [1,1]};
 				};
+			};*/
 			};
 			if (_slot select 0 != -1) then { (_items select (_slot select 0)) set [_slot select 1, _x] };
 		} forEach _allitems;
@@ -683,17 +689,17 @@ CTI_UI_Gear_GetUnitEquipment = {
 
 		_o=[];
 		{
-			_i=_x select 0;
-			_c=_x select 1;
-			_ci=0;
-			{
-				_ic= _c select _ci;
-				for "_j" from 0 to _ic  do {_o = _o + [(_x)]};
-			} forEach _i;
-		} forEach [(getBackpackCargo _target)] + [(getWeaponCargo _target)] + [(getMagazineCargo _target)] + [(getItemCargo _target)];;
-		//_o= [(getBackpackCargo _target)] + [(getWeaponCargo _target)] + [(getMagazineCargo _target)] + [(getItemCargo _target)];
-		//diag_log _o;
-		//_o=(_o) call CTI_CO_FNC_ArrayToLower;
+			for "_i" from 1 to (((getWeaponCargo _target) select 1) select _forEachindex)  do {_o set [count _o,_x];};
+		} forEach ((getWeaponCargo _target) select 0);
+		{
+			for "_i" from 1 to (((getBackpackCargo _target) select 1) select _forEachindex)  do {_o set [count _o,_x];};
+		} forEach ((getBackpackCargo _target) select 0);
+		{
+			for "_i" from 1 to (((getMagazineCargo _target) select 1) select _forEachindex)  do {_o set [count _o,_x];};
+		} forEach ((getMagazineCargo _target) select 0);
+		{
+			for "_i" from 1 to (((getItemCargo _target) select 1) select _forEachindex)  do {_o set [count _o,_x];};
+		} forEach ((getItemCargo _target) select 0);
 		[
 			[["",[],[]], ["",[],[]], ["",[],[]]],
 			[["",[]], ["",[]],[(typeOf _target),_o]],
