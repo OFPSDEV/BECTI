@@ -272,10 +272,10 @@ class Params {
 	};		
 	class CTI_PLAYER_REEQUIP {
 		title = "Zerty: RESPAWN : Reequip Gear";
-		values[] = {0,1};
-		texts[] = {"False","True"};
-		default = 1;
-	};	
+		values[] = {0,1,2};
+		texts[] = {"False","Last Purchase","Continuous"};
+		default = 2;
+	};
 	class CTI_PLAYER_TOWN_RESPAWN {
 		title = "Zerty: RESPAWN : On occupied towns";
 		values[] = {1};

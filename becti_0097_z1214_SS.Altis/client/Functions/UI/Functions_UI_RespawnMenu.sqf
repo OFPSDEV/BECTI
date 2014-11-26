@@ -282,7 +282,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 };*/
 	if !(_respawn_ai) then { //--- Stock respawn
 		// --- zerty edit
-		if  (!isNil {CTI_P_LastPurchase } &&  (CTI_PLAYER_REEQUIP == 1 ) ) then {
+		if  (!isNil {CTI_P_LastPurchase } &&  (CTI_PLAYER_REEQUIP > 1 ) ) then {
 			[player, CTI_P_LastPurchase] call CTI_CO_FNC_EquipUnit;
 		} else {
 			[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip pure clients
@@ -290,7 +290,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 		//[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip the default equipment
 	} else { //--- Respawn in own AI
 		// --- zerty edit
-		if  (!isNil {CTI_P_LastPurchase } &&  (CTI_PLAYER_REEQUIP == 1 ) ) then {
+		if  (!isNil {CTI_P_LastPurchase } &&  (CTI_PLAYER_REEQUIP > 1 ) ) then {
 			[player, CTI_P_LastPurchase] call CTI_CO_FNC_EquipUnit;
 		} else {
 			[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
