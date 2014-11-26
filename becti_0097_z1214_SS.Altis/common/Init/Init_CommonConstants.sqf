@@ -378,6 +378,7 @@ CTI_BASE_AREA_MAX = 2;
 CTI_BASE_AREA_RANGE = 300;  //ss83 reduced from 500
 
 //--- Base: Construction
+CTI_BASE_CONSTRUCTION_TIME = 180; //--- Length of time a structure takes to build, in seconds.
 CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 300; //--- Decay starts after x seconds unattended.
 CTI_BASE_CONSTRUCTION_DECAY_DELAY = 1; //--- Decay each x seconds.
 CTI_BASE_CONSTRUCTION_DECAY_FROM = 0.50; //--- Decay of x / 100 each y seconds.
