@@ -6,7 +6,7 @@
 //                   visit us : atmarma.fr                 //
 /////////////////////////////////////////////////////////
 
-private ["_position","_cut","_dialog","_s_alt","_s_alt_text","_sound"];
+private ["_position","_cut","_dialog","_s_alt","_s_alt_text","_sound","_loadout"];
 
 waitUntil { !isNull player };
 [] execVM "Addons\ATM_airdrop\functions.sqf";
@@ -46,7 +46,7 @@ ATM_Jump_mapclick = if(true) then{
 };
 
 _target = player;
-//_loadout=[_target] call Getloadout;
+_loadout=(player) call CTI_UI_Gear_GetUnitEquipment; // Save current loadout
 
 _posJump = getMarkerPos "mkr_halo";
 _x = _posJump select 0;
@@ -84,9 +84,8 @@ hint parseText "<t size='1.3' color='#2394ef'>HALO JUMP</t><br /><br />Loading y
 
 deletevehicle (_target getvariable "lgtarray"); _target setvariable ["lgtarray",nil,true];
 
-
 //0=[_target,_loadout] call Setloadout; // - Radioman - Replacing the ATM rearm function to use our pre-existing function, so that the formats for the gear can be used. 
-[player, CTI_P_LastPurchase] call CTI_CO_FNC_EquipUnit;
+[player, _loadout] call CTI_CO_FNC_EquipUnit;
 
 if(!alive _target) then {
 	_cut = nearestObjects [player, ["Steerable_Parachute_F"], 15];
@@ -95,7 +94,7 @@ if(!alive _target) then {
 	} foreach _cut;
 	sleep 5;
 	//0=[_target,_loadout] call Setloadout; // - Radioman - Replacing the ATM rearm function to use our pre-existing function, so that the formats for the gear can be used. 
-	[player, CTI_P_LastPurchase] call CTI_CO_FNC_EquipUnit;
+	[player, _loadout] call CTI_CO_FNC_EquipUnit;
 };
 deleteMarker "mkr_halo";
 hint parseText "<t size='1.3' color='#2394ef'>HALO JUMP</t><br /><br />GEAR LOADED <br />";
