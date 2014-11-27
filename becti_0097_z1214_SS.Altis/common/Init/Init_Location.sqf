@@ -61,6 +61,15 @@ if (CTI_IsClient) then {
 	_marker setMarkerColorLocal _coloration;
 	_marker setMarkerAlphaLocal 0;
 
+
+	//--- Area marker
+	_marker = createMarkerLocal [format ["cti_town_capareaMarker_%1", _town], getPos _town];
+	_marker setMarkerShapeLocal "ELLIPSE";
+	_marker setMarkerBrushLocal "Border";
+	_marker setMarkerSizeLocal [CTI_TOWNS_CAPTURE_RANGE, CTI_TOWNS_CAPTURE_RANGE];
+	_marker setMarkerColorLocal "ColorBlack";
+	_marker setMarkerAlphaLocal 1;
+
 	//--- Center marker
 	_marker = createMarkerLocal [format ["cti_town_marker_%1", _town], getPos _town];
 	_marker setMarkerTypeLocal "mil_flag";

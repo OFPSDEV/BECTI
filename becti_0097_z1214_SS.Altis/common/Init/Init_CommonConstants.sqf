@@ -508,7 +508,7 @@ CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 10; //--- Keep values of 10
 
 CTI_MARKERS_OPACITY = 0.5;
-CTI_MARKERS_TOWN_AREA_RANGE = 20;
+CTI_MARKERS_TOWN_AREA_RANGE = 325; //--- Controls award area. Made larger than the capture radius, so you can safely wait for capture money without triggering capture.
 CTI_MARKERS_UNITS_DEAD_DELAY = 50;
 CTI_MARKERS_VEHICLES_DEAD_DELAY = 125;
 
