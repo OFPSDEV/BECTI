@@ -27,7 +27,7 @@
 	  -> This will add the content of gear on the player's vehicle
 */
 
-private ["_count", "_item", "_loadout", "_vehicle"];
+private ["_count", "_get", "_item", "_loadout", "_type", "_vehicle"];
 
 _vehicle = _this select 0;
 _loadout = _this select 1;
@@ -45,8 +45,15 @@ if !(alive _vehicle) exitWith {};
 {
 	_item = _x select 0;
 	_count = _x select 1;
-
-	_vehicle addItemCargoGlobal [_item, _count];
+	_get = (missionNamespace getVariable _item);
+	_type = if (typeName (_get select 1) == "STRING") then {_get select 1} else {(_get select 1) select 0};
+	
+	if(_type=="Backpack") then{
+		_vehicle addBackpackCargoGlobal [_item, _count];
+	}else{
+		_vehicle addItemCargoGlobal [_item, _count];
+	};
+	
 	/*switch (_item call CTI_CO_FNC_GetItemBaseConfig) do { //todo figure out bout that goggle mystery
 		case "CfgMagazines": { _vehicle addMagazineCargoGlobal [_item, _count] };
 		case "CfgWeapons": { _vehicle addWeaponCargoGlobal [_item, _count] };
