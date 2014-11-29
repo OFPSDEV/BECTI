@@ -46,12 +46,15 @@ if !(alive _vehicle) exitWith {};
 	_item = _x select 0;
 	_count = _x select 1;
 	_get = (missionNamespace getVariable _item);
-	_type = if (typeName (_get select 1) == "STRING") then {_get select 1} else {(_get select 1) select 0};
-	
-	if(_type=="Backpack") then{
-		_vehicle addBackpackCargoGlobal [_item, _count];
+	if (isNil '_get') then {
+		_vehicle addItemCargoGlobal [_item, _count]; // If we don't know what kind of a thing it is, try adding it anyway
 	}else{
-		_vehicle addItemCargoGlobal [_item, _count];
+		_type = if (typeName (_get select 1) == "STRING") then {_get select 1} else {(_get select 1) select 0};		
+		if(_type=="Backpack") then{
+			_vehicle addBackpackCargoGlobal [_item, _count];
+		}else{
+			_vehicle addItemCargoGlobal [_item, _count];
+		};
 	};
 	
 	/*switch (_item call CTI_CO_FNC_GetItemBaseConfig) do { //todo figure out bout that goggle mystery
