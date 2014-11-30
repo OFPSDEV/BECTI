@@ -466,10 +466,16 @@ CTI_VEHICLES_HOOKERS_LIGHT = ["I_Heli_light_03_unarmed_F", "B_Heli_Light_01_F"];
 CTI_VEHICLES_HOOKERS_MEDIUM = ["B_Heli_Transport_01_F", "O_Heli_Light_02_unarmed_F"]; //--- Medium Lifters
 CTI_VEHICLES_HOOKERS_HEAVY = ["I_Heli_Transport_02_F", "B_Heli_Transport_03_F", "O_Heli_Transport_04_F"]; //--- Heavy Lifters
 
-//--- Types of liftable Vehicles 
+/******PRE SLING LOADING*****        --- Types of liftable Vehicles 
 CTI_VEHICLES_HOOKABLE_LIGHT = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Motorcycle"]; //--- Vehicles which may be carried by light lifters
 CTI_VEHICLES_HOOKABLE_MEDIUM = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Motorcycle","Car", "Ship", "Truck","Wheeled_APC"]; //--- Vehicles which may be carried by medium lifters
 CTI_VEHICLES_HOOKABLE_HEAVY = ["Car", "Ship", "Truck","Wheeled_APC","Tracked_APC", "Tank", "Air"]; //--- Vehicles which may be carried by heavy lifters (do not allow any vehicles taht can go inside)
+******************************/
+//--- Types of liftable Vehicles 
+CTI_VEHICLES_HOOKABLE_LIGHT = [""]; //--- Vehicles which may be carried by light lifters
+CTI_VEHICLES_HOOKABLE_MEDIUM = ["Wheeled_APC"]; //--- Vehicles which may be carried by medium lifters
+CTI_VEHICLES_HOOKABLE_HEAVY = ["Wheeled_APC","Tracked_APC", "Tank", "Air"]; //--- Vehicles which may be carried by heavy lifters (do not allow any vehicles that can go inside)
+
 
 //--- Total lifters/liftable vehicles
 CTI_VEHICLES_HOOKERS = [CTI_VEHICLES_HOOKERS_LIGHT, CTI_VEHICLES_HOOKERS_MEDIUM, CTI_VEHICLES_HOOKERS_HEAVY]; //--- All lifters
