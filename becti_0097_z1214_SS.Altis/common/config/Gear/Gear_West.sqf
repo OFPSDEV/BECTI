@@ -8,7 +8,6 @@ _u = [];
 _p = [];
 
 //--- Magazines
-/--- Magazines
 _i = _i		+ ["ATMine_Range_Mag"];
 _u = _u		+ [1];
 _p = _p		+ [100];
