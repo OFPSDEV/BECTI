@@ -48,6 +48,12 @@ CTI_UI_Respawn_GetAvailableLocations = {
 			if (_x distance CTI_DeathPosition <= CTI_RESPAWN_AI_RANGE && !(_x in _ignore_mobile_crew) && !isPlayer _x) then {[_list, _x] call CTI_CO_FNC_ArrayPush};
 		} forEach ((units player - [player]) call CTI_CO_FNC_GetLiveUnits);
 	};
+	
+	//--- Add camps if available
+	if ((missionNamespace getVariable "CTI_RESPAWN_CAMPS_MODE") > 0) then {
+		_side = CTI_P_SideJoined;
+		_list = _list + (_side Call CTI_UI_Respawn_GetCamps);
+	};
 
 	_list
 };
@@ -280,24 +286,116 @@ CTI_UI_Respawn_OnRespawnReady = {
 	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
 	CTI_P_Respawning = false;
 };*/
-	if !(_respawn_ai) then { //--- Stock respawn
-		// --- zerty edit
-		if  (!isNil {CTI_P_LastPurchase } &&  (CTI_PLAYER_REEQUIP == 1 ) ) then {
-			[player, CTI_P_LastPurchase] call CTI_CO_FNC_EquipUnit;
-		} else {
-			[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip pure clients
-		};
-		//[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip the default equipment
-	} else { //--- Respawn in own AI
-		// --- zerty edit
-		if  (!isNil {CTI_P_LastPurchase } &&  (CTI_PLAYER_REEQUIP == 1 ) ) then {
-			[player, CTI_P_LastPurchase] call CTI_CO_FNC_EquipUnit;
-		} else {
-			[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
-		};
-		[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
-	};
-	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
-	CTI_P_Respawning = false;
+
+/****************ss83 edit w/help of BENNY
+if !(_respawn_ai) then { //--- Stock respawn
+// --- zerty edit
+if (!isNil {CTI_P_LastPurchase } && (CTI_PLAYER_REEQUIP > 1 ) ) then {
+[player, CTI_P_LastPurchase] call CTI_CO_FNC_EquipUnit;
+} else {
+[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip pure clients
 };
+//[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip the default equipment
+} else { //--- Respawn in own AI
+// --- zerty edit
+if (!isNil {CTI_P_LastPurchase } && (CTI_PLAYER_REEQUIP > 1 ) ) then {
+[player, CTI_P_LastPurchase] call CTI_CO_FNC_EquipUnit;
+} else {
+[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
+};
+[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
+};
+***********************ss83 edit w/help of BENNY*/
+if !(_respawn_ai) then { //--- Stock respawn
+if !(isNil "CTI_P_LastPurchase") then {
+[player, CTI_P_LastPurchase] call CTI_CO_FNC_EquipUnit; //--- Equip the last known equipment
+} else {
+[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip the default equipment
+}
+} else { //--- Respawn in own AI
+[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
+};
+if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
+CTI_P_Respawning = false;
+};
+CTI_UI_Respawn_GetCamps = {
+	Private ['_camps','_closestCamp','_enemySide','_get','_hostiles','_list','_nearestCamps','_respawnCampsRuleMode','_respawnMinRange','_side','_town','_townSID'];
+
+	_side = _this;
+
+	_respawnCampsRuleMode = missionNamespace getVariable "CTI_RESPAWN_CAMPS_RULE_MODE";
+	_respawnMinRange = missionNamespace getVariable "CTI_RESPAWN_CAMPS_SAFE_RADIUS";
+	_list = [];
+	_enemySide = sideEnemy;
+
+	switch (missionNamespace getVariable "CTI_RESPAWN_CAMPS_MODE") do {
+		case 1: {
+			//--- Classic Respawn
+			_town = (CTI_DeathPosition) Call CTI_CO_FNC_GetClosestTown;
+			if !(isNull _town) then {
+				if (_town distance CTI_DeathPosition < (missionNamespace getVariable "CTI_RESPAWN_CAMPS_RANGE")) then {
+					_camps = [_town,_side] Call CTI_CO_FNC_GetFriendlyCamps; //,true  //camp rep stuff
+					if (count _camps > 0) then {
+						if (_respawnCampsRuleMode > 0) then {
+							_closestCamp = [CTI_DeathPosition,_camps] Call CTI_CO_FNC_GetClosestEntity;
+							_enemySide = if (_side == west) then {[east]} else {[west]};
+							if (_respawnCampsRuleMode == 2) then {_enemySide = _enemySide + [resistance]};
+							_hostiles = [_closestCamp,_enemySide,_respawnMinRange] Call CTI_CO_FNC_GetHostilesInArea;
+							if (CTI_DeathPosition distance _closestCamp < _respawnMinRange && _hostiles > 0) then {_camps = _camps - [_closestCamp]};
+						};
+						_list = _list + _camps;
+					};
+				};
+			};
+		};
+		case 2: {
+		//--- Enhanced Respawn - Get the camps around the unit
+			_nearestCamps = CTI_DeathPosition nearEntities [CTI_Logic_Camp, (missionNamespace getVariable "CTI_RESPAWN_CAMPS_RANGE")];
+			{
+				if !(isNil {_x getVariable 'cti_town_sideID'}) then {
+					if ((_side Call CTI_CO_FNC_GetSideID) == (_x getVariable 'cti_town_sideID') ) then { //&& alive(_x getVariable "CTI_CO_CAMP") // will reactivate when camps can be destroyed
+						if (_respawnCampsRuleMode > 0) then {
+							if (CTI_DeathPosition distance _x < _respawnMinRange) then {
+								_enemySide = if (_side == west) then {[east]} else {[west]};
+								if (_respawnCampsRuleMode == 2) then {_enemySide = _enemySide + [resistance]};
+								_hostiles = [_x,_enemySide,_respawnMinRange] Call CTI_CO_FNC_GetHostilesInArea;
+								if (_hostiles == 0) then {_list = _list + [_x]};
+							} else {
+								_list = _list + [_x];					
+							};
+						};
+					};	
+				};
+			} forEach _nearestCamps;		
+		};
+		case 3: {
+			//--- Defender Only Respawn - Get the camps around the unit only if the town is friendly to the unit.
+			_nearestCamps = CTI_DeathPosition nearEntities [CTI_Logic_Camp, (missionNamespace getVariable "CTI_RESPAWN_CAMPS_RANGE")];
+			{
+				if !(isNil {_x getVariable 'cti_town_sideID'}) then {
+					_town = _x getVariable 'town';
+					_townSID = _town getVariable 'cti_town_sideID';
+					if ((_side Call CTI_CO_FNC_GetSideID) == _townSID && (_x getVariable 'cti_town_sideID') == _townSID) then { //&& alive(_x getVariable "CTI_CO_CTI_CO_CAMP") // see above.
+						if (_respawnCampsRuleMode > 0) then {
+							if (CTI_DeathPosition distance _x < _respawnMinRange) then {
+								_enemySide = if (_side == west) then {[east]} else {[west]};
+								if (_respawnCampsRuleMode == 2) then {_enemySide = _enemySide + [resistance]};
+								_hostiles = [_x,_enemySide,_respawnMinRange] Call CTI_CO_FNC_GetHostilesInArea;
+								if (_hostiles == 0) then {_list = _list + [_x]};
+							} else {
+								_list = _list + [_x];
+							};
+						} else {
+							_list = _list + [_x];
+						};
+					};
+				};
+			} forEach _nearestCamps;
+		};
+	};
+
+	//--- Return the available camps
+	_list;
+};
+
 

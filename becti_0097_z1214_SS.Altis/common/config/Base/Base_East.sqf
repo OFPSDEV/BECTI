@@ -66,56 +66,56 @@ _specials = _specials		+ [[["DMG_Reduce", 7]]];
 
 _headers = _headers 		+ [[CTI_BARRACKS, "Barracks", "Barracks"]];
 _classes = _classes 		+ [["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"]];
-_prices = _prices 			+ [3000];
+_prices = _prices 			+ [5000];
 _times = _times 			+ [60];
 _placements = _placements 	+ [[180, 15]];
 _specials = _specials		+ [[["DMG_Reduce", 15]]];
 
 _headers = _headers 		+ [[CTI_LIGHT, "Light Vehicle Factory", "Light"]];
 _classes = _classes 		+ [["Land_Medevac_HQ_V1_F", "Land_Medevac_HQ_V1_ruins_F"]];  
-_prices = _prices 			+ [4000];
+_prices = _prices 			+ [10000];
 _times = _times 			+ [80];
 _placements = _placements 	+ [[90, 20]];
 _specials = _specials		+ [[["DMG_Reduce", 9]]];
 
 _headers = _headers 		+ [[CTI_CONTROLCENTER, "Control Center", "CC"]];
 _classes = _classes 		+ [["Land_Research_HQ_F", "Land_Research_HQ_ruins_F"]];
-_prices = _prices 			+ [5000];
+_prices = _prices 			+ [20000];
 _times = _times 			+ [90];
 _placements = _placements 	+ [[90, 20]];
 _specials = _specials       + [[["DMG_Alternative"], ["DMG_Reduce", 10],["Connected"]]];
 
 _headers = _headers 		+ [[CTI_HEAVY, "Heavy Vehicle Factory", "Heavy"]];
 _classes = _classes 		+ [["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"]];
-_prices = _prices 			+ [6000];
+_prices = _prices 			+ [15000];
 _times = _times 			+ [120];
 _placements = _placements 	+ [[90, 20]];
 _specials = _specials		+ [[["DMG_Reduce", 9]]];
 
 _headers = _headers 		+ [[CTI_AIR, "Aircraft Factory", "Air"]];
 _classes = _classes 		+ [["Land_Radar_Small_F", "Land_Radar_Small_ruins_F"]];
-_prices = _prices 			+ [8000];
+_prices = _prices 			+ [20000];
 _times = _times 			+ [140];
 _placements = _placements 	+ [[90, 30]];
 _specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 8]]];
 
 _headers = _headers 		+ [[CTI_AMMO, "Ammo Depot", "Ammo"]];
 _classes = _classes 		+ [["Land_Cargo_HQ_V2_F", "Land_Cargo_HQ_V2_ruins_F"]];
-_prices = _prices 			+ [1000];
+_prices = _prices 			+ [12000];
 _times = _times 			+ [40];
 _placements = _placements 	+ [[90, 20]];
 _specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 9]]];
 
 _headers = _headers 		+ [[CTI_REPAIR, "Repair Depot", "Repair"]];
 _classes = _classes 		+ [["Land_Cargo_HQ_V3_F", "Land_Cargo_HQ_V3_ruins_F"]];
-_prices = _prices 			+ [1000];
+_prices = _prices 			+ [15000];
 _times = _times 			+ [35];
 _placements = _placements 	+ [[90, 20]];
 _specials = _specials		+ [[["DMG_Reduce", 9]]];
 
 _headers = _headers 		+ [[CTI_NAVAL, "Naval Yard", "Naval"]];
 _classes = _classes 		+ [["Land_Lighthouse_small_F", "Land_Lighthouse_small_ruins_F"]];
-_prices = _prices 			+ [1500];
+_prices = _prices 			+ [4000];
 _times = _times 			+ [35];
 _placements = _placements 	+ [[180, 25]];
 _specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 8]]];
@@ -335,8 +335,9 @@ _categories = _categories 	+ ["Furniture"];
 
 //---------------end of new stuff----------------
 
-_headers = _headers 		+ [[(format ["FOB - Max: %1",CTI_BASE_FOB_MAX]),[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"], [(format ["FOB - Max: %1",CTI_BASE_FOB_MAX])],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0) || ( missionNamespace getVariable 'CTI_BASE_FOB_PERMISSION' ) == 0 )}]]]];
-_classes = _classes 		+ ["Land_Medevac_house_V1_F"];
+//_headers = _headers 		+ [["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"], ["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0) || ( missionNamespace getVariable 'CTI_BASE_FOB_PERMISSION' ) == 0 )}]]]];
+_headers = _headers 		+ [["FOB",[["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0) || ( missionNamespace getVariable 'CTI_BASE_FOB_PERMISSION' ) == 0 )}]]]];
+_classes = _classes 		+ ["Land_Pod_Heli_Transport_04_medevac_F"];
 _prices = _prices 			+ [10000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Fortification"];

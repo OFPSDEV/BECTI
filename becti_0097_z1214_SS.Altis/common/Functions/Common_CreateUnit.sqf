@@ -102,12 +102,21 @@ if !( isNil "ADMIN_ZEUS"  ) then {
 if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	_unit addEventHandler["Fired","_this call TR_HANDLER;"];
 };
-_unit addAction ["<t color='#ff9900'>Remote Control</t>", "
+_unit addAction ["<t color='#ff9900'>Remote Control</t>","
 	player connectTerminalToUAV ( vehicle(_this select 0));
-	(_this select 0) spawn {waitUntil {  uavControl ( vehicle(_this)) select 1 == 'GUNNER' || ! (driver (vehicle _this)==_this) || (vehicle _this ==_this) || ! alive _this || ! alive player};player connectTerminalToUAV objNull;objNull remoteControl _this ; vehicle(player) switchCamera 'Internal'; };
+	(_this select 0) spawn {
+		waitUntil {   uavControl ( vehicle(_this)) select 1 == 'GUNNER' || ! (driver (vehicle _this)==_this) || (vehicle _this ==_this) || ! alive _this || ! alive player};
+		sleep 1;
+		 player connectTerminalToUAV objNull;
+		objNull remoteControl cameraon;
+		vehicle (player) switchCamera 'Internal'
+
+		};
 	player remoteControl (driver vehicle (_this select 0));
 	( vehicle(_this select 0)) switchCamera 'Internal';
-	","",100, false, true, "", "(vehicle _this) == (vehicle _target) && ! (vehicle _this ==_this) && driver (vehicle _this)==_this  && !((vehicle _this) == vehicle (player)) &&! (uavControl ( vehicle(_this)) select 0 == player)"];
+	","",100, false, true, "", "(vehicle _this) == (vehicle _target) && ! (vehicle _this ==_this) && driver (vehicle _this)==_this  && isnull gunner (vehicle _this) && !((vehicle _this) == vehicle (player)) &&! (uavControl ( vehicle(_this)) select 0 == player)"];
 
-// return
+// returnvehicle objNull remoteControl cameraon;  player connectTerminalToUAV objNull; (player) switchCamera 'Internal';
+
+
 _unit

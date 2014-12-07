@@ -113,6 +113,7 @@ class CTI_RscBuildMenu {
 			text = "Build Defense";
 			action = "['onBuildDefense', lnbCurSelRow 100007] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
+		/* No more workers ss83
 		class CTI_Menu_Control_AddWorker : CTI_Menu_Control_Undo {
 			idc = 100005;
 			
@@ -121,7 +122,7 @@ class CTI_RscBuildMenu {
 			text = "Add Worker";
 			action = "['onAddWorker'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
-		
+		*/
 		class CTI_Menu_Control_BuildingList : RscListNBox {
 			idc = 100006;
 			
@@ -372,6 +373,13 @@ class CTI_RscPurchaseMenu {
 			
 			text = "Rsc\Pictures\icon_wf_building_naval.paa";
 			action = "['onIconSet', 6, CTI_NAVAL] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
+		class CTI_Icon_Depot : CTI_Icon_Barracks {
+			idc = 110011;
+			x = "SafeZoneX + (SafeZoneW * 0.470)";
+			
+			text = "Rsc\Pictures\icon_wf_building_depot.paa";
+			action = "['onIconSet', 7, CTI_DEPOT] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
 		};
 		
 		class CTI_Icon_Driver : CTI_Icon_Barracks {
@@ -4052,7 +4060,7 @@ class CTI_RscWorkersMenu {
 			w = "SafeZoneW * 0.24";
 			h = "SafeZoneH * 0.04";
 			
-			text = "Disband Worker";
+			text = "Relax, pesky workers have been removed!";
 			action = "['onWorkerDisbandPressed', lnbCurSelRow 260002] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_WorkersMenu.sqf'";
 		};
 		class CTI_Menu_Control_Sell : CTI_Menu_Control_Disband {

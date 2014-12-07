@@ -11,6 +11,15 @@ _f = []; //--- Built from Factory.
 _s = []; //--- Script
 
 //--- Infantry
+_c = _c + ['B_crew_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [150];
+_t = _t + [5];
+_u = _u + [0];
+_f = _f + [CTI_TOWN_DEPOT];
+_s = _s + [""];
+
 _c = _c + ['B_Soldier_A_F'];
 _p = _p + [''];
 _n = _n + [''];
@@ -316,7 +325,7 @@ _s = _s + [""];
 _c = _c + ['B_MBT_01_TUSK_F'];  
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [10000];
+_o = _o + [15000];
 _t = _t + [30];
 _u = _u + [2];
 _f = _f + [CTI_FACTORY_HEAVY];
@@ -327,7 +336,7 @@ _s = _s + [""];
 _c = _c + ['B_MBT_01_cannon_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [10500];
+_o = _o + [16000];
 _t = _t + [30];
 _u = _u + [2];
 _f = _f + [CTI_FACTORY_HEAVY];
@@ -406,7 +415,7 @@ _s = _s + [""];
 _c = _c + ['B_Truck_01_ammo_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [1000];
+_o = _o + [3000];
 _t = _t + [25];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_AMMO];
@@ -430,6 +439,61 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_AMMO];
 _s = _s + [""];
 
+_c = _c + ['Box_Nato_Wps_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [1000];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + [""];
+
+_c = _c + ['Box_Nato_WpsSpecial_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [1500];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + [""];
+
+_c = _c + ['Box_Nato_Ammo_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [1000];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + [""];
+
+_c = _c + ['Box_Nato_Grenades_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [1000];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + [""];
+
+_c = _c + ['Box_Nato_AmmoOrd_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [3000];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + [""];
+
+_c = _c + ['Box_Nato_Support_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [2000];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + [""];
+
+/* Spawns with no gas and can't be controlled, have to fix this ss83
 _c = _c + ['B_UAV_01_F'];
 _p = _p + [''];
 _n = _n + [''];
@@ -438,6 +502,7 @@ _t = _t + [5];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
+*/
 
 _c = _c + ['B_UAV_02_CAS_F'];
 _p = _p + [''];

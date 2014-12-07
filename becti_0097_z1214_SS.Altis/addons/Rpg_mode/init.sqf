@@ -9,6 +9,7 @@ missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined, CTI_AIR
 missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined, CTI_REPAIR],
 missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined, CTI_AMMO],
 missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined, CTI_NAVAL]];
+missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined, CTI_DEPOT]];
 RPG_Unit_Cache=[];
 
 {

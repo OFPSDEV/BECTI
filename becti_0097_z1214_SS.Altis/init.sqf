@@ -125,6 +125,9 @@ if (isMultiplayer && CTI_IsServer) then {
 //--- JIP Part is over
 CTI_Init_JIP = true;
 
+//--- Towns init
+execVM "Common\Init\Init_Locations.sqf";
+
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: init.sqf", "Running common initialization"] call CTI_CO_FNC_Log };
 
 //--- Common Part execution

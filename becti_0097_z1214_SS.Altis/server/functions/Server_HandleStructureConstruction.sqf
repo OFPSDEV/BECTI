@@ -36,7 +36,7 @@
     [_side, _structure, _variable, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
 */
 
-private ["_completion", "_completion_ratio", "_completion_last", "_direction", "_lasttouch", "_position", "_side", "_structure", "_variable"];
+private ["_completion", "_completion_ratio", "_completion_last", "_direction", "_isDestroyed", "_lasttouch", "_position", "_side", "_structure", "_variable"];
 
 _side = _this select 0;
 _side_id= (_side) call CTI_CO_FNC_GetSideID;
@@ -44,6 +44,7 @@ _structure = _this select 1;
 _variable = _this select 2;
 _position = _this select 3;
 _direction = _this select 4;
+_isDestroyed = if (count _this > 5) then {_this select 5} else {false};
 
 if (CTI_DEBUG) then {_structure setVariable ["cti_completion", 100]};
 waitUntil {!isNil {_structure getVariable "cti_completion"}};
@@ -51,22 +52,37 @@ _completion = _structure getVariable "cti_completion";
 _completion_ratio = _structure getVariable "cti_completion_ratio";
 _completion_last = _completion;
 
+
+//********Put in Benny's suggestion on removing workers from here, ss83************
 _lasttouch = time;
 
-//--- Await for the site to be constructed or "abandonned"
-while {_completion > 0 && _completion < 100} do {
-	_completion = _structure getVariable "cti_completion";
-	sleep CTI_BASE_CONSTRUCTION_DECAY_DELAY;
+if (_isDestroyed) then {
 
-	if (_completion > _completion_last) then { _lasttouch = time };
+    //--- Destruction cycle, Await for the site to be constructed or "abandonned"
+    while {_completion > 0 && _completion < 100} do {
+        _completion = _structure getVariable "cti_completion";
+        sleep CTI_BASE_CONSTRUCTION_DECAY_DELAY;
 
-	if (time - _lasttouch > CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT) then {_structure setVariable ["cti_completion", _completion - CTI_BASE_CONSTRUCTION_DECAY_FROM]};
+        if (_completion > _completion_last) then { _lasttouch = time };
 
-	_completion_last = _completion;
+        if (time - _lasttouch > CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT) then {_structure setVariable ["cti_completion", _completion - CTI_BASE_CONSTRUCTION_DECAY_FROM]};
+
+        _completion_last = _completion;
+    };
+} else {
+//--- Normal construction cycle
+if(!CTI_DEBUG) then {
+	sleep CTI_BASE_CONSTRUCTION_TIME; //this timer determines how long it takes for the structure to pop up, ss83
 };
+_completion = 100;
+}; 
+
+
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") - [_structure, objNull]];
+
+//******************************To here, SS83************************************
 
 deleteVehicle _structure;
 

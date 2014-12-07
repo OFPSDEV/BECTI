@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "scriptedFSM.cfg, town_markers.fsm">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, town_markers.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-422.283691,326.652069,345.310455,-698.696411,632,881,1};
-window[] = {2,-1,-1,-1,-1,787,175,1211,175,3,650};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-284.972198,189.340256,1112.620361,-1143.079346,262,1246,1};
+window[] = {0,-1,-1,-1,-1,1500,937,2069,108,1,280};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -52,6 +52,7 @@ class FSM
        "	_sideID = if (isNil {_x getVariable ""cti_town_sideID""}) then {-1} else {_x getVariable ""cti_town_sideID""};" \n
        "	_town_value = _town getVariable ""cti_town_value"";" \n
        "	_town_marker =format [""cti_town_marker_%1"", _town];" \n
+       "	_camps = format [""CTI_%1_CityMarker_Camp%2"", _town];" \n
        "	_town_name =_town getVariable ""cti_town_name"";" \n
        "	_marker_area = Format [""cti_town_areaMarker_%1"", _x];" \n
        "	_mortar_zone = Format [""cti_town_mortar_zone_%1"", _x];" \n
@@ -63,18 +64,21 @@ class FSM
        "" \n
        "	if (_availlable || CTI_P_SideJoined == resistance) then {" \n
        "			if (markerAlpha _marker_area == 0) then { _marker_area setMarkerAlphaLocal CTI_MARKERS_OPACITY };" \n
-       "			if (markerAlpha _town_marker == 0) then { _town_marker setMarkerAlphaLocal 1 };" \n
+       "			if (markerAlpha _town_marker == 0) then { _town_marker setMarkerAlphaLocal 1 };	" \n
+       "			if (markerAlpha _camps == 0) then { _camps setMarkerAlphaLocal 1 };				" \n
        "			_marker_area setMarkerColorLocal  ""ColorWhite"";" \n
        "" \n
        "	}else {" \n
        "			if (markerAlpha _marker_area != 0) then { _marker_area setMarkerAlphaLocal 0 };" \n
        "			if (markerAlpha _town_marker != 0) then { _town_marker setMarkerAlphaLocal 0 };" \n
+       "			if (markerAlpha _camps != 0) then { _camps setMarkerAlphaLocal 0 };" \n
        "	};" \n
        "" \n
        "" \n
        "	if (_active) then {" \n
        "			if (markerAlpha _marker_area == 0) then { _marker_area setMarkerAlphaLocal CTI_MARKERS_OPACITY };" \n
        "			if (markerAlpha _town_marker == 0) then { _town_marker setMarkerAlphaLocal 1 };" \n
+       "			if (markerAlpha _camps == 0) then { _camps setMarkerAlphaLocal 1 };" \n
        "			_town_marker setMarkerTextLocal format[""%1 :: %2 :: Is active "",_town_name, _town_value ];" \n
        "			_town_marker setMarkerSizeLocal [1, 1];" \n
        "" \n
@@ -108,6 +112,7 @@ class FSM
        "				if (markerAlpha _marker_area != 0) then { _marker_area setMarkerAlphaLocal 0 };" \n
        "			};" \n
        "			if (markerAlpha _town_marker == 0) then { _town_marker setMarkerAlphaLocal 1 };" \n
+       "			if (markerAlpha _town_marker == 0) then { _camps setMarkerAlphaLocal 1 };" \n
        "	} else {" \n
        "			if (markerAlpha _marker_area_halo != 0) then { _marker_area_halo setMarkerAlphaLocal 0 };" \n
        "	};" \n
@@ -117,6 +122,13 @@ class FSM
        "} forEach CTI_Towns;" \n
        "_ci=1;" \n
        "" \n
+       "{" \n
+       "	_base= format [""cti_base_%1"",_ci];" \n
+       "	if (markerAlpha _base != 0.7) then { _base setMarkerAlphaLocal 0.7};" \n
+       "	 _base setMarkerPosLocal _x;" \n
+       "	_ci=_ci+1;" \n
+       "" \n
+       "} forEach (CTI_P_SideLogic getVariable ""cti_structures_areas"");" \n
        "{" \n
        "	_base= format [""cti_base_%1"",_ci];" \n
        "	if (markerAlpha _base != 0.7) then { _base setMarkerAlphaLocal 0.7};" \n

@@ -72,7 +72,7 @@ if !(_sell) then {
 	_structure setVariable ["cti_structures_iteration", (_var select 3)/100];
 	_structure setVariable ["cti_structure_type", ((_var select 0) select 0)];
 
-	[_side, _structure, _variable, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
+	[_side, _structure, _variable, _position, _direction, true] spawn CTI_SE_FNC_HandleStructureConstruction;
 
 	_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull],true];
 

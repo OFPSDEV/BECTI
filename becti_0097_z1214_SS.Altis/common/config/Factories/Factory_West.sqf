@@ -88,7 +88,7 @@ _u = _u		+ ["I_Heli_light_03_unarmed_F"]; //ss83 added mobile respawn heli
 _u = _u		+ ["B_Heli_Transport_03_F"];  
 _u = _u		+ ["B_Heli_Light_01_armed_F"];
 _u = _u		+ ["B_Heli_Attack_01_F"];
-_u = _u		+ ["B_UAV_01_F"];
+//_u = _u		+ ["B_UAV_01_F"];  Spawns with no gas and can't be controlled, have to fix this ss83
 _u = _u		+ ["B_UAV_02_CAS_F"];
 _u = _u		+ ["B_UAV_02_F"];
 _u = _u		+ ["I_Plane_Fighter_03_AA_F"];
@@ -103,9 +103,25 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_REPAIR], _u];
 _u 			= ["B_Truck_01_ammo_F"];
 _u = _u		+ ["B_supplyCrate_F"];
 _u = _u		+ ["Box_Nato_AmmoVeh_F"];
+_u = _u		+ ["Box_NATO_Wps_F"];
+_u = _u		+ ["Box_NATO_WpsSpecial_F"];
+_u = _u		+ ["Box_NATO_Ammo_F"];
+_u = _u		+ ["Box_NATO_Grenades_F"];
+_u = _u		+ ["Box_NATO_AmmoOrd_F"];
+_u = _u		+ ["Box_NATO_Support_F"];
+
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _u];
 
 _u 			= ["B_Boat_Transport_01_F"];
 _u = _u		+ ["B_Boat_Armed_01_minigun_F"];
 _u = _u		+ ["B_SDV_01_F"];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
+
+_u 			= ["B_Offroad_01_F"];
+_u = _u		+ ["B_Quadbike_01_F"];
+if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
+_u 			= ["B_soldier_AR_F"];
+_u = _u		+ ["B_Soldier_lite_F"];
+_u = _u		+ ["B_Soldier_A_F"];
+};
+missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_DEPOT], _u];

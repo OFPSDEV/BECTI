@@ -10,35 +10,35 @@ _p = [];
 //--- Magazines
 _i = _i		+ ["ATMine_Range_Mag"];
 _u = _u		+ [1];
-_p = _p		+ [200];
+_p = _p		+ [100];
 
 _i = _i		+ ["APERSMine_Range_Mag"];
 _u = _u		+ [1];
-_p = _p		+ [150];
+_p = _p		+ [75];
 
 _i = _i		+ ["APERSBoundingMine_Range_Mag"];
 _u = _u		+ [1];
-_p = _p		+ [100];
+_p = _p		+ [50];
 
 _i = _i		+ ["SLAMDirectionalMine_Wire_Mag"];
 _u = _u		+ [2];
-_p = _p		+ [100];
+_p = _p		+ [50];
 
 _i = _i		+ ["APERSTripMine_Wire_Mag"];
 _u = _u		+ [1];
-_p = _p		+ [100];
+_p = _p		+ [50];
 
 _i = _i		+ ["SatchelCharge_Remote_Mag"];
 _u = _u		+ [2];
-_p = _p		+ [300];
+_p = _p		+ [150];
 
 _i = _i		+ ["DemoCharge_Remote_Mag"];
 _u = _u		+ [1];
-_p = _p		+ [150];
+_p = _p		+ [75];
 
 _i = _i		+ ["ClaymoreDirectionalMine_Remote_Mag"];
 _u = _u		+ [2];
-_p = _p		+ [100];
+_p = _p		+ [50];
 
 _i = _i		+ ["Laserbatteries"];
 _u = _u		+ [2];
@@ -46,11 +46,11 @@ _p = _p		+ [5];
 
 _i = _i		+ ["7Rnd_408_Mag"];
 _u = _u		+ [3];
-_p = _p		+ [40];
+_p = _p		+ [10];
 
 _i = _i		+ ["11Rnd_45ACP_Mag"];
 _u = _u		+ [0];
-_p = _p		+ [5];
+_p = _p		+ [1];
 
 _i = _i		+ ["20Rnd_556x45_UW_mag"];
 _u = _u		+ [0];
@@ -70,87 +70,87 @@ _p = _p		+ [5];
 
 _i = _i		+ ["30Rnd_556x45_Stanag"];
 _u = _u		+ [0];
-_p = _p		+ [30];
+_p = _p		+ [15];
 
 _i = _i		+ ["30Rnd_556x45_Stanag_Tracer_Red"];
 _u = _u		+ [0];
-_p = _p		+ [30];
+_p = _p		+ [15];
 
 _i = _i		+ ["30Rnd_556x45_Stanag_Tracer_Green"];
 _u = _u		+ [0];
-_p = _p		+ [30];
+_p = _p		+ [15];
 
 _i = _i		+ ["30Rnd_556x45_Stanag_Tracer_Yellow"];
 _u = _u		+ [0];
-_p = _p		+ [30];
+_p = _p		+ [15];
 
 _i = _i		+ ["100Rnd_65x39_caseless_mag"];
 _u = _u		+ [2];
-_p = _p		+ [80];
+_p = _p		+ [40];
 
 _i = _i		+ ["100Rnd_65x39_caseless_mag_Tracer"];
 _u = _u		+ [2];
-_p = _p		+ [80];
+_p = _p		+ [40];
 
 _i = _i		+ ["200Rnd_65x39_cased_Box"];
 _u = _u		+ [3];
-_p = _p		+ [150];
+_p = _p		+ [80];
 
 _i = _i		+ ["200Rnd_65x39_cased_Box_Tracer"];
 _u = _u		+ [3];
-_p = _p		+ [150];
+_p = _p		+ [80];
 
 _i = _i		+ ["30Rnd_65x39_caseless_green"];
 _u = _u		+ [1];
-_p = _p		+ [40];
+_p = _p		+ [20];
 
 _i = _i		+ ["30Rnd_65x39_caseless_mag"];
 _u = _u		+ [1];
-_p = _p		+ [40];
+_p = _p		+ [20];
 
 _i = _i		+ ["30Rnd_65x39_caseless_green_mag_Tracer"];
 _u = _u		+ [1];
-_p = _p		+ [40];
+_p = _p		+ [20];
 
 _i = _i		+ ["30Rnd_65x39_caseless_mag_Tracer"];
 _u = _u		+ [1];
-_p = _p		+ [40];
+_p = _p		+ [20];
 
 _i = _i		+ ["16rnd_9x21_mag"];
 _u = _u		+ [0];
-_p = _p		+ [2];
+_p = _p		+ [1];
 
 _i = _i		+ ["30Rnd_9x21_Mag"];
 _u = _u		+ [0];
-_p = _p		+ [4];
+_p = _p		+ [2];
 
 _i = _i		+ ["NLAW_F"];
 _u = _u		+ [0];
-_p = _p		+ [350];
+_p = _p		+ [150];
 
 _i = _i		+ ["Titan_AA"];
 _u = _u		+ [2];
-_p = _p		+ [400];
+_p = _p		+ [100];
 
 _i = _i		+ ["Titan_AP"];
 _u = _u		+ [3];
-_p = _p		+ [500];
+_p = _p		+ [100];
 
 _i = _i		+ ["Titan_AT"];
 _u = _u		+ [3];
-_p = _p		+ [600];
+_p = _p		+ [120];
 
 _i = _i		+ ["B_IR_Grenade"];
 _u = _u		+ [2];
-_p = _p		+ [10];
+_p = _p		+ [5];
 
 _i = _i		+ ["HandGrenade"];
 _u = _u		+ [0];
-_p = _p		+ [30];
+_p = _p		+ [10];
 
 _i = _i		+ ["MiniGrenade"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["HandGrenade_Stone"];
 _u = _u		+ [0];
@@ -158,170 +158,182 @@ _p = _p		+ [1];
 
 _i = _i		+ ["SmokeShell"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["SmokeShellRed"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["SmokeShellGreen"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["SmokeShellYellow"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["SmokeShellPurple"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["SmokeShellBlue"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["SmokeShellOrange"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["Chemlight_green"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["Chemlight_red"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["Chemlight_yellow"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["Chemlight_blue"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["FlareWhite_F"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["FlareGreen_F"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["FlareRed_F"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["FlareYellow_F"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [5];
 
 _i = _i		+ ["1Rnd_HE_Grenade_shell"];
 _u = _u		+ [0];
-_p = _p		+ [40];
+_p = _p		+ [15];
 
 _i = _i		+ ["1Rnd_Smoke_Grenade_shell"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [10];
 
 _i = _i		+ ["1Rnd_SmokeRed_Grenade_shell"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [10];
 
 _i = _i		+ ["1Rnd_SmokeGreen_Grenade_shell"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [10];
 
 _i = _i		+ ["1Rnd_SmokeYellow_Grenade_shell"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [10];
 
 _i = _i		+ ["1Rnd_SmokePurple_Grenade_shell"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [10];
 
 _i = _i		+ ["1Rnd_SmokeBlue_Grenade_shell"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [10];
 
 _i = _i		+ ["1Rnd_SmokeOrange_Grenade_shell"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [10];
 
 _i = _i		+ ["UGL_FlareWhite_F"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [10];
 
 _i = _i		+ ["UGL_FlareGreen_F"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [10];
 
 _i = _i		+ ["UGL_FlareRed_F"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [10];
 
 _i = _i		+ ["UGL_FlareYellow_F"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [10];
 
 _i = _i		+ ["UGL_FlareCIR_F"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [10];
 
 _i = _i		+ ["3Rnd_HE_Grenade_shell"];
 _u = _u		+ [1];
-_p = _p		+ [80];
+_p = _p		+ [20];
 
 _i = _i		+ ["3Rnd_Smoke_Grenade_shell"];
 _u = _u		+ [1];
-_p = _p		+ [60];
+_p = _p		+ [15];
 
 _i = _i		+ ["3Rnd_SmokeRed_Grenade_shell"];
 _u = _u		+ [1];
-_p = _p		+ [60];
+_p = _p		+ [15];
 
 _i = _i		+ ["3Rnd_SmokeGreen_Grenade_shell"];
 _u = _u		+ [1];
-_p = _p		+ [60];
+_p = _p		+ [15];
 
 _i = _i		+ ["3Rnd_SmokeYellow_Grenade_shell"];
 _u = _u		+ [1];
-_p = _p		+ [60];
+_p = _p		+ [15];
 
 _i = _i		+ ["3Rnd_SmokePurple_Grenade_shell"];
 _u = _u		+ [1];
-_p = _p		+ [60];
+_p = _p		+ [15];
 
 _i = _i		+ ["3Rnd_SmokeBlue_Grenade_shell"];
 _u = _u		+ [1];
-_p = _p		+ [60];
+_p = _p		+ [15];
 
 _i = _i		+ ["3Rnd_SmokeOrange_Grenade_shell"];
 _u = _u		+ [1];
-_p = _p		+ [60];
+_p = _p		+ [15];
 
 _i = _i		+ ["3Rnd_UGL_FlareWhite_F"];
 _u = _u		+ [1];
-_p = _p		+ [60];
+_p = _p		+ [15];
 
 _i = _i		+ ["3Rnd_UGL_FlareGreen_F"];
 _u = _u		+ [1];
-_p = _p		+ [60];
+_p = _p		+ [15];
 
 _i = _i		+ ["3Rnd_UGL_FlareRed_F"];
 _u = _u		+ [1];
-_p = _p		+ [60];
+_p = _p		+ [15];
 
 _i = _i		+ ["3Rnd_UGL_FlareYellow_F"];
 _u = _u		+ [1];
-_p = _p		+ [60];
+_p = _p		+ [15];
 
 _i = _i		+ ["3Rnd_UGL_FlareCIR_F"];
 _u = _u		+ [1];
-_p = _p		+ [80];
+_p = _p		+ [20];
+
+_i = _i		+ ["6Rnd_GreenSignal_F"];
+_u = _u		+ [1];
+_p = _p		+ [25];
+
+_i = _i		+ ["6Rnd_RedSignal_F"];
+_u = _u		+ [1];
+_p = _p		+ [25];
 
 //--- Weapons
 _i = _i		+ ["arifle_MX_F"];
+_u = _u		+ [1];
+_p = _p		+ [400];
+
+_i = _i		+ ["arifle_MX_Black_F"];
 _u = _u		+ [1];
 _p = _p		+ [400];
 
@@ -357,6 +369,10 @@ _i = _i		+ ["arifle_MX_GL_F"];
 _u = _u		+ [1];
 _p = _p		+ [550];
 
+_i = _i		+ ["arifle_MX_GL_Black_F"];
+_u = _u		+ [1];
+_p = _p		+ [550];
+
 _i = _i		+ [["arifle_MX_GL_ACO_F"]];
 _u = _u		+ [1];
 _p = _p		+ [35];
@@ -377,6 +393,10 @@ _i = _i		+ ["arifle_MX_SW_F"];
 _u = _u		+ [1];
 _p = _p		+ [600];
 
+_i = _i		+ ["arifle_MX_SW_Black_F"];
+_u = _u		+ [1];
+_p = _p		+ [600];
+
 _i = _i		+ [["arifle_MX_SW_pointer_F"]];
 _u = _u		+ [2];
 _p = _p		+ [35];
@@ -386,6 +406,10 @@ _u = _u		+ [1];
 _p = _p		+ [35];
 
 _i = _i		+ ["arifle_MXC_F"];
+_u = _u		+ [1];
+_p = _p		+ [400];
+
+_i = _i		+ ["arifle_MXC_Black_F"];
 _u = _u		+ [1];
 _p = _p		+ [400];
 
@@ -418,6 +442,10 @@ _u = _u		+ [1];
 _p = _p		+ [30];
 
 _i = _i		+ ["arifle_MXM_F"];
+_u = _u		+ [2];
+_p = _p		+ [500];
+
+_i = _i		+ ["arifle_MXM_Black_F"];
 _u = _u		+ [2];
 _p = _p		+ [500];
 
@@ -553,7 +581,11 @@ _i = _i		+ [["srifle_EBR_ARCO_pointer_snds_F"]];
 _u = _u		+ [2];
 _p = _p		+ [100];
 
-_i = _i		+ ["srifle_LRR_F"];
+_i = _i		+ ["srifle_LRR_F"]; 
+_u = _u		+ [3];
+_p = _p		+ [1000];
+
+_i = _i		+ ["srifle_LRR_camo_F"]; 
 _u = _u		+ [3];
 _p = _p		+ [1000];
 
@@ -583,6 +615,10 @@ _p = _p		+ [5];
 
 _i = _i		+ ["hgun_Pistol_heavy_01_F"];
 _u = _u		+ [1];
+_p = _p		+ [10];
+
+_i = _i		+ ["hgun_Pistol_Signal_F"];
+_u = _u		+ [0];
 _p = _p		+ [10];
 
 //--- Uniforms
@@ -655,13 +691,24 @@ _i = _i		+ ["V_PlateCarrierSpec_rgr"];
 _u = _u		+ [0];
 _p = _p		+ [500];
 
-
 _i = _i		+ ["V_TacVest_oli"];
 _u = _u		+ [0];
 _p = _p		+ [550];
 
-_i = _i		+ ["V_RebreatherB"];
+_i = _i		+ ["V_RebreatherB"];  
 _u = _u		+ [2];
+_p = _p		+ [200];
+
+_i = _i		+ ["V_Chestrig_blk"];  
+_u = _u		+ [1];
+_p = _p		+ [200];
+
+_i = _i		+ ["V_TacVestIR_blk"];  
+_u = _u		+ [1];
+_p = _p		+ [200];
+
+_i = _i		+ ["V_TacVest_blk"];  
+_u = _u		+ [1];
 _p = _p		+ [200];
 
 //--- Backpacks
@@ -867,9 +914,50 @@ _i = _i		+ ["G_Balaclava_blk"];
 _u = _u		+ [0];
 _p = _p		+ [5];
 
+_i = _i		+ ["G_Balaclava_oli"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
 _i = _i		+ ["G_Balaclava_combat"];  
 _u = _u		+ [0];
 _p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_grass"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_sand"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_snakeskin"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_light_black"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_light_desert"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_light_grass"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_light_sand"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["H_HelmetB_light_snakeskin"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["G_Bandanna_khk"];  
+_u = _u		+ [0];
+_p = _p		+ [5];
+
 
 //--- Accessories
 _i = _i		+ ["muzzle_snds_acp"];

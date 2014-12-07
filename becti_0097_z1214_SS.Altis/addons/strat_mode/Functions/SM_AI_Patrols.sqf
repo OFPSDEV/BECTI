@@ -1,4 +1,4 @@
-
+/*disabled due to script errors
 SM_PATROLS=[];
 SM_MAX_PATROLS=missionNamespace getVariable "CTI_SM_PATROLS_NUMBER";
 SM_PATROL_RATIO=0;
@@ -187,3 +187,4 @@ PATROL_patrol_AI ={ // loop for each patrol group (cap town), move to next town
 sleep 1;
 
 0 spawn PATROL_server_WD;
+*/

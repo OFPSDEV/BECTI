@@ -70,8 +70,10 @@ if (_side_new == CTI_P_SideJoined) then { //--- The player's side has captured i
 };
 
 //--- Paint it
-if !(CTI_P_SideJoined == resistance) then {
-	_color = (_side_new) call CTI_CO_FNC_GetSideColoration;
-	(format ["cti_town_marker_%1", _town]) setMarkerColorLocal _color;
-	(format ["cti_town_areaMarker_%1", _town]) setMarkerColorLocal _color;
-};
+_color = (_side_new) call CTI_CO_FNC_GetSideColoration;
+_camps = _town getvariable "camps";
+(format ["cti_town_marker_%1", _town]) setMarkerColorLocal _color;
+(format ["cti_town_areaMarker_%1", _town]) setMarkerColorLocal _color;
+{
+	(_x getVariable "CTI_camp_marker") setMarkerColorLocal _color;
+} forEach _camps;

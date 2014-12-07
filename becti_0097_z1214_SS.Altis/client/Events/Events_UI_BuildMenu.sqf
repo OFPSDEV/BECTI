@@ -29,11 +29,12 @@ switch (_action) do {
 
 		if !(isNil {uiNamespace getVariable "cti_dialog_ui_buildmenu_lastdsel"}) then {((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100007) lnbSetCurSelRow (uiNamespace getVariable "cti_dialog_ui_buildmenu_lastdsel")};
 
-		//--- Set the worker price
+
 		((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100005) ctrlSetText format ["Add Worker ($%1)", CTI_BASE_WORKERS_PRICE];
 		// CTI_BASE_WORKERS_LIMIT
 		// 100005
 	};
+	
 	case "onBuildStructure": {
 		_selected = _this select 1;
 

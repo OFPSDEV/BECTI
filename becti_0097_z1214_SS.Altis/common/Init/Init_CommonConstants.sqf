@@ -6,6 +6,7 @@ CTI_FACTORY_AIR = 3;
 CTI_FACTORY_REPAIR = 4;
 CTI_FACTORY_AMMO = 5;
 CTI_FACTORY_NAVAL = 6;
+CTI_TOWN_DEPOT = 7;
 CTI_MILITARYINSTALLATION = "MilitaryInstallation";
 CTI_BARRACKS = "Barracks";
 CTI_LIGHT = "Light";
@@ -15,13 +16,15 @@ CTI_AIR = "Air";
 CTI_REPAIR = "Repair";
 CTI_AMMO = "Ammo";
 CTI_NAVAL = "Naval";
+CTI_DEPOT = "Depot";
 CTI_RADAR="Radar";
 
-CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL];
+CTI_FACTORIES = [CTI_BARRACKS,CTI_LIGHT,CTI_HEAVY,CTI_AIR,CTI_REPAIR,CTI_AMMO,CTI_NAVAL,CTI_DEPOT];
 
 CTI_WEST_COLOR = "ColorBlue";
 CTI_EAST_COLOR = "ColorRed";
 CTI_RESISTANCE_COLOR = "ColorGreen";
+CTI_UNKNOWN_COLOR = "ColorBlack";
 
 CTI_GEAR_TAB_PRIMARY = 0;
 CTI_GEAR_TAB_SECONDARY = 1;
@@ -44,6 +47,7 @@ CTI_UNIT_SCRIPT = 7;
 CTI_WEST_ID = 0;
 CTI_EAST_ID = 1;
 CTI_RESISTANCE_ID = 2;
+CTI_UNKNOWN_ID = 4;
 
 CTI_SPECIAL_REPAIRTRUCK = 0;
 CTI_SPECIAL_AMMOTRUCK = 1;
@@ -313,13 +317,25 @@ CTI_GEAR_RESELL_TAX = 1; //--- Owned items are traded for: <item price> * <tax>
 
 //--- Towns: Capture
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 600; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
-CTI_TOWNS_CAPTURE_RANGE = 20; //--- The range which a unit/vehicle has to be from a town center to capture it ss83, decreased to 20 (experiment)
-CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
+CTI_TOWNS_CAPTURE_RANGE = 25; //--- The range which a unit/vehicle has to be from a town center to capture it ss83, decreased to 25 (experiment)
+CTI_TOWNS_CAPTURE_VALUE_CEIL = 50; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
+
+//--- Towns: Camps
+CTI_TOWNS_CAMPS_CAPTURE_BOUNTY = 300; //--- Bounty received by player whenever he capture a camp.
+CTI_TOWNS_CAMPS_CAPTURE_RATE = 2;
+//CTI_TOWNS_CAMPS_CAPTURE_RATE_MAX = 10;
+CTI_TOWNS_CAMPS_RANGE = 10;
+CTI_TOWNS_CAMPS_RANGE_PLAYERS = 10;
+CTI_TOWNS_CAMPS_PURCHASE_GEAR_RANGE = 10;
+//CTI_TOWNS_CAMPS_REPAIR_DELAY = 35;
+//CTI_TOWNS_CAMPS_REPAIR_PRICE = 2500;
+//CTI_TOWNS_CAMPS_REPAIR_RANGE = 15;
 
 //--- Towns: Economy
 //CTI_TOWNS_INCOME_RATIO = 1; //--- A value above 1 will increase the resources generation ((Stock value occupied/unoccupied) * ratio)
 CTI_TOWNS_INCOME_UNOCCUPIED_PERCENTAGE = [0.25, 0.50, 0.75, 1]; //--- Determine how much value an unoccupied town bring to the side depending on the town occupation upgrade.
+CTI_TOWNS_PURCHASE_GEAR_RANGE = 5;
 
 //--- Towns: Patrol
 CTI_TOWNS_PATROL_HOPS = 10; //--- Towns patrol hops (non-waypoint)
@@ -327,7 +343,7 @@ CTI_TOWNS_PATROL_RANGE = 200; //--- Patrol range in a town
 
 //--- Towns: Occupation
 CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 200; //--- Determine how far the units may spawn from the town center
-CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
+CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.050; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 1000; //--- Determine how far a threat may be detected from the town center  //ss83 increase from 800 to 1000
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 100; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 1200; //--- Determine how long a town may remain active when triggered
@@ -344,14 +360,20 @@ CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 3; //--- When the town is not held by the side
 //--- Towns: Parameters
 with missionNamespace do {
 	if (isNil 'CTI_TOWNS_OCCUPATION') then {CTI_TOWNS_OCCUPATION = 1}; //--- Determine whether occupation is enabled or not
+	if (isNil "CTI_TOWNS_CAMPS_CREATE") then {CTI_TOWNS_CAMPS_CREATE = 1}; //--- Create the camp models.
+	if (isNil "CTI_TOWNS_GEAR") then {CTI_TOWNS_GEAR = 1}; //--- Buy Gear From (0: None, 1: Camps, 2: Depot, 3: Camps & Depot).
+	if (isNil "CTI_UNITS_TOWN_PURCHASE") then {CTI_UNITS_TOWN_PURCHASE = 0}; //--- Allow AIs to be bought from depots.
 	if (isNil 'CTI_TOWNS_RESISTANCE_DETECTION_RANGE') then {CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 800};//Done
 	if (isNil 'CTI_TOWNS_RESISTANCE_GROUPS_RATIO') then {CTI_TOWNS_RESISTANCE_GROUPS_RATIO = 100};//Done
 	if (isNil 'CTI_TOWNS_RESISTANCE_INACTIVE_MAX') then {CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 30};//Done
 	if (isNil 'CTI_TOWNS_INCOME_RATIO') then {CTI_TOWNS_INCOME_RATIO = 2};
 	if (isNil 'CTI_TOWNS_CAPURE_RATIO') then {CTI_TOWNS_CAPURE_RATIO = 5};
+	if (isNil "CTI_TOWNS_RESISTANCE") then {CTI_TOWNS_RESISTANCE = 1}; //--- Determine whether resistance is enabled or not.
 };
+//--- Towns: Misc.
+CTI_TOWNS_OCCUPATION_GROUPS_RATIO = switch (CTI_TOWNS_OCCUPATION) do {case 1: {0.05}; case 2: {0.1}; case 3: {0.15}; case 4: {0.2}; default {1}}; //--- Determine how many groups may spawn (scales with town value)
+CTI_TOWNS_RESISTANCE_GROUPS_RATIO = switch (CTI_TOWNS_RESISTANCE) do {case 1: {0.05}; case 2: {0.1}; case 3: {0.15}; case 4: {0.2}; default {1}}; //--- Determine how many groups may spawn (scales with town value)
 //-----------------------------------------------------------------------------------------------------------------------//
-
 
 
 
@@ -378,16 +400,17 @@ CTI_BASE_AREA_MAX = 2;
 CTI_BASE_AREA_RANGE = 300;  //ss83 reduced from 500
 
 //--- Base: Construction
-CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 1200; //--- Decay starts after x seconds unattended.
-CTI_BASE_CONSTRUCTION_DECAY_DELAY = 60; //--- Decay each x seconds.
-CTI_BASE_CONSTRUCTION_DECAY_FROM = 0.05; //--- Decay of x / 100 each y seconds.
+CTI_BASE_CONSTRUCTION_TIME = 180; //--- Length of time a structure takes to build, in seconds.
+CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 300; //--- Decay starts after x seconds unattended.
+CTI_BASE_CONSTRUCTION_DECAY_DELAY = 1; //--- Decay each x seconds.
+CTI_BASE_CONSTRUCTION_DECAY_FROM = 0.50; //--- Decay of x / 100 each y seconds.
 CTI_BASE_CONSTRUCTION_RANGE = 500; //--- Determine how far the commander may be from the HQ to build
 CTI_BASE_CONSTRUCTION_RATIO_INIT = 1; //--- The initial construction ratio
 CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.95; //--- The completion ratio is multiplied by this coefficient to make repairs less effective at each factory's destruction.
 
 //--- Base: Defenses
 // CTI_BASE_DEFENSES_AUTO_DELAY = 120; //--- Delay after which a new unit will replace a dead one for a defense
-CTI_BASE_DEFENSES_AUTO_DELAY = 120; //--- Delay after which a new unit will replace a dead one for a defense
+CTI_BASE_DEFENSES_AUTO_DELAY = 300; //--- Delay after which a new unit will replace a dead one for a defense
 CTI_BASE_DEFENSES_AUTO_LIMIT = 30; //--- Amount of independent units which may man nearby defenses
 CTI_BASE_DEFENSES_AUTO_RANGE = 600; //--- Range from the nearest barrack at which AI may auto man a defense
 CTI_BASE_DEFENSES_AUTO_REARM_RANGE = 600; //--- Range needed for a defense to be able to rearm at a service point
@@ -465,10 +488,15 @@ CTI_VEHICLES_HOOKERS_LIGHT = ["I_Heli_light_03_unarmed_F", "B_Heli_Light_01_F"];
 CTI_VEHICLES_HOOKERS_MEDIUM = ["B_Heli_Transport_01_F", "O_Heli_Light_02_unarmed_F"]; //--- Medium Lifters
 CTI_VEHICLES_HOOKERS_HEAVY = ["I_Heli_Transport_02_F", "B_Heli_Transport_03_F", "O_Heli_Transport_04_F"]; //--- Heavy Lifters
 
-//--- Types of liftable Vehicles 
+/******PRE SLING LOADING*****        --- Types of liftable Vehicles 
 CTI_VEHICLES_HOOKABLE_LIGHT = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Motorcycle"]; //--- Vehicles which may be carried by light lifters
 CTI_VEHICLES_HOOKABLE_MEDIUM = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Motorcycle","Car", "Ship", "Truck","Wheeled_APC"]; //--- Vehicles which may be carried by medium lifters
 CTI_VEHICLES_HOOKABLE_HEAVY = ["Car", "Ship", "Truck","Wheeled_APC","Tracked_APC", "Tank", "Air"]; //--- Vehicles which may be carried by heavy lifters (do not allow any vehicles taht can go inside)
+******************************/
+//--- Types of liftable Vehicles 
+CTI_VEHICLES_HOOKABLE_LIGHT = [""]; //--- Vehicles which may be carried by light lifters
+CTI_VEHICLES_HOOKABLE_MEDIUM = ["Wheeled_APC"]; //--- Vehicles which may be carried by medium lifters
+CTI_VEHICLES_HOOKABLE_HEAVY = ["Wheeled_APC","Tracked_APC", "Tank", "Air"]; //--- Vehicles which may be carried by heavy lifters (do not allow any vehicles that can go inside)
 
 //--- Total lifters/liftable vehicles
 CTI_VEHICLES_HOOKERS = [CTI_VEHICLES_HOOKERS_LIGHT, CTI_VEHICLES_HOOKERS_MEDIUM, CTI_VEHICLES_HOOKERS_HEAVY]; //--- All lifters
@@ -507,7 +535,7 @@ CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 10; //--- Keep values of 10
 
 CTI_MARKERS_OPACITY = 0.5;
-CTI_MARKERS_TOWN_AREA_RANGE = 20;
+CTI_MARKERS_TOWN_AREA_RANGE = 325;
 CTI_MARKERS_UNITS_DEAD_DELAY = 50;
 CTI_MARKERS_VEHICLES_DEAD_DELAY = 125;
 
@@ -540,6 +568,7 @@ CTI_SERVICE_REPAIR_TRUCK_TIME = 50;
 CTI_SCORE_BUILD_VALUE_PERPOINT = 1500; //--- Structure value / x
 CTI_SCORE_SALVAGE_VALUE_PERPOINT = 2000; //--- Unit value / x
 CTI_SCORE_TOWN_VALUE_PERPOINT = 100; //--- Town value / x
+CTI_SCORE_CAMP_VALUE = 2; //--- Camp value
 
 CTI_GC_DELAY = 90;
 CTI_GC_DELAY_AIR = 360;
@@ -590,10 +619,14 @@ with missionNamespace do {
 	//CTI_PLAYERS_GROUPSIZE = 12;
 	
 	if (isNil 'CTI_RESPAWN_AI') then {CTI_RESPAWN_AI = 1};
+	if (isNil "CTI_RESPAWN_CAMPS_MODE") then {CTI_RESPAWN_CAMPS_MODE = 2}; 
+	if (isNil "CTI_RESPAWN_CAMPS_RANGE") then {CTI_RESPAWN_CAMPS_RANGE = 500}; //--- Range at which a unit can spawn at a camp
+	if (isNil "CTI_RESPAWN_CAMPS_RULE_MODE") then {CTI_RESPAWN_CAMPS_RULE_MODE = 2}; //--- Respawn Camps Rule (0: Disabled, 1: West | East, 2: West | East | Resistance).
 	if (isNil 'CTI_RESPAWN_FOB_RANGE') then {CTI_RESPAWN_FOB_RANGE = 1500}; //--- Range at which a unit can spawn at a FOB
 	if (isNil 'CTI_RESPAWN_MOBILE') then {CTI_RESPAWN_MOBILE = 1};
 	if (isNil 'CTI_RESPAWN_TIMER') then {CTI_RESPAWN_TIMER = 30};
 	if (isNil 'CTI_GEAR_ON_SPECIAL_TRUCK') then {CTI_GEAR_ON_SPECIAL_TRUCK = 0}; // CSM - enable or disable respawning at ammo truck
+	CTI_RESPAWN_CAMPS_SAFE_RADIUS = 50;
 	if (isNil 'CTI_MARKERS_INFANTRY') then {CTI_MARKERS_INFANTRY = 1}; //--- Track infantry on map
 
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 1};

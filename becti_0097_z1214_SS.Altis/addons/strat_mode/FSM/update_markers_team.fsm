@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "scriptedFSM.cfg, update_markers_team.fsm">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, update_markers_team.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,4346,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-224.148239,127.410683,43.065350,-257.865295,968,881,1};
-window[] = {2,-1,-1,-1,-1,956,175,1430,175,3,986};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-237.878387,141.140762,145.424484,-384.701385,454,635,1};
+window[] = {0,-1,-1,-1,-1,924,1161,2416,143,1,472};
 *//*%FSM</HEAD>*/
 class FSM
 {

@@ -38,7 +38,7 @@ with missionNamespace do {
 		SM_BP_Link = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_BP_Link.sqf";
 	 	SM_BP_DetectLoop = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_BP_DetectLoop.sqf";
 	 	SM_BP_ProtectLoop = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_BP_ProtectLoop.sqf";
-	  SM_Maps_Hook = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Maps_Hook.sqf";
+	  	SM_Maps_Hook = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Maps_Hook.sqf";
 };
 
 //Common stuff
@@ -292,6 +292,16 @@ if (CTI_IsClient) then {
 
 	//New Map if Adv Network
 	0 spawn SM_Maps_Hook;
+	
+	// Persistent Gear tracking
+	if (CTI_PLAYER_REEQUIP == 2) then {
+			0 spawn {
+				while {true} do {
+					if (alive player && !isnull player && !CTI_P_Respawning) then {CTI_P_LastPurchase=(player) call CTI_UI_Gear_GetUnitEquipment; };
+					sleep 2;
+				};
+			};
+	};
 
 	// dynamic wheather
 	if ( CTI_WEATHER_DYNAMIC == 1) then {
@@ -317,6 +327,9 @@ if (CTI_IsClient) then {
 
 	//Town functions
 	0 execVM "Addons\Strat_mode\Functions\SM_Town_Actions.sqf";
+	
+	//Camp functions
+	0 execVM "Addons\Strat_mode\Functions\SM_Camp_Actions.sqf";
 
 	//adaptative group size
 	0 execVM "Addons\Strat_mode\Functions\SM_AdaptGroup.sqf";
@@ -416,22 +429,6 @@ if (CTI_IsClient) then {
 			} forEach (CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures);
 		};
 	};*/
-
-
-
-
-
-
-	// gear auto save
-	/*0 spawn {
-		waitUntil {alive player};
-		while {! CTI_GameOver} do {
-			if (CTI_PLAYER_REEQUIP == 1  && ! CTI_P_Respawning && alive player && !(side player == civilian)) then {CTI_P_LastPurchase= (player) call CTI_UI_Gear_GetUnitEquipment;} ;
-			sleep 1;
-		};
-	};*/
-	//-------------
-
 
 
 

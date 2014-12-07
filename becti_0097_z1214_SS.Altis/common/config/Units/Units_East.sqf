@@ -11,6 +11,15 @@ _f = []; //--- Built from Factory.
 _s = []; //--- Script
 
 //--- Infantry
+_c = _c + ['O_crew_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [150];
+_t = _t + [5];
+_u = _u + [0];
+_f = _f + [CTI_TOWN_DEPOT];
+_s = _s + [""];
+
 _c = _c + ['O_Soldier_A_F'];
 _p = _p + [''];
 _n = _n + [''];
@@ -308,7 +317,7 @@ _s = _s + [""];
 _c = _c + ['O_MBT_02_cannon_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [13000];
+_o = _o + [18000];
 _t = _t + [30];
 _u = _u + [2];
 _f = _f + [CTI_FACTORY_HEAVY];
@@ -377,7 +386,7 @@ _s = _s + [""];
 _c = _c + ['O_Truck_03_Ammo_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [1000];
+_o = _o + [3000];
 _t = _t + [25];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_AMMO];
@@ -401,9 +410,63 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_AMMO];
 _s = _s + [""];
 
+_c = _c + ['Box_East_Wps_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [1000];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + [""];
+
+_c = _c + ['Box_East_WpsSpecial_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [1500];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + [""];
+
+_c = _c + ['Box_East_Ammo_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [1000];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + [""];
+
+_c = _c + ['Box_East_Grenades_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [1000];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + [""];
+
+_c = _c + ['Box_East_AmmoOrd_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [3000];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + [""];
+
+_c = _c + ['Box_East_Support_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [2000];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AMMO];
+_s = _s + [""];
 
 
 
+/* Spawns with no gas and can't be controlled, have to fix this ss83
 _c = _c + ['O_UAV_01_F'];
 _p = _p + [''];
 _n = _n + [''];
@@ -412,6 +475,7 @@ _t = _t + [5];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
+*/
 
 _c = _c + ['O_UAV_02_F'];
 _p = _p + [''];

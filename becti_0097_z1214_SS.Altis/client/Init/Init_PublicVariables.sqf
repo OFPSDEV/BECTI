@@ -3,6 +3,7 @@ with missionNamespace do {
 	CTI_PVF_Client_CommanderVote = { _this spawn CTI_CL_FNC_Commander_VoteEnd };
 	CTI_PVF_Client_CommanderVoteStart = { _this spawn CTI_CL_FNC_Commander_VoteStart };
 	CTI_PVF_Client_OnStructureConstructed = { _this spawn CTI_CL_FNC_OnStructureConstructed };
+	CTI_PVF_Client_OnCampCaptured = { _this spawn CTI_CL_FNC_OnCampCaptured };
 	CTI_PVF_Client_OnTownCaptured = { _this spawn CTI_CL_FNC_OnTownCaptured };
 	CTI_PVF_Client_OnPurchaseOrderReceived = { _this spawn CTI_CL_FNC_OnPurchaseOrderReceived };
 	CTI_PVF_Client_OnPurchaseDelegationReceived = { _this spawn CTI_CL_FNC_OnPurchaseDelegationReceived };

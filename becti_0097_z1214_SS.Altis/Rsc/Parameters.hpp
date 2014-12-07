@@ -40,7 +40,7 @@ class Params {
 		title = "Base: Military Installation Price";
 		values[] = {10000,20000,30000};
 		texts[] = {"$10000","$20000","$30000"};
-		default = 10000;
+		default = 30000;
 	};
 	
 	class CTI_ECONOMY_INCOME_CYCLE {
@@ -54,7 +54,7 @@ class Params {
 		title = "INCOME: Starting Funds (East Commander)";
 		values[] = {40000,50000,60000,70000,80000,90000,100000,125000,150000,200000};
 		texts[] = {"$40000","$50000","$60000","$70000","$80000","$90000","$100000","$125000","$150000","$200000"};
-		default = 50000;
+		default = 80000;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_EAST {
 		title = "INCOME: Starting Funds (East Players)";
@@ -66,7 +66,7 @@ class Params {
 		title = "INCOME: Starting Funds (West Commander)";
 		values[] = {40000,50000,60000,70000,80000,90000,100000,125000,150000,200000};
 		texts[] = {"$40000","$50000","$60000","$70000","$80000","$90000","$100000","$125000","$150000","$200000"};
-		default = 50000;
+		default = 80000;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_WEST {
 		title = "INCOME: Starting Funds (West Players)";
@@ -98,6 +98,51 @@ class Params {
 		texts[] = {"Enabled"};
 		default = 1;
 	};
+	class CTI_RESPAWN_CAMPS_MODE {
+		title = "RESPAWN: Camps";
+		values[] = {0,1,2,3};
+		texts[] = {"Disabled","Classic","Nearby Camps","Occupation Only"};
+		default = 2;
+	};
+	class CTI_RESPAWN_CAMPS_RULE_MODE {
+		title = "RESPAWN: Enemy near";
+		values[] = {0,1,2};
+		texts[] = {"Disabled","West | East","West | East | Resistance"};
+		default = 2;
+	};
+	class CTI_RESPAWN_CAMPS_RANGE {
+		title = "RESPAWN: Towns Range";
+		values[] = {50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000,1500,2000,2500,3000,3500,4000};
+		texts[] = {"50m","100m","150m","200m","250m","300m","350m","400m","450m","500m","550m","600m","650m","700m","750m","800m","850m","900m","950m","1000m","1500m","2000m","2500m","3000m","3500m","4000m"};
+		default = 1000;
+	};
+	class CTI_TOWNS_AMOUNT {
+		title = "TOWNS: Amount";
+		values[] = {0,1,2,3,4};
+		texts[] = {"Extra Small","Small","Medium","Large","Full"};
+		default = 4;
+	};
+	class CTI_TOWNS_CAMPS_CREATE {
+		title = "TOWNS: Camps";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 1;
+	};
+	class CTI_TOWNS_GEAR {
+		title = "TOWNS: Equipment Purchase";
+		values[] = {0,1,2,3};
+		texts[] = {"Disabled","Camps","Depot","Camps and Depot"};
+		default = 3;
+	};
+	class CTI_UNITS_TOWN_PURCHASE {
+		title = "TOWNS: Purchase Infantry";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 1;
+	};
+	
+	
+	
 	class CTI_RESPAWN_TIMER {
 		title = "RESPAWN: Delay";
 		values[] = {15,30};
@@ -108,7 +153,7 @@ class Params {
 		title = "GEAR MENU: Access On Special Trucks";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_TOWNS_OCCUPATION {
 		title = "TOWNS: Occupation";
@@ -207,9 +252,9 @@ class Params {
 
 	class CTI_MAX_MISSION_TIME {
 		title = "Zerty: MISSION : Time Limit";
-		values[] = {8, 10};
-		texts[] = {"8h", "10h"};
-		default = 10;
+		values[] = {8, 10, 15, 20};
+		texts[] = {"8h", "10h", "15h", "20h"};
+		default = 15;
 	};
 	
 	class CTI_VICTORY_HQ {
@@ -262,7 +307,7 @@ class Params {
 		title = "Zerty: INCOME: base income for players";
 		values[] = {0,10,25,50,100,150,200,250};
 		texts[] = {"0$","10$","25$","50$","100$","150$","200$","250$"};
-		default = 10;
+		default = 100;
 	};
 	class CTI_VEHICLES_BOUNTY {
 		title = "Zerty: INCOME: On kill";
@@ -272,10 +317,10 @@ class Params {
 	};		
 	class CTI_PLAYER_REEQUIP {
 		title = "Zerty: RESPAWN : Reequip Gear";
-		values[] = {0,1};
-		texts[] = {"False","True"};
-		default = 1;
-	};	
+		values[] = {0,1,2};
+		texts[] = {"False","Last Purchase","Continuous"};
+		default = 2;
+	};
 	class CTI_PLAYER_TOWN_RESPAWN {
 		title = "Zerty: RESPAWN : On occupied towns";
 		values[] = {1};
@@ -342,7 +387,7 @@ class Params {
 		title = "TIME: Fast Time";
 		values[] = {1,2,2.4,3,4,6,12,24,48,96};
 		texts[] = {"Normal","12H = 24H","10H = 24H","8H = 24H","6H = 24H","4H = 24H","2H = 24H","1H = 24H","30MIN = 24H","15MIN = 24H"};
-		default = 3;
+		default = 2;
 	};
 	
 	
@@ -433,7 +478,7 @@ class Params {
 		default = 1;
 	};
 	class CTI_EW_HUD_S {
-		title = "Zerty: Electronic Warfare : Tactical HUD Sensivity";
+		title = "Zerty: Electronic Warfare : Tactical HUD Sensitivity";
 		values[] = {1,2,3,4};
 		texts[] = {"high","medium high", "medium low", "low"};
 		default = 2;
