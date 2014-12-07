@@ -297,7 +297,10 @@ if (CTI_IsClient) then {
 	if (CTI_PLAYER_REEQUIP == 2) then {
 		0 spawn {
 			while {true} do {
-				if (alive player && !isnull player && !CTI_P_Respawning) then {CTI_P_LastPurchase=(player) call CTI_UI_Gear_GetUnitEquipment; };
+				if (alive player && !isnull player && !CTI_P_Respawning) then {
+					CTI_P_LastPurchase=(player) call CTI_UI_Gear_GetUnitEquipment;
+					["SERVER", "SetPersistantGear",[getPlayerUID player,side player,CTI_P_LastPurchase]] call CTI_CO_FNC_NetSend;
+				};
 				sleep 2;
 			};
 		};
