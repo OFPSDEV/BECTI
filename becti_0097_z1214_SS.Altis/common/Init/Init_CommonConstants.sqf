@@ -314,6 +314,7 @@ CTI_GEAR_RESELL_TAX = 1; //--- Owned items are traded for: <item price> * <tax>
 //--- Towns: Capture
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 600; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
 CTI_TOWNS_CAPTURE_RANGE = 20; //--- The range which a unit/vehicle has to be from a town center to capture it ss83, decreased to 20 (experiment)
+CTI_TOWNS_CAPTURE_RANGE_RESISTANCE = 300;  //--- How far away resistance units can be to capture / defend the flag
 CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
 

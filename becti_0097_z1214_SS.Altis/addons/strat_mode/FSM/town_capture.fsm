@@ -76,7 +76,12 @@ class FSM
        "{_p_objects=_p_objects+(units _x);true} count (SM_PATROLS+ (_town getvariable [""CTI_TOWN_GROUPS"",[]])) ;" \n
        "" \n
        "_objects=[];" \n
-       "{if ((_x distance _town) <=  CTI_TOWNS_CAPTURE_RANGE) then {_objects set [count _objects,_x];};true} count _p_objects;" \n
+	   "{" \n
+	   "    _x_side = side _x;" \n
+	   "    _distance = CTI_TOWNS_CAPTURE_RANGE; "\n
+	   "    if(_x_side == resistance) then { _distance = CTI_TOWNS_CAPTURE_RANGE_RESISTANCE };"  \n
+	   "    if(_x distance _town < _distance) then { _objects set [count _objects,_x]; };"\n
+	   "} forEach _p_objects;" \n
        "_objects=_objects unitsBelowHeight 30;" \n
        "" \n
        "" \n
