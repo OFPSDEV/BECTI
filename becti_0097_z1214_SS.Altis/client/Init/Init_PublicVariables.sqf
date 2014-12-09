@@ -122,13 +122,6 @@ with missionNamespace do {
 			deleteMarkerLocal _marker;
 		};
 	};
-	
-	CTI_PVF_Client_SetGear = {
-		private ["_gear"];
-		_gear = _this;
-		diag_log ["SET GEAR", _gear];
-		[player, _gear] call CTI_CO_FNC_EquipUnit;
-	}
 
 
 };

@@ -90,14 +90,4 @@ if (isNil '_get') then { //--- The player has joined for the first time.
 	
 	_team setVariable ["cti_funds", _funds, true];
 	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] information were updated. Joined side is [%3], Teamswap? [%4]", _name, _uid, _side, if (_side_first != _side) then {true} else {false}]] call CTI_CO_FNC_Log};
-	
-	// Load persistent weapons
-	_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_GEAR_%1_%2", _uid, _side];
-	if(isNil '_get') then {
-		[["CLIENT", leader _team], "Client_SetGear", _get select 2] call CTI_CO_FNC_NetSend;
-		diag_log [["CLIENT", leader _team], "Client_SetGear", _get select 2];
-	}else{
-		diag_log "No persistent gear found for newly connected player";
-	}
-	
 };

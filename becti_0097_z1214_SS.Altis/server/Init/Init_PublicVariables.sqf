@@ -184,14 +184,4 @@ with missionNamespace do {
 			_town setVariable ["cti_town_occupation_active_vehicles", (_town getVariable "cti_town_occupation_active_vehicles") + _vehicles];
 		};
 	};
-	
-	CTI_PVF_SetPersistantGear = {
-		private ["_uid","_side","_gear"];
-		_uid = _this select 0;
-		_side = _this select 1;
-		_gear = _this select 2;
-
-		missionNamespace setVariable [format["CTI_SERVER_CLIENT_GEAR_%1_%2", _uid, _side], [_uid, _side, _gear]];
-		diag_log [format["CTI_SERVER_CLIENT_GEAR_%1_%2", _uid, _side], [_uid, _side, _gear]]
-	}
 };
