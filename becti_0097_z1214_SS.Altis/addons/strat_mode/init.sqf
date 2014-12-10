@@ -297,7 +297,9 @@ if (CTI_IsClient) then {
 	if (CTI_PLAYER_REEQUIP == 2) then {
 		0 spawn {
 			while {true} do {
-				if (alive player && !isnull player && !CTI_P_Respawning) then {CTI_P_LastPurchase=(player) call CTI_UI_Gear_GetUnitEquipment; };
+				if (alive player && !isnull player && !CTI_P_Respawning && CTI_P_CanGearAutosave) then {
+					CTI_P_LastPurchase=(player) call CTI_UI_Gear_GetUnitEquipment; 
+				};
 				sleep 2;
 			};
 		};

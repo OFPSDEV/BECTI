@@ -298,6 +298,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 		[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
 	};
 	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
+	CTI_P_CanGearAutosave = true;
 	CTI_P_Respawning = false;
 };
 
