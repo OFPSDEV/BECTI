@@ -61,6 +61,7 @@ _loadout_count = count _loadout;
 			// Does this item match something we are buying?
 			if(_remove_item == _purchase_type and _purchase_count > 0 ) then {
 				_purchase set [1, _purchase_count - 1];  // Don't buy that item
+				_remove_count = _remove_count - 1;
 			}else{
 				_loadout_index = _loadout_index + 1; // Check the next item
 			};
