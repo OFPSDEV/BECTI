@@ -314,7 +314,7 @@ CTI_GEAR_RESELL_TAX = 1; //--- Owned items are traded for: <item price> * <tax>
 //--- Towns: Capture
 CTI_TOWNS_CAPTURE_BOUNTY_DELAY = 600; //--- Award the bounty depending if the last town capture happened longer than x seconds ago
 CTI_TOWNS_CAPTURE_RANGE = 20; //--- The range which a unit/vehicle has to be from a town center to capture it ss83, decreased to 20 (experiment)
-CTI_TOWNS_CAPTURE_RANGE_RESISTANCE = 800;  //--- How far away resistance units can be to capture / defend the flag
+CTI_TOWNS_CAPTURE_RANGE_RESISTANCE = 500;  //--- How far away resistance units can be to capture / defend the flag
 CTI_TOWNS_CAPTURE_VALUE_CEIL = 30; //--- The town value's ceiling
 CTI_TOWNS_CAPTURE_VALUE_ITERATE = 5; //--- The iterated value, (try to match CTI_TOWNS_CAPTURE_VALUE_CEIL), proc all 5 seconds.
 
@@ -376,7 +376,7 @@ with missionNamespace do {
 
 //--- Base: Area
 CTI_BASE_AREA_MAX = 2;
-CTI_BASE_AREA_RANGE = 300;  //ss83 reduced from 500
+CTI_BASE_AREA_RANGE = 250;  //ss83 reduced from 200
 
 //--- Base: Construction
 CTI_BASE_CONSTRUCTION_TIME = 180; //--- Length of time a structure takes to build, in seconds.
@@ -467,15 +467,12 @@ CTI_VEHICLES_HOOKERS_LIGHT = ["I_Heli_light_03_unarmed_F", "B_Heli_Light_01_F"];
 CTI_VEHICLES_HOOKERS_MEDIUM = ["B_Heli_Transport_01_F", "O_Heli_Light_02_unarmed_F"]; //--- Medium Lifters
 CTI_VEHICLES_HOOKERS_HEAVY = ["I_Heli_Transport_02_F", "B_Heli_Transport_03_F", "O_Heli_Transport_04_F"]; //--- Heavy Lifters
 
-/******PRE SLING LOADING*****        --- Types of liftable Vehicles 
-CTI_VEHICLES_HOOKABLE_LIGHT = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Motorcycle"]; //--- Vehicles which may be carried by light lifters
-CTI_VEHICLES_HOOKABLE_MEDIUM = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Motorcycle","Car", "Ship", "Truck","Wheeled_APC"]; //--- Vehicles which may be carried by medium lifters
-CTI_VEHICLES_HOOKABLE_HEAVY = ["Car", "Ship", "Truck","Wheeled_APC","Tracked_APC", "Tank", "Air"]; //--- Vehicles which may be carried by heavy lifters (do not allow any vehicles taht can go inside)
-******************************/
 //--- Types of liftable Vehicles 
-CTI_VEHICLES_HOOKABLE_LIGHT = [""]; //--- Vehicles which may be carried by light lifters
-CTI_VEHICLES_HOOKABLE_MEDIUM = ["Truck","Wheeled_APC"]; //--- Vehicles which may be carried by medium lifters
-CTI_VEHICLES_HOOKABLE_HEAVY = ["Wheeled_APC","Tracked_APC", "Tank", "Air"]; //--- Vehicles which may be carried by heavy lifters (do not allow any vehicles that can go inside)
+CTI_VEHICLES_HOOKABLE_LIGHT = ["Strategic","StaticWeapon","Motorcycle"]; //--- Vehicles which may be carried by light lifters
+CTI_VEHICLES_HOOKABLE_MEDIUM = ["Strategic","StaticWeapon","Motorcycle","Car", "Ship", "Truck","Wheeled_APC"]; //--- Vehicles which may be carried by medium lifters
+CTI_VEHICLES_HOOKABLE_HEAVY = ["Car", "Ship", "Truck","Wheeled_APC","Tracked_APC", "Tank", "Air"]; //--- Vehicles which may be carried by heavy lifters (do not allow any vehicles taht can go inside)
+
+
 
 
 //--- Total lifters/liftable vehicles
@@ -560,7 +557,7 @@ CTI_GC_DELAY_BUILDING = 30;
 
 // --- Zerty was here
 CTI_HALO_ALTITUDE = 2000;
-CTI_HALO_RATIO = 2;
+CTI_HALO_RATIO = .5;
 CTI_UPGRADE_RATIO=6;
 
 CTI_WEST_AMMOS = ["B_supplyCrate_F","Box_NATO_WpsSpecial_F","Box_NATO_Ammo_F","Box_NATO_Ammo_F","Box_NATO_AmmoOrd_F","Box_NATO_Grenades_F","Box_NATO_Support_F","Box_NATO_Support_F","Box_NATO_Support_F","Box_NATO_WpsLaunch_F"];

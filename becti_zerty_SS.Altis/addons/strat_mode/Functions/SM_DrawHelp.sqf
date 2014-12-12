@@ -568,7 +568,7 @@ _marker setMarkerTypeLocal "mil_dot";
 _marker setMarkerSizeLocal [1,1];
 _marker setMarkerColorLocal "ColorWhite";
 _marker setMarkerAlphaLocal 0.8;
-_marker setMarkerTextLocal format ["Misson Name: becti_zerty124_SS"];
+_marker setMarkerTextLocal format ["Misson Name: becti_zerty_SS"];
 _pos=[(_pos select 0),(_pos select 1)-_offset,0];
 
 _marker = createMarkerLocal ["cti_serverinfo_4", _pos];
