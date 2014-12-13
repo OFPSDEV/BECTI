@@ -48,7 +48,7 @@ FAR_HandleDamage_EH =
 	_killer = _this select 3;
 	_isUnconscious = _unit getVariable "FAR_isUnconscious";
 
-	if (alive _unit &&_amountOfDamage < 1 && _amountOfDamage >= 0.99 && _isUnconscious == 0) then  //ss83 changed from .75 to .99
+	if (alive _unit &&_amountOfDamage < 1 && _amountOfDamage >= 0.01 && _isUnconscious == 0) then  //ss83 changed from .75 to .99
 	{
 
 		_unit setDamage 0;

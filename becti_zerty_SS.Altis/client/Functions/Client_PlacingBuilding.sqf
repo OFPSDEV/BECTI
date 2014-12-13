@@ -200,7 +200,7 @@ if (!CTI_VAR_StructureCanceled && (call CTI_CL_FNC_IsPlayerCommander)) then {
 	
 		// Place it
 		-(_var select 2) call CTI_CL_FNC_ChangePlayerFunds;
-		["SERVER", "Request_Building", [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player]] call CTI_CO_FNC_NetSend;
+		["SERVER", "Request_Building", [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player]] call CTI_CO_FNC_NetSend; player sideRadio "buildingstart";
 	
 		sleep 5;
 		
