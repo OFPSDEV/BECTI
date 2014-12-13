@@ -33,7 +33,7 @@ class Params {
 		title = "BASE: Startup Placement";
 		values[] = {10000,12000,15000,20000};
 		texts[] = {"10 KM","12 KM","15 KM","20 KM"};
-		default = 10000;
+		default = 15000;
 	};
 	
 	class CTI_MILITARY_INSTALLATION_PRICE {
