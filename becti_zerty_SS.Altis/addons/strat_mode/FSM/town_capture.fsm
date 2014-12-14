@@ -194,7 +194,14 @@ class FSM
     class Check_Capture
     {
       name = "Check_Capture";
-      init = /*%FSM<STATEINIT""">*/"_resistanceDominion = if (_resistance > _east && _resistance > _west) then {true} else {false};" \n
+      init = /*%FSM<STATEINIT""">*/"" \n
+	   "_capture_delta = CTI_TOWNS_CAPTURE_VALUE_ITERATE;" \n
+	   "if(_side == resistance && _resistance > 0 && _resistance <= CTI_TOWNS_RESISTANCE_MIN_ACTIVE) then {" \n
+	   "    _resistance = 0;" \n
+	   "    _capture_delta = _capture_delta / 8;" \n
+	   "};" \n
+	   "_resistance = if(_resistance <= CTI_TOWNS_RESISTANCE_MIN_ACTIVE) then {0} else {_resistance};" \n
+	   "_resistanceDominion = if (_resistance > _east && _resistance > _west) then {true} else {false};" \n
        "_westDominion = if (_west > _east && _west > _resistance) then {true} else {false};" \n
        "_eastDominion = if (_east > _west && _east > _resistance) then {true} else {false};" \n
        "" \n
@@ -204,10 +211,10 @@ class FSM
        "if (_force != civilian) then {" \n
        "	_capture_level = _town getVariable ""cti_town_capture"";" \n
        "	if (_side == _force) then { //--- Protect" \n
-       "		_capture_level = _capture_level + CTI_TOWNS_CAPTURE_VALUE_ITERATE;" \n
+       "		_capture_level = _capture_level + _capture_delta;" \n
        "		if (_capture_level > CTI_TOWNS_CAPTURE_VALUE_CEIL) then { _capture_level = CTI_TOWNS_CAPTURE_VALUE_CEIL };" \n
        "	} else { //--- Capture" \n
-       "		_capture_level = _capture_level - CTI_TOWNS_CAPTURE_VALUE_ITERATE ;" \n
+       "		_capture_level = _capture_level - _capture_delta ;" \n
        "		if (_capture_level <= 0) then { _captured = true; _capture_level = CTI_TOWNS_CAPTURE_VALUE_CEIL };" \n
        "	};" \n
        "	" \n
