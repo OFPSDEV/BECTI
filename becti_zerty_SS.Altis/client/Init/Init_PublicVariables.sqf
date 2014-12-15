@@ -113,12 +113,14 @@ with missionNamespace do {
 		_marker setMarkerSizeLocal [0.75, 0.75];
 		_marker setMarkerTextLocal _label;
 		_fob addAction ["<t color='#e67b09'>FOB: Buy Quadbike (250$)</t>","Addons\Strat_mode\Functions\SM_Action_Buy_Town.sqf", ["C_Quadbike_01_F",250,true], 99, false, true, "", " !CTI_P_PreBuilding && vehicle player == player"];
+		// Keep map marker for FOB up to date
 		[_fob, _marker] spawn {
 			_structure = _this select 0;
 			_marker = _this select 1;
-
-			waitUntil { sleep 5; !alive _structure };
-
+			while {alive _structure} do {
+				_marker setMarkerPos getPos _structure;
+				sleep 5;
+			};
 			deleteMarkerLocal _marker;
 		};
 	};
