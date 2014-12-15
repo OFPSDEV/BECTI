@@ -377,7 +377,7 @@ _s = _s + [""];
 _c = _c + ['O_Truck_03_Ammo_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [3000];
+_o = _o + [12000];
 _t = _t + [25];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_AMMO];
@@ -441,15 +441,15 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
-/*_c = _c + ['I_Heli_Transport_02_F']; 
+_c = _c + ['I_Heli_Transport_02_F']; 
 _p = _p + [''];
-_n = _n + [''];
-_o = _o + [10000];
+_n = _n + [(format ["Mohawk Airlift (Non DLC)"])];
+_o = _o + [13000];
 _t = _t + [40];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
-mohawk no longer needed */
+
 
 _c = _c + ['O_Heli_Transport_04_F']; 
 _p = _p + [''];
