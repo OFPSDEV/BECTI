@@ -179,7 +179,17 @@ if (_model isKindOf "Man") then {
 	if (_model isKindof  'B_Truck_03_medical_F') then {_handle=false};  //ss83 prevents the mobile respawns from despawning
 	if (_model isKindof  'O_Truck_03_repair_F') then {_handle=false}; 
 	if (_model isKindof  'B_Truck_03_repair_F') then {_handle=false}; 
-	if (_model isKindof  'I_Heli_light_03_unarmed_F') then {_handle=false}; 
+	if (_model isKindof  'I_Heli_light_03_unarmed_F') then {_handle=false};
+	
+	//--- Reduce ammo trucks contents to avoid arty spam.
+	if(
+			(_model isKindOf 'B_Truck_01_ammo_F') 
+			|| (_model isKindOf 'O_Truck_03_ammo_F')
+			|| (_model isKindOf 'Box_Nato_AmmoVeh_F')
+			|| (_model isKindOf 'Box_East_AmmoVeh_F')
+		) then{
+		_vehicle setAmmoCargo 0.10;  // 0.10 of an ammo truck is about 10 Artillery HE shells or 2 MLRS shells
+	};
 	
 	if (_handle) then {
 		["SERVER", "Request_HandleAction", ["empty", [_vehicle]]] call CTI_CO_FNC_NetSend; //--- Ask the server to track our vehicle emptyness
