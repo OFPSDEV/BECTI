@@ -118,7 +118,7 @@ if !( isNil "ADMIN_ZEUS") then {
 
 //artillery radar revamp
 if (missionNamespace getVariable "CTI_SM_RADAR" == 1) then {
-	_vehicle addEventHandler["Fired","_this call ARTR_HANDLER;"];
+	["SERVER", "Server_ARTR_handle",_vehicle] call CTI_CO_FNC_NetSend;
 	["SERVER", "Server_AIRR_handle",_vehicle] call CTI_CO_FNC_NetSend;
 };
 

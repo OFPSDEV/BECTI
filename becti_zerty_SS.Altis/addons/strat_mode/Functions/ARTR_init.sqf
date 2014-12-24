@@ -19,6 +19,7 @@ with missionnamespace do {
 	ARTR_HANDLER = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\ARTR_handler.sqf";
 	ARTR_UPDATE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\ARTR_update.sqf";
 	ARTR_PROJ_HANDLER = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\ARTR_proj_handler.sqf";
+	CTI_PVF_Server_ARTR_handle={  _this addEventHandler["Fired","_this call ARTR_HANDLER;"];};
 	CTI_PVF_Client_ARTR_update={  (_this) call ARTR_UPDATE;};
 	CTI_PVF_Client_ARTR_marker={
 		private ["_marker_name","_m"];
