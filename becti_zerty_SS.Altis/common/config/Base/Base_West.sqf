@@ -133,7 +133,7 @@ _specials = _specials		+ [[["DMG_Reduce", 1]]];  //takes 10 AP hits ss83
 
 [_side, _headers, _classes, _prices, _times, _placements, _specials] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Structures.sqf";
 
-//--- Defenses
+//--- Defences
 _headers = [];
 _classes = [];
 _prices = [];
@@ -200,7 +200,7 @@ _prices = _prices 			+ [150];
 _placements = _placements 	+ [[0, 15]];
 _categories = _categories 	+ ["Fortification"];
 
-_headers = _headers 		+ [["Shed (Roof)",[["RuinOnDestroyed", "Land_Shed_Big_ruins_F"], ["DMG_Reduce", 5]]]];
+_headers = _headers 		+ [["Shed (Roof)",[["RuinOnDestroyed", "Land_Shed_Big_ruins_F"], ["DMG_Reduce", 6]]]];
 _classes = _classes 		+ ["Land_Shed_Big_F"];
 _prices = _prices 			+ [400];
 _placements = _placements 	+ [[0, 15]];
@@ -230,30 +230,18 @@ _prices = _prices 			+ [40];
 _placements = _placements 	+ [[0, 7]];
 _categories = _categories 	+ ["Fortification"];
 
-//_headers = _headers 		+ [["High Wall (Concrete)",[["CanAutoAlign", 4.6, 0]]]];
-//_classes = _classes 		+ ["Land_CncWall4_F"];
-//_prices = _prices 			+ [60];
-//_placements = _placements 	+ [[0, 7]];
-//_categories = _categories 	+ ["Fortification"];
-
-//_headers = _headers 		+ ["Concrete Ramp"];
-//_classes = _classes 		+ ["Land_RampConcreteHigh_F"];
-//_prices = _prices 			+ [1500];
-//_placements = _placements 	+ [[0, 7]];
-//_categories = _categories 	+ ["Fortification"];
-
-
-_headers = _headers 		+ [["Fence",[["CanAutoAlign", 7.5, 0]]]];
-_classes = _classes 		+ ["Land_Mil_WiredFence_F"];
-_prices = _prices 			+ [5];
+/***********All of this stuff does NOT blow up, need to discuss w/BIS
+_headers = _headers 		+ [["High Wall (Concrete)",[["CanAutoAlign", 4.6, 0]]]];
+_classes = _classes 		+ ["Land_CncWall4_F"];
+_prices = _prices 			+ [60];
 _placements = _placements 	+ [[0, 7]];
 _categories = _categories 	+ ["Fortification"];
 
-_headers = _headers 		+ ["Gate"];
-_classes = _classes 		+ ["Land_Mil_WiredFence_Gate_F"];
-_prices = _prices 			+ [100];
-_placements = _placements 	+ [[0, 15]];
-_categories = _categories 	+ ["Structures_Fences"];
+_headers = _headers 		+ ["Concrete Ramp"];
+_classes = _classes 		+ ["Land_RampConcreteHigh_F"];
+_prices = _prices 			+ [1500];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Fortification"];
 
 _headers = _headers 		+ ["H-Barrier (medium)"];
 _classes = _classes 		+ ["Land_HBarrier_5_F"];
@@ -266,8 +254,6 @@ _classes = _classes 		+ ["Land_HBarrierBig_F"];
 _prices = _prices 			+ [40];
 _placements = _placements 	+ [[0, 7]];
 _categories = _categories 	+ ["Fortification"];
-
-//-------------new stuff here------------
 
 _headers = _headers 		+ [["Barrier wall Corridor",[["CanAutoAlign", 4, 0]]]];
 _classes = _classes 		+ ["Land_HBarrierWall_corridor_F"];
@@ -299,17 +285,33 @@ _prices = _prices 			+ [200];
 _placements = _placements 	+ [[0, 7]];
 _categories = _categories 	+ ["Fortification"];
 
-_headers = _headers 		+ [["Large Barrier Bunker", [["DMG_Reduce", 3]]]];
-_classes = _classes 		+ ["Land_BagBunker_Large_F"];
-_prices = _prices 			+ [500];
-_placements = _placements 	+ [[0, 7]];
-_categories = _categories 	+ ["Fortification"];
+
+
+***********All of this stuff does NOT blow up, need to discuss w/BIS/  */
 
 _headers = _headers 		+ [["Large Barrier Tower", [["DMG_Reduce", 6]]]];
 _classes = _classes 		+ ["Land_BagBunker_Tower_F"];
 _prices = _prices 			+ [500];
 _placements = _placements 	+ [[0, 7]];
 _categories = _categories 	+ ["Fortification"];
+
+_headers = _headers 		+ [["Large Barrier Bunker", [["DMG_Reduce", 3]]]];
+_classes = _classes 		+ ["Land_BagBunker_Large_F"];
+_prices = _prices 			+ [500];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Fortification"];
+
+_headers = _headers 		+ [["Fence",[["CanAutoAlign", 7.5, 0]]]];
+_classes = _classes 		+ ["Land_Mil_WiredFence_F"];
+_prices = _prices 			+ [5];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Fortification"];
+
+_headers = _headers 		+ ["Gate"];
+_classes = _classes 		+ ["Land_Mil_WiredFence_Gate_F"];
+_prices = _prices 			+ [100];
+_placements = _placements 	+ [[0, 15]];
+_categories = _categories 	+ ["Structures_Fences"];
 
 _headers = _headers 		+ [["Heli Pad", [["DMG_Reduce", 6]]]];
 _classes = _classes 		+ ["Land_HelipadSquare_F"];
@@ -334,9 +336,6 @@ _classes = _classes 		+ ["MapBoard_altis_F"];
 _prices = _prices 			+ [50];
 _placements = _placements 	+ [[180, 10]];
 _categories = _categories 	+ ["Furniture"];
-
-
-//---------------end of new stuff----------------
 
 _headers = _headers 		+ [["FOB",[["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0) || ( missionNamespace getVariable 'CTI_BASE_FOB_PERMISSION' ) == 0 )}]]]];
 _classes = _classes 		+ ["B_Slingload_01_Medevac_F"];
