@@ -377,7 +377,7 @@ _s = _s + [""];
 _c = _c + ['O_Truck_03_Ammo_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [2000];
+_o = _o + [3000];
 _t = _t + [25];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_AMMO];
@@ -443,7 +443,7 @@ _s = _s + [""];
 
 _c = _c + ['I_Heli_Transport_02_F']; 
 _p = _p + [''];
-_n = _n + [(format ["Mohawk Airlift (Non DLC)"])];
+_n = _n + [(format ["Heavy Airlift (Non DLC)"])];
 _o = _o + [13000];
 _t = _t + [40];
 _u = _u + [1];
@@ -489,8 +489,8 @@ _s = _s + [""];
 
 _c = _c + ['O_Heli_Transport_04_medevac_F']; 
 _p = _p + [''];
-_n = _n + [(format ["Taru AirRespawn Variant- Range %1 m",CTI_RESPAWN_MOBILE_RANGE])];
-_o = _o + [9000];
+_n = _n + [(format ["Taru Air-Respawn Variant- Range %1 m",CTI_RESPAWN_MOBILE_RANGE])];
+_o = _o + [8000];
 _t = _t + [40];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
@@ -506,15 +506,15 @@ _f = _f + [CTI_FACTORY_AIR];
 _s = _s + ["service-repairtruck"];
 
 
-/*_c = _c + ['I_Heli_light_03_unarmed_F'];  //ss83 added mobile respawn heli
+_c = _c + ['I_Heli_light_03_unarmed_F'];  //ss83 added mobile respawn heli
 _p = _p + [''];
 _n = _n + [(format ["Air Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE])];
-_o = _o + [8000];
+_o = _o + [12000];
 _t = _t + [20];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + ["service-medic"];
-*/
+
 
 
 _c = _c + ['O_Heli_Light_02_F'];

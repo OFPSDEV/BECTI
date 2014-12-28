@@ -179,10 +179,11 @@ if (_model isKindOf "Man") then {
 	if (_model isKindof  'B_Truck_03_medical_F') then {_handle=false};  //ss83 prevents the mobile respawns from despawning
 	if (_model isKindof  'O_Truck_03_repair_F') then {_handle=false}; 
 	if (_model isKindof  'B_Truck_03_repair_F') then {_handle=false}; 
-	if (_model isKindof  'I_Heli_light_03_unarmed_F') then {_handle=false};
+	if (_model isKindof  'I_Heli_light_03_unarmed_F') then {_handle=false}; 
+	if (_model isKindof  'O_Heli_Transport_04_medevac_F') then {_handle=false};	
 	
 	if (_handle) then {
-		["SERVER", "Request_HandleAction", ["empty", [_vehicle]]] call CTI_CO_FNC_NetSend; //--- Ask the server to track our vehicle emptyness
+		["SERVER", "Request_HandleAction", ["empty", [_vehicle]]] call CTI_CO_FNC_NetSend; //--- Ask the server to track our vehicle emptiness
 	};
 };
 
