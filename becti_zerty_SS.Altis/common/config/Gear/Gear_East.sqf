@@ -990,6 +990,114 @@ _i = _i		+ ["tf_FADAK"];  //SS83 this only works with task force radio 5KM RANGE
 _u = _u		+ [2];
 _p = _p		+ [150];
 
+_i = _i		+ ["AGM_CableTie"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_DefusalKit"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_M26_Clacker"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_HandFlare_Green"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_HandFlare_Red"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_HandFlare_White"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_HandFlare_Yellow"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_M84"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_EarBuds"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_JerryCan"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_SpareTrack"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_SpareWheel"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_MapTools"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_Box_Medical"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_EarBuds"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_Bandage"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_Epipen"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_Bloodbag"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_NVG_Gen1"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_NVG_Gen2"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_NVG_Gen4"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [150];
+
+_i = _i		+ ["AGM_NVG_Wide"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [250];
+
+_i = _i		+ ["AGM_SpareBarrel"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [150];
+
+_i = _i		+ ["AGM_Altimeter"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_Vector"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_ItemKestrel"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
+_i = _i		+ ["AGM_NonSteerableParachute"];  //SS83 this only works with AGM enabled
+_u = _u		+ [0];
+_p = _p		+ [50];
+
 _i = _i		+ ["NVGoggles"];
 _u = _u		+ [0];
 _p = _p		+ [150];

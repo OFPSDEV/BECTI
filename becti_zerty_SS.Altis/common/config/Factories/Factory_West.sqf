@@ -102,6 +102,7 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_REPAIR], _u];
 
 _u 			= ["B_Truck_01_ammo_F"];
 _u = _u		+ ["B_supplyCrate_F"];
+_u = _u		+ ["AGM_JerryCan"];  //only works with agm mod
 _u = _u		+ ["Box_Nato_AmmoVeh_F"];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _u];
 
