@@ -144,7 +144,7 @@ _placements = _placements 	+ [[90, 15]];
 _categories = _categories 	+ ["Fortification"];
 
 _headers = _headers 		+ ["Flag"];
-_classes = _classes 		+ ["Flag_NATO_F"];
+_classes = _classes 		+ ["Flag_CSAT_F"];
 _prices = _prices 			+ [50];
 _placements = _placements 	+ [[90, 15]];
 _categories = _categories 	+ ["Flag"];
