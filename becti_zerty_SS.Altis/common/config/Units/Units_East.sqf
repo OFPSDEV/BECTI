@@ -517,7 +517,7 @@ _s = _s + ["service-repairtruck"];
 
 _c = _c + ['I_Heli_light_03_unarmed_F'];  //ss83 added mobile respawn heli
 _p = _p + [''];
-_n = _n + [(format ["Air Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE])];
+_n = _n + [(format ["Air Respawn(NON-DLC) - Range %1 m",CTI_RESPAWN_MOBILE_RANGE])];
 _o = _o + [12000];
 _t = _t + [20];
 _u = _u + [1];

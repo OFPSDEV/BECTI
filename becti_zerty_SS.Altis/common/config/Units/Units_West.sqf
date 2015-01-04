@@ -481,7 +481,7 @@ _s = _s + [""];
 
 _c = _c + ['I_Heli_light_03_unarmed_F'];
 _p = _p + [''];
-_n = _n + [(format ["Air Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE])]; //ss83 added mobile respawn heli
+_n = _n + [(format ["Air Respawn(NON-DLC) - Range %1 m",CTI_RESPAWN_MOBILE_RANGE])]; //ss83 added mobile respawn heli
 _o = _o + [12000];
 _t = _t + [20];
 _u = _u + [1];
