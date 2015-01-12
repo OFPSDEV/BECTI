@@ -1,10 +1,10 @@
+// Probably deprecated but Im going to leave it in, just incase of other dependencies.
 CTI_UI_KeyHandler_BuildMenu = {
 	private ["_alt", "_control", "_key", "_shift"];
 	_key = _this select 1;
 	_shift = _this select 2;
 	_control = _this select 3;
 	_alt = _this select 4;
-	
 	switch (true) do {
 		case (_key in actionKeys "User1"): {
 			if (_alt) then {

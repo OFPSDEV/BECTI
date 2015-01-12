@@ -9,8 +9,15 @@ switch (_action) do {
 			{((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl _x) ctrlEnable false} forEach [210003,210004,210005,210009];
 		};
 
+		if ( (!alive (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ)) || (!alive player) || (((getPos (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ)) distance player) > (CTI_BASE_CONSTRUCTION_RANGE)) || !(call CTI_CL_FNC_IsPlayerCommander)) then {
+			((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210011) ctrlEnable false;
+		};
+		
 		if !(call CTI_CL_FNC_IsPlayerCommander) then {
-			{((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl _x) ctrlEnable false} forEach [210003,210004,210006,210008];
+			{
+				((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl _x) ctrlEnable false;
+			} forEach [210003,210004,210006,210008];
+
 		};
 
 		if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") < 0) then {((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210009) ctrlEnable false};
@@ -18,10 +25,12 @@ switch (_action) do {
 		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210003) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.32), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210003) ctrlCommit 0;
 		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210004) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.37), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210004) ctrlCommit 0;
 		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210005) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.42), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210005) ctrlCommit 0;
-		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210006) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.47), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210006) ctrlCommit 0;
-		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210008) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.52), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210008) ctrlCommit 0;
-		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210009) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.57), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210009) ctrlCommit 0;
-		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210010) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.62), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210010) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210011) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.47), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210011) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210006) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.52), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210006) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210008) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.57), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210008) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210009) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.62), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210009) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210010) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafezoneH * 0.67), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl 210010) ctrlCommit 0;
+		
 	};
 	case "onMapPressed": {
 		if (CTI_Base_ControlCenterInRange && call CTI_CL_FNC_IsPlayerCommander) then {
@@ -64,5 +73,13 @@ switch (_action) do {
 	case "onVoteMenuPressed": {
 		closeDialog 0;
 		createDialog "CTI_RscVoteMenu";
+	};
+	case "onConstructionCamPressed": {
+		//_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
+		if (CTI_Base_HQInRange && call CTI_CL_FNC_IsPlayerCommander) then {
+		//if (CTI_Base_HQInRange) then {
+			closeDialog 0;
+			createDialog "CTI_RscConstructionCamera";
+		};
 	};
 };

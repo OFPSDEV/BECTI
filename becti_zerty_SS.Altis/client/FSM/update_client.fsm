@@ -6,7 +6,7 @@ item1[] = {"Update_Client",2,250,-66.836029,-56.267544,23.163887,-6.267582,0.000
 item2[] = {"End",1,250,-218.006683,15.304325,-128.006653,65.304314,0.000000,"End"};
 item3[] = {"Loop",4,218,65.605347,-56.267605,155.605377,-6.267574,0.000000,"Loop"};
 item4[] = {"Gameover",4,218,-216.668854,-56.267559,-126.668869,-6.267574,0.000000,"Gameover"};
-item5[] = {"Update_Commander",2,4346,66.545486,22.916348,156.545471,72.916397,0.000000,"Update" \n "Commander"};
+item5[] = {"Update_Commander",2,250,66.545486,22.916348,156.545471,72.916397,0.000000,"Update" \n "Commander"};
 item6[] = {"Change_Commander",4,218,-66.545563,22.916351,23.454376,72.916374,0.000000,"Change" \n "Commander"};
 link0[] = {0,3};
 link1[] = {1,3};
@@ -16,8 +16,8 @@ link4[] = {3,1};
 link5[] = {4,2};
 link6[] = {5,3};
 link7[] = {6,5};
-globals[] = {0.000000,0,0,0,0,640,480,1,22,6316128,1,-179.747253,179.746490,284.563812,-355.386078,282,502,1};
-window[] = {0,-1,-1,-1,-1,674,26,1478,26,1,300};
+globals[] = {0.000000,0,0,0,0,640,480,1,22,6316128,1,-165.860870,165.859940,275.988220,-330.017609,283,517,1};
+window[] = {0,-1,-1,-1,-1,868,220,1672,220,1,300};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -141,7 +141,7 @@ class FSM
        "			_HQ addAction [""<t color='#86F078'>Lock</t>"",""Client\Actions\Action_ToggleHQLock.sqf"", [], 99, false, true, '', 'alive _target && locked _target == 0'];" \n
        "		};" \n
        "" \n
-       "		HQaction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_BuildMenu.sqf"", """", 93, false, true, """", ""_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange""];" \n
+       "		//HQaction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_BuildMenu.sqf"", """", 93, false, true, """", ""_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange""];" \n
        "		//if (_hc_enabled) then {player setVariable [""BIS_HC_scope"",BIS_HC_mainscope];{if !(isNil '_x') then {player HCSetGroup [_x]; [_x,false] Call SetTeamAutonomous}} forEach clientTeams};" \n
        "	} else {" \n
        "		if (!isNil ""HQAction"") then {player removeAction HQAction}; //---buildmenu" \n

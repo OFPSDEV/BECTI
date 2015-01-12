@@ -9,6 +9,7 @@ switch (_action) do {
 		_pos = getPos _hq;
 		_pos set [2, CTI_SATCAM_ZOOM_MIN];
 		
+		
 		showCinemaBorder false;
 		
 		CTI_SatelitteCamera = "camera" camCreate _pos;

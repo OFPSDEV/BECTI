@@ -45,11 +45,11 @@ if (CTI_P_SideJoined == resistance) exitWith {false};*/
 
 
 //--- Commander related actions
-if ((CTI_P_SideLogic getVariable "cti_commander") == group player) then {
-	player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_BuildMenu.sqf", "", 93, false, true, "", "_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange && _this == player "];
-} else {
+//if ((CTI_P_SideLogic getVariable "cti_commander") == group player) then {
+//	player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_BuildMenu.sqf", "", 93, false, true, "", "_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange && _this == player "];
+//} else {
 //player addAction ["<t color='#a5c4ff'>MENU: Defense (HQ)</t>", "Client\Actions\Action_DefenseMenu.sqf", "", 93, false, true, "", "_target == player && !CTI_P_PreBuilding &&CTI_Base_HQInRange && _this == player "];
-};
+//};
 
 //--- Mixed actions
 

@@ -34,6 +34,7 @@ switch (_action) do {
 		// CTI_BASE_WORKERS_LIMIT
 		// 100005
 	*/
+		
 	
 	};
 	case "onBuildStructure": {
@@ -125,11 +126,15 @@ switch (_action) do {
 		};
 	};
 	case "onUnload": {
+		      
+        CTI_CMDR_BuildCam = false;
 		//--- Memorize
 		_curSelBuilding = lnbCurSelRow 100006;
 		_curSelDefense = lnbCurSelRow 100007;
 
 		if (_curSelBuilding > -1) then {uiNamespace setVariable ["cti_dialog_ui_buildmenu_lastbsel", _curSelBuilding]};
 		if (_curSelDefense > -1) then {uiNamespace setVariable ["cti_dialog_ui_buildmenu_lastdsel", _curSelDefense]};
+		
+		
 	};
 };

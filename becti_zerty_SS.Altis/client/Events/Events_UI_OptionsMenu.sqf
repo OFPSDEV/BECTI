@@ -71,6 +71,7 @@ switch (_action) do {
 	};
 	case "onSatCamPressed": {
 		_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
+		
 		if (CTI_Base_ControlCenterInRange && Client_AN_Connected && _upgrades select CTI_UPGRADE_SATELLITE > 0) then {
 			closeDialog 0;
 			createDialog "CTI_RscSatelitteCamera";
