@@ -44,7 +44,7 @@ switch (_action) do {
 		_deg = deg CTI_ConstructionCam_Theta;
 		_cos = cos _deg;
 		_sin = sin _deg;
-		CTI_ConstructionCamera setVectorDirAndUp  [[_cos,_sin,-0.66],[0,0,1]];
+		CTI_ConstructionCamera setVectorDirAndUp  [[_cos,_sin,-0.75],[0,0,1]];
 
 
 		(uiNamespace getVariable "cti_dialog_ui_constructioncam") displayAddEventHandler ["KeyDown", "nullReturn = _this spawn CTI_UI_ConstructionKeyHandler_ConstructionCamera"];
@@ -112,7 +112,7 @@ switch (_action) do {
 
 		if (_funds >= (_var select 2)) then { //--- Check if we have enough funds to go in the construction mode.
 			CTI_VAR_StructurePlaced = false;
-			{player removeAction _x;true}count CTI_P_RapidDefence_Actions;
+			//{player removeAction _x;true}count CTI_P_RapidDefence_Actions;
 			[_selected, CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ, CTI_BASE_CONSTRUCTION_RANGE] spawn CTI_CL_FNC_ConstructionCam_PlacingDefense;
 		} else {
 			player groupChat format ["HQ: Insufficient Funds: %1", _funds];
@@ -150,15 +150,14 @@ switch (_action) do {
 	case "onCancelSelected" : {
 		CTI_ConstructionCam_BuildingID = CTI_ConstructionCam_BuildingID + 1;
 	};
+	case "onViewSliderChanged": {
+		_changeto = round(_this select 1);
+		CTI_ConstructionCam_Rotation = _changeto;
+	};
 	case "onUnload": {
 		CTI_ConstructionCam_BuildingID = -1;
 		CTI_ConstructionCamera cameraEffect["TERMINATE","BACK"];
 		camDestroy CTI_ConstructionCamera;
 		showCinemaBorder true;
-	};
-	case "onViewSliderChanged": {
-		_changeto = round(_this select 1);
-		CTI_ConstructionCam_Rotation = _changeto;
-		
 	};
 };

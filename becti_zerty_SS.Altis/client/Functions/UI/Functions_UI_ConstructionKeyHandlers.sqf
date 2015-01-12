@@ -84,7 +84,7 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 			_deg = deg CTI_ConstructionCam_Theta;
 			_cos = cos _deg;
 			_sin = sin _deg;
-			CTI_ConstructionCamera setVectorDirAndUp [[_cos, _sin, -0.66],[0,0,1]];
+			CTI_ConstructionCamera setVectorDirAndUp [[_cos, _sin, -0.75],[0,0,1]];
 
 		};
 		case (_key in actionKeys "LeanRight") : {
@@ -98,7 +98,7 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 			_deg = deg CTI_ConstructionCam_Theta;
 			_cos = cos _deg;
 			_sin = sin _deg;
-			CTI_ConstructionCamera setVectorDirAndUp [[_cos, _sin, -0.66],[0,0,1]];
+			CTI_ConstructionCamera setVectorDirAndUp [[_cos, _sin, -0.75],[0,0,1]];
 		};
 	}; 
 };
@@ -128,7 +128,7 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera_MouseButtonDown = {
 	
 	switch (_button) do {
 		case 0: { //--- Left clicked
-			CTI_VAR_StructurePlaced = true;
+			CTI_VAR_StructurePlaced = CTI_P_PreBuilding_SafePlace;
 		};
 		case 1: { //--- Right clicked 
 			CTI_ConstructionCam_BuildingID = CTI_ConstructionCam_BuildingID + 1;
