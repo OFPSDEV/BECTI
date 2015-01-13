@@ -58,31 +58,47 @@ while {(_buildingID == CTI_ConstructionCam_BuildingID)} do {
 
 	_dir = 0;
 	_pos = [];
+	
+	_helper_blue = "Sign_Arrow_Blue_F" createVehicleLocal CTI_ConstructionCam_MouseLoc;
+	_helper_red = "Sign_Sphere100cm_F" createVehicleLocal CTI_ConstructionCam_MouseLoc;
+	
 	while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled && (_buildingID == CTI_ConstructionCam_BuildingID)} do {
-		//_pos = player modelToWorld [0, _distance_structure + CTI_P_KeyDistance, 0];
 		_pos = CTI_ConstructionCam_MouseLoc;
 		
+		CTI_P_PreBuilding_SafePlace = if (_pos distance (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_hq") >15 && _pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_fobs"] call CTI_CO_FNC_GetClosestEntity) >15 && !surfaceIsWater _pos && !(lineIntersects [ATLtoASL (_helper_blue modelToWorld (_helper_blue selectionPosition "pilot")),ATLtoASL (_local modelToWorld (_local selectionPosition "pilot")), player, _local])) then {true} else {false};
 		
-	
-		// CSM here is the checking for bad placing areas
-		_areaFlatEmpty = true;
-		_flatEmpty = _pos isFlatEmpty [2,0,0.7,2,0,true,_local];
-		//if ((count _flatEmpty)  == 0) then {_areaFlatEmpty = false;};
-		
-		//CTI_P_PreBuilding_SafePlace = if (_pos distance (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_hq") >15 && _pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_fobs"] call CTI_CO_FNC_GetClosestEntity) >15 && !surfaceIsWater _pos && !(lineIntersects [ATLtoASL (player modelToWorld (player selectionPosition "pilot")),ATLtoASL (_local modelToWorld (_local selectionPosition "pilot")), player, _local])) then {true} else {false};
-		CTI_P_PreBuilding_SafePlace = if (_pos distance (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_hq") >15 && _pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_fobs"] call CTI_CO_FNC_GetClosestEntity) >15 && !surfaceIsWater _pos && _areaFlatEmpty) then {true} else {false};
-		if (time - _last_collision_update > 1.5) then {_last_collision_update = time;{_local disableCollisionWith _x} forEach (player nearObjects 150)};
-		if (_center distance player > _center_distance || !alive _center) exitWith { CTI_VAR_StructureCanceled = true };
+		if (time - _last_collision_update > 1.5) then {_last_collision_update = time;{_local disableCollisionWith _x} forEach (_helper_blue nearObjects 150)};
 
 		_dir = CTI_ConstructionCam_Rotation;
 		_pos set [2, 0];
 		_local setPos _pos;
 		_local setDir _dir;
+		_helper_pos = _local modelToWorld [(sin (360 -_direction_structure) * _distance_structure), (cos (360 -_direction_structure) * _distance_structure), 0];
+		_helper_pos set [2, 0];
+		
+		_helper_blue setPos _helper_pos;
+		_helper_blue setDir _dir;
+		
+		if !(CTI_P_PreBuilding_SafePlace) then {
+			_helper_pos set [2, 0.5];
+			_helper_red setPos _helper_pos;
+			_helper_red setDir _dir;
+		} else {
+			_helper_pos set [0, 0];
+			_helper_pos set [1, 0];
+			_helper_pos set [2, -1];
+			_helper_red setPos _helper_pos;
+		};
 
 		sleep .01;
 	};
 
 	CTI_P_PreBuilding = false;
+	
+	detach _helper_blue;
+	detach _helper_red;
+	deleteVehicle _helper_blue;
+	deleteVehicle _helper_red;
 	deleteVehicle _local;
 
 

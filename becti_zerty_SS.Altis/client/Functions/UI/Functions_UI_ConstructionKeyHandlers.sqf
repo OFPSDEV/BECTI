@@ -84,7 +84,7 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 			_deg = deg CTI_ConstructionCam_Theta;
 			_cos = cos _deg;
 			_sin = sin _deg;
-			CTI_ConstructionCamera setVectorDirAndUp [[_cos, _sin, -0.75],[0,0,1]];
+			CTI_ConstructionCamera setVectorDirAndUp [[_cos, _sin, -0.8],[0,0,1]];
 
 		};
 		case (_key in actionKeys "LeanRight") : {
@@ -98,7 +98,7 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 			_deg = deg CTI_ConstructionCam_Theta;
 			_cos = cos _deg;
 			_sin = sin _deg;
-			CTI_ConstructionCamera setVectorDirAndUp [[_cos, _sin, -0.75],[0,0,1]];
+			CTI_ConstructionCamera setVectorDirAndUp [[_cos, _sin, -0.8],[0,0,1]];
 		};
 	}; 
 };

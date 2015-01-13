@@ -49,43 +49,34 @@ _last_collision_update = -600;
 _pos = [];
 _dir = 0;
 _helper_blue = "Sign_Arrow_Large_Blue_F" createVehicleLocal CTI_ConstructionCam_MouseLoc;
-_helper_red = "Sign_Arrow_Large_F" createVehicleLocal CTI_ConstructionCam_MouseLoc;
+_helper_red = "Sign_Sphere100cm_F" createVehicleLocal CTI_ConstructionCam_MouseLoc;
 
 while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled && (call CTI_CL_FNC_IsPlayerCommander) && (_buildingID == CTI_ConstructionCam_BuildingID)} do {
 
 	_pos = CTI_ConstructionCam_MouseLoc;
-
-	if (time - _last_collision_update > 1.5) then {_last_collision_update = time;{_local disableCollisionWith _x} forEach (player nearObjects 150)};
 	
-	// CSM here is the checking for bad placing areas
-	_areaFlatEmpty = true;
-	_flatEmpty = _pos isFlatEmpty [2,0,0.7,2,0,true,_local];
-	//if ((count _flatEmpty)  == 0) then {_areaFlatEmpty = false;};
+	if (time - _last_collision_update > 1.5) then {_last_collision_update = time;{_local disableCollisionWith _x} forEach (_helper_blue nearObjects 150)};
+	CTI_P_PreBuilding_SafePlace = if (_pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >20 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >20 && !surfaceIsWater _pos && !(lineIntersects [ATLtoASL (_helper_blue modelToWorld (_helper_blue selectionPosition "pilot")),ATLtoASL (_local modelToWorld (_local selectionPosition "pilot")), player, _local])) then {true} else {false};
 	
-	CTI_P_PreBuilding_SafePlace = if (_pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >20 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >20 && !surfaceIsWater _pos && _areaFlatEmpty) then {true} else {false};
-	
-	if (_center distance player > _center_distance || !alive _center) exitWith { CTI_VAR_StructureCanceled = true };
-
 	_dir = CTI_ConstructionCam_Rotation;
 	_pos set [2, 0];
 	_local setPos _pos;
 	_local setDir _dir;
 	_helper_pos = _local modelToWorld [(sin (360 -_direction_structure) * _distance_structure), (cos (360 -_direction_structure) * _distance_structure), 0];
 	_helper_pos set [2, 0];
-	if (CTI_P_PreBuilding_SafePlace) then {
-		_helper_blue setPos _helper_pos;
-		_helper_blue setDir _dir;
-		
-		_helper_pos set [0, 0];
-		_helper_pos set [1, 0];
-		_helper_red setPos _helper_pos;
-	} else {
+	
+	_helper_blue setPos _helper_pos;
+	_helper_blue setDir _dir;
+	
+	if !(CTI_P_PreBuilding_SafePlace) then {
+		_helper_pos set [2, 0.5];
 		_helper_red setPos _helper_pos;
 		_helper_red setDir _dir;
-		
+	} else {
 		_helper_pos set [0, 0];
 		_helper_pos set [1, 0];
-		_helper_blue setPos _helper_pos;
+		_helper_pos set [2, -1];
+		_helper_red setPos _helper_pos;
 	};
 	sleep .01;
 };

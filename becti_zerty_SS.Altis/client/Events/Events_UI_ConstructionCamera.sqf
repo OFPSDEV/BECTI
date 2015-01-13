@@ -44,7 +44,7 @@ switch (_action) do {
 		_deg = deg CTI_ConstructionCam_Theta;
 		_cos = cos _deg;
 		_sin = sin _deg;
-		CTI_ConstructionCamera setVectorDirAndUp  [[_cos,_sin,-0.75],[0,0,1]];
+		CTI_ConstructionCamera setVectorDirAndUp  [[_cos,_sin,-0.8],[0,0,1]];
 
 
 		(uiNamespace getVariable "cti_dialog_ui_constructioncam") displayAddEventHandler ["KeyDown", "nullReturn = _this spawn CTI_UI_ConstructionKeyHandler_ConstructionCamera"];
