@@ -383,7 +383,7 @@ CTI_BASE_CONSTRUCTION_TIME = 180; //--- Length of time a structure takes to buil
 CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 300; //--- Decay starts after x seconds unattended.
 CTI_BASE_CONSTRUCTION_DECAY_DELAY = 1; //--- Decay each x seconds.
 CTI_BASE_CONSTRUCTION_DECAY_FROM = 0.50; //--- Decay of x / 100 each y seconds.
-CTI_BASE_CONSTRUCTION_RANGE = 500; //--- Determine how far the commander may be from the HQ to build
+CTI_BASE_CONSTRUCTION_RANGE = CTI_BASE_AREA_RANGE / 2; //--- Determine how far the commander may be from the HQ to build
 CTI_BASE_CONSTRUCTION_RATIO_INIT = 1; //--- The initial construction ratio
 CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.95; //--- The completion ratio is multiplied by this coefficient to make repairs less effective at each factory's destruction.
 
