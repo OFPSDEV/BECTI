@@ -57,12 +57,11 @@ while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled && (call CTI_CL_FN
 
 	if (time - _last_collision_update > 1.5) then {_last_collision_update = time;{_local disableCollisionWith _x} forEach (player nearObjects 150)};
 	
-	_flatEmpty = _pos isFlatEmpty [2,0,0.7,2,0,true,_local];
-	
-	_areaFlatEmpty = true;
-	
 	// CSM here is the checking for bad placing areas
+	_areaFlatEmpty = true;
+	_flatEmpty = _pos isFlatEmpty [2,0,0.7,2,0,true,_local];
 	//if ((count _flatEmpty)  == 0) then {_areaFlatEmpty = false;};
+	
 	CTI_P_PreBuilding_SafePlace = if (_pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >20 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >20 && !surfaceIsWater _pos && _areaFlatEmpty) then {true} else {false};
 	
 	if (_center distance player > _center_distance || !alive _center) exitWith { CTI_VAR_StructureCanceled = true };
