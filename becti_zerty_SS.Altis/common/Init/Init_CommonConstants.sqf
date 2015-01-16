@@ -592,6 +592,7 @@ with missionNamespace do {
 	CTI_GAMEPLAY_VOTE_TIME = if (CTI_Debug) then {8} else {60};
 
 	if (isNil 'CTI_GRAPHICS_VD_MAX') then {CTI_GRAPHICS_VD_MAX = 3000};
+	if (isNil 'CTI_GRAPHICS_AIRD_MAX') then {CTI_GRAPHICS_AIRD_MAX = 6000};
 	if (isNil 'CTI_GRAPHICS_TG_MAX') then {CTI_GRAPHICS_TG_MAX = 50};
 
 	//CTI_PLAYERS_GROUPSIZE = 12;

@@ -8,6 +8,7 @@ switch (_action) do {
 		//infantry
 		_distance = profileNamespace getVariable "CTI_PERSISTENT_INF_VIEW_DISTANCE";
 		_distance_max = missionNamespace getVariable "CTI_GRAPHICS_VD_MAX";
+		_airdistance_max = missionNamespace getVariable "CTI_GRAPHICS_AIRD_MAX";
 		if (isNil '_distance') then { _distance = viewDistance };
 		
 		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150002) sliderSetRange [1, _distance_max];
@@ -21,7 +22,7 @@ switch (_action) do {
 		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150010) ctrlSetText format ["Ground Vehicle & Ship View Distance: %1", _distance];
 		//air
 		_distance = profileNamespace getVariable "CTI_PERSISTENT_AIR_VIEW_DISTANCE";
-		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150013) sliderSetRange [1, _distance_max];
+		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150013) sliderSetRange [1, _airdistance_max];
 		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150013) sliderSetPosition _distance;
 		((uiNamespace getVariable "cti_dialog_ui_videosettingsmenu") displayCtrl 150012) ctrlSetText format ["Aircraft View Distance: %1", _distance];
 		

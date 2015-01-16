@@ -249,18 +249,21 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1
 
 //--- Graphics/video thread (persistent)
 _temp_distance_max = missionNamespace getVariable "CTI_GRAPHICS_VD_MAX";
+_temp_airdistance_max = missionNamespace getVariable "CTI_GRAPHICS_AIRD_MAX";
 if (isNil {profileNamespace getVariable "CTI_PERSISTENT_AUTODISTANCE"}) then { profileNamespace setVariable ["CTI_PERSISTENT_AUTODISTANCE", true];};
 if (isNil {profileNamespace getVariable "CTI_PERSISTENT_INF_VIEW_DISTANCE"}) then {profileNamespace setVariable ["CTI_PERSISTENT_INF_VIEW_DISTANCE", round((_temp_distance_max)/4)];};
 if (isNil {profileNamespace getVariable "CTI_PERSISTENT_GROUND_VIEW_DISTANCE"}) then {profileNamespace setVariable ["CTI_PERSISTENT_GROUND_VIEW_DISTANCE", round((_temp_distance_max)/2)];};
-if (isNil {profileNamespace getVariable "CTI_PERSISTENT_AIR_VIEW_DISTANCE"}) then {profileNamespace setVariable ["CTI_PERSISTENT_AIR_VIEW_DISTANCE", (_temp_distance_max)];};
+if (isNil {profileNamespace getVariable "CTI_PERSISTENT_AIR_VIEW_DISTANCE"}) then {profileNamespace setVariable ["CTI_PERSISTENT_AIR_VIEW_DISTANCE", (_temp_airdistance_max * 0.75)];};
 if (isNil {profileNamespace getVariable "CTI_PERSISTENT_OBJECT_PERCENT"}) then {profileNamespace setVariable ["CTI_PERSISTENT_OBJECT_PERCENT", 75]; };
 saveProfileNamespace;
 _temp_distance_max = nil;
+_temp_airdistance_max = nil;
 
 0 spawn {
 	//--- Setup Init View Distance
 	_distance = profileNamespace getVariable "CTI_PERSISTENT_INF_VIEW_DISTANCE";
 	_distance_max = missionNamespace getVariable "CTI_GRAPHICS_VD_MAX";
+	_airdistance_max = missionNamespace getVariable "CTI_GRAPHICS_AIRD_MAX";
 	
 	// infantry
 	if (isNil "_distance") then { _distance = (_distance_max/4) };
@@ -271,21 +274,21 @@ _temp_distance_max = nil;
 	setViewDistance _distance;
 	
 	//csm
+	
 	// ground
 	_distance = profileNamespace getVariable "CTI_PERSISTENT_GROUND_VIEW_DISTANCE";
-
 	if (isNil "_distance") then { _distance = viewDistance };
 	if (typeName _distance != "SCALAR") then { _distance = viewDistance };
 	if (_distance < 1) then { _distance = 500 };
 	if (_distance > _distance_max) then { _distance = _distance_max };
 	profileNamespace setVariable ["CTI_PERSISTENT_GROUND_VIEW_DISTANCE", _distance];
+	
 	// air
 	_distance = profileNamespace getVariable "CTI_PERSISTENT_AIR_VIEW_DISTANCE";
-
 	if (isNil "_distance") then { _distance = viewDistance };
 	if (typeName _distance != "SCALAR") then { _distance = viewDistance };
 	if (_distance < 1) then { _distance = 500 };
-	if (_distance > _distance_max) then { _distance = _distance_max };
+	if (_distance > _airdistance_max) then { _distance = _airdistance_max };
 	profileNamespace setVariable ["CTI_PERSISTENT_AIR_VIEW_DISTANCE", _distance];
 	// end csm
 
