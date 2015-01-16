@@ -9,7 +9,7 @@ switch (_action) do {
 		
 		CTI_ConstructionCam_BuildingID = -1;
 		CTI_ConstructionCam_MouseLoc = [0,0,0];
-		CTI_ConstructionCam_Theta = pi/2;
+		CTI_ConstructionCam_Theta = 0;
 		CTI_ConstructionCam_Rotation = 0;
 		CTI_P_WallsAutoAlign = true;
 		
@@ -41,10 +41,11 @@ switch (_action) do {
 		showCinemaBorder false;
 		CTI_ConstructionCamera = "camera" camCreate _pos;
 		CTI_ConstructionCamera camSetFov 1.1;
-		_deg = deg CTI_ConstructionCam_Theta;
+		_deg = (deg CTI_ConstructionCam_Theta) + 90;
+		//_deg =_deg;
 		_cos = cos _deg;
 		_sin = sin _deg;
-		CTI_ConstructionCamera setVectorDirAndUp  [[_cos,_sin,-0.8],[0,0,1]];
+		CTI_ConstructionCamera setVectorDirAndUp [[_cos,_sin,-0.8],[0,0,1]];
 
 
 		(uiNamespace getVariable "cti_dialog_ui_constructioncam") displayAddEventHandler ["KeyDown", "nullReturn = _this spawn CTI_UI_ConstructionKeyHandler_ConstructionCamera"];
@@ -70,12 +71,12 @@ switch (_action) do {
 
 		if (profileNamespace getVariable "CTI_PERSISTENT_HINTS") then 
 		{ 
-			player groupChat format ["----Controls----"]; 
-			player groupChat format ["-[W,A,S,D]:Move Around"]; 
-			player groupChat format ["-[LeanLeft,LeanRight]:Rotate Left / Right"]; 
-			player groupChat format ["-[Left Click]:Build Selected Building"]; 
-			player groupChat format ["-[Right Click]:Cancel Building Selection"]; 
-			player groupChat format ["----END-Controls----"]; 
+			player groupChat format ["Construction:"]; 
+			player groupChat format ["W,A,S,D :Move Around,"]; 
+			player groupChat format ["LeanLeft,LeanRight :Rotate Left / Right,"]; 
+			player groupChat format ["Left Click :Build Selected Building,"]; 
+			player groupChat format ["Right Click :Cancel Building Selection,"]; 
+			player groupChat format ["Slider Bar to Rotate Buildings."]; 
 		};
 		execVM "Client\GUI\GUI_ConstructionCamera.sqf";
 	};
@@ -90,7 +91,6 @@ switch (_action) do {
 		};
 	};
 	case "onAutoAlign": {
-		// CTI_P_WallsAutoAlign = if (CTI_P_WallsAutoAlign) then {false} else {true};
 		CTI_P_WallsAutoAlign = !CTI_P_WallsAutoAlign;
 		if (CTI_P_WallsAutoAlign) then { ctrlSetText [600005, "Auto-Align Walls: On"] } else { ctrlSetText [600005, "Auto-Align Walls: Off"] };
 	};
@@ -100,7 +100,6 @@ switch (_action) do {
 	};
 	case "onBuildDefense": {
 		_selected = _this select 1;
-		//CTI_VAR_StructureCanceled = true;
 		CTI_ConstructionCam_BuildingID = CTI_ConstructionCam_BuildingID + 1;
 		
 
@@ -112,7 +111,6 @@ switch (_action) do {
 
 		if (_funds >= (_var select 2)) then { //--- Check if we have enough funds to go in the construction mode.
 			CTI_VAR_StructurePlaced = false;
-			//{player removeAction _x;true}count CTI_P_RapidDefence_Actions;
 			[_selected, CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ, CTI_BASE_CONSTRUCTION_RANGE] spawn CTI_CL_FNC_ConstructionCam_PlacingDefense;
 		} else {
 			player groupChat format ["HQ: Insufficient Funds: %1", _funds];
@@ -120,7 +118,6 @@ switch (_action) do {
 	};
 	case "onBuildStructure": {
 		_selected = _this select 1;
-		//CTI_VAR_StructureCanceled = true;
 		CTI_ConstructionCam_BuildingID = CTI_ConstructionCam_BuildingID + 1;
 		
 		if (_selected != -1) then {
