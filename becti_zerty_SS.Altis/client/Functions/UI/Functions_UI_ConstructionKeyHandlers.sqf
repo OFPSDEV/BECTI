@@ -13,7 +13,6 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 	_control = _this select 3;
 	_alt = _this select 4;
 	
-	_distance = 0;
 	_MAXDis = CTI_BASE_CONSTRUCTION_RANGE;
 	_MAXHis = CTI_CONSTRUCTIONCAM_ZOOM_MAX;
 	_maxDistance = (sqrt ((_MAXDis*_MAXDis) + (_MAXHis * _MAXHis))) + 1;
@@ -107,7 +106,7 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 			_newPos set [0, (_pos select 0) + (_A * _cos)];
 			_newPos set [1, (_pos select 1) + (_A * _sin)];
 			_newPos set [2, (_pos select 2)];
-			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (_maxDistance) ) then {
+			if !( ((getPos CTI_ConstructionCam_HQ) distance _newPos) > (_maxDistance) ) then {
 				// Set view direction to view center of circle
 				_viewTheta = _deg + 90;
 				_cosView = cos _viewTheta;
@@ -175,6 +174,10 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 //--- Change the zoom level of the satelitte camera <-- Credit to this guy
 CTI_UI_ConstructionKeyHandler_ConstructionCamera_MouseZChanged = {
 	_change = _this select 1;
+
+	_MAXDis = CTI_BASE_CONSTRUCTION_RANGE;
+	_MAXHis = CTI_CONSTRUCTIONCAM_ZOOM_MAX;
+	_maxDistance = (sqrt ((_MAXDis*_MAXDis) + (_MAXHis * _MAXHis))) + 1;
 	
 	_pos = getPos CTI_ConstructionCamera;
 	_level = _pos select 2;
@@ -185,8 +188,9 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera_MouseZChanged = {
 	if (_change > CTI_CONSTRUCTIONCAM_ZOOM_MAX) then { _change = CTI_CONSTRUCTIONCAM_ZOOM_MAX };
 	if (_change < CTI_CONSTRUCTIONCAM_ZOOM_MIN) then { _change = CTI_CONSTRUCTIONCAM_ZOOM_MIN };
 	
-	if (_change != _level) then {
-		_pos set [2, _change];
+	_pos set [2, _change];
+	
+	if ((_change != _level) && (((getPos CTI_ConstructionCam_HQ) distance _pos) < (_maxDistance))) then {
 		CTI_ConstructionCamera setPos _pos;
 	};
 };
