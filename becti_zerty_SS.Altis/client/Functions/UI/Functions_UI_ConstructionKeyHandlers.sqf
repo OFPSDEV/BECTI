@@ -13,6 +13,11 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 	_control = _this select 3;
 	_alt = _this select 4;
 	
+	_distance = 0;
+	_MAXDis = CTI_BASE_CONSTRUCTION_RANGE;
+	_MAXHis = CTI_CONSTRUCTIONCAM_ZOOM_MAX;
+	_maxDistance = (sqrt ((_MAXDis*_MAXDis) + (_MAXHis * _MAXHis))) + 1;
+	
 	_speed = .75;
 	_twopi = pi*2;
 	_newPos = [0,0,0];
@@ -31,7 +36,7 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 			_newPos set [1, (_pos select 1) + ((_A * _speed) * _sin)];
 			_newPos set [2, (_pos select 2)];
 			
-			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (CTI_BASE_CONSTRUCTION_RANGE)) then {
+			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (_maxDistance)) then {
 				CTI_ConstructionCamera setPos _newPos;
 			};
 		};
@@ -47,7 +52,7 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 			_newPos set [1, (_pos select 1) - ((_A * _speed) * _sin)];
 			_newPos set [2, (_pos select 2)];
 			
-			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (CTI_BASE_CONSTRUCTION_RANGE) ) then {
+			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (_maxDistance) ) then {
 				CTI_ConstructionCamera setPos _newPos;
 			};
 		};
@@ -62,7 +67,7 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 			_newPos set [0, (_pos select 0) + ((_A * _speed) *  _cos)];
 			_newPos set [1, (_pos select 1) + ((_A * _speed) * _sin)];
 			_newPos set [2, (_pos select 2)];
-			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (CTI_BASE_CONSTRUCTION_RANGE) ) then {
+			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (_maxDistance) ) then {
 				CTI_ConstructionCamera setPos _newPos;
 			};
 		};
@@ -77,7 +82,7 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 			_newPos set [0, (_pos select 0) + ((_A * _speed) * _cos)];
 			_newPos set [1, (_pos select 1) + ((_A * _speed) * _sin)];
 			_newPos set [2, (_pos select 2)];
-			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (CTI_BASE_CONSTRUCTION_RANGE) ) then {
+			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (_maxDistance) ) then {
 				CTI_ConstructionCamera setPos _newPos;
 			};
 		};
@@ -102,7 +107,7 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 			_newPos set [0, (_pos select 0) + (_A * _cos)];
 			_newPos set [1, (_pos select 1) + (_A * _sin)];
 			_newPos set [2, (_pos select 2)];
-			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (CTI_BASE_CONSTRUCTION_RANGE) ) then {
+			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (_maxDistance) ) then {
 				// Set view direction to view center of circle
 				_viewTheta = _deg + 90;
 				_cosView = cos _viewTheta;
@@ -137,7 +142,7 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 			_newPos set [0, (_pos select 0) - (_A * _cos)];
 			_newPos set [1, (_pos select 1) - (_A * _sin)];
 			_newPos set [2, (_pos select 2)];
-			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (CTI_BASE_CONSTRUCTION_RANGE) ) then {
+			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (_maxDistance) ) then {
 				// Set view direction to view center of circle
 				_viewTheta = _deg + 90;
 				_cosView = cos _viewTheta;

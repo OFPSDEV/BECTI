@@ -12,7 +12,7 @@ while { true } do {
 	if (isNil {uiNamespace getVariable "cti_dialog_ui_constructioncam"}) exitWith {CTI_ConstructionCam_BuildingID = -1;}; //--- Menu is closed.
 	
 	//Fun math time!
-	_distance = (sqrt ((_MAXD*_MAXD) + (_MAXH * _MAXH))) + 5;
+	_distance = (sqrt ((_MAXD*_MAXD) + (_MAXH * _MAXH))) + 30;
 	
 	
 	// -- The HQ has been destroyed or the player is no longer commander or the hq has moved outside of construction distance.
