@@ -290,9 +290,9 @@ class Params {
 	};
 	class CTI_TOWNS_CAPTURE_RATIO {
 		title = "Zerty: Town Reward: This value x Town value";
-		values[] = {30};
-		texts[] = {"30"};
-		default = 30;
+		values[] = {15};
+		texts[] = {"15"};
+		default = 15;  //used to be 30
 	};
 	class CTI_TOWNS_RESISTANCE_DETECTION_RANGE {
 		title = "Zerty: TOWNS: Detection Range";
