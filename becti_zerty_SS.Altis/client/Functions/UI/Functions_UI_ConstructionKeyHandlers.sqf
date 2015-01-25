@@ -17,6 +17,8 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 	_MAXHis = CTI_CONSTRUCTIONCAM_ZOOM_MAX;
 	_maxDistance = (sqrt ((_MAXDis*_MAXDis) + (_MAXHis * _MAXHis))) + 1;
 	
+	_objRotation = CTI_ConstructionCam_Rotation;
+	
 	_speed = .75;
 	_twopi = pi*2;
 	_newPos = [0,0,0];
@@ -85,54 +87,77 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 				CTI_ConstructionCamera setPos _newPos;
 			};
 		};
+		// Rotate camera Left case
 		case (_key in (actionKeys "LeanLeft")) : {
 		
-			// Rotate camera
 			_pos = getPos CTI_ConstructionCamera;
+			_dirVector = vectorDir CTI_ConstructionCamera;
+			_downwardAngle = _dirVector select 2;
 			_theta = CTI_ConstructionCam_Theta;
 			_theta = _theta + _rotation;
+			_tanZ = 0; // Downward angle of the camera... this is because of bistery
+			_MAXHis = CTI_CONSTRUCTIONCAM_ZOOM_MAX;
+			_BADZ = -0.4;
+			_cameraZ = _pos select 2; // height above ground
 			
 			// Ensure theta stays between 2pi and 0
 			if (_theta > _twopi) then { _theta = _theta - _twopi; };
 			
 			// Get distance from center of rotation
-			_Z = _pos select 2;
-			_A = _Z / (tan 82);
+			_A = _cameraZ / (tan 82);
 			
-			// Set camera pos from center of circle
+			// Set camera pos from center of rotation circle
 			_deg = deg _theta;
 			_cos = cos _deg;
 			_sin = sin _deg;
 			_newPos set [0, (_pos select 0) + (_A * _cos)];
 			_newPos set [1, (_pos select 1) + (_A * _sin)];
-			_newPos set [2, (_pos select 2)];
+			_newPos set [2, _cameraZ];
+			
+			// Camera angle will always need be computed and modified because bistery?
+			//IF downward angle is greater then ~~|-0.4733| the angle will bug out on rotation
+			_tanZ = (_cameraZ / _MAXHis) * -0.8;
+			if (_tanZ < _BADZ) then {
+				//_tempFz = (_angleAcceleration * (_tanZ - _BADZ)) * (_angleAcceleration * (_tanZ - _BADZ)); // No power function?!
+				_tempFz = (_tanZ - _BADZ) - 0.01;
+				_tanZ = _tanZ + _tempFz;
+			};
+			
+			// Two different rotation styles, you are either within distance or not
 			if !( ((getPos CTI_ConstructionCam_HQ) distance _newPos) > (_maxDistance) ) then {
-				// Set view direction to view center of circle
+				// Set view direction to view center of rotation circle
 				_viewTheta = _deg + 90;
 				_cosView = cos _viewTheta;
 				_sinView = sin _viewTheta;
-				CTI_ConstructionCamera setPos _newPos;
-				CTI_ConstructionCamera setVectorDirAndUp [[_cosView, _sinView, -0.8],[0,0,1]];
+				
+				CTI_ConstructionCamera setPos _newPos; // set camera over ground
+				CTI_ConstructionCamera setVectorDirAndUp [[_cosView, _sinView, _tanZ],[0,0,1]]; // set camera 
 			} else {
+				// Rotate camera over its own position if against the maximum build area
 				_viewTheta = _deg + 90;
 				_cosView = cos _viewTheta;
 				_sinView = sin _viewTheta;
-				CTI_ConstructionCamera setVectorDirAndUp [[_cosView, _sinView, -0.8],[0,0,1]];
+				CTI_ConstructionCamera setVectorDirAndUp [[_cosView, _sinView, _tanZ],[0,0,1]];
 			};
 			CTI_ConstructionCam_Theta = _theta;
 		};
+		// Rotate camera
 		case (_key in actionKeys "LeanRight") : {
-			// Rotate camera
+			
 			_pos = getPos CTI_ConstructionCamera;
 			_theta = CTI_ConstructionCam_Theta;
 			_theta = _theta - _rotation;
+			_MAXHis = CTI_CONSTRUCTIONCAM_ZOOM_MAX;
+			_tanZ = 0; // Downward angle of the camera... this is because of bistery
+			_MAXHis = CTI_CONSTRUCTIONCAM_ZOOM_MAX;
+			_BADZ = -0.4;
+			_cameraZ = _pos select 2; // height above ground
 			
 			// Ensure theta stays between 2pi and 0
 			if (_theta > _twopi) then { _theta = _theta - _twopi; };
 			
 			// Get distance from center of rotation
-			_Z = _pos select 2;
-			_A = _Z / (tan 82);
+			_A = _cameraZ / (tan 82);
 			
 			// Set camera pos from center of circle
 			_deg = deg _theta;
@@ -140,21 +165,32 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 			_sin = sin _deg;
 			_newPos set [0, (_pos select 0) - (_A * _cos)];
 			_newPos set [1, (_pos select 1) - (_A * _sin)];
-			_newPos set [2, (_pos select 2)];
+			_newPos set [2, _cameraZ];
+			
+			// Camera angle will always need be computed and modified because bistery?
+			//IF downward angle is greater then ~~|-0.4733| the angle will bug out on rotation
+			_tanZ = (_cameraZ / _MAXHis) * -0.8;
+			if (_tanZ < _BADZ) then {
+				//_tempFz = (_angleAcceleration * (_tanZ - _BADZ)) * (_angleAcceleration * (_tanZ - _BADZ)); // No power function?!
+				_tempFz = (_tanZ - _BADZ) - 0.01;
+				_tanZ = _tanZ + _tempFz;
+			};
+			
+			// Two different rotation styles, you are either within distance or not
 			if !(((getPos CTI_ConstructionCam_HQ) distance _newPos) > (_maxDistance) ) then {
-				// Set view direction to view center of circle
+				// Set view direction to view center of rotation circle
 				_viewTheta = _deg + 90;
 				_cosView = cos _viewTheta;
 				_sinView = sin _viewTheta;
-				
-				CTI_ConstructionCamera setPos _newPos;
-				CTI_ConstructionCamera setVectorDirAndUp [[_cosView, _sinView, -0.8],[0,0,1]];
+				CTI_ConstructionCamera setPos _newPos;				
+				CTI_ConstructionCamera setVectorDirAndUp [[_cosView, _sinView, _tanZ],[0,0,1]];
 				
 			} else {
+				// Rotate camera over its own position if against the maximum build area
 				_viewTheta = _deg + 90;
 				_cosView = cos _viewTheta;
 				_sinView = sin _viewTheta;
-				CTI_ConstructionCamera setVectorDirAndUp [[_cosView, _sinView, -0.8],[0,0,1]];
+				CTI_ConstructionCamera setVectorDirAndUp [[_cosView, _sinView, _tanZ],[0,0,1]];
 			};
 			CTI_ConstructionCam_Theta = _theta;
 		};
@@ -168,30 +204,59 @@ CTI_UI_ConstructionKeyHandler_ConstructionCamera = {
 			};
 			((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600013) ctrlSetText _mode;
 		};
+		case (_key in actionKeys "User1"): {
+			_rotate = switch (true) do { case (_shift): {45}; case (_control): {1};	default {5} };
+			_objRotation = _objRotation - _rotate;
+			if (_objRotation < -180) then {_objRotation = _objRotation + 360;};
+			// Move slider if keys moved slider.
+			((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600014) sliderSetPosition _objRotation;
+			CTI_ConstructionCam_Rotation = _objRotation;
+		};
+		case (_key in actionKeys "User2"): {
+			_rotate = switch (true) do { case (_shift): {45}; case (_control): {1};	default {5} };
+			_objRotation = _objRotation + _rotate;
+			if (_objRotation > 180) then {_objRotation = _objRotation - 360;};
+			// Move slider if keys moved slider.
+			((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600014) sliderSetPosition _objRotation;
+			CTI_ConstructionCam_Rotation = _objRotation;
+		};
+		case (_key in actionKeys "User3"): {
+			// Move slider if keys moved slider.
+			((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600014) sliderSetPosition 0;
+			CTI_ConstructionCam_Rotation = 0;
+		};
 	}; 
 };
 
 //--- Change the zoom level of the satelitte camera <-- Credit to this guy
 CTI_UI_ConstructionKeyHandler_ConstructionCamera_MouseZChanged = {
 	_change = _this select 1;
-
+	_tanZ = 0;
 	_MAXDis = CTI_BASE_CONSTRUCTION_RANGE;
 	_MAXHis = CTI_CONSTRUCTIONCAM_ZOOM_MAX;
-	_maxDistance = (sqrt ((_MAXDis*_MAXDis) + (_MAXHis * _MAXHis))) + 1;
+	_MINHis = CTI_CONSTRUCTIONCAM_ZOOM_MIN;
+	_maxDistance = (sqrt ((_MAXDis*_MAXDis) + (_MAXHis * _MAXHis)));
 	
 	_pos = getPos CTI_ConstructionCamera;
 	_level = _pos select 2;
 	
 	_change = if (_change > 0) then { _level - (_level * 0.2) } else { _level + (_level * 0.2) };
-	
 	// Check to ensure change is within set bounds
-	if (_change > CTI_CONSTRUCTIONCAM_ZOOM_MAX) then { _change = CTI_CONSTRUCTIONCAM_ZOOM_MAX };
-	if (_change < CTI_CONSTRUCTIONCAM_ZOOM_MIN) then { _change = CTI_CONSTRUCTIONCAM_ZOOM_MIN };
-	
+	if (_change > _MAXHis) then { _change = _MAXHis };
+	if (_change < _MINHis) then { _change = _MINHis };
+
+
 	_pos set [2, _change];
-	
+	// Check if within safe distance to not get stuck out of range and a change was made.
 	if ((_change != _level) && (((getPos CTI_ConstructionCam_HQ) distance _pos) < (_maxDistance))) then {
+		// Set xy and z
 		CTI_ConstructionCamera setPos _pos;
+
+		// Set the downward angle Z of the camera.
+		_dirVector = vectorDir CTI_ConstructionCamera;
+		_tanZ = ((_pos select 2) / _MAXHis) * -0.8;
+		_dirVector set [2, _tanZ];
+		CTI_ConstructionCamera setVectorDirAndUp [_dirVector, (vectorUp CTI_ConstructionCamera)];
 	};
 };
 

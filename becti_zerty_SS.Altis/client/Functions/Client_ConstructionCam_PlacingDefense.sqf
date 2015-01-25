@@ -34,11 +34,6 @@ _center_distance = _this select 2;
 
 _buildingID = CTI_ConstructionCam_BuildingID;
 
-CTI_P_KeyRotate = 0;
-CTI_P_KeyDistance = 0;
-CTI_P_KeyDistance_Min = -10;
-CTI_P_KeyDistance_Max = 20;
-
 while {(_buildingID == CTI_ConstructionCam_BuildingID)} do {
 	_var = missionNamespace getVariable _variable;
 	CTI_VAR_StructurePlaced = false;

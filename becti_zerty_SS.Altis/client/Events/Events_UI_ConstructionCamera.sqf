@@ -12,11 +12,20 @@ switch (_action) do {
 		CTI_ConstructionCam_Theta = 0;
 		CTI_ConstructionCam_Rotation = 0;
 		CTI_P_WallsAutoAlign = true;
+		CTI_ConstructionCam_DownwardAngle = -0.4;
 		
 		CTI_ConstructionCam_HQ = (side player) call CTI_CO_FNC_GetSideHQ;
 		
 		if (CTI_P_WallsAutoAlign) then { ctrlSetText [600005, "Auto-Align Walls: On"] } else { ctrlSetText [600005, "Auto-Align Walls: Off"] };
 		if (CTI_P_DefensesAutoManning) then { ctrlSetText [600006, "Defenses Auto-Manning: On"] } else { ctrlSetText [600006, "Defenses Auto-Manning: Off"] };
+		if (isNil {uiNamespace getVariable "cti_dialog_ui_constructioncam_showmap"}) then {uiNamespace setVariable ["cti_dialog_ui_constructioncam_showmap", true]};
+		if (uiNamespace getVariable "cti_dialog_ui_constructioncam_showmap") then {
+			((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600018) ctrlSetText "Hide Map";
+		} else {
+			((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600018) ctrlSetText "Show Map";
+			{((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl _x) ctrlShow false} forEach [600019, 600020];
+		};
+		
 		
 		{
 			_var = missionNamespace getVariable _x;
@@ -36,8 +45,8 @@ switch (_action) do {
 			};
 		} forEach (missionNamespace getVariable format ["CTI_%1_DEFENSES", CTI_P_SideJoined]);
 		
-		_pos = getPos player;
-		_pos set [2, ((CTI_CONSTRUCTIONCAM_ZOOM_MAX - CTI_CONSTRUCTIONCAM_ZOOM_MIN)/2) + CTI_CONSTRUCTIONCAM_ZOOM_MIN];
+		_pos = getPos CTI_ConstructionCam_HQ;
+		_pos set [2, 27];
 		showCinemaBorder false;
 		CTI_ConstructionCamera = "camera" camCreate _pos;
 		CTI_ConstructionCamera camSetFov 1.1;
@@ -58,7 +67,7 @@ switch (_action) do {
 
 		ctrlSetFocus ((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600001);
 		
-		((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600014) sliderSetRange [-270, 270];
+		((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600014) sliderSetRange [-180, 180];
 		((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600014) sliderSetPosition CTI_ConstructionCam_Rotation;
 		
 		if (isNil {uiNamespace getVariable "cti_dialog_ui_constructioncam_viewmode"}) then {uiNamespace setVariable ["cti_dialog_ui_constructioncam_viewmode", 0]};
@@ -150,6 +159,18 @@ switch (_action) do {
 	case "onViewSliderChanged": {
 		_changeto = round(_this select 1);
 		CTI_ConstructionCam_Rotation = _changeto;
+	};
+	case "onToggleMap": {
+		_changeto = !(uiNamespace getVariable "cti_dialog_ui_constructioncam_showmap");
+		uiNamespace setVariable ["cti_dialog_ui_constructioncam_showmap", _changeTo];
+		
+		if (_changeto) then {
+			((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600018) ctrlSetText "Hide Map";
+			{((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl _x) ctrlShow true} forEach [600019, 600020];
+		} else {
+			((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl 600018) ctrlSetText "Show Map";
+			{((uiNamespace getVariable "cti_dialog_ui_constructioncam") displayCtrl _x) ctrlShow false} forEach [600019, 600020];
+		};
 	};
 	case "onUnload": {
 		CTI_ConstructionCam_BuildingID = -1;

@@ -4862,7 +4862,6 @@ class CTI_RscConstructionCamera {
 			colorBackground[] = {0, 0, 0, 0.4};
 		};
 	};
-	
 	class controls {
 		class CTI_Background : RscText { //--- Render out.
 			idc = 600002;
@@ -4938,17 +4937,6 @@ class CTI_RscConstructionCamera {
 			
 			onLBDblClick = "['onBuildDefense', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
 		};
-		class CTI_Menu_Map : RscMapControl { //--- Render out.
-			idc = 600010;
-			
-			x = "SafeZoneX + (SafeZoneW * 0.805)";
-			y = "SafeZoneY + (SafezoneH * 3.63)";
-			w = "SafeZoneW * 0.18";
-			h = "SafeZoneH * 0.30";
-			
-			showCountourInterval = 1;
-			//onMouseButtonDown = "nullReturn = _this call CTI_UI_SatelitteCamera_MapClicked";
-		};
 		class CTI_Menu_Control_Mode : RscButton_Opac {
 			idc = 600013;
 			
@@ -5008,10 +4996,41 @@ class CTI_RscConstructionCamera {
 			
 			x = "SafeZoneX + (SafeZoneW * 0.01)";
 			y = "SafeZoneY + (SafezoneH * 0.905)";
-			w = "SafeZoneW * 0.73";
+			w = "SafeZoneW * 0.59";
 			h = "SafeZoneH * 0.035";
 			
 			onSliderPosChanged = "['onViewSliderChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
 		};
+		
+		class CTI_Menu_Control_ToggleMap : CTI_Menu_Control_AutoAlign {
+			idc = 600018;
+			
+			//x = "SafeZoneX + (SafeZoneW * 0.61)";
+			y = "SafeZoneY + (SafezoneH * 0.905)";
+			
+			text = "";
+			action = "['onToggleMap'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+		};
+		// Minimap
+		class CTI_Background_Map : RscText { //--- Render out.
+			idc = 600019;
+			
+			x = "SafeZoneX + (SafeZoneW * .585)";
+			y = "SafeZoneY + (SafezoneH * .615)";
+			w = "SafeZoneW * 0.165";
+			h = "SafeZoneH * 0.285";
+			colorBackground[] = {0, 0, 0, 0.5};
+		};
+		class CTI_Menu_Map : RscMapControl { //--- Render out.
+			idc = 600020;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.59)";
+			y = "SafeZoneY + (SafezoneH * .62)";
+			w = "SafeZoneW * 0.16";
+			h = "SafeZoneH * 0.28";
+			
+			showCountourInterval = 1;
+		};
+		// No organization of idcs.  Last one is 600020
 	};
 };

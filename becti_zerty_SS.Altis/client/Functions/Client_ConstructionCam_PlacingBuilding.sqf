@@ -35,10 +35,6 @@ _center_distance = _this select 2;
 CTI_VAR_StructureCanceled = false;
 CTI_P_PreBuilding = true;
 CTI_P_PreBuilding_SafePlace = false;
-CTI_P_KeyRotate = 0;
-CTI_P_KeyDistance = 0;
-CTI_P_KeyDistance_Min = -10;
-CTI_P_KeyDistance_Max = 20;
 
 _buildingID = CTI_ConstructionCam_BuildingID;
 _var = missionNamespace getVariable _variable;

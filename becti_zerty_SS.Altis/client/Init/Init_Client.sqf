@@ -77,6 +77,7 @@ CTI_P_Voted = false;
 CTI_P_VotePopUp = true;
 CTI_P_CanGearAutosave = true; 
 CTI_CMDR_BuildCam = true; //-- Used in Action_BuildMenu
+CTI_ConstructionCam_DownwardAngle = -0.8;
 
 
 
