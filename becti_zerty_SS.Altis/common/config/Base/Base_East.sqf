@@ -37,8 +37,10 @@ missionNamespace setVariable [format["CTI_%1_Commander_Path", _side], [
 	["upgrade", [CTI_UPGRADE_AIR_FFAR, 1], {true}],
 	["upgrade", [CTI_UPGRADE_AIR_AA, 1], {true}],
 	["upgrade", [CTI_UPGRADE_AIR, 2], {true}],
+	["upgrade", [CTI_UPGRADE_HEAVY, 2], {true}],
 	["upgrade", [CTI_UPGRADE_TOWNS, 3], {true}],
 	["upgrade", [CTI_UPGRADE_AIR, 3], {true}],
+	["upgrade", [CTI_UPGRADE_HEAVY, 3], {true}],
 	["upgrade", [CTI_UPGRADE_SATELLITE, 1], {true}]
 ]];
 
