@@ -481,7 +481,7 @@ _s = _s + [""];
 
 _c = _c + ['I_Heli_light_03_unarmed_F'];
 _p = _p + [''];
-_n = _n + [(format ["Air Respawn(NON-DLC) - Range %1 m",CTI_RESPAWN_MOBILE_RANGE])]; //ss83 added mobile respawn heli
+_n = _n + [(format ["Hellcat Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE])]; //ss83 added mobile respawn heli
 _o = _o + [12000];
 _t = _t + [20];
 _u = _u + [1];
@@ -500,7 +500,7 @@ _s = _s + [""];
 
 _c = _c + ['I_Heli_Transport_02_F']; 
 _p = _p + [''];
-_n = _n + [(format ["Heavy Airlift (Non DLC)"])];
+_n = _n + [(format ["Mohawk Heavy Airlift"])];
 _o = _o + [13000];
 _t = _t + [40];
 _u = _u + [1];
@@ -510,7 +510,7 @@ _s = _s + [""];
 
 _c = _c + ['B_Heli_Transport_03_F']; 
 _p = _p + [''];
-_n = _n + [''];
+_n = _n + [(format ["HURON Heavy Airlift (DLC ONLY)"])];
 _o = _o + [10000];
 _t = _t + [40];
 _u = _u + [1];
