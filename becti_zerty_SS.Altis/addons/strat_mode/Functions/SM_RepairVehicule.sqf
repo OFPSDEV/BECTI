@@ -10,12 +10,6 @@ _respawn_reset={
 SM_repair_vehicle={
 	_target = _this select 0;
 	_caller = _this select 1;
-	//[_target,_caller] call CTI_PVF_Request_Locality;
-
-	_d=0;
-	_count=count ("_d=_d+(_target getHitPointDamage (configName _x)); true" configClasses (configfile >> "CfgVehicles" >> (typeof _target) >> "HitPoints"));
-	if (! isNil {_target getHitPointDamage "HitGun"}) then {_d=_d+(_target getHitPointDamage "HitGun");_count=_count+1;};
-	if (! isNil {_target getHitPointDamage "HitTurret"}) then {_d=_d+(_target getHitPointDamage "HitTurret");_count=_count+1;};
 
 	_rk = {_x == "Toolkit"} count (backpackItems _caller);
 	if (_rk > 0) then {
@@ -24,28 +18,19 @@ SM_repair_vehicle={
 		_caller switchMove "AinvPknlMstpSnonWrflDnon_medic4";
 		["Starting Repairs",0,7,1] call HUD_PBar_start;
 		_stime=time+7;
-		while {alive _caller && alive _target  && (getdammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller && time < _stime } do {
+		while {alive _caller && alive _target  && (getDammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller && time < _stime } do {
 			(_stime - time) call HUD_PBar_update;
 			sleep 1;
 		};
-		_target setDammage (_d/_count);
+
 		["Repairing",0,1,0] call HUD_PBar_start;
 		while {alive _caller && alive _target  && (getDammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller} do {
 			sleep 1;
-			/*"if ((_target getHitPointDamage (configName _x))>0) then {_target setHitPointDamage [(configName _x),(_target getHitPointDamage (configName _x))-0.007]} else {_target setHitPointDamage [(configName _x),0]}; true" configClasses (configfile >> "CfgVehicles" >> (typeof _target) >> "HitPoints");
-			if (! isNil {_target getHitPointDamage "HitGun"}) then {if ((_target getHitPointDamage ("HitGun"))>0) then {_target setHitPointDamage ["HitGun",(_target getHitPointDamage "HitGun")-0.007]} else {_target setHitPointDamage ["HitGun",0]};};
-			if (! isNil {_target getHitPointDamage "HitTurret"}) then {if ((_target getHitPointDamage ("HitTurret"))>0) then {_target setHitPointDamage ["HitTurret",(_target getHitPointDamage "HitGun")-0.007]} else {_target setHitPointDamage ["HitTurret",0]};};
-			_d=0;
-			"_d=_d+(_target getHitPointDamage (configName _x)); true" configClasses (configfile >> "CfgVehicles" >> (typeof _target) >> "HitPoints");
-			if (! isNil {_target getHitPointDamage "HitGun"}) then {_d=_d+(_target getHitPointDamage "HitGun")};
-			if (! isNil {_target getHitPointDamage "HitTurret"}) then {_d=_d+(_target getHitPointDamage "HitTurret")};
-			*/
 			(1-(getDammage _target)) call HUD_PBar_update;
 			_target setDammage (getDammage _target) - 0.005;
 		};
 		if ((_caller distance _target) >5 || (_caller distance _pos)>1 || !((vehicle _caller) ==_caller)) exitWith {_caller switchMove ""; hint "Failed";CTI_P_Repairing = false ;0 call HUD_PBar_stop;};
 		_caller switchMove "";
-		//if (_d <= 0 && getDammage _target > 0.001) then {_target setDammage (0) };
 		CTI_P_Repairing = false ;
 		0 call HUD_PBar_stop;
 	} else {
@@ -87,9 +72,8 @@ SM_Force_entry={
 		} forEach crew _target;
 		_target setVariable ["forced",false];
 		if ( !(_target getVariable "forced") ) then {
-			_target addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 2'];
-			_target addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 0'];
-			_target setVariable ["v_keys",(_target getVariable ["v_keys",[]]) + [getPlayerUID player],true];
+			_target addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 98, false, true, '', 'alive _target && locked _target == 2'];  //ss83 priorities reduced to reduce conflict with airlifting
+			_target addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 98, false, true, '', 'alive _target && locked _target == 0'];  //ss83 priorities reduced to reduce conflict with airlifting
 		};
 		0 call HUD_PBar_stop;
 		CTI_P_Repairing = false ;
@@ -101,7 +85,7 @@ SM_Force_entry={
 	};
 };
 0 spawn _respawn_reset;
-/*while {!CTI_GameOver} do {
+while {!CTI_GameOver} do {
 
 	_vehicles=  (player nearEntities [["Car","Tank","Air","Ship"], 150]);
 	{
@@ -122,4 +106,3 @@ SM_Force_entry={
 	} forEach _vehicles;
 	sleep 20;
 };
-*/
