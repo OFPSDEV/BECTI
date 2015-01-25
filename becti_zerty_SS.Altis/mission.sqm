@@ -1171,7 +1171,7 @@ class Mission
 						};
 						class Item3
 						{
-							value="""A3_Modules_F_Curator_Effects"",""A3_Modules_F_Curator_Misc"",""A3_Modules_F_Curator_Lightning"",""A3_Modules_F_Curator_Environment"",""A3_Modules_F_Curator_Ordnance"",""A3_Modules_F_Curator_Multiplayer"",""A3_Characters_F_INDEP""";
+							value="""A3_Modules_F_Curator_Effects"",""A3_Modules_F_Curator_Misc"",""A3_Modules_F_Curator_Lightning"",""A3_Modules_F_Curator_Environment"",""A3_Modules_F_Curator_Ordnance"",""A3_Modules_F_Curator_Multiplayer"",""A3_Modules_F_Curator_Animals"",""A3_Modules_F_Curator_Mines"",""A3_Characters_F_BLUFOR"",""A3_Characters_F_OPFOR"",""A3_Characters_F_Gamma"",""A3_Signs_F"",""A3_Static_F"",""A3_Static_F_Beta_Mortar_01"",""A3_Weapons_F_Ammoboxes"",""A3_Structures_F_Mil_BagFence"",""A3_Structures_F_Mil_BagBunker"",""A3_Characters_F_INDEP""";
 							parentCls="ModuleCuratorAddAddons_F";
 							typeName="Addons";
 						};
