@@ -16,9 +16,9 @@ RADAR_marker={
 
 
 with missionnamespace do {
-	ARTR_HANDLER = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Radar\ARTR_handler.sqf";
-	ARTR_UPDATE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Radar\ARTR_update.sqf";
-	ARTR_PROJ_HANDLER = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Radar\ARTR_proj_handler.sqf";
+	ARTR_HANDLER = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\ARTR_handler.sqf";
+	ARTR_UPDATE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\ARTR_update.sqf";
+	ARTR_PROJ_HANDLER = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\ARTR_proj_handler.sqf";
 	CTI_PVF_Server_ARTR_handle={  _this addEventHandler["Fired","_this call ARTR_HANDLER;"];};
 	CTI_PVF_Client_ARTR_update={  (_this) call ARTR_UPDATE;};
 	CTI_PVF_Client_ARTR_marker={
@@ -29,7 +29,8 @@ with missionnamespace do {
 		_m setMarkerBrushLocal "Solid";
 		_m setMarkerColorLocal "ColorYellow";
 		_m setMarkerAlphaLocal 0.8;
-		_m spawn {sleep 600; deleteMarkerLocal _m; };
+		ARTR_MARKERS set [count ARTR_MARKERS,_m];
+		_m spawn {sleep 240; ARTR_MARKERS=ARTR_MARKERS-[_this]-[objnull]; };
 	};
 
 };
