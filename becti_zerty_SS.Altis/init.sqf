@@ -181,20 +181,12 @@ _igiload = execVM "IgiLoad\IgiLoadInit.sqf";
 //---Fast Rope script 
 [] execVM "Addons\Fast_rope\zlt_fastrope.sqf";
 
-//---LoadUGV script ss83
-//[] execVM "Addons\loadUGV\loadUGV.sqf"; // Radioman - Improper use of the LoadUGV script. It is to be executed upon vehicle creation. 
-
-/*//---Welcome Screen ss83 -- Moved to init_client CSM
-if (!isDedicated) then {
-    if (isNull findDisplay 72) then {
-        [true] call JRG_welcomeScreen;
-    }; 
-};*/
 
 //--Drag Crates script
 _logistic = execVM "=BTC=_logistic\=BTC=_logistic_Init.sqf";
 
-//-- Weather Script
+//-- Ear Plugs script
+[player] execVM "addons\ear_plugs\simpleEP.sqf";
 
 //-- Explosives on Vehicles Script
 waitUntil {time > 0};
