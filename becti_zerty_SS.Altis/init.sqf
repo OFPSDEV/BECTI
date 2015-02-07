@@ -1,3 +1,13 @@
+//ss83 ACRE2 Stuff
+[true, true] call acre_api_fnc_setupMission; //babel: different languages for each side, radios: different freq each side
+_status = [true] call acre_api_fnc_setRevealToAI;  //AI can hear players
+_status = [] call acre_api_fnc_isInitialized;  //returns flag to see if radios are working
+[1] call acre_api_fnc_setLossModelScale; //Specify and value between 1.0 and 0. Setting it to 0 means the terrain loss model is disabled, 1 is default. Note this setting only effects loss caused by terrain, loss due to power dissipation over range will always occur.
+[true] call acre_api_fnc_setFullDuplex; //If set to true, it means that you will receive transmissions even while talking and multiple people can speak at the same time.
+[false] call acre_api_fnc_setInterference;  //Sets whether transmissions will interfere with each other. This, by default, causes signal loss when multiple people are transmitting on the same frequency.
+
+
+/*
 //SS83 TFR Updates
 tf_radio_channel_password = "ofpstfrradio";
 tf_no_auto_long_range_radio = true;
@@ -42,7 +52,7 @@ if ((isServer) or (isDedicated)) then {
      _settingsLrEast set [2, ["30","41","42","43","44","45","46","47","48"]];
      tf_freq_east_lr = _settingsLrEast;
 
-};
+};   */
 
 //--- Initial View Distance and Object View Distance for both clients and server
 setViewDistance 1750;

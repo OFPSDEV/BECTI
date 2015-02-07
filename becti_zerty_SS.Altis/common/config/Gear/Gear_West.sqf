@@ -1063,15 +1063,22 @@ _p = _p		+ [100];
 
 _i = _i		+ ["ACRE_PRC343"];  //SS83 this only works with ACRE2 500m-1000m RANGE
 _u = _u		+ [0];
-_p = _p		+ [50];
-
-_i = _i		+ ["ACRE_PRC148"];  //SS83 this only works with ACRE2 3-15km RANGE
-_u = _u		+ [2];
 _p = _p		+ [200];
 
-_i = _i		+ ["ACRE_PRC117F"];  //SS83 this only works with ACRE2 10-20km RANGE (backpack)
+_i = _i		+ ["ACRE_PRC77"];  //SS83 this only works with ACRE2 1-5km RANGE (manpack)
+_u = _u		+ [1];
+_p = _p		+ [600];
+
+_i = _i		+ ["ACRE_PRC148"];  //SS83 this only works with ACRE2 3-7km RANGE
+_u = _u		+ [2];
+_p = _p		+ [1200];
+
+_i = _i		+ ["ACRE_PRC117F"];  //SS83 this only works with ACRE2 10-20km RANGE (manpack)
 _u = _u		+ [3];
-_p = _p		+ [1000];
+_p = _p		+ [2000];
+
+
+//--- AGM Stuff
 
 _i = _i		+ ["AGM_CableTie"];  //SS83 this only works with AGM enabled
 _u = _u		+ [0];
