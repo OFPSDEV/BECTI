@@ -12,11 +12,11 @@ missionNamespace setVariable [format["CTI_%1_Pilot", _side], "rhsusf_army_ocp_he
 
 missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 	["B_Truck_01_transport_F", [
-		["rhs_m4_m320", 2], ["30Rnd_65x39_caseless_mag", 50],
+		["rhs_m4_m320", 2], ["rhs_mag_30Rnd_556x45_M855A1_Stanag", 50],
 		["rhs_weap_sr25", 2],
 		["rhs_weap_M136", 10], ["rhs_m136_mag", 10],
 		["HandGrenade", 20],
-		["rhs_mag_30Rnd_556x45_M855A1_Stanag", 15],
+		["rhsusf_20Rnd_762x51_m993_Mag", 15],
 		["rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red", 6],
 		["rhs_mag_M433_HEDP", 8],
 		["rhs_mag_M585_white", 9],
