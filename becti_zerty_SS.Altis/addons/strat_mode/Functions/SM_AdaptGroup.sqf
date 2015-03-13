@@ -1,5 +1,5 @@
 _a=0.2; //ss83 -- Values changed from .08 and _b was 7
-_b=12;
+_b=CTI_PLAYERS_GROUPSIZE;
 
 while {! CTI_GameOver} do {
 	_nbp={isPlayer _x} count playableUnits;

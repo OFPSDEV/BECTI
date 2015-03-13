@@ -27,6 +27,12 @@ class Params {
 		title = "BASE: FOB Limit";
 		values[] = {0,1,2,3,4,5,6,7,8,9,10};
 		texts[] = {"Disabled","1","2","3","4","5","6","7","8","9","10"};
+		default = 10;
+	};
+	class CTI_BASE_AREA_MAX {
+		title = "BASE: Military Installation Limit";
+		values[] = {1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"1","2","3","4","5","6","7","8","9","10"};
 		default = 4;
 	};
 	class CTI_BASE_STARTUP_PLACEMENT {
@@ -35,7 +41,12 @@ class Params {
 		texts[] = {"10 KM","12 KM","15 KM","20 KM"};
 		default = 15000;
 	};
-	
+	class CTI_BASE_STARTING_FACTORIES {
+		title = "BASE: Starting Factories";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};
 	class CTI_MILITARY_INSTALLATION_PRICE {
 		title = "Base: Military Installation Price";
 		values[] = {10000,20000,30000};
@@ -83,7 +94,7 @@ class Params {
 	class CTI_RESPAWN_AI {
 		title = "RESPAWN: AI Members";
 		values[] = {0,1};
-		texts[] = {"Disabled, Enabled"};
+		texts[] = {"Disabled","Enabled"};
 		default = 0;
 	};
 	class CTI_RESPAWN_FOB_RANGE {
@@ -148,8 +159,8 @@ class Params {
 	};
 	class CTI_VEHICLES_EMPTY_TIMEOUT {
 		title = "UNITS: Vehicles Recycling Delay";
-		values[] = {1800};
-		texts[] = {"30 Minutes"};
+		values[] = {1800,3600};
+		texts[] = {"30 Minutes","60 Minutes"};
 		default = 1800;
 	};
 	class CTI_GRAPHICS_TG_MAX {
@@ -168,6 +179,18 @@ class Params {
 		title = "WEATHER: Fast Time";
 		values[] = {0,2.4,3,4,6};
 		texts[] = {"Disabled","24H = 10H","24H = 8H","24H = 6H","24H = 4H"};
+		default = 0;
+	};
+	class CTI_TOWNS_MAP_PORTION {
+		title = "Towns Section: Random(East,West,All), All, East, West";
+		values[] = {0,1,2,3};
+		texts[] = {"Random","All Towns","East Towns","West Towns"};
+		default = 1;
+	};
+	class CTI_SM_BasePresenceActivation {
+		title = "(WIP) Town: Activation of towns around base";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
 		default = 0;
 	};
 		//Additionnal Parameter (Zerty)
@@ -190,7 +213,6 @@ class Params {
 		texts[] = {"Disabled","+1 Player Advantage","+2 Player Advantage","+3 Player Advantage","+4 Player Advantage","+5 Player Advantage"};
 		default = 2;
 	};
-
 	class CTI_SM_NONV {
 		title = "Zerty: No NVs, No Thermal";
 		values[] = {0,1};
@@ -207,8 +229,8 @@ class Params {
 
 	class CTI_MAX_MISSION_TIME {
 		title = "Zerty: MISSION : Time Limit";
-		values[] = {8, 10, 15, 20};
-		texts[] = {"8h", "10h", "15h", "20h"};
+		values[] = {8, 10, 15, 20, 72};
+		texts[] = {"8h", "10h", "15h", "20h", "72g"};
 		default = 15;
 	};
 	
@@ -242,9 +264,9 @@ class Params {
 
 	class CTI_PLAYERS_GROUPSIZE {
 		title = "Zerty: GROUPS: Size (Players)";
-		values[] = {0,1,2,3,4,5,8,10,12,14,16};
-		texts[] = {"0","1","2","3","4","5","8","10","12","14","16"};
-		default = 4;
+		values[] = {0,1,2,3,4,5,8,10,12,14,16,20,24};
+		texts[] = {"0","1","2","3","4","5","8","10","12","14","16","20","24"};
+		default = 12;
 	};
 	class CTI_GAMEPLAY_MISSILES_RANGE {
 		title = "Zerty: GAMEPLAY: Missile Range";
@@ -266,8 +288,8 @@ class Params {
 	};
 	class CTI_VEHICLES_BOUNTY {
 		title = "Zerty: INCOME: On kill";
-		values[] = {0,25,75};
-		texts[] = {"No value","25% of unit Value","75% of unit Value"};
+		values[] = {0,25,50,75};
+		texts[] = {"No value","25% of unit Value","50% of unit Value","75% of unit Value"};
 		default = 25;
 	};		
 	class CTI_PLAYER_REEQUIP {
@@ -278,10 +300,10 @@ class Params {
 	};
 	class CTI_PLAYER_TOWN_RESPAWN {
 		title = "Zerty: RESPAWN : On occupied towns";
-		values[] = {1};
-		texts[] = {"Closest"};
+		values[] = {0,1,2};
+		texts[] = {"False","Closest", "All"};
 		default = 1;
-	};	
+	};
 	class CTI_TOWNS_INCOME_RATIO {
 		title = "Zerty: TOWNS: Value Ratio";
 		values[] = {1,2,3,4,5,10};
@@ -296,20 +318,20 @@ class Params {
 	};
 	class CTI_TOWNS_RESISTANCE_DETECTION_RANGE {
 		title = "Zerty: TOWNS: Detection Range";
-		values[] = {1000};
-		texts[] = {"1000m"};
+		values[] = {1000,1750};
+		texts[] = {"1000m","1750m"};
 		default = 1000;
 	};
 	class CTI_TOWNS_RESISTANCE_GROUPS_RATIO {
 		title = "Zerty: TOWNS : Resistance Amount Multiplier";
-		values[] = {50,75};
-		texts[] = {"HARD","Very Hard"};
+		values[] = {50,65,75,100};
+		texts[] = {"HARD","Harder","Very Hard","Hell"};
 		default = 50;
 	};
 	class CTI_TOWNS_RESISTANCE_INACTIVE_MAX {
 		title = "Zerty: TOWNS : Resistance despawn Timer";
-		values[] = {1200};
-		texts[] = {"1200sec"};
+		values[] = {1200,2400};
+		texts[] = {"1200sec","2400sec"};
 		default = 1200;
 	};
 	/*
@@ -332,19 +354,18 @@ class Params {
 		default = 1;
 	};
 
-   class initialWeatherParam {
-    title = "Zerty: WEATHER:Starting Weather";
-    values[] = {0,1,2,3,4};
-    texts[] = {"Clear","Overcast","Rain","Fog","Random"};
-    default = 4;
-  };
-  class CTI_FAST_TIME {
+	class initialWeatherParam {
+		title = "Zerty: WEATHER:Starting Weather";
+		values[] = {0,1,2,3,4};
+		texts[] = {"Clear","Overcast","Rain","Fog","Random"};
+		default = 4;
+	};
+	class CTI_FAST_TIME {
 		title = "TIME: Fast Time";
 		values[] = {1,2,2.4,3,4,6,12,24,48,96};
 		texts[] = {"Normal","12H = 24H","10H = 24H","8H = 24H","6H = 24H","4H = 24H","2H = 24H","1H = 24H","30MIN = 24H","15MIN = 24H"};
 		default = 1;
 	};
-	
 	
 	class SEPARATOR2 {
 		title = "=======================================================================";
@@ -389,6 +410,12 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 0;
 	};
+	class CTI_SM_PATROLS_NUMBER {
+		title = "Zerty: Strategic: Patrols number";
+		values[] = {2,5,8,10,15,20};
+		texts[] = {"2","5","8","10","15","20"};
+		default = 2;
+	};
 	class CTI_SM_REPAIR {
 		title = "Zerty: Strategic: Repair/Forcelock";
 		values[] = {0,1};
@@ -399,7 +426,7 @@ class Params {
 		title = "Zerty: Strategic: Town Mortars";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		default = 1;
 	};
 	class CTI_SM_STRATEGIC {
 		title = "Zerty: Strategic: Town Links";

@@ -83,6 +83,7 @@ CTI_CO_FNC_GetRandomSkill = compileFinal preprocessFileLineNumbers "Addons\AiRan
 CTI_CO_FNC_SetCommanderVotes = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SetCommanderVotes.sqf";
 //JRG_welcomeScreen= compileFinal preprocessFileLineNumbers "Addons\fn_welcomeScreen.sqf"; -- Moved to init_client CSM
 CTI_CO_FNC_GetSideFlag = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetSideFlag.sqf";
+CTI_CO_FNC_EnableLocation = compileFinal preprocessFileLineNumbers "Common\Functions\Common_EnableLocation.sqf";
 
 CTI_CO_CustomIterator = 0;
 

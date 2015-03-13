@@ -63,15 +63,43 @@ CENTER_RADIUS=(getMarkerSize "CENTER_POS")select 0;
 _locations= CENTER_POS nearroads CENTER_RADIUS;
 _attempts = 0;
 _asked= missionNamespace getVariable "CTI_BASE_STARTUP_PLACEMENT";
+
 waitUntil {CTI_InitTowns};
+
+
 _eastLocation=CENTER_POS;
 _westLocation=CENTER_POS;
-while {(_eastLocation distance _westLocation) <(_asked) ||(_eastLocation distance _westLocation) >( _asked)*1.15 || {(_x distance _eastLocation)<900} count CTI_Towns>0 || {(_x distance _westLocation)<900} count CTI_Towns>0} do {
+// _closest = (player) call CTI_CO_FNC_GetClosestTown
+_retry = false;
+
+_closest = (_eastLocation) call CTI_CO_FNC_GetClosestTown;
+if ((_closest distance _eastLocation) > 1500) then {_retry = true;};
+
+_closest = (_westLocation) call CTI_CO_FNC_GetClosestTown;
+if ((_closest distance _westLocation) > 1500) then {_retry = true;};
+while 
+	{
+		(_eastLocation distance _westLocation) <(_asked) 
+		||(_eastLocation distance _westLocation) >( _asked)*1.15 
+		|| {(_x distance _eastLocation)<900} count CTI_Towns>0 
+		|| {(_x distance _westLocation)<900} count CTI_Towns>0
+		|| _retry
+	} do {
 	_eastLocation=_locations call BIS_fnc_selectRandom;
 	_westLocation=_locations call BIS_fnc_selectRandom;
+	
+	_retry = false;
+	_closest = (_eastLocation) call CTI_CO_FNC_GetClosestTown;
+	if ((_closest distance _eastLocation) > 1500) then {_retry = true;};
+	_closest = (_westLocation) call CTI_CO_FNC_GetClosestTown;
+	if ((_closest distance _westLocation) > 1500) then {_retry = true;};
+	
+
+	//while {(_closest distance _eastLocation) > 1500)} do {};
+	
 	_attempts =_attempts +1;
 	if (_attempts >2000) Then {
-		_asked = _asked*0.9;
+		_asked = _asked*0.95;
 		_attempts=0;
 		diag_log format ["Procedural starting point failed reducing distance to distance %1",_asked];
 	};
@@ -241,3 +269,39 @@ settimemultiplier (missionNamespace getVariable "CTI_FAST_TIME");
 //0 execVM "Addons\Zeus\Z_init_GUER.sqf";
 
 {_x Spawn CTI_SE_FNC_VoteForCommander} forEach [west, east];
+
+
+//---- Spawn Starting Buildings
+////// You can add them in this format CTI_%1_Barracks, ex: CTI_WEST_Light, CTI_WEST_ControlCenter
+if ((CTI_BASE_STARTING_FACTORIES == 1) || (isNil 'CTI_BASE_STARTING_FACTORIES')) then {
+	waitUntil {!isNil 'CTI_InitTowns'};
+	if (isMultiplayer) then { sleep 5 };
+	{
+		_side = _x select 0;
+		_logic = _x select 1;
+		_startPos = _x select 2;
+		_sideID = _side call CTI_CO_FNC_GetSideID;
+		_hq = _side call CTI_CO_FNC_GetSideHQ;
+		_position = getPos _hq;
+		
+		[format ["CTI_%1_Barracks", _side],  _side, _position, (getDir _hq) + 180] spawn {
+			_pos = _this select 2;
+			_pos set [0, (_pos select 0) - 10];
+			_pos set [1, (_pos select 1) - 10];
+			
+			[_this select 0, _this select 1, _pos, _this select 3] call CTI_SE_FNC_BuildStructure;
+		};
+		// Seems like if you spawn the buildings too quickly they will not be able to 
+		// spawn more than one vehicle from it...  Trying to solve this bug.
+		if (isMultiplayer) then { sleep 1 };
+
+		// Build the Light Factory
+		[format ["CTI_%1_Light", _side], _side, _position, (getDir _hq) +180] spawn {
+			_pos = _this select 2;
+			_pos set [1, (_pos select 1)-10];
+			
+			[_this select 0, _this select 1, _pos, _this select 3] call CTI_SE_FNC_BuildStructure;
+		};
+		if (isMultiplayer) then { sleep 1 };
+	} forEach [[west, CTI_WEST, _westLocation], [east, CTI_EAST, _eastLocation]];
+};
