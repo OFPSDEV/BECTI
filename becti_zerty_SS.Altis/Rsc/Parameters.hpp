@@ -187,12 +187,6 @@ class Params {
 		texts[] = {"Random","All Towns","East Towns","West Towns"};
 		default = 1;
 	};
-	class CTI_SM_BasePresenceActivation {
-		title = "(WIP) Town: Activation of towns around base";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
-	};
 		//Additionnal Parameter (Zerty)
 	class SEPARATOR {
 		title = "=======================================================================";

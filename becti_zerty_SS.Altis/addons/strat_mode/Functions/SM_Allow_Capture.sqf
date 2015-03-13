@@ -1,24 +1,15 @@
-private ["_town","_objects","_sideID","_side","_west","_east","_awest","_aeast","__baseActivatedTowns"];
+private ["_town","_objects","_sideID","_side","_west","_east","_awest","_aeast"];
+
 
 _side=_this;
-// Init base activation variables
-_baseActivatedTowns = [];
-_baseActivationEnabled = CTI_SM_BasePresenceActivation;
 
 _sl=_side call CTI_CO_FNC_GetSideLogic;
 _id_s=missionNamespace getVariable  format[ "CTI_%1_ID",_side];
-
 waitUntil {SM_MAP_READY && CTI_InitTowns};
 sleep 1;
 
 
 
-
-//["%1 ( %6s):: Available : %2 | Active : %3 | Priority : %4 | Prevent :%5 ", _side,_av_s,_ac_s,_pr_s,_stop_s,(time-_time)];}
-// Available : _av_s
-// Active    : _ac_s
-// Priority  : _pr_s
-// Prevent   : _stop_s
 while  {!CTI_GameOver} do {
 	_time=time;
 	// get variables
@@ -26,17 +17,6 @@ while  {!CTI_GameOver} do {
 	_ac_s=_sl getVariable  "CTI_ACTIVE";
 	_pr_s=_sl getVariable  "CTI_PRIORITY";
 	_stop_s=_sl getVariable  "CTI_PREVENT";
-	
-	// BasePresenceActivation
-	// Subtract base activated towns from _ac_s 
-	_ac_s = _ac_s - _baseActivatedTowns;
-	// Parameter to enable protection or not.
-	if (_baseActivationEnabled == 1) then {
-		// Do stuff...
-		// Test to see if the town is touching the base circle
-	};
-	
-	
 
 	if (isNull _pr_s) then {_sl setVariable ["CTI_PREVENT",objNull,true];};
 	// cleenup activation
@@ -76,10 +56,7 @@ while  {!CTI_GameOver} do {
 
 	_n_ac_s=  _ac_s;
 
-	if( !( isnull _pr_s) && (_pr_s in _n_av_s) && !(_pr_s in _n_ac_s)&& (count _n_ac_s <CTI_SM_MAX_ACTIVE)) then 
-	{
-		_n_ac_s set [count _n_ac_s,_pr_s];_sl setVariable ["CTI_PREVENT",objNull,true]; 
-	};
+	if( !( isnull _pr_s) && (_pr_s in _n_av_s) && !(_pr_s in _n_ac_s)&& (count _n_ac_s <CTI_SM_MAX_ACTIVE)) then {_n_ac_s set [count _n_ac_s,_pr_s];_sl setVariable ["CTI_PREVENT",objNull,true]; };
 
 	{
 		_t=_x;
@@ -99,14 +76,9 @@ while  {!CTI_GameOver} do {
 	} count _av_s;
 	_ac_s=  _n_ac_s;
 
-	// CTI BasePresenceActivation
-	// Add base activated towns to _ac_s
-	_ac_s = _ac_s + _baseActivatedTowns;
-	
 	_sl setVariable  ["CTI_AVAILLABLE",_av_s,true];
 	_sl setVariable  ["CTI_ACTIVE",_ac_s,true];
 	waitUntil {time > (_time +5)};
 	//if (_side == west) then {diag_log format ["%1 ( %6s):: Available : %2 | Active : %3 | Priority : %4 | Prevent :%5 ", _side,_av_s,_ac_s,_pr_s,_stop_s,(time-_time)];};
 
 };
-
