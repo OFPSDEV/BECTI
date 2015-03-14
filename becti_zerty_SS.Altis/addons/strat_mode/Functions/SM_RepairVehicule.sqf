@@ -106,3 +106,32 @@ while {!CTI_GameOver} do {
 	} forEach _vehicles;
 	sleep 20;
 };
+/*
+			////////////////////////////////////
+			// Get damaged wheels
+			////////////////////////////////////
+			_y = _x;
+			//_brokenWheels = [];
+			_vClass = typeOf _y;
+			_wheelCfg = configFile >> "cfgVehicles" >> _vClass >> "HitPoints";
+			_wheelCount = 0;
+			for "_i" from 0 to (count(_wheelCfg) - 1) do
+			{
+				_cfg = _wheelCfg select _i;
+				_class = configName(_cfg);
+				_name = getText(_cfg >> "name");
+				//diag_log format ["Class: %1", _class];
+				_isWheel = ["wheel", _name, false] call BIS_fnc_inString;
+				_damage = _y getHitPointDamage _class;
+				if ((_damage > 0) && _isWheel) then {
+					_wheelCount = _wheelCount + 1;
+					//_brokenWheels = _brokenWheels + [_class];
+					//diag_log format ["Damage: %1 Class: %2", _damage, _class];
+				};
+			};	
+			if (_wheelCount > 0) then {
+				// Set small damage to vehicle
+				_x setDammage (getDammage _target) + 0.01;
+			};
+			////////////////////////////////////
+*/

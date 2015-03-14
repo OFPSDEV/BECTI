@@ -106,7 +106,16 @@ if (!(_in_area) && !(CTI_VAR_StructureCanceled) && (((_var select 0) select 0) i
 		_y = _x; // _y is base area
 		_building_count = 0;
 		{
-			if ((_x distance _y) <= CTI_BASE_AREA_RANGE) then {
+			// Retrieve 2d distance
+			// Let A = (Ax - Bx), B = (Ay - By)
+			// D^2 = A^2 + B^2
+			_aPos = getPos _x;
+			_bPos = getPos _y;
+			_abX = ((_aPos select 0) - (_bPos select 0));
+			_abY = ((_aPos select 1) - (_bPos select 1));
+			_d = sqrt ((_abX * _abX)+(_abY * _abY));
+
+			if (_d <= CTI_BASE_AREA_RANGE) then {
 				_building_count = _building_count + 1;
 			};
 		} forEach (_total_structures);
@@ -147,9 +156,23 @@ if (_in_area && !CTI_VAR_StructureCanceled && (_buildingID == CTI_ConstructionCa
 		_check_in_range = false;
 		{
 			if ((_x getVariable "cti_structure_type") == "MilitaryInstallation") then {
-				if ((_x distance _pos) < CTI_BASE_AREA_RANGE) then {
+				
+				// Retrieve 2d distance
+				// Let A = (Ax - Bx), B = (Ay - By)
+				// D^2 = A^2 + B^2
+				_aPos = getPos _x;
+				_bPos = _pos;
+				_abX = ((_aPos select 0) - (_bPos select 0));
+				_abY = ((_aPos select 1) - (_bPos select 1));
+				_d = sqrt ((_abX * _abX)+(_abY * _abY));
+				// Check distance for build
+				if (_d < CTI_BASE_AREA_RANGE) then {
 					_check_in_range = true;
 				};
+				//diag_log format ["OLD!!!_x: %1 _pos : %2", (getPos _x), _pos];
+				//diag_log format ["OLD!!!Distance: %1", (_x distance _pos)];
+				//diag_log format ["_x: %1 _pos : %2", _aPos, _bPos];
+				//diag_log format ["Distance: %1", _d];
 			};
 		} forEach ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures);
 		CTI_VAR_StructureCanceled = !_check_in_range;
