@@ -33,7 +33,7 @@ class Params {
 		title = "BASE: Military Installation Limit";
 		values[] = {1,2,3,4,5,6,7,8,9,10};
 		texts[] = {"1","2","3","4","5","6","7","8","9","10"};
-		default = 2;
+		default = 4;
 	};
 	class CTI_BASE_STARTUP_PLACEMENT {
 		title = "BASE: Startup Placement";
