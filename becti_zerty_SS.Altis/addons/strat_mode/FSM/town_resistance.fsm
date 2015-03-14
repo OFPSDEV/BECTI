@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "C:\Development Tools\Arma\BiTools\FSM Editor Personal Edition\scriptedFSM.cfg, town_resistance.fsm">*/
+/*%FSM<COMPILE "scriptedFSM.cfg, town_resistance.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
@@ -19,9 +19,9 @@ item14[] = {"Cleanup",2,250,375.000000,-400.000000,475.000000,-350.000000,0.0000
 item15[] = {"Resistance_Active",2,250,50.000000,-100.000000,150.000000,-50.000000,0.000000,"Resistance" \n "Active?"};
 item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
 item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
-item18[] = {"Create",2,4346,-400.000000,200.000000,-300.000000,250.000000,0.000000,"Create"};
+item18[] = {"Create",2,250,-400.000000,200.000000,-300.000000,250.000000,0.000000,"Create"};
 item19[] = {"Resistance_Active_1",2,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"Resistance" \n "Active?"};
-item20[] = {"Inactive",4,218,-250.000000,200.000000,-150.000000,250.000000,1.000000,"Inactive"};
+item20[] = {"Inactive",4,4314,-250.000000,200.000000,-150.000000,250.000000,1.000000,"Inactive"};
 item21[] = {"Active",4,218,175.000000,200.000000,275.000000,250.000000,2.000000,"Active"};
 item22[] = {"",7,210,-354.000000,-379.000000,-346.000000,-371.000000,0.000000,""};
 item23[] = {"_",8,218,325.000000,350.000000,425.000000,400.000000,0.000000,""};
@@ -55,8 +55,8 @@ link26[] = {20,18};
 link27[] = {21,8};
 link28[] = {22,1};
 link29[] = {23,13};
-globals[] = {25.000000,1,0,0,0,640,480,1,168,6316128,1,-563.496948,528.444153,503.286530,-484.074280,501,642,1};
-window[] = {2,-1,-1,-1,-1,634,22,1058,22,3,519};
+globals[] = {25.000000,1,0,0,0,640,480,1,168,6316128,1,-585.892883,550.840210,906.184387,-504.325256,710,881,1};
+window[] = {2,-1,-1,-1,-1,687,75,1111,75,3,728};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -378,7 +378,7 @@ class FSM
        "	_town setVariable [""cti_town_resistance_active_vehicles"", (_town getVariable ""cti_town_resistance_active_vehicles"") + _town_vehicles];" \n
        "};" \n
        "_town setVariable [""cti_town_mortars_units"",[]];" \n
-       "if (( (missionNamespace getVariable 'CTI_SM_MORTARS')==1) &&  (missionNamespace getVariable 'CTI_SM_TCAS') <= (_town getVariable ""cti_town_value""))then {" \n
+       "if ( (missionNamespace getVariable 'CTI_SM_MORTARS')==1) then {" \n
        "	_mortars=[_town,_town_groups] call CTI_SM_Mortars_script;" \n
        "	[""CLIENT"", ""Client_Update_Mortars"",[_town,(_mortars select 2)]] call CTI_CO_FNC_NetSend;" \n
        "	_town setVariable [""cti_town_mortars"",(_mortars select 2)];" \n

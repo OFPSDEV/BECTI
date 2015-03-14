@@ -330,7 +330,7 @@ CTI_TOWNS_PATROL_RANGE = 200; //--- Patrol range in a town
 CTI_TOWNS_OCCUPATION_SPAWN_RANGE = 200; //--- Determine how far the units may spawn from the town center
 CTI_TOWNS_OCCUPATION_GROUPS_RATIO = 0.025; //--- Determine how many groups may spawn (scales with town value)
 CTI_TOWNS_OCCUPATION_DETECTION_RANGE = 1000; //--- Determine how far a threat may be detected from the town center  //ss83 increase from 800 to 1000
-CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 500; //--- Determine how high a threat is considered aerial
+CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR = 100; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_OCCUPATION_INACTIVE_MAX = 1200; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_OCCUPATION_MIN_ACTIVE = 3; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 
@@ -350,22 +350,6 @@ with missionNamespace do {
 	if (isNil 'CTI_TOWNS_RESISTANCE_INACTIVE_MAX') then {CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 30};//Done
 	if (isNil 'CTI_TOWNS_INCOME_RATIO') then {CTI_TOWNS_INCOME_RATIO = 2};
 	if (isNil 'CTI_TOWNS_CAPURE_RATIO') then {CTI_TOWNS_CAPURE_RATIO = 5};
-	if (isServer) then {
-	
-		if (isNil 'CTI_TOWNS_MAP_PORTION') then {CTI_TOWNS_MAP_PORTION = 1}; // Just do full map if an error occurrs
-		CTI_TOWNS_Map_Portion_Selection = CTI_TOWNS_MAP_PORTION;
-		// This is where we want to do random for CTI_TOWNS_MAP_PORTION
-		if (CTI_TOWNS_Map_Portion_Selection == 0) then {
-			// random(0), all (1) , east(2), west(3), 
-			_array = [1,2,3];
-			CTI_TOWNS_Map_Portion_Selection = _array select floor random count _array;
-		};
-		publicVariable "CTI_TOWNS_Map_Portion_Selection";
-	} else {
-		waitUntil {!isNil "CTI_TOWNS_Map_Portion_Selection"};
-	};
-	
-	
 };
 //-----------------------------------------------------------------------------------------------------------------------//
 
@@ -391,11 +375,12 @@ with missionNamespace do {
  */
 
 //--- Base: Area
+CTI_BASE_AREA_MAX = 2;
 CTI_BASE_AREA_RANGE = 250;  //ss83 reduced from 200
 
 //--- Base: Construction
-CTI_BASE_CONSTRUCTION_TIME = 30; //--- Length of time a structure takes to build, in seconds.
-CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 600; //--- Decay starts after x seconds unattended.
+CTI_BASE_CONSTRUCTION_TIME = 180; //--- Length of time a structure takes to build, in seconds.
+CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 300; //--- Decay starts after x seconds unattended.
 CTI_BASE_CONSTRUCTION_DECAY_DELAY = 1; //--- Decay each x seconds.
 CTI_BASE_CONSTRUCTION_DECAY_FROM = 0.50; //--- Decay of x / 100 each y seconds.
 CTI_BASE_CONSTRUCTION_RANGE = CTI_BASE_AREA_RANGE; //--- Determine how far the commander may be from the HQ to build
@@ -439,11 +424,9 @@ CTI_BASE_WORKERS_WANDER_RANGE_MAX = 400; //--- Worker may wander no further than
 //--- Base: Parameters
 with missionNamespace do {
 	if (isNil 'CTI_BASE_FOB_MAX') then {CTI_BASE_FOB_MAX = 6}; //--- Maximum amount of FOBs which a side may place
-	if (isNil 'CTI_BASE_AREA_MAX') then {CTI_BASE_AREA_MAX = 3}; //--- Maximum amount of Base areas which a side may have
 	if (isNil 'CTI_BASE_HQ_REPAIR') then {CTI_BASE_HQ_REPAIR = 1}; //--- Determine whether the HQ can be repaired or not
 	if (isNil 'CTI_BASE_STARTUP_PLACEMENT') then {CTI_BASE_STARTUP_PLACEMENT = 10000}; //--- Each side need to be further than x meters
-	if (isNil 'CTI_BASE_FOB_PERMISSION') then {CTI_BASE_FOB_PERMISSION = 0}; //Done
-
+		if (isNil 'CTI_BASE_FOB_PERMISSION') then {CTI_BASE_FOB_PERMISSION = 0}; //Done
 	CTI_BASE_WORKERS_BUILD_COEFFICIENT_VALUES = [0.01,0.25,0.5,0.75,1];
 	if (isNil 'CTI_BASE_WORKERS_RATIO') then {CTI_BASE_WORKERS_RATIO = 4};
 	if (CTI_BASE_WORKERS_RATIO < 4 ) then {CTI_BASE_WORKERS_BUILD_COEFFICIENT = CTI_BASE_WORKERS_BUILD_COEFFICIENT_VALUES select CTI_BASE_WORKERS_RATIO};
@@ -654,6 +637,7 @@ with missionNamespace do {
 	if (isNil 'CTI_FAST_TIME') then {CTI_FAST_TIME = 1};
 
 
+
 	if (isNil "CTI_SM_BASEP") then {CTI_SM_BASEP=1};
 	if (isNil "CTI_SM_REPAIR") then {CTI_SM_REPAIR=1};
 	if (isNil "CTI_SM_MORTARS") then {CTI_SM_MORTARS=1};
@@ -666,8 +650,7 @@ with missionNamespace do {
 	if (isnil "CTI_SM_PATROLS_NUMBER") then {CTI_SM_PATROLS_NUMBER = 1};
 	if (isnil "CTI_SM_TCAS") then {CTI_SM_TCAS = 0};
 	if (isnil "CTI_TROPHY_APS") then {CTI_TROPHY_APS = 1};
-	if (isNil "CTI_SM_BasePresenceActivation") then {CTI_SM_BasePresenceActivation = 0};
-	
+
 
 	if (isnil "CTI_EW_HUD") then {CTI_EW_HUD = 1};
 	if (isnil "CTI_EW_HUD_S") then {CTI_EW_HUD_S = 1};

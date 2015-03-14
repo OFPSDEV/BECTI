@@ -5,8 +5,6 @@ _town_name = _this select 1;
 _town_side = _this select 2;
 _town_value = _this select 3;
 
-
-
 _CENTER_POS=getMarkerPos "CENTER_POS";
 _CENTER_RADIUS=(getMarkerSize "CENTER_POS")select 0;
 
@@ -40,12 +38,6 @@ if (CTI_IsServer) then {
 	_town setFlagTexture ( _current_side call CTI_CO_FNC_GetSideFlag);
 };
 
-// Dont make marker for client if the town will not be used 
-_bool = [_town] call CTI_CO_FNC_EnableLocation;
-if (!(_bool)) exitWith {
-	true;
-};
-
 if (CTI_IsClient) then {
 	//--- The client awaits for the MP variable to be available
 	waitUntil {CTI_Init_Client};
@@ -61,8 +53,6 @@ if (CTI_IsClient) then {
 		_coloration = _current_side call CTI_CO_FNC_GetSideColoration;
 	};
 
-	
-	
 	//--- Area marker
 	_marker = createMarkerLocal [format ["cti_town_areaMarker_%1", _town], getPos _town];
 	_marker setMarkerShapeLocal "ELLIPSE";
