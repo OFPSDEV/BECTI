@@ -110,7 +110,7 @@ if (!(_in_area) && !(CTI_VAR_StructureCanceled) && (((_var select 0) select 0) i
 			// Let A = (Ax - Bx), B = (Ay - By)
 			// D^2 = A^2 + B^2
 			_aPos = getPos _x;
-			_bPos = getPos _y;
+			_bPos = _y; // structure areas not an object.
 			_abX = ((_aPos select 0) - (_bPos select 0));
 			_abY = ((_aPos select 1) - (_bPos select 1));
 			_d = sqrt ((_abX * _abX)+(_abY * _abY));
