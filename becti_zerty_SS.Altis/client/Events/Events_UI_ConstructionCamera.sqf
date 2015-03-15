@@ -46,7 +46,7 @@ switch (_action) do {
 		} forEach (missionNamespace getVariable format ["CTI_%1_DEFENSES", CTI_P_SideJoined]);
 		
 		_pos = getPos CTI_ConstructionCam_HQ;
-		_pos set [2, 27];
+		_pos set [2, 15];
 		showCinemaBorder false;
 		CTI_ConstructionCamera = "camera" camCreate _pos;
 		CTI_ConstructionCamera camSetFov 1.1;
