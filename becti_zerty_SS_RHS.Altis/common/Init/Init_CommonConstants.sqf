@@ -342,7 +342,6 @@ CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 100; //--- Determine how high a threa
 //CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered, this value is given a value in parameters ss83
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 3; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
 
-//--- Towns: Parameters
 with missionNamespace do {
 	if (isNil 'CTI_TOWNS_OCCUPATION') then {CTI_TOWNS_OCCUPATION = 1}; //--- Determine whether occupation is enabled or not
 	if (isNil 'CTI_TOWNS_RESISTANCE_DETECTION_RANGE') then {CTI_TOWNS_RESISTANCE_DETECTION_RANGE = 800};//Done
@@ -350,22 +349,7 @@ with missionNamespace do {
 	if (isNil 'CTI_TOWNS_RESISTANCE_INACTIVE_MAX') then {CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 30};//Done
 	if (isNil 'CTI_TOWNS_INCOME_RATIO') then {CTI_TOWNS_INCOME_RATIO = 2};
 	if (isNil 'CTI_TOWNS_CAPURE_RATIO') then {CTI_TOWNS_CAPURE_RATIO = 5};
-	if (isServer) then {
-	
-		if (isNil 'CTI_TOWNS_MAP_PORTION') then {CTI_TOWNS_MAP_PORTION = 1}; // Just do full map if an error occurrs
-		CTI_TOWNS_Map_Portion_Selection = CTI_TOWNS_MAP_PORTION;
-		// This is where we want to do random for CTI_TOWNS_MAP_PORTION
-		if (CTI_TOWNS_Map_Portion_Selection == 0) then {
-			// random(0), all (1) , east(2), west(3), 
-			_array = [1,2,3];
-			CTI_TOWNS_Map_Portion_Selection = _array select floor random count _array;
-		};
-		publicVariable "CTI_TOWNS_Map_Portion_Selection";
-	} else {
-		waitUntil {!isNil "CTI_TOWNS_Map_Portion_Selection"};
-	};
-	
-	
+	if (isNil 'CTI_TOWNS_MAP_PORTION') then {CTI_TOWNS_MAP_PORTION = 1};
 };
 //-----------------------------------------------------------------------------------------------------------------------//
 
@@ -394,7 +378,7 @@ with missionNamespace do {
 CTI_BASE_AREA_RANGE = 250;  //ss83 reduced from 200
 
 //--- Base: Construction
-CTI_BASE_CONSTRUCTION_TIME = 180; //--- Length of time a structure takes to build, in seconds.
+CTI_BASE_CONSTRUCTION_TIME = 600; //--- Length of time a structure takes to build, in seconds.
 CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 300; //--- Decay starts after x seconds unattended.
 CTI_BASE_CONSTRUCTION_DECAY_DELAY = 1; //--- Decay each x seconds.
 CTI_BASE_CONSTRUCTION_DECAY_FROM = 0.50; //--- Decay of x / 100 each y seconds.
@@ -480,9 +464,10 @@ CTI_VEHICLES_EMPTY_SCAN_PERIOD = 15; //--- Scan for a crew member in a vehicle e
 CTI_VEHICLES_HANDLER_EMPTY = 0; //--- Determine how an empty vehicle is handled by the engine (0: Typical delay, 1: delay AND the unit cannot move/fire)
 
 //--- Vehicles which may lift things (not actual hookers btw)
+//"RHS_Mi8AMT_vvsc","rhs_uh60m_d","rhs_ch_47f_light","rhs_ch_47f"
 CTI_VEHICLES_HOOKERS_LIGHT = ["I_Heli_light_03_unarmed_F", "B_Heli_Light_01_F"]; //--- Light Lifters
-CTI_VEHICLES_HOOKERS_MEDIUM = ["B_Heli_Transport_01_F", "O_Heli_Light_02_unarmed_F"]; //--- Medium Lifters
-CTI_VEHICLES_HOOKERS_HEAVY = ["I_Heli_Transport_02_F", "B_Heli_Transport_03_F", "O_Heli_Transport_04_F"]; //--- Heavy Lifters
+CTI_VEHICLES_HOOKERS_MEDIUM = ["RHS_Mi8AMT_vvsc","rhs_uh60m_d"]; //--- Medium Lifters
+CTI_VEHICLES_HOOKERS_HEAVY = ["I_Heli_Transport_02_F", "B_Heli_Transport_03_F", "O_Heli_Transport_04_F","rhs_ch_47f_light","rhs_ch_47f"]; //--- Heavy Lifters
 
 //--- Types of liftable Vehicles 
 CTI_VEHICLES_HOOKABLE_LIGHT = ["Strategic","StaticWeapon","Motorcycle"]; //--- Vehicles which may be carried by light lifters

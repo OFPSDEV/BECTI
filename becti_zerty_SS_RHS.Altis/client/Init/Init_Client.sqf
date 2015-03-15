@@ -125,8 +125,6 @@ call compile preprocessFile "Client\Functions\UI\Functions_UI_ServiceMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UnitsCamera.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UpgradeMenu.sqf";
 
-
-
 if (CTI_P_SideJoined == west) then {
 	(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_West.sqf";
 	(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_West.sqf";

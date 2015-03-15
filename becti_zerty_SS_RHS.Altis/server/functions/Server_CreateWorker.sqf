@@ -59,7 +59,7 @@ _worker = _group createUnit [_model, [_hq, 5, 20] call CTI_CO_FNC_GetRandomPosit
 _logic setVariable ["cti_workers", _workers, true];
 sleep (random 0.5);
 CTI_Worker_Lock=False;
-removeAllWeapons _worker;
+//removeAllWeapons _worker;
 _worker disableAI "TARGET";
 _worker disableAI "AUTOTARGET";
 

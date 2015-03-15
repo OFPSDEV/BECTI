@@ -9,17 +9,13 @@
 	Author: 		Benny
 	Creation Date:	23-09-2013
 	Revision Date:	23-09-2013
-
   # PARAMETERS #
     0	[Object]: The town
-
   # RETURNED VALUE #
 	0   [Array]: The created groups
 	1   [Array]: The created vehicles
-
   # SYNTAX #
 	(TOWN) call CTI_SE_FNC_SpawnTownResistance
-
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_ArrayShuffle
@@ -29,7 +25,6 @@
 	Common Function: CTI_CO_FNC_GetRandomPosition
 	Common Function: CTI_CO_FNC_ManVehicle
 	Server Function: CTI_SE_FNC_HandleEmptyVehicle
-
   # EXAMPLE #
     (Town0) call CTI_SE_FNC_SpawnTownResistance
 	  -> Will spawn Resistance defense forces for Town0
@@ -184,7 +179,6 @@ _positions = [];
 			[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
 		};
 	} forEach _x;
-
 	[_town, _group, CTI_RESISTANCE_ID] execFSM "Server\FSM\town_patrol.fsm";*/
 } forEach _teams;
 

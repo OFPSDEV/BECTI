@@ -27,7 +27,7 @@ if (BTC_active_lift == 1) then
 	BTC_lift_radius   = 3;
 	BTC_def_hud       = 1;
 	BTC_def_pip       = 1;
-	BTC_l_def_veh_pip = ["B_Heli_Light_01_F","O_Heli_Light_02_F","B_Heli_Transport_01_F","I_Heli_Transport_02_F"];
+	BTC_l_def_veh_pip = ["B_Heli_Light_01_F","O_Heli_Light_02_F","B_Heli_Transport_01_F","I_Heli_Transport_02_F","RHS_Mi8AMT_vvsc","rhs_uh60m_d","rhs_ch_47f_light","rhs_ch_47f"];
 	BTC_l_pip_cond    = false;
 	BTC_cargo_lifted  = objNull;
 	BTC_Hud_Cond      = false;
@@ -42,13 +42,16 @@ if (BTC_active_lift == 1) then
 		{
 			//MH9
 			case "B_Heli_Light_01_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Quadbike_01_base_F","Strategic"];};
-			//PO-30
-			case "O_Heli_Light_02_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car"];};
-			//UH80
-			case "B_Heli_Transport_01_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"];};
+			//RHS Mi-8
+			case "RHS_Mi8AMT_vvsc"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car"];};
+			//RHS UH-60
+			case "rhs_uh60m_d" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"];};
 			//CH49
 			case "I_Heli_Transport_02_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Tracked_APC","APC_Tracked_01_base_F","APC_Tracked_02_base_F","Air","Ship"];};
-
+			//RHS CH-47 light green
+			case "rhs_ch_47f_light" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Tracked_APC","APC_Tracked_01_base_F","APC_Tracked_02_base_F","Air","Ship"];};
+			// RHS CH-47
+			case "rhs_ch_47f" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Tracked_APC","APC_Tracked_01_base_F","APC_Tracked_02_base_F","Air","Ship"];};
 		};
 		_array
 	};

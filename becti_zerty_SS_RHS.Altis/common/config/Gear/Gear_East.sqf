@@ -806,6 +806,10 @@ _i = _i		+ ["rhs_6b23"];
 _u = _u		+ [0];
 _p = _p		+ [100];
 
+_i = _i		+ ["rhs_6sh92_digi"];
+_u = _u		+ [0];
+_p = _p		+ [100];
+
 _i = _i		+ ["rhs_6b23_medic"];
 _u = _u		+ [0];
 _p = _p		+ [200];
@@ -814,6 +818,9 @@ _i = _i		+ ["rhs_6b23_ML_medic"];
 _u = _u		+ [0];
 _p = _p		+ [200];
 
+_i = _i		+ ["rhs_6sh92_radio"];
+_u = _u		+ [1];
+_p = _p		+ [150];
 /*
 _i = _i		+ ["V_PlateCarrier1_rgr"];
 _u = _u		+ [0];
@@ -835,6 +842,7 @@ _i = _i		+ ["V_PlateCarrierSpec_rgr"];
 _u = _u		+ [2];
 _p = _p		+ [30];
 */
+//rhs_6b23_digi
 _i = _i		+ ["rhs_6b23_digi_crew"];
 _u = _u		+ [0];
 _p = _p		+ [100];
@@ -907,7 +915,7 @@ _p = _p		+ [200];
 
 _i = _i		+ ["rhs_sidor"];
 _u = _u		+ [0];
-_p = _p		+ [400];
+_p = _p		+ [300];
 
 _i = _i		+ ["B_Kitbag_cbr"];
 _u = _u		+ [1];

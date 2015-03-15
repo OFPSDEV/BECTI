@@ -9,18 +9,14 @@
 	Author: 		Benny
 	Creation Date:	23-09-2013
 	Revision Date:	10-10-2013
-
   # PARAMETERS #
     0	[Object]: The town
     1	[Side]: The side which hold the town
-
   # RETURNED VALUE #
 	0   [Array]: The created groups
 	1   [Array]: The created vehicles
-
   # SYNTAX #
 	[TOWN, SIDE] call CTI_SE_FNC_SpawnTownOccupation
-
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_ArrayShuffle
@@ -32,7 +28,6 @@
 	Common Function: CTI_CO_FNC_GetSideUpgrades
 	Common Function: CTI_CO_FNC_ManVehicle
 	Server Function: CTI_SE_FNC_HandleEmptyVehicle
-
   # EXAMPLE #
     [Town0, West] call CTI_SE_FNC_SpawnTownOccupation
 	  -> Will spawn West defense forces for Town0
@@ -254,7 +249,6 @@ _positions = [];
 			[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
 		};
 	} forEach _x;
-
 	[_town, _group, _sideID] execFSM "Server\FSM\town_patrol.fsm";*/
 } forEach _teams;
 

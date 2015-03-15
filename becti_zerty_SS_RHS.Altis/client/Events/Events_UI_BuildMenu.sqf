@@ -109,7 +109,7 @@ switch (_action) do {
 
 				["SERVER", "Request_Worker", [CTI_P_SideJoined]] call CTI_CO_FNC_NetSend;
 			} else {
-				hint "not enough funds dude";
+				hint "HQ: not enough funds dude";
 			};
 		} else {
 			hint "worker limit reached";

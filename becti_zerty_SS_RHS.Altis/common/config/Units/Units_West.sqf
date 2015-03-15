@@ -544,7 +544,7 @@ _s = _s + [""];
 
 _c = _c + ['rhs_uh60m_mev'];
 _p = _p + [''];
-_n = _n + [(format ["Hellcat Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE])]; //ss83 added mobile respawn heli
+_n = _n + [(format ["UH-60 MEV Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE])]; //ss83 added mobile respawn heli
 _o = _o + [12000];
 _t = _t + [20];
 _u = _u + [1];
@@ -573,8 +573,17 @@ _s = _s + [""];
 
 _c = _c + ['rhs_ch_47f_light']; 
 _p = _p + [''];
-_n = _n + [''];
+_n = _n + [(format ["CH-47 Desert Heavy Airlift"])];
 _o = _o + [10000];
+_t = _t + [40];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+
+_c = _c + ['I_Heli_Transport_02_F']; 
+_p = _p + [''];
+_n = _n + [(format ["Mohawk Heavy Airlift"])];
+_o = _o + [13000];
 _t = _t + [40];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];

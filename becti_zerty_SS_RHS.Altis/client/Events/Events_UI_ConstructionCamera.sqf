@@ -12,7 +12,7 @@ switch (_action) do {
 		CTI_ConstructionCam_Theta = 0;
 		CTI_ConstructionCam_Rotation = 0;
 		CTI_P_WallsAutoAlign = true;
-		CTI_ConstructionCam_DownwardAngle = -0.4;
+		CTI_ConstructionCam_DownwardAngle = -0.222222;
 		
 		CTI_ConstructionCam_HQ = (side player) call CTI_CO_FNC_GetSideHQ;
 		
@@ -45,8 +45,9 @@ switch (_action) do {
 			};
 		} forEach (missionNamespace getVariable format ["CTI_%1_DEFENSES", CTI_P_SideJoined]);
 		
+		
 		_pos = getPos CTI_ConstructionCam_HQ;
-		_pos set [2, 27];
+		_pos set [2, 15];
 		showCinemaBorder false;
 		CTI_ConstructionCamera = "camera" camCreate _pos;
 		CTI_ConstructionCamera camSetFov 1.1;
@@ -54,7 +55,7 @@ switch (_action) do {
 		//_deg =_deg;
 		_cos = cos _deg;
 		_sin = sin _deg;
-		CTI_ConstructionCamera setVectorDirAndUp [[_cos,_sin,-0.8],[0,0,1]];
+		CTI_ConstructionCamera setVectorDirAndUp [[_cos,_sin,-0.222222],[0,0,1]];
 
 
 		(uiNamespace getVariable "cti_dialog_ui_constructioncam") displayAddEventHandler ["KeyDown", "nullReturn = _this spawn CTI_UI_ConstructionKeyHandler_ConstructionCamera"];

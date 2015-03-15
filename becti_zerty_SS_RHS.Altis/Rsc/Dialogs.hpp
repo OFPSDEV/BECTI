@@ -113,7 +113,7 @@ class CTI_RscBuildMenu {
 			text = "Build Defense";
 			action = "['onBuildDefense', lnbCurSelRow 100007] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
-	/*No more workers ss83
+	//No more workers ss83
 		class CTI_Menu_Control_AddWorker : CTI_Menu_Control_Undo {
 			idc = 100005;
 			
@@ -122,7 +122,7 @@ class CTI_RscBuildMenu {
 			text = "Add Worker";
 			action = "['onAddWorker'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
-	*/	
+		
 		class CTI_Menu_Control_BuildingList : RscListNBox {
 			idc = 100006;
 			
@@ -4062,7 +4062,7 @@ class CTI_RscWorkersMenu {
 			w = "SafeZoneW * 0.24";
 			h = "SafeZoneH * 0.04";
 			
-			text = "Relax, pesky workers have been removed!";
+			text = "Remove Selected Worker";
 			action = "['onWorkerDisbandPressed', lnbCurSelRow 260002] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_WorkersMenu.sqf'";
 		};
 	
@@ -4988,8 +4988,8 @@ class CTI_RscConstructionCamera {
 			w = "SafeZoneW * 0.23";
 			h = "SafeZoneH * 0.08";
 			
-			text = "Cancel Selected";
-			action = "['onCancelSelected'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ConstructionCamera.sqf'";
+			text = "Add Worker";
+			action = "['onAddWorker'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
 		class CTI_Menu_Constrol_Rotation : RscXSliderH {
 			idc = 600014;

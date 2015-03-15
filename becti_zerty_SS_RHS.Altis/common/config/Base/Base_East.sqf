@@ -3,7 +3,8 @@ _side = _this;
 missionNamespace setVariable [format["CTI_%1_HQ", _side], "B_APC_Tracked_01_CRV_F"]; //ss83 made mhq bobcast for opfor
 missionNamespace setVariable [format["CTI_%1_Factories", _side], ["Barracks","Light","Heavy","Air"]];
 
-missionNamespace setVariable [format["CTI_%1_Base_Template", _side], [
+missionNamespace setVariable [format["CTI_%1_Base_Template", _side], [\
+	[CTI_MILITARYINSTALLATION, 90, [0,33]],
 	[CTI_BARRACKS, 180, [-23,33]],
 	[CTI_LIGHT, 180, [23,33]],
 	[CTI_CONTROLCENTER, 0, [30,-40]],
@@ -19,8 +20,8 @@ missionNamespace setVariable [format["CTI_%1_Commander_Path", _side], [
 	["build-structures", CTI_BARRACKS, {true}],
 	["build-structures", CTI_LIGHT, {true}],
 	["build-structures", CTI_CONTROLCENTER, {true}],
-	["upgrade", [CTI_UPGRADE_BARRACKS, 1], {true}],
 	["upgrade", [CTI_UPGRADE_GEAR, 1], {true}],
+	["upgrade", [CTI_UPGRADE_BARRACKS, 1], {true}],
 	["upgrade", [CTI_UPGRADE_LIGHT, 1], {true}],
 	["upgrade", [CTI_UPGRADE_TOWNS, 1], {true}],
 	["upgrade", [CTI_UPGRADE_GEAR, 2], {true}],
@@ -60,11 +61,11 @@ _specials = [];
 */
 
 _headers = _headers 		+ [[CTI_MILITARYINSTALLATION, "Military Installation", "Military Installation"]];
-_classes =  _classes 		+ [["Land_Cargo_Tower_V3_F", "Land_Cargo_Tower_V3_ruins_F"]];
+_classes =  _classes 		+ [["Land_i_Barracks_V1_F", "Land_Barracks_ruins_F"]];
 _prices =  _prices 			+ [CTI_MILITARY_INSTALLATION_PRICE];
 _times =  _times 			+ [1];
 _placements =_placements 	+ [[180, 15]];
-_specials = _specials		+ [[["DMG_Reduce", .5]]];   // Value @ 1 = 30 AP slammer shots
+_specials = _specials		+ [[["DMG_Reduce", 2]]];   // Value @ 1 = 30 AP slammer shots
 
 _headers = _headers 		+ [[CTI_BARRACKS, "Barracks", "Barracks"]];
 _classes = _classes 		+ [["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"]];
@@ -81,11 +82,11 @@ _placements = _placements 	+ [[90, 20]];
 _specials = _specials		+ [[["DMG_Reduce", .62]]];   //with value @ 1 = 16 AP Slammer shots, @ .5 = 8 shots, etc (applies only with V1_F structure) so to determine how many shots to down, x/16 = %, where x is how many shots you want it to take
 
 _headers = _headers 		+ [[CTI_CONTROLCENTER, "Control Center", "CC"]];
-_classes = _classes 		+ [["Land_Research_HQ_F", "Land_Research_HQ_ruins_F"]];
+_classes = _classes 		+ [["Land_i_Shed_Ind_F", "Land_Shed_Ind_ruins_F"]];
 _prices = _prices 			+ [20000];
 _times = _times 			+ [90];
 _placements = _placements 	+ [[90, 20]];
-_specials = _specials       + [[["DMG_Alternative"], ["DMG_Reduce", .9],["Connected"]]];
+_specials = _specials       + [[["DMG_Alternative"], ["DMG_Reduce", 2],["Connected"]]];
 
 _headers = _headers 		+ [[CTI_HEAVY, "Heavy Vehicle Factory", "Heavy"]];
 _classes = _classes 		+ [["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"]];

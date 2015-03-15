@@ -37,8 +37,8 @@ class Params {
 	};
 	class CTI_BASE_STARTUP_PLACEMENT {
 		title = "BASE: Startup Placement";
-		values[] = {10000,12000,15000,20000};
-		texts[] = {"10 KM","12 KM","15 KM","20 KM"};
+		values[] = {10000,12000,15000,20000,25000};
+		texts[] = {"10 KM","12 KM","15 KM","20 KM","25 KM"};
 		default = 15000;
 	};
 	class CTI_BASE_STARTING_FACTORIES {
@@ -183,15 +183,9 @@ class Params {
 	};
 	class CTI_TOWNS_MAP_PORTION {
 		title = "Towns Section: Random(East,West,All), All, East, West";
-		values[] = {0,1,2,3};
-		texts[] = {"Random","All Towns","East Towns","West Towns"};
+		values[] = {1,2,3};
+		texts[] = {"All Towns","East Towns","West Towns"};
 		default = 1;
-	};
-	class CTI_SM_BasePresenceActivation {
-		title = "(WIP) Town: Activation of towns around base";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
 	};
 		//Additionnal Parameter (Zerty)
 	class SEPARATOR {
@@ -312,8 +306,8 @@ class Params {
 	};
 	class CTI_TOWNS_CAPTURE_RATIO {
 		title = "Zerty: Town Reward: This value x Town value";
-		values[] = {15};
-		texts[] = {"15"};
+		values[] = {15,75};
+		texts[] = {"15","75"};
 		default = 15;
 	};
 	class CTI_TOWNS_RESISTANCE_DETECTION_RANGE {
@@ -438,7 +432,7 @@ class Params {
 		title = "Zerty: Strategic: Town CAS if value above";
 		values[] = {0,100,150,200,250,300,350,400,500,600};
 		texts[] = {"0","100","150","200","250","300","350","400","500","600"};
-		default = 600;
+		default = 250;
 	};
 	class CTI_TROPHY_APS {
 		title = "Zerty: Trophy: Enabled";

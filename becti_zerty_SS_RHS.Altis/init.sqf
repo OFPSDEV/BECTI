@@ -15,9 +15,7 @@ tf_give_personal_radio_to_regular_soldier = true;
 tf_defaultWestPersonalRadio = "tf_rf7800str";
 tf_defaultEastPersonalRadio = "tf_pnr1000a";
 player setVariable ["tf_force_radio_active", true, true];
-
 //#include "\task_force_radio\functions\common.sqf";
-
 if ((isServer) or (isDedicated)) then {
     tf_no_auto_long_range_radio = true;
     publicVariable "tf_no_auto_long_range_radio";
@@ -25,17 +23,13 @@ if ((isServer) or (isDedicated)) then {
     publicVariable "tf_same_sw_frequencies_for_side";
     tf_same_lr_frequencies_for_side = true;
     publicVariable "tf_same_lr_frequencies_for_side";
-
     _settingsSwWest = false call TFAR_fnc_generateSwSettings;
     _settingsSwWest set [2, ["311","312","313","314","315","316","317","318"]];
     tf_freq_west = _settingsSwWest;
-
      _settingsLrWest = false call TFAR_fnc_generateLrSettings;
      _settingsLrWest set [2, ["30","41","42","43","44","45","46","47","48"]];
      tf_freq_west_lr = _settingsLrWest;
-
 };
-
 if ((isServer) or (isDedicated)) then {
     tf_no_auto_long_range_radio = true;
     publicVariable "tf_no_auto_long_range_radio";
@@ -43,15 +37,12 @@ if ((isServer) or (isDedicated)) then {
     publicVariable "tf_same_sw_frequencies_for_side";
     tf_same_lr_frequencies_for_side = true;
     publicVariable "tf_same_lr_frequencies_for_side";
-
     _settingsSwEast = false call TFAR_fnc_generateSwSettings;
     _settingsSwEast set [2, ["311","312","313","314","315","316","317","318"]];
     tf_freq_east = _settingsSwEast;
-
      _settingsLrEast = false call TFAR_fnc_generateLrSettings;
      _settingsLrEast set [2, ["30","41","42","43","44","45","46","47","48"]];
      tf_freq_east_lr = _settingsLrEast;
-
 };   */
 
 //--- Initial View Distance and Object View Distance for both clients and server

@@ -1,4 +1,4 @@
-private ["_town","_objects","_sideID","_side","_west","_east","_awest","_aeast","__baseActivatedTowns"];
+private ["_town","_objects","_sideID","_side","_west","_east","_awest","_aeast"];
 
 _side=_this;
 // Init base activation variables
@@ -27,14 +27,6 @@ while  {!CTI_GameOver} do {
 	_pr_s=_sl getVariable  "CTI_PRIORITY";
 	_stop_s=_sl getVariable  "CTI_PREVENT";
 	
-	// BasePresenceActivation
-	// Subtract base activated towns from _ac_s 
-	_ac_s = _ac_s - _baseActivatedTowns;
-	// Parameter to enable protection or not.
-	if (_baseActivationEnabled == 1) then {
-		// Do stuff...
-		// Test to see if the town is touching the base circle
-	};
 	
 	
 
@@ -98,10 +90,6 @@ while  {!CTI_GameOver} do {
 		true
 	} count _av_s;
 	_ac_s=  _n_ac_s;
-
-	// CTI BasePresenceActivation
-	// Add base activated towns to _ac_s
-	_ac_s = _ac_s + _baseActivatedTowns;
 	
 	_sl setVariable  ["CTI_AVAILLABLE",_av_s,true];
 	_sl setVariable  ["CTI_ACTIVE",_ac_s,true];
