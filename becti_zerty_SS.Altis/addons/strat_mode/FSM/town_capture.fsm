@@ -71,17 +71,18 @@ class FSM
       name = "Units_near_Cente";
       init = /*%FSM<STATEINIT""">*/"_sideID = _town getVariable ""cti_town_sideID"";" \n
        "_side = (_sideID) Call CTI_CO_FNC_GetSideFromID;" \n
-       "//_objects = (_town nearEntities [""AllVehicles"", CTI_TOWNS_CAPTURE_RANGE]) unitsBelowHeight 30;" \n
-       "_p_objects=playableUnits + switchableUnits;" \n
-       "{_p_objects=_p_objects+(units _x);true} count (SM_PATROLS+ (_town getvariable [""CTI_TOWN_GROUPS"",[]])) ;" \n
-       "" \n
+       "// Objects will be all units that will affect the capture status" \n
        "_objects=[];" \n
-	   "{" \n
-	   "    _x_side = side _x;" \n
-	   "    _distance = CTI_TOWNS_CAPTURE_RANGE; "\n
-	   "    if(_x_side == resistance) then { _distance = CTI_TOWNS_CAPTURE_RANGE_RESISTANCE };"  \n
-	   "    if(_x distance _town < _distance) then { _objects set [count _objects,_x]; };"\n
-	   "} forEach _p_objects;" \n
+       "// Town occupation forces affect capture whenever they are inside the bigger CTI_TOWNS_CAPTURE_RANGE_RESISTANCE" \n
+       "_occ_objects=[];" \n
+       "{_occ_objects=_occ_objects+(units _x);true} count (SM_PATROLS+ (_town getvariable [""CTI_TOWN_GROUPS"",[]])) ;" \n
+       "{" \n
+  	   "    if(_x distance _town < CTI_TOWNS_CAPTURE_RANGE_RESISTANCE) then { _objects set [count _objects,_x]; };"\n
+  	   "} forEach _occ_objects;" \n
+       "// Players only affect captures when they are on the flag" \n
+       "{" \n
+       "    if(_x distance _town < CTI_TOWNS_CAPTURE_RANGE) then { _objects set [count _objects,_x]; };"\n
+       "} forEach (playableUnits + switchableUnits);" \n
        "_objects=_objects unitsBelowHeight 30;" \n
        "" \n
        "" \n
