@@ -6,21 +6,21 @@
 	Author: 		Benny (ported from WFBE by Sari)
 	Creation Date:	20-05-2014
 	Revision Date:	22-05-2014
-	
+
   # PARAMETERS #
     0	[side]: The side for which the vote was called.
-	
+
   # RETURNED VALUE #
 	None
-	
+
   # SYNTAX #
 	[SIDE] spawn CTI_SE_FNC_VoteForCommander
-	
+
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_ArrayPush
 	Common Function: CTI_CO_FNC_GetsideLogic
 	Common Function: CTI_CO_FNC_NetSend
-	
+
   # EXAMPLE #
     [West] spawn CTI_SE_FNC_VoteForCommander;
 */
@@ -39,8 +39,7 @@ while {_voteTime > -1} do {
 };
 
 //--- Get the most voted person.
-Private ["_aiVotes","_count","_highest","_highestTeam","_tie","_teams","_vote","_votes"];
-_aiVotes = 0;
+Private ["_count","_highest","_highestTeam","_tie","_teams","_vote","_votes"];
 _votes = [];
 _teams = _logic getVariable "cti_teams";
 _AI_Commander = _logic getVariable "cti_commander_team";
@@ -50,7 +49,7 @@ for '_i' from 0 to (count _teams)-1 do {[_votes, 0] Call CTI_CO_FNC_ArrayPush};
 {
 	if (isPlayer leader _x) then {
 		_vote = _x getVariable "cti_vote";
-		if (_vote == -1) then {_aiVotes = _aiVotes + 1} else {_votes set [_vote, (_votes select _vote) + 1]};
+		if (_vote != -1) then {_votes set [_vote, (_votes select _vote) + 1]};
 	};
 } forEach _teams;
 
@@ -68,7 +67,7 @@ _tie = false;
 _commander = grpNull;
 
 //--- Attempt to get a playable team.
-if (!_tie && _highest > _aiVotes && _highestTeam != -1) then {_commander = _teams select _highestTeam};
+if (!_tie && _highestTeam != -1) then {_commander = _teams select _highestTeam};
 
 //--- Player voted for an ai...?
 if (isNull _commander) then {if !(isPlayer leader _commander) then {_commander = _AI_Commander}};
@@ -77,7 +76,7 @@ if (isNull _commander) then {if !(isPlayer leader _commander) then {_commander =
 _logic setVariable ["cti_commander", _commander, true];
 
 //--- Notify the clients.
-[["CLIENT", _side], "Client_CommanderVote", _commander] call CTI_CO_FNC_NetSend; 
+[["CLIENT", _side], "Client_CommanderVote", _commander] call CTI_CO_FNC_NetSend;
 
 //--- Process the AI Commander FSM if it's not running.
 if !(isPlayer leader _commander) then {
