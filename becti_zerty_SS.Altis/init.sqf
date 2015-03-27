@@ -195,9 +195,6 @@ _igiload = execVM "IgiLoad\IgiLoadInit.sqf";
 //--Drag Crates script
 _logistic = execVM "=BTC=_logistic\=BTC=_logistic_Init.sqf";
 
-//-- Ear Plugs script
-[player] execVM "addons\ear_plugs\simpleEP.sqf";
-
 //-- Explosives on Vehicles Script
 waitUntil {time > 0};
 execVM "Addons\EtV.sqf";

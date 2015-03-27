@@ -42,6 +42,7 @@ CTI_CL_FNC_RemoveRuins = compileFinal preprocessFile "Client\Functions\Client_Re
 CTI_CL_FNC_ConstructionCam_PlacingBuilding = compileFinal preprocessFile "Client\Functions\Client_ConstructionCam_PlacingBuilding.sqf";
 CTI_CL_FNC_ConstructionCam_PlacingDefense = compileFinal preprocessFile "Client\Functions\Client_ConstructionCam_PlacingDefense.sqf";
 JRG_welcomeScreen= compileFinal preprocessFileLineNumbers "Addons\fn_welcomeScreen.sqf";
+Addon_Simple_Earplugs = compileFinal preprocessFile "addons\ear_plugs\simpleEP.sqf";
 
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateClientAI.sqf";
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateOrders.sqf";
