@@ -73,6 +73,8 @@ player addAction ["<t color='#006400'>Intrusion :: Start Intrusion</t>", "(vehic
 //--- Ear Plugs Addon
 _earPlugsAction = [player] call Addon_Simple_Earplugs;
 player addAction _earPlugsAction;
+// Reset Audio
+1 fadeSound 1;
 
 
 //
