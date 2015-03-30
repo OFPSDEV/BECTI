@@ -9,7 +9,11 @@ player createDiarySubject ["HELP", "Help Topics"];
 
 
 player createDiarySubject ["CL", "Change Log"];
-player createDiarySubject ["CR", "Credits"];
+player createDiarySubject ["CR", ["Credits",
+	"
+	Simple Earplugs by 654wak654
+	"
+]];
 player createDiaryRecord ["CL",["* 1.1.8",
 "  - FEATURE: Air radar (range 5Km at least 40m heigth)<br />
   - FEATURE: Gear to vehicles<br />
