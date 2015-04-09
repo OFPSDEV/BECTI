@@ -1,7 +1,7 @@
 with missionNamespace do {
 	//--- Infantry
 	GUER_SOLDIER = "I_G_Soldier_F";
-	GUER_SOLDIER_AA = "I_G_Soldier_AR_F"; //replace AA with ar, resistance shouldn't have aa launchers
+	GUER_SOLDIER_AA = "I_Soldier_AA_F"; 
 	GUER_SOLDIER_AR = "I_G_Soldier_AR_F";
 	GUER_SOLDIER_AT = "I_G_Soldier_AR_F"; //replaced lat with MG
 	GUER_SOLDIER_CREW = "I_crew_F";
