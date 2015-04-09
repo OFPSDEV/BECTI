@@ -1388,15 +1388,15 @@ _p = _p		+ [1000];
 //silencers
 
 _i = _i		+ ["muzzle_snds_338_black"];
-_u = _u		+ [0];
+_u = _u		+ [3];
 _p = _p		+ [1000];
 
 _i = _i		+ ["muzzle_snds_338_green"];
-_u = _u		+ [0];
+_u = _u		+ [3];
 _p = _p		+ [1000];
 
 _i = _i		+ ["muzzle_snds_338_sand"];
-_u = _u		+ [0];
+_u = _u		+ [3];
 _p = _p		+ [1000];
 
 
