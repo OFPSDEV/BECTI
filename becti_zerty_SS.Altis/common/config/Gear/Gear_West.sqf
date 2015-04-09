@@ -85,19 +85,19 @@ _u = _u		+ [0];
 _p = _p		+ [15];
 
 _i = _i		+ ["100Rnd_65x39_caseless_mag"];
-_u = _u		+ [2];
+_u = _u		+ [1];
 _p = _p		+ [40];
 
 _i = _i		+ ["100Rnd_65x39_caseless_mag_Tracer"];
-_u = _u		+ [2];
+_u = _u		+ [1];
 _p = _p		+ [40];
 
 _i = _i		+ ["200Rnd_65x39_cased_Box"];
-_u = _u		+ [3];
+_u = _u		+ [1];
 _p = _p		+ [80];
 
 _i = _i		+ ["200Rnd_65x39_cased_Box_Tracer"];
-_u = _u		+ [3];
+_u = _u		+ [1];
 _p = _p		+ [80];
 
 _i = _i		+ ["30Rnd_65x39_caseless_green"];
@@ -466,7 +466,7 @@ _u = _u		+ [2];
 _p = _p		+ [200];
 
 _i = _i		+ ["LMG_Mk200_F"];
-_u = _u		+ [3];
+_u = _u		+ [1];
 _p = _p		+ [800];
 
 _i = _i		+ [["LMG_Mk200_MRCO_F"]];
@@ -782,7 +782,7 @@ _p = _p		+ [100];
 
 _i = _i		+ ["B_Mortar_01_weapon_F"];
 _u = _u		+ [3];
-_p = _p		+ [2900];
+_p = _p		+ [4900];
 
 //--- Glasses
 _i = _i		+ ["G_Combat"];
@@ -1239,6 +1239,167 @@ _p = _p		+ [500];
 _i = _i		+ ["Weapon_MineDetector"];
 _u = _u		+ [0];
 _p = _p		+ [250];
+
+
+// ####################################
+// marksman dlc
+// ####################################
+
+
+//guilies
+_i = _i		+ ["U_B_FullGhillie_lsh"];
+_u = _u		+ [3];
+_p = _p		+ [200];
+
+_i = _i		+ ["U_B_FullGhillie_sard"];
+_u = _u		+ [3];
+_p = _p		+ [200];
+
+_i = _i		+ ["U_B_FullGhillie_ard"];
+_u = _u		+ [3];
+_p = _p		+ [200];
+
+//vests
+_i = _i		+ ["V_PlateCarrierGL_blk"];
+_u = _u		+ [3];
+_p = _p		+ [600];
+
+_i = _i		+ ["V_PlateCarrierGL_mtp"];
+_u = _u		+ [3];
+_p = _p		+ [600];
+
+_i = _i		+ ["V_PlateCarrierGL_rgr"];
+_u = _u		+ [3];
+_p = _p		+ [600];
+
+_i = _i		+ ["V_PlateCarrierIAGL_dgtl"];
+_u = _u		+ [3];
+_p = _p		+ [500];
+
+_i = _i		+ ["V_PlateCarrierIAGL_oli"];
+_u = _u		+ [3];
+_p = _p		+ [500];
+
+_i = _i		+ ["V_PlateCarrierSpec_blk"];
+_u = _u		+ [2];
+_p = _p		+ [400];
+
+_i = _i		+ ["V_PlateCarrierSpec_mtp"];
+_u = _u		+ [2];
+_p = _p		+ [400];
+
+_i = _i		+ ["V_PlateCarrierSpec_rgr"];
+_u = _u		+ [2];
+_p = _p		+ [400];
+
+//bipods
+
+_i = _i		+ ["bipod_01_F_snd"];
+_u = _u		+ [1];
+_p = _p		+ [20];
+
+_i = _i		+ ["bipod_01_F_blk"];
+_u = _u		+ [1];
+_p = _p		+ [20];
+
+//optics
+
+_i = _i		+ ["optic_AMS"];
+_u = _u		+ [3];
+_p = _p		+ [1300];
+
+_i = _i		+ ["optic_AMS_khk"];
+_u = _u		+ [3];
+_p = _p		+ [1300];
+_i = _i		+ ["optic_AMS_snd"];
+_u = _u		+ [3];
+_p = _p		+ [1300];
+
+
+//weaps
+
+_i = _i		+ ["srifle_DMR_02_F"];
+_u = _u		+ [2];
+_p = _p		+ [1200];
+
+_i = _i		+ ["srifle_DMR_02_camo_F"];
+_u = _u		+ [2];
+_p = _p		+ [1200];
+_i = _i		+ ["srifle_DMR_02_sniper_F"];
+_u = _u		+ [2];
+_p = _p		+ [1200];
+_i = _i		+ ["10Rnd_338_Mag"];
+_u = _u		+ [2];
+_p = _p		+ [5];
+
+
+_i = _i		+ ["srifle_DMR_03_F"];
+_u = _u		+ [2];
+_p = _p		+ [750];
+_i = _i		+ ["srifle_DMR_03_khaki_F"];
+_u = _u		+ [2];
+_p = _p		+ [750];
+_i = _i		+ ["srifle_DMR_03_tan_F"];
+_u = _u		+ [2];
+_p = _p		+ [750];
+_i = _i		+ ["srifle_DMR_03_multicam_F"];
+_u = _u		+ [2];
+_p = _p		+ [750];
+_i = _i		+ ["srifle_DMR_03_woodland_F"];
+_u = _u		+ [2];
+_p = _p		+ [750];
+_i = _i		+ ["srifle_DMR_03_spotter_F"];
+_u = _u		+ [2];
+_p = _p		+ [750];
+_i = _i		+ ["20Rnd_762x51_Mag"];
+_u = _u		+ [2];
+_p = _p		+ [5];
+
+_i = _i		+ ["srifle_DMR_06_camo_F"];
+_u = _u		+ [2];
+_p = _p		+ [600];
+_i = _i		+ ["srifle_DMR_06_olive_F"];
+_u = _u		+ [2];
+_p = _p		+ [600];;
+
+
+
+_i = _i		+ ["MMG_02_camo_F"];
+_u = _u		+ [3];
+_p = _p		+ [1800];
+_i = _i		+ ["MMG_02_sand_F"];
+_u = _u		+ [3];
+_p = _p		+ [1800];
+_i = _i		+ ["MMG_02_black_F"];
+_u = _u		+ [3];
+_p = _p		+ [1800];
+_i = _i		+ ["130Rnd_338_Mag"];
+_u = _u		+ [3];
+_p = _p		+ [50];
+
+
+
+//static designator
+
+_i = _i		+ ["B_Static_Designator_01_weapon_F"];
+_u = _u		+ [2];
+_p = _p		+ [1000];
+
+//silencers
+
+_i = _i		+ ["muzzle_snds_338_black"];
+_u = _u		+ [0];
+_p = _p		+ [1000];
+
+_i = _i		+ ["muzzle_snds_338_green"];
+_u = _u		+ [0];
+_p = _p		+ [1000];
+
+_i = _i		+ ["muzzle_snds_338_sand"];
+_u = _u		+ [0];
+_p = _p		+ [1000];
+
+
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf";
 

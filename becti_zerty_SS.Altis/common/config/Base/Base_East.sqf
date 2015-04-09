@@ -370,7 +370,7 @@ _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["Mortar"];
 _classes = _classes 		+ ["O_Mortar_01_F"];
-_prices = _prices 			+ [3500];
+_prices = _prices 			+ [5000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
 
