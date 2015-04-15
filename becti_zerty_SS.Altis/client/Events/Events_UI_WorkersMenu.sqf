@@ -51,6 +51,9 @@ switch (_action) do {
 		_mx = _event select 2;
 		_my = _event select 3;
 
+		//// Hold the refunds until the end, then refund
+		// _refundArr = [];
+		
 		// Sell only one building.
 		if ((_button == 0) &&((uiNamespace getVariable "cti_dialog_ui_workersmenu_sellmode") == 1)) then {	
 			_logic = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic;
@@ -92,8 +95,20 @@ switch (_action) do {
 				_nearest setVariable ["cti_sell", true, true];
 				deleteVehicle _nearest; // remove sold building.
 				uiNamespace setVariable ["cti_dialog_ui_workersmenu_buildings", _updated_structures]; // Update local variable;
+				
+				//// PSEUDOCODE
+				//// Add refund amount to arr 
+				// _refund = 0;
+				// _y = _x; // assign outter loop to _y
+				// {
+				// 		_refund = if (_x == _y) then { // get price for structure};
+				// }forEach (getVariable ["CTI_%1_STRUCTURES", CTI_P_SideJoined]); 
+				// _x = _y; // _restore outter loop iterator variable 
+				// _cost = ; // Something like this
+				// _refundArr = _refundArr + [_refund];
+				
 				["SERVER", "Ruin_Removed", [mapGridPosition _nearest, CTI_P_SideJoined]] call CTI_CO_FNC_NetSend; // Tell players
-				// maybe add refund here?
+
 			};
 			_selling_sructures = nil;
 			_total_structures = nil;
@@ -112,10 +127,32 @@ switch (_action) do {
 				if ((_x distance _mappos) <= CTI_BASE_AREA_RANGE) then {
 					_x setVariable ["cti_sell", true, true];
 					["SERVER", "Ruin_Removed", [mapGridPosition _x, CTI_P_SideJoined]] call CTI_CO_FNC_NetSend;
+					
+					//// PSEUDOCODE
+					//// Add refund amount to arr 
+					// _refund = 0;
+					// _y = _x; // assign outter loop to _y
+					// {
+					// 		_refund = if (_x == _y) then { // get price for structure};
+					// }forEach (getVariable ["CTI_%1_STRUCTURES", CTI_P_SideJoined]); 
+					// _x = _y; // _restore outter loop iterator variable 
+					// _cost = ; // Something like this
+					// _refundArr = _refundArr + [_refund];
+					
 					deleteVehicle _x;
 				};
 			} forEach (_total_structures);
 		};
+		
+		//// PSEUDOCODE
+		//// Get player side
+		// _side = CTI_P_SideJoined;
+		//// Refund money for every building
+		//{
+		//		if (_x != 0) then {
+		// 			[_side, _x] call CTI_CO_FNC_ChangeFundsCommander;
+		//		};
+		//} forEach _refundArr;
 		
 		// cleanup
 		uiNamespace setVariable ["cti_dialog_ui_workersmenu_sellmode", 0];
