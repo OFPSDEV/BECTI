@@ -176,11 +176,19 @@ if (_model isKindOf "Man") then {
 	_handle=true;
 	if (_model isKindof  'ReammoBox_F') then {_handle=false};  //ss83 prevents the crate from being de spawned
 	if (_model isKindof  'O_Truck_03_medical_F') then {_handle=false};  //ss83 prevents the mobile respawns from despawning
-	if (_model isKindof  'B_Truck_03_medical_F') then {_handle=false};  //ss83 prevents the mobile respawns from despawning
+	if (_model isKindof  'B_Truck_01_medical_F') then {_handle=false};  //ss83 prevents the mobile respawns from despawning
 	if (_model isKindof  'O_Truck_03_repair_F') then {_handle=false}; 
-	if (_model isKindof  'B_Truck_03_repair_F') then {_handle=false}; 
+	if (_model isKindof  'B_Truck_01_repair_F') then {_handle=false}; 
+	if (_model isKindof  'O_Truck_03_ammo_F') then {_handle=false}; 
+	if (_model isKindof  'B_Truck_01_ammo_F') then {_handle=false}; 
 	if (_model isKindof  'I_Heli_light_03_unarmed_F') then {_handle=false}; 
 	if (_model isKindof  'O_Heli_Transport_04_medevac_F') then {_handle=false};	
+		if (_model isKindof  'O_Heli_Transport_04_ammo_F') then {_handle=false};	
+	if (_model isKindof  'O_Heli_Transport_04_repair_F') then {_handle=false};	
+	if (_model isKindof  'O_MBT_02_arty_F') then {_handle=false};	
+	if (_model isKindof  'B_MBT_01_arty_F') then {_handle=false};	
+	if (_model isKindof  'B_MBT_01_mlrs_F') then {_handle=false};	
+	
 	
 	if (_handle) then {
 		["SERVER", "Request_HandleAction", ["empty", [_vehicle]]] call CTI_CO_FNC_NetSend; //--- Ask the server to track our vehicle emptiness
