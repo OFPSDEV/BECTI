@@ -31,7 +31,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["Toolkit", 1],
 		["B_Bergen_sgg", 4]
 	]],
-	["rhsusf_m1025_w", [["Toolkit", 1],["firstaidkit", 10],["rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red", 15],["launch_NLAW_F", 5], ["NLAW_F", 20]]]
+	["rhsusf_m1025_w", [["Toolkit", 1],["firstaidkit", 10],["rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red", 15]]]
 ]];
 
 //--- Units - Barracks

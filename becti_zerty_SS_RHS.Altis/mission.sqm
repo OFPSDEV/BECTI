@@ -13,7 +13,8 @@ class Mission
 		"a3_characters_f",
 		"A3_Modules_F",
 		"rhsusf_c_troops",
-		"rhs_c_troops"
+		"rhs_c_troops",
+		"rhs_cti_insurgents"
 	};
 	addOnsAuto[]=
 	{
@@ -24,13 +25,14 @@ class Mission
 		"a3_characters_f",
 		"A3_Characters_F_OPFOR",
 		"A3_Modules_F_Curator_Curator",
+		"rhs_cti_insurgents",
 		"A3_Structures_F_Mil_Flags",
 		"a3_map_altis"
 	};
 	randomSeed=1713560;
 	class Intel
 	{
-		briefingName="BECTI - Zerty - SS - RHS:Escalation";
+		briefingName="BECTI- Zerty- RHS:Escalation";
 		overviewText="By Benny - Adapted from OFP era MFCTI (Mike Melvin)";
 		resistanceWest=0;
 		startWeather=0;
@@ -52,7 +54,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=52;
+		items=53;
 		class Item0
 		{
 			side="LOGIC";
@@ -1188,6 +1190,24 @@ class Mission
 					skill=0.60000002;
 					syncId=51;
 					synchronizations[]={50};
+				};
+			};
+		};
+		class Item52
+		{
+			side="GUER";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={2092.8245,52.41811,22180};
+					id=52;
+					side="GUER";
+					vehicle="rhs_g_Soldier_AA_F";
+					player="PLAYER COMMANDER";
+					leader=1;
+					skill=0.60000002;
 				};
 			};
 		};
